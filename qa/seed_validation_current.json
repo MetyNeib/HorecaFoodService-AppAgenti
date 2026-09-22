@@ -1,0 +1,439 @@
+{
+  "datasetId": "HFS-AGENT-DEMO-20260922-V1",
+  "validationScope": "SEED_DATA_ONLY_NOT_UI_OR_REAL_NETWORK",
+  "status": "PASS",
+  "passed": 86,
+  "failed": 0,
+  "checks": [
+    {
+      "check": "unique_ids_agents",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_warehouses",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_deliveryRoutes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_paymentMethods",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_priceLists",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_products",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_categories",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_customers",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_contacts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_destinations",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_customerConditions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_orders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_invoices",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_receivables",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_payments",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_insights",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_analyses",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_syncQueue",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_whatsappInbox",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_ids_scenarioBank",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "product_count",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "product_codes",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "leading_zero_codes_retained",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "category_refs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "case_conversions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "positive_costs_and_prices",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unit_maps",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "customer_refs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "customer_destinations",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "contact_refs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "geography",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "routes_and_warehouses",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "deliberately_invalid_demo_tax_ids",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "nonroutable_contacts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "complete_price_matrix",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "complete_stock_matrix",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "valid_price_matrix_refs",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "valid_stock_refs_nonnegative",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "unique_order_line_ids",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "order_references",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "delivery_days",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "line_quantities_rounding_margin",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "order_totals_margin",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "order_status_fixtures",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "home_counter_reconciliation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "whatsapp_refs_and_canonical_lines",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "whatsapp_unresolved_counts",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "milk_out_of_stock_scenario",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "ambiguous_unit_explicit",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "seed_learning_does_not_resolve_exceptions",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "queue_exact_pending_orders",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "commercial_condition_refs_dates",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-00846-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-00913-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-00959-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-NC-26-00028-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-00872-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-00872-R02",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01104-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01105-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01106-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01107-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01108-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01109-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01110-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01111-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01112-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01113-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01114-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-F-26-01115-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "invoice_customer_DOC-NC-26-00035-R01",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "instalments_sum_to_document",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "receivable_projections",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "customer_balance_reconciliation",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "demo_financial_showcase",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "insights_reconcile_to_order_lines",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "insight_showcase_values",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "usual_milk_has_real_demo_history",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "amaro_absence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "beer_presence",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "reorder_delay_arithmetic",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "reorder_baseline",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "fixed_clock_and_offline",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_extra_features",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_production_urls",
+      "status": "PASS",
+      "detail": ""
+    },
+    {
+      "check": "no_raw_source_names_in_demo",
+      "status": "PASS",
+      "detail": ""
+    }
+  ]
+}

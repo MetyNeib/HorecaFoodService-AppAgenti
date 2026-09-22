@@ -1,0 +1,2864 @@
+{
+  "source": "APP_AGENTI_ORIGINALE.pdf",
+  "pageCount": 22,
+  "linkCount": 204,
+  "notice": "Link hotspots include fixed-data jumps and PDF presenter controls. They are evidence of intent, not the application state machine. Do not render purple hotspots or presentation footer in the app.",
+  "links": [
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        40.0,
+        148.0,
+        401.5,
+        181.5
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 4,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Inserisci nuovo ordine)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 40 335 401.5 368.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        435.0,
+        148.0,
+        797.0,
+        181.5
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 5,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Verifica ordini WhatsApp)\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 435 335 797 368.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        31.0,
+        236.0,
+        290.0,
+        286.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 6,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Bozze)\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 31 230 290 280.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        294.5,
+        236.0,
+        542.5,
+        286.5
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 7,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Da inviare)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 294.5 230 542.5 280.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        548.0,
+        236.0,
+        806.5,
+        286.5
+      ],
+      "destinationPage": 11,
+      "kind": 4,
+      "xref": 8,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Inviati)\n  /Dest [ 133 0 R /Fit ]\n  /Rect [ 548 230 806.5 280.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        29.5,
+        300.0,
+        410.5,
+        353.0
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 9,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 29.5 163.5 410.5 216.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        425.5,
+        300.0,
+        807.0,
+        353.0
+      ],
+      "destinationPage": 18,
+      "kind": 4,
+      "xref": 10,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Catalogo prodotti)\n  /Dest [ 211 0 R /Fit ]\n  /Rect [ 425.5 163.5 807 216.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        29.5,
+        364.5,
+        807.0,
+        414.5
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 11,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Statistiche e segnalazioni AI - Evolutiva)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 29.5 102 807 152 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        658.5,
+        432.0,
+        809.0,
+        460.0
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 12,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Stato sincronizzazione - Ordini in attesa di rete)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 658.5 56.5 809 84.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 1,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 13,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 16,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 17,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        669.0,
+        220.0,
+        795.0,
+        255.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 18,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Seleziona cliente - Percorso ordine dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 669 261.5 795 296.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        669.0,
+        289.0,
+        795.0,
+        324.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 19,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Seleziona cliente - Percorso ordine dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 669 192.5 795 227.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        669.0,
+        358.5,
+        795.0,
+        393.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 20,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Seleziona cliente - Percorso ordine dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 669 123 795 158 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 21,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 22,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 2,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 23,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 26,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        26.5,
+        45.5,
+        106.5,
+        70.0
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 27,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla selezione cliente)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 26.5 446.5 106.5 471 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        218.0,
+        44.0,
+        305.5,
+        74.0
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 28,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Selezione cliente)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 218 442.5 305.5 472.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        306.5,
+        230.5,
+        405.0,
+        251.0
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 29,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 306.5 265.5 405 286 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        306.5,
+        335.0,
+        405.0,
+        355.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 30,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 306.5 161 405 181.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        732.5,
+        179.0,
+        795.5,
+        200.0
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 31,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Modifica articolo - Esempio dimostrativo)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 732.5 316.5 795.5 337.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        732.5,
+        274.5,
+        795.5,
+        295.5
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 32,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Modifica articolo - Esempio dimostrativo)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 732.5 221 795.5 242 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        661.5,
+        357.0,
+        800.0,
+        385.0
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 33,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Vai al riepilogo)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 661.5 131.5 800 159.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        661.5,
+        390.5,
+        800.0,
+        418.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 34,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Salva bozza - Torna alle bozze \\(simulazione\\))\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 661.5 98 800 126 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 35,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 36,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 3,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 37,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 40,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        26.5,
+        43.5,
+        107.5,
+        66.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 41,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna a prodotti e carrello)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 26.5 450 107.5 473 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        217.5,
+        40.0,
+        305.5,
+        67.5
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 42,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Selezione cliente)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 217.5 449 305.5 476.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        412.5,
+        40.0,
+        513.5,
+        68.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 43,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Prodotti e carrello)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 412.5 448.5 513.5 476.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        525.0,
+        405.5,
+        647.0,
+        433.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 44,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Annulla - Torna ai prodotti)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 525 83.5 647 111 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        657.0,
+        405.5,
+        802.0,
+        433.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 45,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Salva modifiche - Torna ai prodotti \\(simulazione\\))\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 657 83.5 802 111 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 46,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 47,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 48,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 4,
+      "rectPdfPoints": [
+        638.0,
+        498.5,
+        812.0,
+        512.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 49,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla verifica WhatsApp >)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 638 4 812 18 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 52,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        26.5,
+        45.5,
+        107.5,
+        71.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 53,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna ai prodotti)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 26.5 445.5 107.5 471 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        219.0,
+        43.0,
+        306.0,
+        73.0
+      ],
+      "destinationPage": 2,
+      "kind": 4,
+      "xref": 54,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Selezione cliente)\n  /Dest [ 24 0 R /Fit ]\n  /Rect [ 219 443.5 306 473.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        383.0,
+        43.0,
+        473.5,
+        73.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 55,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Prodotti e carrello)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 383 443.5 473.5 473.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        315.5,
+        129.5,
+        417.5,
+        151.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 56,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Modifica prodotti)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 315.5 365 417.5 387 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        517.0,
+        398.0,
+        645.5,
+        427.0
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 57,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Salva bozza - Apri le bozze \\(simulazione\\))\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 517 89.5 645.5 118.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        656.5,
+        398.0,
+        807.5,
+        427.0
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 58,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Conferma offline - Ordini da inviare \\(simulazione\\))\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 656.5 89.5 807.5 118.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 59,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 60,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 61,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 5,
+      "rectPdfPoints": [
+        638.0,
+        498.5,
+        812.0,
+        512.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 62,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla verifica WhatsApp >)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 638 4 812 18 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 65,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 66,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        664.0,
+        248.5,
+        799.5,
+        282.0
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 67,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Verifica ordine WhatsApp - Esempio dimostrativo)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 664 234.5 799.5 268 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        664.0,
+        311.5,
+        799.5,
+        344.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 68,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Verifica ordine WhatsApp - Esempio dimostrativo)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 664 172 799.5 205 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        664.0,
+        372.5,
+        799.5,
+        399.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 69,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Verifica ordine WhatsApp - Esempio dimostrativo)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 664 117 799.5 144 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 70,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 71,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 6,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 72,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 75,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        25.0,
+        47.0,
+        156.0,
+        70.5
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 76,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna agli ordini WhatsApp)\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 25 446 156 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        25.5,
+        393.5,
+        174.0,
+        420.0
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 77,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Salva verifica - Ritorno all\\220elenco \\(simulazione\\))\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 25.5 96.5 174 123 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        44.5,
+        199.0,
+        327.5,
+        228.5
+      ],
+      "destinationPage": 8,
+      "kind": 4,
+      "xref": 78,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scegli prodotto - Alternative e ricerca)\n  /Dest [ 101 0 R /Fit ]\n  /Rect [ 44.5 288 327.5 317.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        44.5,
+        298.0,
+        328.5,
+        327.0
+      ],
+      "destinationPage": 8,
+      "kind": 4,
+      "xref": 79,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Cerca prodotto - Esempio del pannello di scelta)\n  /Dest [ 101 0 R /Fit ]\n  /Rect [ 44.5 189.5 328.5 218.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        734.5,
+        202.0,
+        794.0,
+        224.0
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 80,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Modifica articolo - Schermata condivisa dimostrativa)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 734.5 292.5 794 314.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        734.5,
+        301.0,
+        794.0,
+        323.0
+      ],
+      "destinationPage": 4,
+      "kind": 4,
+      "xref": 81,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Modifica articolo - Schermata condivisa dimostrativa)\n  /Dest [ 50 0 R /Fit ]\n  /Rect [ 734.5 193.5 794 215.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 82,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 83,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 8,
+      "kind": 4,
+      "xref": 84,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 101 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 7,
+      "rectPdfPoints": [
+        599.0,
+        498.5,
+        812.0,
+        512.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 85,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Dopo le scelte: riepilogo condiviso >)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 599 4 812 18 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 88,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        25.0,
+        47.0,
+        156.0,
+        70.5
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 89,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna agli ordini WhatsApp)\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 25 446 156 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        25.5,
+        393.5,
+        174.0,
+        420.0
+      ],
+      "destinationPage": 6,
+      "kind": 4,
+      "xref": 90,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Salva verifica - Ritorno all\\220elenco \\(simulazione\\))\n  /Dest [ 73 0 R /Fit ]\n  /Rect [ 25.5 96.5 174 123 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        704.0,
+        114.0,
+        804.5,
+        135.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 91,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla bozza)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 704 381 804.5 402.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        700.0,
+        193.5,
+        795.5,
+        218.0
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 92,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scegli alternativa - Ritorno alla bozza \\(simulazione, dati fissi\\))\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 700 298.5 795.5 323 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        700.0,
+        267.0,
+        795.5,
+        291.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 93,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scegli alternativa - Ritorno alla bozza \\(simulazione, dati fissi\\))\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 700 225 795.5 249.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        710.0,
+        222.5,
+        785.0,
+        238.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 94,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 710 278 785 294 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        710.0,
+        296.0,
+        785.0,
+        312.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 95,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 710 204 785 220.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        367.5,
+        358.0,
+        501.5,
+        376.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 96,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Escludi richiesta - Ritorno alla bozza \\(simulazione\\))\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 367.5 140 501.5 158.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 97,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 7,
+      "kind": 4,
+      "xref": 98,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 86 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 99,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 8,
+      "rectPdfPoints": [
+        599.0,
+        498.5,
+        812.0,
+        512.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 100,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Dopo le scelte: riepilogo condiviso >)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 599 4 812 18 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 103,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 104,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        294.0,
+        114.5,
+        543.0,
+        148.5
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 105,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Da inviare)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 294 368 543 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        547.0,
+        114.5,
+        806.0,
+        148.5
+      ],
+      "destinationPage": 11,
+      "kind": 4,
+      "xref": 106,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Inviati)\n  /Dest [ 133 0 R /Fit ]\n  /Rect [ 547 368 806 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        668.5,
+        262.5,
+        798.0,
+        292.0
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 107,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Riprendi bozza - Percorso ordine dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 668.5 224.5 798 254 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        668.5,
+        341.0,
+        798.0,
+        370.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 108,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Riprendi bozza - Percorso ordine dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 668.5 146 798 175.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 109,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 8,
+      "kind": 4,
+      "xref": 110,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 101 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 9,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 111,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 114,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 115,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        30.0,
+        114.5,
+        291.0,
+        148.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 116,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Bozze)\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 30 368 291 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        547.0,
+        114.5,
+        806.0,
+        148.5
+      ],
+      "destinationPage": 11,
+      "kind": 4,
+      "xref": 117,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Inviati)\n  /Dest [ 133 0 R /Fit ]\n  /Rect [ 547 368 806 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        670.5,
+        295.5,
+        796.0,
+        325.0
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 118,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri ordine - Esempio di riepilogo, dati fissi)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 670.5 191.5 796 221 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 119,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 120,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 10,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 11,
+      "kind": 4,
+      "xref": 121,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 133 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 124,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 125,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        30.0,
+        114.5,
+        291.0,
+        148.5
+      ],
+      "destinationPage": 9,
+      "kind": 4,
+      "xref": 126,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Bozze)\n  /Dest [ 112 0 R /Fit ]\n  /Rect [ 30 368 291 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        294.0,
+        114.5,
+        543.0,
+        148.5
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 127,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (I miei ordini - Da inviare)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 294 368 543 402 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        670.5,
+        322.5,
+        796.0,
+        351.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 128,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri ordine - Esempio di riepilogo, dati fissi)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 670.5 165 796 194 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        670.5,
+        380.5,
+        796.0,
+        409.5
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 129,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri ordine - Esempio di riepilogo, dati fissi)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 670.5 107 796 136 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 130,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 10,
+      "kind": 4,
+      "xref": 131,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 122 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 11,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 132,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 135,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 136,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        666.0,
+        222.5,
+        798.0,
+        257.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 137,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri scheda cliente - Esempio dimostrativo)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 666 259 798 294 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        666.0,
+        293.5,
+        798.0,
+        328.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 138,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri scheda cliente - Esempio dimostrativo)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 666 188 798 223 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        666.0,
+        365.5,
+        798.0,
+        400.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 139,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri scheda cliente - Esempio dimostrativo)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 666 116 798 151 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 140,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 11,
+      "kind": 4,
+      "xref": 141,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 133 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 12,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 142,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 145,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        92.5,
+        70.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 146,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna all\\220elenco clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 26.5 446 92.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        224.5,
+        133.5,
+        417.5,
+        166.5
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 147,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Ordini)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 224.5 350 417.5 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        419.0,
+        133.5,
+        611.5,
+        166.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 148,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 419 350 611.5 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        613.5,
+        133.5,
+        808.0,
+        166.5
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 149,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Info commerciali)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 613.5 350 808 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 150,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 151,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 13,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 152,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 155,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        92.5,
+        70.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 156,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna all\\220elenco clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 26.5 446 92.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        28.5,
+        133.5,
+        223.5,
+        166.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 157,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Anagrafica)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 28.5 350 223.5 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        419.0,
+        133.5,
+        611.5,
+        166.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 158,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 419 350 611.5 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        613.5,
+        133.5,
+        808.0,
+        166.5
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 159,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Info commerciali)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 613.5 350 808 383 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        677.0,
+        289.0,
+        792.0,
+        316.0
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 160,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri ordine - Riepilogo dimostrativo)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 677 200.5 792 227.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        677.0,
+        334.0,
+        792.0,
+        360.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 161,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Riprendi bozza - Percorso dimostrativo)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 677 156 792 182.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        677.0,
+        379.0,
+        792.0,
+        406.0
+      ],
+      "destinationPage": 5,
+      "kind": 4,
+      "xref": 162,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri ordine - Riepilogo dimostrativo)\n  /Dest [ 63 0 R /Fit ]\n  /Rect [ 677 110.5 792 137.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 163,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 164,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 14,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 165,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 168,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        92.5,
+        70.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 169,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna all\\220elenco clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 26.5 446 92.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        28.5,
+        127.5,
+        223.5,
+        156.0
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 170,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Anagrafica)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 28.5 360.5 223.5 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        224.5,
+        127.5,
+        417.5,
+        156.0
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 171,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Ordini)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 224.5 360.5 417.5 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        613.5,
+        127.5,
+        808.0,
+        156.0
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 172,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Info commerciali)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 613.5 360.5 808 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        659.0,
+        206.0,
+        809.0,
+        235.0
+      ],
+      "destinationPage": 16,
+      "kind": 4,
+      "xref": 173,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Invia o scarica PDF delle partite aperte)\n  /Dest [ 191 0 R /Fit ]\n  /Rect [ 659 281.5 809 310.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 174,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 175,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 15,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 16,
+      "kind": 4,
+      "xref": 176,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 191 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 179,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        92.5,
+        70.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 180,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna all\\220elenco clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 26.5 446 92.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        28.5,
+        127.5,
+        223.5,
+        156.0
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 181,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Anagrafica)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 28.5 360.5 223.5 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        224.5,
+        127.5,
+        417.5,
+        156.0
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 182,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Ordini)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 224.5 360.5 417.5 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        419.0,
+        127.5,
+        611.5,
+        156.0
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 183,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 419 360.5 611.5 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        613.5,
+        127.5,
+        808.0,
+        156.0
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 184,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Info commerciali)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 613.5 360.5 808 389 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        681.5,
+        171.0,
+        798.5,
+        195.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 185,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alle partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 681.5 321 798.5 345.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        41.0,
+        391.0,
+        166.0,
+        420.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 186,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Annulla - Torna alle partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 41 96 166 125.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        635.0,
+        391.0,
+        798.5,
+        420.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 187,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Invio simulato - Nessun messaggio viene inviato)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 635 96 798.5 125.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 188,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 189,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 16,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 190,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 193,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        92.5,
+        70.5
+      ],
+      "destinationPage": 12,
+      "kind": 4,
+      "xref": 194,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna all\\220elenco clienti)\n  /Dest [ 143 0 R /Fit ]\n  /Rect [ 26.5 446 92.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        28.5,
+        132.5,
+        223.5,
+        166.0
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 195,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Anagrafica)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 28.5 350.5 223.5 384 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        224.5,
+        132.5,
+        417.5,
+        166.0
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 196,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Ordini)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 224.5 350.5 417.5 384 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        419.0,
+        132.5,
+        611.5,
+        166.0
+      ],
+      "destinationPage": 15,
+      "kind": 4,
+      "xref": 197,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda cliente - Partite aperte)\n  /Dest [ 177 0 R /Fit ]\n  /Rect [ 419 350.5 611.5 384 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 198,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 16,
+      "kind": 4,
+      "xref": 199,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 191 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 17,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 18,
+      "kind": 4,
+      "xref": 200,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 211 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 203,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 204,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        665.0,
+        252.5,
+        792.0,
+        280.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 205,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 665 236 792 264 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        665.0,
+        315.0,
+        792.0,
+        343.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 206,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 665 173 792 201.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        665.0,
+        377.5,
+        792.0,
+        405.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 207,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scheda prodotto - Esempio dimostrativo)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 665 111 792 139 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 208,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 17,
+      "kind": 4,
+      "xref": 209,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 201 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 18,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 210,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 213,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        26.5,
+        47.5,
+        114.5,
+        71.5
+      ],
+      "destinationPage": 18,
+      "kind": 4,
+      "xref": 214,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna al catalogo)\n  /Dest [ 211 0 R /Fit ]\n  /Rect [ 26.5 445 114.5 469 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        39.0,
+        355.0,
+        254.0,
+        381.0
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 215,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Ingrandisci foto - Clicca poi sulla foto per tornare alla scheda)\n  /Dest [ 221 0 R /FitR 28.5 163.5 264 352.5 ]\n  /Rect [ 39 135.5 254 161.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        32.5,
+        168.5,
+        260.0,
+        349.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 216,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla scheda prodotto completa)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 32.5 167 260 348 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 217,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 18,
+      "kind": 4,
+      "xref": 218,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 211 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 219,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 19,
+      "rectPdfPoints": [
+        638.0,
+        498.5,
+        812.0,
+        512.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 220,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna ai prodotti dell\\220ordine >)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 638 4 812 18 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 223,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        26.0,
+        48.0,
+        91.5,
+        71.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 224,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26 445 91.5 468.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        666.0,
+        222.0,
+        796.0,
+        253.5
+      ],
+      "destinationPage": 21,
+      "kind": 4,
+      "xref": 225,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri analisi AI - Esempio dimostrativo)\n  /Dest [ 240 0 R /Fit ]\n  /Rect [ 666 263 796 294.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        666.0,
+        342.0,
+        796.0,
+        373.5
+      ],
+      "destinationPage": 21,
+      "kind": 4,
+      "xref": 226,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri analisi AI - Esempio dimostrativo)\n  /Dest [ 240 0 R /Fit ]\n  /Rect [ 666 143 796 174.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 227,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 19,
+      "kind": 4,
+      "xref": 228,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 221 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 20,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 21,
+      "kind": 4,
+      "xref": 229,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 240 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 232,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        129.5,
+        71.0
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 233,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alle segnalazioni AI)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 26.5 445.5 129.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        690.5,
+        134.5,
+        797.5,
+        162.5
+      ],
+      "destinationPage": 14,
+      "kind": 4,
+      "xref": 234,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Mostra dati - Esempio della scheda ordini cliente)\n  /Dest [ 166 0 R /Fit ]\n  /Rect [ 690.5 354 797.5 382 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        322.5,
+        413.5,
+        509.0,
+        429.5
+      ],
+      "destinationPage": 22,
+      "kind": 4,
+      "xref": 235,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Continua - Ipotesi e consigli dell\\220AI)\n  /Dest [ 250 0 R /Fit ]\n  /Rect [ 322.5 87 509 103 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        822.0,
+        47.5,
+        831.5,
+        422.0
+      ],
+      "destinationPage": 22,
+      "kind": 4,
+      "xref": 236,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Scorri ai consigli AI)\n  /Dest [ 250 0 R /Fit ]\n  /Rect [ 822 94.5 831.5 469 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 237,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 238,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 21,
+      "rectPdfPoints": [
+        735.0,
+        476.5,
+        812.0,
+        493.5
+      ],
+      "destinationPage": 22,
+      "kind": 4,
+      "xref": 239,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Successiva >)\n  /Dest [ 250 0 R /Fit ]\n  /Rect [ 735 23 812 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        26.5,
+        4.5,
+        147.0,
+        31.0
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 242,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Centro Cash - Torna alla Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 26.5 485.5 147 512 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        26.5,
+        47.0,
+        129.5,
+        71.0
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 243,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alle segnalazioni AI)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 26.5 445.5 129.5 469.5 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        822.0,
+        47.5,
+        831.5,
+        422.0
+      ],
+      "destinationPage": 21,
+      "kind": 4,
+      "xref": 244,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Torna alla prima parte dell\\220analisi AI)\n  /Dest [ 240 0 R /Fit ]\n  /Rect [ 822 94.5 831.5 469 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        40.5,
+        382.5,
+        285.5,
+        407.5
+      ],
+      "destinationPage": 13,
+      "kind": 4,
+      "xref": 245,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Apri scheda cliente - Esempio dimostrativo)\n  /Dest [ 153 0 R /Fit ]\n  /Rect [ 40.5 109 285.5 134 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        297.5,
+        382.5,
+        539.5,
+        407.5
+      ],
+      "destinationPage": 3,
+      "kind": 4,
+      "xref": 246,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Nuovo ordine per AGORA - Prodotti e carrello)\n  /Dest [ 38 0 R /Fit ]\n  /Rect [ 297.5 109 539.5 134 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        551.5,
+        382.5,
+        796.5,
+        407.5
+      ],
+      "destinationPage": 20,
+      "kind": 4,
+      "xref": 247,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Segna come valutate - Ritorno dimostrativo alle segnalazioni)\n  /Dest [ 230 0 R /Fit ]\n  /Rect [ 551.5 109 796.5 134 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "APPLICATION_AREA"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        601.0,
+        476.5,
+        646.0,
+        493.5
+      ],
+      "destinationPage": 1,
+      "kind": 4,
+      "xref": 248,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (Home)\n  /Dest [ 14 0 R /Fit ]\n  /Rect [ 601 23 646 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    },
+    {
+      "sourcePage": 22,
+      "rectPdfPoints": [
+        655.0,
+        476.5,
+        725.0,
+        493.5
+      ],
+      "destinationPage": 21,
+      "kind": 4,
+      "xref": 249,
+      "rawAnnotation": "<<\n  /Border [ 0 0 0 ]\n  /Contents (< Precedente)\n  /Dest [ 240 0 R /Fit ]\n  /Rect [ 655 23 725 40 ]\n  /Subtype /Link\n  /Type /Annot\n>>",
+      "region": "PDF_PRESENTATION_FOOTER"
+    }
+  ]
+}

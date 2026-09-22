@@ -1,0 +1,14 @@
+{
+  "scope": "SYNTAX_TRANSPILATION_ONLY_NOT_FULL_REACT_TYPECHECK",
+  "typescript": "5.8.3",
+  "files": [
+    "src/app/App.tsx",
+    "src/domain/core.ts",
+    "src/main.tsx",
+    "tests/e2e/bootstrap.spec.ts",
+    "vite.config.ts",
+    "playwright.config.ts"
+  ],
+  "errors": [],
+  "status": "PASS"
+}

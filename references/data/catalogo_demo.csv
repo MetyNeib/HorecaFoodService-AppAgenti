@@ -1,0 +1,121 @@
+﻿product_id;codice_articolo;nome;categoria;um_base;qta_conf_base;conf_per_collo;qta_collo_base;prezzo_base_eur;costo_base_eur;peso_variabile
+ART-0107417;0107417;Birra Lager Adriatica 66 cl;CAT-01;PZ;1.0;15;15.0;1,25;0,91;False
+ART-0107428;0107428;Birra IPA Collevento 75 cl;CAT-01;PZ;1.0;6;6.0;4,20;2,85;False
+ART-0107435;0107435;Birra Blanche Collevento 75 cl;CAT-01;PZ;1.0;6;6.0;3,80;2,65;False
+ART-0107442;0107442;Acqua Fontechiara naturale 2 L;CAT-01;PZ;1.0;6;6.0;0,50;0,29;False
+ART-0107453;0107453;Acqua Fontechiara frizzante 1,5 L;CAT-01;PZ;1.0;6;6.0;0,48;0,27;False
+ART-0107456;0107456;Succo mela Fruttavia 1 L;CAT-01;PZ;1.0;6;6.0;2,00;1,25;False
+ART-0107463;0107463;Nettare ACE Fruttavia 1,5 L;CAT-01;PZ;1.0;6;6.0;2,30;1,42;False
+ART-0107474;0107474;Succo pomodoro Ortochiaro 250 ml;CAT-01;PZ;1.0;24;24.0;1,45;0,90;False
+ART-0107487;0107487;Spumante brut Collevento 75 cl;CAT-01;PZ;1.0;6;6.0;5,50;3,40;False
+ART-0107498;0107498;Amaro delle Colline 1 L;CAT-01;PZ;1.0;6;6.0;12,00;8,10;False
+ART-0107511;0107511;Vodka Borgo Bianco 1 L;CAT-01;PZ;1.0;6;6.0;9,80;6,70;False
+ART-0107514;0107514;Succo di limone Agrumera 1 L;CAT-01;PZ;1.0;6;6.0;2,80;1,65;False
+ART-0207423;0207423;Latte alta digeribilità Vallechiara 1 L;CAT-02;PZ;1.0;12;12.0;1,48;1,05;False
+ART-0207430;0207430;Latte UHT senza lattosio Pratolatte 1 L;CAT-02;PZ;1.0;12;12.0;1,52;1,08;False
+ART-0207433;0207433;Latte UHT senza lattosio Fiorlatte 1 L;CAT-02;PZ;1.0;12;12.0;1,59;1,12;False
+ART-0207440;0207440;Latte intero UHT Pratolatte 1 L;CAT-02;PZ;1.0;12;12.0;1,28;0,88;False
+ART-0207443;0207443;Latte fresco bar Vallechiara 1 L;CAT-02;PZ;1.0;12;12.0;1,42;0,99;False
+ART-0207446;0207446;Panna da cucina Cremavalle 1 L;CAT-02;PZ;1.0;6;6.0;3,95;2,80;False
+ART-0207459;0207459;Panna vegetale Cremavalle 1 L;CAT-02;PZ;1.0;6;6.0;3,65;2,45;False
+ART-0207462;0207462;Burro centrifugato Pratolatte 1 kg;CAT-02;KG;1.0;10;10.0;7,40;5,65;False
+ART-0207473;0207473;Mascarpone Cremavalle 500 g;CAT-02;PZ;1.0;6;6.0;3,10;2,05;False
+ART-0207480;0207480;Mozzarella julienne Fiorlatte 2,5 kg;CAT-02;KG;2.5;4;10.0;6,20;4,45;False
+ART-0207493;0207493;Tuorlo pastorizzato Ovovalle 1 kg;CAT-02;PZ;1.0;6;6.0;6,90;4,80;False
+ART-0207504;0207504;Albume pastorizzato Ovovalle 1 kg;CAT-02;PZ;1.0;6;6.0;3,50;2,20;False
+ART-0307417;0307417;Bovino spezzatino tenero Selezione Appennino;CAT-03;KG;2.0;4;8.0;10,80;7,70;True
+ART-0307420;0307420;Bovino filetto Selezione Appennino;CAT-03;KG;3.0;2;6.0;25,50;19,20;True
+ART-0307427;0307427;Bovino roastbeef Selezione Appennino;CAT-03;KG;6.0;1;6.0;16,90;12,40;True
+ART-0307434;0307434;Equino fesa fresca Selezione Appennino;CAT-03;KG;4.0;2;8.0;13,50;9,80;True
+ART-0307445;0307445;Suino guancialini freschi Vallebuona;CAT-03;KG;2.5;4;10.0;8,70;6,10;True
+ART-0307456;0307456;Suino filetto fresco Vallebuona;CAT-03;KG;1.0;10;10.0;9,30;6,80;True
+ART-0307463;0307463;Petto pollo a fette Corteverde 130/150 g;CAT-03;KG;1.0;6;6.0;7,40;5,30;False
+ART-0307476;0307476;Cotoletta di pollo Corteverde 250 g;CAT-03;KG;2.5;2;5.0;8,20;5,85;False
+ART-0307483;0307483;Burger bovino Corteverde 200 g;CAT-03;KG;3.2;1;3.2;9,50;6,70;False
+ART-0307494;0307494;Polpette bovine precotte Corteverde 2,7 kg;CAT-03;KG;2.7;1;2.7;8,60;5,95;False
+ART-0307507;0307507;Vitello ossa per brodo Vallebuona;CAT-03;KG;5.0;1;5.0;2,20;1,30;False
+ART-0307514;0307514;Galletti Corteverde 530/630 g;CAT-03;KG;3.0;3;9.0;6,50;4,55;False
+ART-0407417;0407417;Prosciutto stagionato disossato Borgosano;CAT-04;KG;8.0;1;8.0;13,40;9,70;True
+ART-0407430;0407430;Salame stagionato Borgosano;CAT-04;KG;1.2;3;3.6;12,10;8,60;True
+ART-0407433;0407433;Coppa stagionata Borgosano;CAT-04;KG;2.5;2;5.0;11,80;8,10;True
+ART-0407446;0407446;Bresaola punta d’anca Montesole;CAT-04;KG;1.5;2;3.0;23,50;17,70;True
+ART-0407459;0407459;Pancetta arrotolata Borgosano;CAT-04;KG;2.5;2;5.0;9,90;6,80;True
+ART-0407472;0407472;Guanciale stagionato Borgosano;CAT-04;KG;1.3;2;2.6;10,50;7,35;True
+ART-0407485;0407485;Formaggio stagionato a scaglie Montelatte 1 kg;CAT-04;KG;1.0;10;10.0;12,80;9,30;False
+ART-0407492;0407492;Pecorino semistagionato Montelatte;CAT-04;KG;2.0;2;4.0;14,90;10,90;True
+ART-0407503;0407503;Ricotta fresca Fiorlatte 1,5 kg;CAT-04;KG;1.5;4;6.0;4,80;3,10;False
+ART-0407510;0407510;Erborinato dolce Montelatte 1,5 kg;CAT-04;KG;1.5;4;6.0;8,90;6,20;False
+ART-0407523;0407523;Prosciutto cotto Altafetta;CAT-04;KG;5.0;1;5.0;8,80;6,10;True
+ART-0407536;0407536;Mortadella Borgosano;CAT-04;KG;3.0;2;6.0;6,70;4,35;True
+ART-0507421;0507421;Seppia gigante Marechiaro U/1;CAT-05;KG;2.0;5;10.0;10,80;7,75;False
+ART-0507424;0507424;Filetti branzino Marechiaro 120/160 g;CAT-05;KG;1.0;5;5.0;12,90;9,30;False
+ART-0507437;0507437;Code gambero Marechiaro C1 2 kg;CAT-05;KG;2.0;6;12.0;13,80;9,90;False
+ART-0507448;0507448;Gamberoni Marechiaro L1 2 kg;CAT-05;KG;2.0;6;12.0;12,60;9,05;False
+ART-0507455;0507455;Mazzancolle guscio Marechiaro 26/30;CAT-05;KG;2.0;6;12.0;10,40;7,25;False
+ART-0507462;0507462;Filetti pangasio Marechiaro 170/210 g;CAT-05;KG;0.8;10;8.0;5,20;3,40;False
+ART-0507475;0507475;Fettuccine totano Marechiaro 2 kg;CAT-05;KG;2.0;4;8.0;7,10;4,70;False
+ART-0507486;0507486;Calamari anelli e ciuffi Marechiaro U/10;CAT-05;KG;1.0;5;5.0;10,60;7,50;False
+ART-0507497;0507497;Polpo cotto tagliato Marechiaro 2,4 kg;CAT-05;KG;2.4;1;2.4;19,80;14,70;False
+ART-0507504;0507504;Tentacoli polpo cotti Marechiaro 2,5 kg;CAT-05;KG;2.5;1;2.5;22,50;16,50;False
+ART-0507515;0507515;Salmone affumicato Marechiaro;CAT-05;KG;1.0;5;5.0;22,80;16,40;True
+ART-0507522;0507522;Pesce spada affumicato Marechiaro;CAT-05;KG;1.6;3;4.8;25,00;18,30;True
+ART-0507533;0507533;Vongole sgusciate Marechiaro 900 g;CAT-05;KG;0.9;8;7.2;7,80;5,20;False
+ART-0507540;0507540;Preparato risotto mare Marechiaro 800 g;CAT-05;KG;0.8;6;4.8;6,90;4,60;False
+ART-0507543;0507543;Cotoletta di mare Marechiaro 75 g;CAT-05;KG;1.0;6;6.0;6,90;4,50;False
+ART-0507554;0507554;Surimi in salamoia Marechiaro 900 g;CAT-05;PZ;1.0;6;6.0;4,40;2,85;False
+ART-0607423;0607423;Pomodori pelati Rossocampo 2,5 kg;CAT-06;PZ;1.0;6;6.0;3,60;2,40;False
+ART-0607426;0607426;Pomodorini Rossocampo 400 g;CAT-06;PZ;1.0;24;24.0;0,95;0,57;False
+ART-0607437;0607437;Fagioli cannellini Ortochiaro 2,5 kg;CAT-06;PZ;1.0;6;6.0;3,90;2,60;False
+ART-0607444;0607444;Capperi al sale Ortochiaro 1 kg;CAT-06;PZ;1.0;6;6.0;7,30;4,95;False
+ART-0607451;0607451;Olio girasole Solealto tanica 10 L;CAT-06;L;10.0;2;20.0;4,00;2,20;False
+ART-0607454;0607454;Olio frittura alto oleico Solealto 10 L;CAT-06;L;10.0;2;20.0;4,60;2,90;False
+ART-0607461;0607461;Olio extravergine Collebuono 5 L;CAT-06;L;5.0;2;10.0;7,90;5,95;False
+ART-0607472;0607472;Salsa Worcester SaporiBlu 568 ml;CAT-06;PZ;1.0;6;6.0;4,80;3,15;False
+ART-0607485;0607485;Sale fino Salina 1 kg;CAT-06;KG;1.0;12;12.0;0,65;0,32;False
+ART-0607488;0607488;Sale grosso Salina 1 kg;CAT-06;KG;1.0;12;12.0;0,60;0,29;False
+ART-0607501;0607501;Zucchero semolato Dolcemia 1 kg;CAT-06;KG;1.0;10;10.0;1,20;0,79;False
+ART-0607508;0607508;Noci sgusciate Ortochiaro 1 kg;CAT-06;KG;1.0;10;10.0;8,50;5,70;False
+ART-0607519;0607519;Funghi trifolati Ortochiaro 850 g;CAT-06;PZ;1.0;6;6.0;5,10;3,25;False
+ART-0607526;0607526;Carciofi trifolati Ortochiaro 1,7 kg;CAT-06;PZ;1.0;6;6.0;8,70;5,90;False
+ART-0607537;0607537;Aceto riso Orientechiaro 300 ml;CAT-06;PZ;1.0;12;12.0;2,60;1,60;False
+ART-0607540;0607540;Latte cocco Orientechiaro 400 ml;CAT-06;PZ;1.0;24;24.0;1,95;1,10;False
+ART-0707413;0707413;Farina 00 antigrumi Molino del Borgo 1 kg;CAT-07;KG;1.0;10;10.0;1,15;0,73;False
+ART-0707420;0707420;Farina pizza tipo 1 Molino del Borgo 25 kg;CAT-07;KG;25.0;1;25.0;1,05;0,68;False
+ART-0707423;0707423;Riso superfino Risoveneto 5 kg;CAT-07;KG;5.0;2;10.0;2,50;1,65;False
+ART-0707434;0707434;Penne rigate Pastaforte 5 kg;CAT-07;KG;5.0;2;10.0;2,50;1,55;False
+ART-0707447;0707447;Spaghetti Pastaforte 5 kg;CAT-07;KG;5.0;2;10.0;2,30;1,40;False
+ART-0707460;0707460;Paccheri freschi Pastavia 1,5 kg;CAT-07;KG;1.5;1;1.5;5,40;3,45;False
+ART-0707473;0707473;Orecchiette Pastavia 3 kg;CAT-07;KG;3.0;1;3.0;4,80;3,00;False
+ART-0707480;0707480;Tortelli ricotta spinaci Pastavia 3 kg;CAT-07;KG;3.0;1;3.0;7,30;4,90;False
+ART-0707483;0707483;Gramigna all’uovo Pastavia 3 kg;CAT-07;KG;3.0;1;3.0;4,10;2,60;False
+ART-0707486;0707486;Scialatielli Pastavia 1,5 kg;CAT-07;KG;1.5;1;1.5;4,90;3,10;False
+ART-0707489;0707489;Chicche di patate Pastavia 1 kg;CAT-07;KG;1.0;10;10.0;3,20;1,95;False
+ART-0707496;0707496;Chicche verdi agli spinaci Pastavia 1 kg;CAT-07;KG;1.0;10;10.0;3,60;2,25;False
+ART-0807423;0807423;Patate bravas Croccadoro 2,5 kg;CAT-08;KG;2.5;5;12.5;3,30;2,10;False
+ART-0807434;0807434;Patate ondulate Croccadoro 2,5 kg;CAT-08;KG;2.5;5;12.5;3,50;2,25;False
+ART-0807437;0807437;Patate a barchetta Croccadoro 2,5 kg;CAT-08;KG;2.5;4;10.0;3,40;2,15;False
+ART-0807444;0807444;Patate fritte 3/8 Croccadoro 2,5 kg;CAT-08;KG;2.5;4;10.0;2,40;1,45;False
+ART-0807447;0807447;Crocchette patate Croccadoro 2,5 kg;CAT-08;KG;2.5;4;10.0;3,00;1,85;False
+ART-0807454;0807454;Bocconcini jalapeño Croccadoro 1 kg;CAT-08;KG;1.0;3;3.0;7,20;4,70;False
+ART-0807465;0807465;Anelli cipolla Croccadoro 1 kg;CAT-08;KG;1.0;10;10.0;4,30;2,70;False
+ART-0807476;0807476;Arancini riso 180 g Croccadoro 3 kg;CAT-08;KG;3.0;1;3.0;5,40;3,45;False
+ART-0807489;0807489;Funghi misti Boscochiaro 1 kg;CAT-08;KG;1.0;6;6.0;4,80;3,05;False
+ART-0807496;0807496;Porcini a fette Boscochiaro 1 kg;CAT-08;KG;1.0;4;4.0;9,60;6,70;False
+ART-0807509;0807509;Carote rondelle Ortochiaro 2,5 kg;CAT-08;KG;2.5;4;10.0;2,10;1,20;False
+ART-0807512;0807512;Zucca cotta Ortochiaro 1 kg;CAT-08;KG;1.0;10;10.0;3,20;1,90;False
+ART-0907421;0907421;Zucchero a velo Dolcemia 5 kg;CAT-09;KG;5.0;4;20.0;1,70;1,04;False
+ART-0907424;0907424;Topping cioccolato Dolcemia 1 kg;CAT-09;PZ;1.0;6;6.0;5,80;3,65;False
+ART-0907435;0907435;Cacao amaro Dolcemia 1 kg;CAT-09;KG;1.0;10;10.0;10,50;7,30;False
+ART-0907442;0907442;Cioccolato fondente Dolcemia 1 kg;CAT-09;KG;1.0;5;5.0;9,50;6,30;False
+ART-0907445;0907445;Croissant vuoto Fornobuono 70 g x 50;CAT-09;PZ;1.0;50;50.0;0,46;0,27;False
+ART-0907448;0907448;Biscotti frollini Fornobuono 1 kg;CAT-09;PZ;1.0;6;6.0;4,20;2,60;False
+ART-0907451;0907451;Confettura albicocca Dolcemia 3 kg;CAT-09;PZ;1.0;4;4.0;8,80;5,90;False
+ART-0907454;0907454;Tè English Breakfast Fogliadoro 25 filtri;CAT-09;PZ;1.0;12;12.0;3,20;1,95;False
+ART-1007417;1007417;Guanti nitrile taglia M Servipiu 100 pz;CAT-10;PZ;1.0;10;10.0;4,60;2,85;False
+ART-1007424;1007424;Guanti nitrile taglia L Servipiu 100 pz;CAT-10;PZ;1.0;10;10.0;4,60;2,85;False
+ART-1007435;1007435;Carta forno Servipiu rotolo 50 m;CAT-10;PZ;1.0;6;6.0;3,70;2,15;False
+ART-1007448;1007448;Alluminio Servipiu rotolo 150 m;CAT-10;PZ;1.0;6;6.0;12,80;8,40;False
+ART-1007459;1007459;Vaschette alimenti Servipiu 1 L x 50;CAT-10;PZ;1.0;8;8.0;6,40;3,90;False
+ART-1007472;1007472;Sgrassatore cucina Puliforte 750 ml;CAT-10;PZ;1.0;6;6.0;2,70;1,55;False
+ART-1007485;1007485;Sacchi rifiuti Servipiu 120 L x 10;CAT-10;PZ;1.0;20;20.0;2,50;1,35;False
+ART-1007496;1007496;Tovaglioli Servipiu 33x33 x 250;CAT-10;PZ;1.0;8;8.0;2,10;1,15;False

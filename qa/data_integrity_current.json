@@ -1,0 +1,86 @@
+{
+  "status": "PASS",
+  "scope": "APPROVED_SEED_INTEGRITY_AND_STRUCTURE_NOT_UI",
+  "checks": [
+    {
+      "name": "approved_seed_sha256",
+      "pass": true
+    },
+    {
+      "name": "dataset_id",
+      "pass": true
+    },
+    {
+      "name": "synthetic_only",
+      "pass": true
+    },
+    {
+      "name": "count_products",
+      "pass": true
+    },
+    {
+      "name": "count_customers",
+      "pass": true
+    },
+    {
+      "name": "count_orders",
+      "pass": true
+    },
+    {
+      "name": "count_whatsappInbox",
+      "pass": true
+    },
+    {
+      "name": "count_scenarioBank",
+      "pass": true
+    },
+    {
+      "name": "count_stocks",
+      "pass": true
+    },
+    {
+      "name": "unique_products",
+      "pass": true
+    },
+    {
+      "name": "unique_customers",
+      "pass": true
+    },
+    {
+      "name": "unique_orders",
+      "pass": true
+    },
+    {
+      "name": "unique_invoices",
+      "pass": true
+    },
+    {
+      "name": "unique_receivables",
+      "pass": true
+    },
+    {
+      "name": "unique_contacts",
+      "pass": true
+    },
+    {
+      "name": "order_customer_fk",
+      "pass": true
+    },
+    {
+      "name": "order_product_fk",
+      "pass": true
+    },
+    {
+      "name": "inbox_order_fk",
+      "pass": true
+    },
+    {
+      "name": "initial_offline",
+      "pass": true
+    },
+    {
+      "name": "article_codes_strings",
+      "pass": true
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+[
+  {
+    "id": "T01",
+    "name": "Nuovo ordine e condizioni prezzo",
+    "actions": [
+      "Apri cliente CLI-061001",
+      "Aggiungi lager e mozzarella",
+      "Modifica prezzo lager; salva condizione con scadenza",
+      "Apri Info commerciali stesso cliente"
+    ],
+    "assertions": [
+      "Prezzo/margine aggiornati",
+      "Condizione applicata solo a cliente e prodotto scelti",
+      "Condizione visibile nella scheda cliente"
+    ]
+  },
+  {
+    "id": "T02",
+    "name": "Offline e invio idempotente",
+    "actions": [
+      "Conferma nuovo ordine offline",
+      "Passa online",
+      "Attendi sincronizzazione",
+      "Ripeti online"
+    ],
+    "assertions": [
+      "Una sola copia ordine",
+      "Da inviare diminuisce e Inviati aumenta",
+      "Nessuna chiamata esterna",
+      "Ritornare online non invia due volte"
+    ]
+  },
+  {
+    "id": "T03",
+    "name": "FastOrder 8 richieste 2 eccezioni",
+    "orderId": "WA-26-00841",
+    "actions": [
+      "Scegli latte_sl per richiesta R07",
+      "Cerca spezzatino per richiesta R08",
+      "Vai al riepilogo"
+    ],
+    "assertions": [
+      "24 PZ latte (2 × 12)",
+      "2 KG spezzatino",
+      "8 righe canonical order",
+      "0 richieste da definire",
+      "Carrello/review condiviso"
+    ]
+  },
+  {
+    "id": "T04",
+    "name": "Conferma U.M. per cotoletta",
+    "orderId": "WA-26-00843",
+    "actions": [
+      "Seleziona cotoletta_pollo",
+      "Conferma CT o correggi unità",
+      "Salva verifica"
+    ],
+    "assertions": [
+      "Non promuovere unità implicita a certa senza conferma",
+      "Prodotto distinto da cotoletta di mare"
+    ]
+  },
+  {
+    "id": "T05",
+    "name": "Conversioni formato",
+    "assertions": [
+      "Pangasio: 1 CT = 8 KG",
+      "Mazzancolle: 1 CT = 12 KG",
+      "Olio semi: 1 CT = 20 L",
+      "Mozzarella: 1 CT = 10 KG",
+      "26/30 è un calibro, non una quantità"
+    ]
+  },
+  {
+    "id": "T06",
+    "name": "Partite aperte",
+    "customerId": "CLI-061001",
+    "assertions": [
+      "Saldo € 587,46",
+      "Scaduto € 450,00",
+      "Incassato € 100,00",
+      "Credito -€ 12,54 incluso una sola volta",
+      "WhatsApp/email/download solo simulati"
+    ]
+  },
+  {
+    "id": "T07",
+    "name": "Insight riconciliato",
+    "customerId": "CLI-061001",
+    "assertions": [
+      "8→4 ordini",
+      "2400→1560 euro",
+      "Bevande 1000→240 euro",
+      "Amaro 6/8→0/4 ordini",
+      "Nuovo ordine preseleziona cliente",
+      "Segna valutata aggiorna conteggi; nessun pannello nuove regole"
+    ]
+  },
+  {
+    "id": "T08",
+    "name": "Persistenza e reset",
+    "assertions": [
+      "Refresh mantiene modifiche locali",
+      "Reset ripristina seed e svuota learnedMappings/shareJobs",
+      "Valori mobili relativi a demoClock fisso"
+    ]
+  },
+  {
+    "id": "T09",
+    "name": "Riservatezza",
+    "assertions": [
+      "Nessun file audit_private incluso nella build",
+      "Nessuna immagine WhatsApp originale mostrata",
+      "Nessun endpoint produttivo o contatto reale",
+      "P.IVA sempre etichettata DEMO"
+    ]
+  }
+]

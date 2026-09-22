@@ -1,0 +1,135 @@
+[
+  {
+    "token": "primary",
+    "value": "#2E60FF",
+    "figmaNodeId": "1:12",
+    "figmaStyleName": "Brand/Electric blue",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "primary-light",
+    "value": "#D5DFFF",
+    "figmaNodeId": "1:11",
+    "figmaStyleName": "Brand/Electric blue-light",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "primary-ultralight",
+    "value": "#EAEFFF",
+    "figmaNodeId": "1:71",
+    "figmaStyleName": "Brand/Electric blu-ultralight",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "accent",
+    "value": "#EB5930",
+    "figmaNodeId": "1:72",
+    "figmaStyleName": "Brand/Coral orange",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "accent-light",
+    "value": "#F9CDC1",
+    "figmaNodeId": "1:73",
+    "figmaStyleName": "Brand/Coral orange light",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "abyss",
+    "value": "#0B0F19",
+    "figmaNodeId": "1:74",
+    "figmaStyleName": "Brand/Abyss blue",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "background",
+    "value": "#F7F4EF",
+    "figmaNodeId": "1:75",
+    "figmaStyleName": "System/Background",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "surface",
+    "value": "#FFFFFF",
+    "figmaNodeId": "1:76",
+    "figmaStyleName": "System/Background layer",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "title",
+    "value": "#31343F",
+    "figmaNodeId": "1:59",
+    "figmaStyleName": "System/Title",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "paragraph",
+    "value": "#454A59",
+    "figmaNodeId": "1:57",
+    "figmaStyleName": "System/Paragraph",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "muted",
+    "value": "#808184",
+    "figmaNodeId": "1:16",
+    "figmaStyleName": "System/Placeholder",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "border",
+    "value": "#8C8F97",
+    "figmaNodeId": "1:14",
+    "figmaStyleName": "System/Borders",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "border-light",
+    "value": "#E5E7EB",
+    "figmaNodeId": "1:52",
+    "figmaStyleName": "Tailwind/Gray 200",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "success",
+    "value": "#00B980",
+    "figmaNodeId": "1:33",
+    "figmaStyleName": "System/Green",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "success-bg",
+    "value": "#E5F8F2",
+    "figmaNodeId": "1:77",
+    "figmaStyleName": "System/Green light",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "warning",
+    "value": "#A16207",
+    "figmaNodeId": "1:37",
+    "figmaStyleName": "Tailwind/Yellow 700",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "warning-bg",
+    "value": "#FEF9C3",
+    "figmaNodeId": "1:69",
+    "figmaStyleName": "Tailwind/yellow-100",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "error",
+    "value": "#B91C1C",
+    "figmaNodeId": "1:20",
+    "figmaStyleName": "Tailwind/Red 700",
+    "status": "EXTRACTED_VERIFIED"
+  },
+  {
+    "token": "error-bg",
+    "value": "#FEE2E2",
+    "figmaNodeId": "1:19",
+    "figmaStyleName": "Tailwind/Red 100",
+    "status": "EXTRACTED_VERIFIED"
+  }
+]

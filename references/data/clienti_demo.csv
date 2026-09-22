@@ -1,0 +1,13 @@
+﻿customer_id;codice;ragione_sociale;citta;provincia;regione;agente_id;deposito_id;giro_id;piva_demo_non_valida;email_demo
+CLI-061001;061001;Osteria del Faro SRL;Pesaro;PU;Marche;AG-014;DEP-07;GIRO-021;99000000011;cliente01@example.invalid
+CLI-061002;061002;Trattoria dei Tigli SRL;Fano;PU;Marche;AG-014;DEP-07;GIRO-021;99000000029;cliente02@example.invalid
+CLI-061003;061003;Ristorante Porto Verde SRL;Senigallia;AN;Marche;AG-014;DEP-07;GIRO-024;99000000037;cliente03@example.invalid
+CLI-061004;061004;Pizzeria Borgo Nuovo SRL;Ancona;AN;Marche;AG-014;DEP-07;GIRO-024;99000000045;cliente04@example.invalid
+CLI-061005;061005;Hotel Corte Serena SRL;Jesi;AN;Marche;AG-014;DEP-07;GIRO-024;99000000052;cliente05@example.invalid
+CLI-061006;061006;Locanda delle Colline SRL;Urbino;PU;Marche;AG-014;DEP-07;GIRO-021;99000000060;cliente06@example.invalid
+CLI-061007;061007;Bistrot Riviera Chiara SRL;Cattolica;RN;Emilia-Romagna;AG-014;DEP-12;GIRO-031;99000000078;cliente07@example.invalid
+CLI-061008;061008;Bar Giardino dei Viali SRL;Riccione;RN;Emilia-Romagna;AG-014;DEP-12;GIRO-031;99000000086;cliente08@example.invalid
+CLI-061009;061009;Ristorante Vela Bianca SRL;Rimini;RN;Emilia-Romagna;AG-022;DEP-12;GIRO-031;99000000094;cliente09@example.invalid
+CLI-061010;061010;Mensa Corte Romagna SRL;Cesena;FC;Emilia-Romagna;AG-022;DEP-12;GIRO-034;99000000102;cliente10@example.invalid
+CLI-061011;061011;Forno Piazza Nuova SRL;Forlì;FC;Emilia-Romagna;AG-031;DEP-12;GIRO-034;99000000110;cliente11@example.invalid
+CLI-061012;061012;Catering Due Portici SRL;Bologna;BO;Emilia-Romagna;AG-037;DEP-12;GIRO-034;99000000128;cliente12@example.invalid

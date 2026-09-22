@@ -1,0 +1,20 @@
+node_modules/
+dist/
+.vite/
+.env
+.env.*
+!.env.example
+*.log
+qa/playwright-report/
+qa/test-results/
+test-results/
+# Internal sources remain on disk but are not published by an accidental git add.
+references/**/*.fig
+references/**/*.pdf
+references/**/*.xlsx
+references/functional/pages/
+audit_private/
+*Source_Audit_PRIVATE*
+
+__pycache__/
+*.pyc

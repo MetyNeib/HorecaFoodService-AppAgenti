@@ -1,0 +1,104 @@
+{
+  "packageId": "HFS-STEP3-CODEX-KIT-20260922-V1",
+  "date": "2026-09-22",
+  "deliveryType": "LOCAL_CODEX_IMPLEMENTATION_KIT_NOT_COMPLETED_APP",
+  "environment": {
+    "os": "Linux build container",
+    "node": "22.16.0",
+    "npm": "10.9.2",
+    "typescriptActuallyUsedForPreflight": "5.8.3",
+    "targetPackageTypeScript": "~5.9.2"
+  },
+  "checks": [
+    {
+      "check": "approved_seed_original_validator",
+      "status": "PASS",
+      "passed": 86,
+      "failed": 0,
+      "report": "seed_validation_current.json"
+    },
+    {
+      "check": "seed_integrity_structure",
+      "status": "PASS",
+      "passed": 20,
+      "failed": 0,
+      "report": "data_integrity_current.json"
+    },
+    {
+      "check": "pure_domain_node_unit_tests",
+      "status": "PASS",
+      "passed": 42,
+      "failed": 0,
+      "report": "domain_tests_preparation.tap"
+    },
+    {
+      "check": "domain_core_typescript_strict",
+      "status": "PASS",
+      "command": "tsc --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --strict --skipLibCheck src/domain/core.ts"
+    },
+    {
+      "check": "typescript_source_syntax_transpilation",
+      "status": "PASS",
+      "files": 6,
+      "report": "syntax_validation.json",
+      "scope": "SYNTAX_ONLY_NOT_REACT_PROJECT_TYPECHECK"
+    },
+    {
+      "check": "pdf_render_and_link_inventory",
+      "status": "PASS",
+      "pages": 22,
+      "links": 204,
+      "destinationPageBounds": "VALID"
+    },
+    {
+      "check": "figma_archive_extraction",
+      "status": "PASS",
+      "styles": 133,
+      "symbols": 560,
+      "selectedColorTokens": 19,
+      "mode": "LOCAL_BINARY_PARSE",
+      "remoteAccess": "DENIED_NO_EDIT_PERMISSION"
+    },
+    {
+      "check": "approved_seed_bytes_unchanged",
+      "status": "PASS",
+      "sha256": "2fa3e0a68029226d01a0f1911fd4aedd616aca9768038a24f5c9c3004f01c4b6"
+    },
+    {
+      "check": "json_syntax",
+      "status": "PASS",
+      "files": 17
+    },
+    {
+      "check": "no_source_audit_or_raw_business_tables_or_font_binaries",
+      "status": "PASS"
+    },
+    {
+      "check": "PowerShell_installer",
+      "status": "STATIC_REVIEW_ONLY",
+      "runtimeStatus": "NOT_RUN",
+      "reason": "Windows/PowerShell runtime unavailable in this container"
+    },
+    {
+      "check": "npm_install_and_lockfile",
+      "status": "NOT_RUN",
+      "reason": "registry.npmjs.org DNS not resolvable from build container; do not invent package-lock.json"
+    },
+    {
+      "check": "full_React_typecheck_and_Vite_build",
+      "status": "NOT_RUN",
+      "reason": "npm dependencies not installed"
+    },
+    {
+      "check": "browser_and_Playwright_E2E",
+      "status": "NOT_RUN",
+      "reason": "React application not installed/built; bootstrap test supplied for local execution"
+    },
+    {
+      "check": "complete_UI_implementation",
+      "status": "NOT_IMPLEMENTED",
+      "reason": "User requested local setup package and Codex kickoff for full implementation"
+    }
+  ],
+  "requiredNextAction": "Run installation and Codex prompt locally; full app is complete only after M1-M8 and acceptance tests."
+}

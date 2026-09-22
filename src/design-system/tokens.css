@@ -1,0 +1,32 @@
+/* Colors verified against the uploaded Figma archive. See references/design/hfs_tokens_verified.json. */
+:root {
+  --hfs-primary: #2E60FF; /* 1:12 */
+  --hfs-primary-light: #D5DFFF; /* 1:11 */
+  --hfs-primary-ultralight: #EAEFFF; /* 1:71 */
+  --hfs-accent: #EB5930; /* 1:72 */
+  --hfs-accent-light: #F9CDC1; /* 1:73 */
+  --hfs-abyss: #0B0F19; /* 1:74 */
+  --hfs-background: #F7F4EF; /* 1:75 */
+  --hfs-surface: #FFFFFF; /* 1:76 */
+  --hfs-title: #31343F; /* 1:59 */
+  --hfs-paragraph: #454A59; /* 1:57 */
+  --hfs-muted: #808184; /* 1:16 */
+  --hfs-border: #8C8F97; /* 1:14 */
+  --hfs-border-light: #E5E7EB; /* 1:52 */
+  --hfs-success: #00B980; /* 1:33 */
+  --hfs-success-bg: #E5F8F2; /* 1:77 */
+  --hfs-warning: #A16207; /* 1:37 */
+  --hfs-warning-bg: #FEF9C3; /* 1:69 */
+  --hfs-error: #B91C1C; /* 1:20 */
+  --hfs-error-bg: #FEE2E2; /* 1:19 */
+  --hfs-font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hfs-radius-control: 8px; /* DS Button Medium 1:949 */
+  --hfs-radius-small: 6px; /* DS Button Small 1:969 */
+  --hfs-radius-card: 12px; /* project adaptation, not a named Figma token */
+  --hfs-space-1: 4px; --hfs-space-2: 8px; --hfs-space-3: 12px;
+  --hfs-space-4: 16px; --hfs-space-6: 24px; --hfs-space-8: 32px;
+  --hfs-shadow: 0 1px 3px rgb(0 0 0 / 10%), 0 1px 2px rgb(0 0 0 / 6%); /* style 1:3 */
+  --hfs-motion-fast: 150ms; /* project choice */
+  --hfs-motion-normal: 220ms; /* project choice */
+  --hfs-max-width: 1240px; /* tablet-first project choice */
+}

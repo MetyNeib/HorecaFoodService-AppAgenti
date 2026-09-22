@@ -1,0 +1,13 @@
+{
+  "files.encoding": "utf8",
+  "editor.tabSize": 2,
+  "files.exclude": {
+    "**/node_modules": true
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true,
+    "**/*.fig": true,
+    "**/*.pdf": true
+  }
+}

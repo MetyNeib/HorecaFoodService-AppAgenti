@@ -1,0 +1,28 @@
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
+import {resolve} from 'node:path';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const bytes=readFileSync(resolve(root,'src/data/hfs_demo_data.json'));
+const data=JSON.parse(bytes.toString('utf8'));
+const hash=createHash('sha256').update(bytes).digest('hex');
+const checks=[];
+const check=(name,ok)=>checks.push({name,pass:!!ok});
+check('approved_seed_sha256',hash==='2fa3e0a68029226d01a0f1911fd4aedd616aca9768038a24f5c9c3004f01c4b6');
+check('dataset_id',data.meta.datasetId==='HFS-AGENT-DEMO-20260922-V1');
+check('synthetic_only',data.meta.isSynthetic===true && data.meta.externalNetworkAllowed===false);
+for(const [key,count] of Object.entries({products:120,customers:12,orders:30,whatsappInbox:3,scenarioBank:14,stocks:240})) check('count_'+key,data[key].length===count);
+for(const key of ['products','customers','orders','invoices','receivables','contacts']) check('unique_'+key,new Set(data[key].map(x=>x.id)).size===data[key].length);
+const products=new Set(data.products.map(p=>p.id));
+const customers=new Set(data.customers.map(p=>p.id));
+const orders=new Set(data.orders.map(p=>p.id));
+check('order_customer_fk',data.orders.every(o=>customers.has(o.customerId)));
+check('order_product_fk',data.orders.every(o=>o.lines.every(l=>products.has(l.productId))));
+check('inbox_order_fk',data.whatsappInbox.every(w=>orders.has(w.orderId)));
+check('initial_offline',data.demoDefaults.networkMode==='OFFLINE');
+check('article_codes_strings',data.products.every(p=>typeof p.code==='string' && /^\d{7}$/.test(p.code)));
+const report={status:checks.every(x=>x.pass)?'PASS':'FAIL',scope:'APPROVED_SEED_INTEGRITY_AND_STRUCTURE_NOT_UI',checks};
+mkdirSync(resolve(root,'qa'),{recursive:true});
+writeFileSync(resolve(root,'qa/data_integrity_current.json'),JSON.stringify(report,null,2));
+console.log(`${report.status}: ${checks.filter(x=>x.pass).length}/${checks.length} controlli seed`);
+if(report.status==='FAIL') {console.error(checks.filter(x=>!x.pass));process.exitCode=1;}

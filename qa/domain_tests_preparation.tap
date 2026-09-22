@@ -1,0 +1,264 @@
+TAP version 13
+# (node:865) ExperimentalWarning: Type Stripping is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: half-up positive tie
+ok 1 - half-up positive tie
+  ---
+  duration_ms: 0.910909
+  type: 'test'
+  ...
+# Subtest: half-up negative tie
+ok 2 - half-up negative tie
+  ---
+  duration_ms: 0.092768
+  type: 'test'
+  ...
+# Subtest: half-up below tie
+ok 3 - half-up below tie
+  ---
+  duration_ms: 0.0814
+  type: 'test'
+  ...
+# Subtest: half-up rejects zero divisor
+ok 4 - half-up rejects zero divisor
+  ---
+  duration_ms: 0.192395
+  type: 'test'
+  ...
+# Subtest: preserves leading-zero product code
+ok 5 - preserves leading-zero product code
+  ---
+  duration_ms: 0.089292
+  type: 'test'
+  ...
+# Subtest: 2 cases equal 30 pieces
+ok 6 - 2 cases equal 30 pieces
+  ---
+  duration_ms: 0.642972
+  type: 'test'
+  ...
+# Subtest: COLLI alias equals CT
+ok 7 - COLLI alias equals CT
+  ---
+  duration_ms: 0.106748
+  type: 'test'
+  ...
+# Subtest: piece order remains in base units
+ok 8 - piece order remains in base units
+  ---
+  duration_ms: 0.119297
+  type: 'test'
+  ...
+# Subtest: rejects zero quantity
+ok 9 - rejects zero quantity
+  ---
+  duration_ms: 0.254127
+  type: 'test'
+  ...
+# Subtest: rejects negative quantity
+ok 10 - rejects negative quantity
+  ---
+  duration_ms: 0.293755
+  type: 'test'
+  ...
+# Subtest: rejects invalid unit
+ok 11 - rejects invalid unit
+  ---
+  duration_ms: 0.147378
+  type: 'test'
+  ...
+# Subtest: rejects fractional case
+ok 12 - rejects fractional case
+  ---
+  duration_ms: 0.089803
+  type: 'test'
+  ...
+# Subtest: rejects NaN
+ok 13 - rejects NaN
+  ---
+  duration_ms: 0.110454
+  type: 'test'
+  ...
+# Subtest: normal line computation
+ok 14 - normal line computation
+  ---
+  duration_ms: 0.143442
+  type: 'test'
+  ...
+# Subtest: half cent rounded once per line
+ok 15 - half cent rounded once per line
+  ---
+  duration_ms: 0.078937
+  type: 'test'
+  ...
+# Subtest: gift keeps cost with undefined percentage
+ok 16 - gift keeps cost with undefined percentage
+  ---
+  duration_ms: 0.069533
+  type: 'test'
+  ...
+# Subtest: rejects fractional cents
+ok 17 - rejects fractional cents
+  ---
+  duration_ms: 0.073449
+  type: 'test'
+  ...
+# Subtest: rejects negative price
+ok 18 - rejects negative price
+  ---
+  duration_ms: 0.065287
+  type: 'test'
+  ...
+# Subtest: rejects fourth quantity decimal
+ok 19 - rejects fourth quantity decimal
+  ---
+  duration_ms: 0.068361
+  type: 'test'
+  ...
+# Subtest: aggregate margin weighted on revenue
+ok 20 - aggregate margin weighted on revenue
+  ---
+  duration_ms: 0.093238
+  type: 'test'
+  ...
+# Subtest: empty cart has null percentage
+ok 21 - empty cart has null percentage
+  ---
+  duration_ms: 0.108221
+  type: 'test'
+  ...
+# Subtest: condition inclusive first day
+ok 22 - condition inclusive first day
+  ---
+  duration_ms: 0.167779
+  type: 'test'
+  ...
+# Subtest: condition inclusive last day
+ok 23 - condition inclusive last day
+  ---
+  duration_ms: 0.098235
+  type: 'test'
+  ...
+# Subtest: expired condition inactive
+ok 24 - expired condition inactive
+  ---
+  duration_ms: 0.063084
+  type: 'test'
+  ...
+# Subtest: future condition inactive
+ok 25 - future condition inactive
+  ---
+  duration_ms: 0.056224
+  type: 'test'
+  ...
+# Subtest: active fixed price preferred to default list
+ok 26 - active fixed price preferred to default list
+  ---
+  duration_ms: 0.182239
+  type: 'test'
+  ...
+# Subtest: out-of-date condition falls back to list
+ok 27 - out-of-date condition falls back to list
+  ---
+  duration_ms: 0.072588
+  type: 'test'
+  ...
+# Subtest: overlapping conditions fail explicitly
+ok 28 - overlapping conditions fail explicitly
+  ---
+  duration_ms: 0.134209
+  type: 'test'
+  ...
+# Subtest: discount references one list once
+ok 29 - discount references one list once
+  ---
+  duration_ms: 0.219345
+  type: 'test'
+  ...
+# Subtest: hybrid search accent and whitespace normalization
+ok 30 - hybrid search accent and whitespace normalization
+  ---
+  duration_ms: 0.419431
+  type: 'test'
+  ...
+# Subtest: initial home counts derived from same orders
+ok 31 - initial home counts derived from same orders
+  ---
+  duration_ms: 0.162421
+  type: 'test'
+  ...
+# Subtest: agent ownership prevents cross-portfolio counts
+ok 32 - agent ownership prevents cross-portfolio counts
+  ---
+  duration_ms: 0.074701
+  type: 'test'
+  ...
+# Subtest: ledger matches approved balance including credit note
+ok 33 - ledger matches approved balance including credit note
+  ---
+  duration_ms: 0.188539
+  type: 'test'
+  ...
+# Subtest: missing customer ledger zero
+ok 34 - missing customer ledger zero
+  ---
+  duration_ms: 0.110724
+  type: 'test'
+  ...
+# Subtest: queue adds one job and changes one order
+ok 35 - queue adds one job and changes one order
+  ---
+  duration_ms: 2.844552
+  type: 'test'
+  ...
+# Subtest: double confirmation remains idempotent
+ok 36 - double confirmation remains idempotent
+  ---
+  duration_ms: 6.295832
+  type: 'test'
+  ...
+# Subtest: enqueue does not mutate input
+ok 37 - enqueue does not mutate input
+  ---
+  duration_ms: 4.100091
+  type: 'test'
+  ...
+# Subtest: network simulation transmits initial queued order once
+ok 38 - network simulation transmits initial queued order once
+  ---
+  duration_ms: 5.94959
+  type: 'test'
+  ...
+# Subtest: transmission does not mutate seed
+ok 39 - transmission does not mutate seed
+  ---
+  duration_ms: 3.142113
+  type: 'test'
+  ...
+# Subtest: unknown order rejected
+ok 40 - unknown order rejected
+  ---
+  duration_ms: 2.606199
+  type: 'test'
+  ...
+# Subtest: three whatsapp orders reference canonical objects
+ok 41 - three whatsapp orders reference canonical objects
+  ---
+  duration_ms: 0.170232
+  type: 'test'
+  ...
+# Subtest: first whatsapp keeps two unresolved requests
+ok 42 - first whatsapp keeps two unresolved requests
+  ---
+  duration_ms: 0.071095
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 157.805952

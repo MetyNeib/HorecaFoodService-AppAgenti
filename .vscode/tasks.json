@@ -1,0 +1,24 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "HFS: dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "windows": {
+        "command": "npm.cmd run dev"
+      },
+      "isBackground": true,
+      "problemMatcher": []
+    },
+    {
+      "label": "HFS: verifica",
+      "type": "shell",
+      "command": "npm run check",
+      "windows": {
+        "command": "npm.cmd run check"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

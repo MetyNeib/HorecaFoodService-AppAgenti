@@ -1,0 +1,90 @@
+{
+  "datasetId": "HFS-AGENT-DEMO-20260922-V1",
+  "schemaVersion": "1.0.0",
+  "status": "DATA_READY",
+  "frozenOn": "2026-09-22",
+  "validation": {
+    "passed": 86,
+    "failed": 0,
+    "scope": "SEED_DATA_ONLY"
+  },
+  "entityCounts": {
+    "products": 120,
+    "categories": 10,
+    "agents": 4,
+    "warehouses": 2,
+    "deliveryRoutes": 4,
+    "customers": 12,
+    "contacts": 24,
+    "destinations": 13,
+    "priceLists": 4,
+    "priceListItems": 480,
+    "stocks": 240,
+    "customerConditions": 6,
+    "orders": 30,
+    "whatsappInbox": 3,
+    "scenarioBank": 14,
+    "invoices": 18,
+    "receivables": 19,
+    "payments": 5,
+    "insights": 3,
+    "analyses": 2
+  },
+  "files": [
+    {
+      "path": "DATA_CONTRACT.md",
+      "bytes": 7285,
+      "sha256": "4fb5d2d05be11dd2749c38067f7b6dbba6a57ba4a9579cbbbfeb0f99a40e2aa8"
+    },
+    {
+      "path": "HFS_Dataset_demo.xlsx",
+      "bytes": 29588,
+      "sha256": "0882fdf9a9edeb13d9923766a72db20c3f8a91e6aa683e9b82153914b559d88e"
+    },
+    {
+      "path": "README.md",
+      "bytes": 1068,
+      "sha256": "c1af5e25699641b54ace1bb991c04e1e55cfe4c96b11a73baa2d7d7359448986"
+    },
+    {
+      "path": "START_HERE_STEP3.md",
+      "bytes": 5430,
+      "sha256": "968ddcfa25a6765c5aceef8a614d9ae938eda5f36749158ae7b053eca078a591"
+    },
+    {
+      "path": "catalogo_demo.csv",
+      "bytes": 11112,
+      "sha256": "27103d6ee7c3dd94277052ab91ac85243a1ecf8f7f3def5d15e2c1cd9839e0db"
+    },
+    {
+      "path": "clienti_demo.csv",
+      "bytes": 1642,
+      "sha256": "3d1f392cbaa94f1b053e5c719c9a4158c33a60c08c88d93c3ede4ccfbd926b29"
+    },
+    {
+      "path": "hfs_demo_data.json",
+      "bytes": 487616,
+      "sha256": "2fa3e0a68029226d01a0f1911fd4aedd616aca9768038a24f5c9c3004f01c4b6"
+    },
+    {
+      "path": "ordini_demo.csv",
+      "bytes": 2040,
+      "sha256": "5657110406800f5d2b6392ba5ac0be3fca170c28049aedf4c3afe78aea1668ea"
+    },
+    {
+      "path": "step3_acceptance_scenarios.json",
+      "bytes": 3058,
+      "sha256": "0d2c9b093b244a71ec33fa74ffdf3f7475b933385957c1452e2524e8faae6c47"
+    },
+    {
+      "path": "validate_demo.py",
+      "bytes": 13384,
+      "sha256": "b5a80c9bc777ff6902923e8e7caaefe0314cb51b5e2c777ab2da278619e502a5"
+    },
+    {
+      "path": "validation_report.json",
+      "bytes": 8751,
+      "sha256": "4496bf1a79036e8c282606a3c3ec01244dfda2cb8c2b74f50afc34229d58d593"
+    }
+  ]
+}

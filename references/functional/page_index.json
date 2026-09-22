@@ -1,0 +1,178 @@
+[
+  {
+    "page": 1,
+    "title": "01 / 22  |  Home",
+    "render": "pages/page-01.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 10
+  },
+  {
+    "page": 2,
+    "title": "02 / 22  |  Nuovo ordine - Selezione cliente",
+    "render": "pages/page-02.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 3,
+    "title": "03 / 22  |  Nuovo ordine - Prodotti e carrello",
+    "render": "pages/page-03.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 12
+  },
+  {
+    "page": 4,
+    "title": "04 / 22  |  Nuovo ordine - Modifica articolo",
+    "render": "pages/page-04.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 10
+  },
+  {
+    "page": 5,
+    "title": "05 / 22  |  Nuovo ordine - Riepilogo",
+    "render": "pages/page-05.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 11
+  },
+  {
+    "page": 6,
+    "title": "06 / 22  |  WhatsApp - Ordini da verificare",
+    "render": "pages/page-06.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 7,
+    "title": "07 / 22  |  WhatsApp - Verifica ordine",
+    "render": "pages/page-07.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 11
+  },
+  {
+    "page": 8,
+    "title": "08 / 22  |  WhatsApp - Scegli prodotto",
+    "render": "pages/page-08.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 13
+  },
+  {
+    "page": 9,
+    "title": "09 / 22  |  I miei ordini - Bozze",
+    "render": "pages/page-09.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 9
+  },
+  {
+    "page": 10,
+    "title": "10 / 22  |  I miei ordini - Da inviare",
+    "render": "pages/page-10.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 11,
+    "title": "11 / 22  |  I miei ordini - Inviati",
+    "render": "pages/page-11.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 9
+  },
+  {
+    "page": 12,
+    "title": "12 / 22  |  Clienti - Elenco",
+    "render": "pages/page-12.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 13,
+    "title": "13 / 22  |  Cliente - Anagrafica e referenti",
+    "render": "pages/page-13.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 14,
+    "title": "14 / 22  |  Cliente - Ordini",
+    "render": "pages/page-14.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 11
+  },
+  {
+    "page": 15,
+    "title": "15 / 22  |  Cliente - Partite aperte",
+    "render": "pages/page-15.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 9
+  },
+  {
+    "page": 16,
+    "title": "16 / 22  |  Partite aperte - Invio PDF",
+    "render": "pages/page-16.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 12
+  },
+  {
+    "page": 17,
+    "title": "17 / 22  |  Cliente - Informazioni commerciali",
+    "render": "pages/page-17.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 18,
+    "title": "18 / 22  |  Catalogo prodotti",
+    "render": "pages/page-18.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 19,
+    "title": "19 / 22  |  Catalogo - Scheda prodotto",
+    "render": "pages/page-19.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 20,
+    "title": "20 / 22  |  Evolutiva AI - Segnalazioni",
+    "render": "pages/page-20.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 7
+  },
+  {
+    "page": 21,
+    "title": "21 / 22  |  Evolutiva AI - Analisi acquisti",
+    "render": "pages/page-21.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  },
+  {
+    "page": 22,
+    "title": "22 / 22  |  Evolutiva AI - Ipotesi e consigli",
+    "render": "pages/page-22.png",
+    "width": 836.0,
+    "height": 516.5,
+    "links": 8
+  }
+]
