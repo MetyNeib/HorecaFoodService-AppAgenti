@@ -117,6 +117,7 @@ test('concurrent account edits preserve the pending copy and require explicit co
 
 test('expired sessions and expired offline permissions preserve the outbox and hide business pages', async ({ page, context }) => {
   await login(page); await readyOffline(page); const id = await create(page); await page.reload(); await page.waitForFunction(() => !!window.HFS?.client?.record);
+  await page.evaluate(() => window.HFS.ready);
   await context.setOffline(true);
   await page.evaluate(id => { const order = window.HFS.client.snapshot.state.data.orders.find(row => row.id === id); return window.HFS.client.enqueue('SAVE_REVIEW', { orderId: id, expectedVersion: order.version, batchId: window.HFS.client.snapshot.state.data.batchId, destinationId: 'C001', deliveryDate: order.deliveryDate, note: 'Da recuperare' }); }, id);
   await context.clearCookies(); await context.setOffline(false); await page.evaluate(() => window.HFS.reconnect());
@@ -129,7 +130,7 @@ test('expired sessions and expired offline permissions preserve the outbox and h
   expect(cached).not.toContain('/amelia3/snapshot'); expect(cached).not.toContain('/amelia3');
   const shell = await page.evaluate(async () => (await caches.match('/offline')).text());
   expect(shell).not.toContain('Cliente sintetico'); expect(shell).not.toContain(agent);
-  await context.setOffline(false); await login(page);
+  await context.clearCookies(); await context.setOffline(false); await login(page);
   await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
   expect((await snapshot(page)).state.data.orders.find(row => row.id === id)?.note).toBe('Da recuperare');
 });
@@ -194,9 +195,11 @@ test('a new offline draft syncs from its editor and searched products remain pre
   await login(page); await readyOffline(page); await context.setOffline(true);
   await navigate(page, '/amelia3/customers?pick=1&q=C001');
   await page.getByRole('button', { name: /Seleziona/ }).click();
+  await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti', exact: true })).toBeVisible();
   const id = new URL(page.url()).searchParams.get('order_id');
+  expect(id).not.toBeNull();
   await page.locator('[data-product-code="P001"]').getByRole('button', { name: '+ Aggiungi', exact: true }).click();
-  expect(await outbox(page)).toHaveLength(2);
+  await expect.poll(() => outbox(page)).toHaveLength(2);
   await context.setOffline(false); await page.evaluate(() => window.HFS.reconnect());
   await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
   const saved = (await snapshot(page)).state.data.orders.filter(row => row.id === id);
