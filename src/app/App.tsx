@@ -1,36 +1,77 @@
-import { useState } from 'react';
-import seed from '../data/hfs_demo_data.json';
-import { normalizeSearch, homeCounts } from '../domain/core';
-
-/** Bootstrap esplicito, NON la Home finale. Codex implementa le 22 viste documentate. */
-export function App() {
-  const [query, setQuery] = useState('');
-  const counts = homeCounts(seed, seed.demoDefaults.currentAgentId, seed.demoDefaults.activeCustomerIds);
-  const found = seed.products.filter(p => normalizeSearch(`${p.name} ${p.code}`).includes(normalizeSearch(query)));
-  return <div className="bootstrap">
-    <header className="app-header">
-      <div className="wordmark"><b>HFS</b><span>Horeca Food Service<small>App agenti · ambiente di sviluppo</small></span></div>
-      <span className="badge">SETUP / BOOTSTRAP</span>
-    </header>
-    <main className="main-content">
-      <p className="eyebrow">STEP 3 / IMPLEMENTAZIONE LOCALE</p>
-      <h1>La base del progetto è pronta.</h1>
-      <p className="lead">Dataset approvato, token del design system e contratti sono caricati. Questa è la schermata di avvio tecnico: i flussi dell'app devono ancora essere realizzati con il prompt Codex incluso.</p>
-      <section className="card" aria-labelledby="next-step">
-        <h2 id="next-step">Prossimo passo: Codex</h2>
-        <p>Apri <code>docs/CODEX_START_PROMPT.md</code> e incolla il contenuto nella chat Codex di questa cartella. Inizia da <code>AGENTS.md</code> e <code>docs/00_START_HERE.md</code>.</p>
-      </section>
-      <section className="metrics" aria-label="Stato iniziale previsto della demo">
-        {[[seed.products.length,'Articoli'],[counts.drafts,'Bozze'],[counts.pending,'Da inviare'],[counts.sent,'Inviati'],[counts.whatsapp,'Verifiche WhatsApp']].map(([n,label]) => <div className="card metric" key={label}><strong>{n}</strong><span>{label}</span></div>)}
-      </section>
-      <section className="card" aria-labelledby="data-check">
-        <h2 id="data-check">Controllo di lettura del catalogo</h2>
-        <label htmlFor="seed-search">Cerca per nome o codice nel seed</label>
-        <input id="seed-search" type="search" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Per esempio: lager, latte, 0107417"/>
-        <p role="status">{found.length} risultati · primi 8 mostrati in questa diagnostica</p>
-        <div className="seed-list">{found.slice(0,8).map(p=><div className="seed-row" key={p.id}><span>{p.name}</span><code>{p.code}</code></div>)}</div>
-      </section>
-      <footer className="notice">Dati sintetici · Nessuna trasmissione reale · Seed {seed.meta.datasetId}</footer>
+import { useEffect, useRef, useState } from 'react';
+import { HashRouter, Routes, Route, Link, useLocation, useNavigate } from 'react-router-dom';
+import { Provider, useApp } from './Store';
+import { Dialog } from '../design-system/ui';
+import { StatusFooter } from './StatusFooter';
+import { AppHeader } from './AppHeader';
+import { useWorkspaceLayout } from './useWorkspaceLayout';
+import { Home } from '../features/home/Home';
+import { CustomerList, CustomerDetail, SharePage } from '../features/customers/Customers';
+import { ProductPicker, LineEditor, OrderReview } from '../features/order-editor/Editor';
+import { OrdersList } from '../features/orders/Orders';
+import { Inbox, FastReview } from '../features/fastorder/FastOrder';
+import { Catalog, ProductDetail } from '../features/catalog/Catalog';
+import { Insights, Analysis } from '../features/insights/Insights';
+function Shell() {
+    const { state, dispatch, notice, storageError } = useApp();
+    const [dialog, setDialog] = useState('');
+    const [leaving, setLeaving] = useState('');
+    const location = useLocation();
+    const nav = useNavigate();
+    const shellRef = useRef<HTMLDivElement>(null);
+    const route = location.pathname + location.search;
+    const workspaceKey = `${route}|${state.revision}`;
+    const dockKey = `${location.pathname}|${new URLSearchParams(location.search).get('tab') ?? ''}|${state.revision}`;
+    const layout = useWorkspaceLayout(shellRef, workspaceKey);
+    useEffect(() => { document.getElementById('main')?.scrollTo(0, 0); }, [location.pathname, state.revision]);
+    return <div ref={shellRef} className="app-shell workspace-shell" data-density={layout.compact ? 'compact' : 'regular'} data-layout={layout.flowing ? 'flow' : 'fit'} onClickCapture={e => { const a = (e.target as HTMLElement).closest('a'); const to = a?.getAttribute('href')?.slice(1); const order = state.data.orders.find(o => location.pathname.includes('/' + o.id + '/') || location.pathname === '/fastorder/' + o.id); if (order && order.lines.length && ['DRAFT', 'WHATSAPP_REVIEW'].includes(order.status) && to && ['/', '/orders?tab=drafts', '/fastorder'].includes(to)) {
+        e.preventDefault();
+        e.stopPropagation();
+        setLeaving(to);
+    } }}>
+    <a className="skip" href="#main" onClick={e => { e.preventDefault(); document.getElementById('main')?.focus(); }}>Vai al contenuto</a>
+    <AppHeader view={dockKey}/>{(state.warning || storageError) && <div role="alert" className="notice warning">{state.warning || storageError}</div>}<main id="main" tabIndex={-1} key={state.revision}>
+    <Routes>
+    <Route path="/" element={<Home />}/>
+    <Route path="/orders/new/customer" element={<CustomerList picker/>}/>
+    <Route path="/orders/:orderId/products" element={<ProductPicker />}/>
+    <Route path="/orders/:orderId/lines/:lineId/edit" element={<LineEditor />}/>
+    <Route path="/orders/:orderId/review" element={<OrderReview />}/>
+    <Route path="/orders" element={<OrdersList />}/>
+    <Route path="/fastorder" element={<Inbox />}/>
+    <Route path="/fastorder/:orderId" element={<FastReview />}/>
+    <Route path="/fastorder/:orderId/resolve/:requestId" element={<FastReview />}/>
+    <Route path="/customers" element={<CustomerList />}/>
+    <Route path="/customers/:customerId" element={<CustomerDetail />}/>
+    <Route path="/customers/:customerId/share" element={<SharePage />}/>
+    <Route path="/catalog" element={<Catalog />}/>
+    <Route path="/catalog/:productId" element={<ProductDetail />}/>
+    <Route path="/insights" element={<Insights />}/>
+    <Route path="/insights/:customerId" element={<Analysis />}/>
+    <Route path="/insights/:customerId/actions" element={<Analysis />}/>
+    <Route path="*" element={<>
+        <h1>Pagina non trovata</h1>
+        <Link to="/">Torna alla Home</Link>
+        </>}/>
+    </Routes>
     </main>
-  </div>;
+    <StatusFooter route={dockKey} onDialog={setDialog}/>{notice && <div role="status" className="snackbar">{notice}</div>}{leaving && <Dialog title="Conservare la bozza?" onClose={() => setLeaving('')}>
+        <p>Gli articoli e le modifiche salvate resteranno disponibili per riprendere lo stesso ordine.</p>
+        <div className="actions">
+        <button className="primary" onClick={() => { const to = leaving; setLeaving(''); nav(to); }}>Conserva bozza ed esci</button>
+        <button onClick={() => setLeaving('')}>Continua modifica</button>
+        </div>
+        </Dialog>}{dialog === 'sync' && <Dialog title="Sincronizzazione demo" onClose={() => setDialog('')}>
+        <p>Gli ordini confermati vengono trasmessi nella simulazione al ritorno online. Nessun invio reale.</p>
+        <p>{state.data.syncQueue.filter(j => j.status === 'WAITING_NETWORK').length} operazioni in attesa · {state.data.syncQueue.filter(j => j.status === 'DONE').length} completate</p>{state.data.syncQueue.map(j => <p key={j.id}>{j.entityId} · {j.status === 'DONE' ? 'Completata' : 'In attesa di rete'} · tentativi {j.attempts}</p>)}</Dialog>}{dialog === 'reset' && <Dialog title="Ripristinare la demo?" onClose={() => setDialog('')}>
+        <p>Tutte le modifiche locali saranno sostituite dal seed iniziale. La rete tornerà offline.</p>
+        <button className="primary" onClick={() => { dispatch({ type: 'RESET' }); setDialog(''); nav('/'); }}>Ripristina seed</button>
+        </Dialog>}</div>;
+}
+export function App() {
+    return <Provider>
+    <HashRouter useTransitions={false}>
+    <Shell />
+    </HashRouter>
+    </Provider>;
 }

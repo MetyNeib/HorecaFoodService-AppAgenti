@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Centro Cash order app · Presentazione</title>
+  <style>
+    @page { size: 1600px 900px; margin: 0; }
+    :root { --blue:#2e60ff; --navy:#15223b; --text:#344054; --line:#cbd2df; --paper:#f7f4ef; --pale:#eaefff; --green:#00866a; --yellow:#ffd836; }
+    * { box-sizing:border-box; }
+    html,body { margin:0; padding:0; background:#dde4ee; color:var(--navy); font:500 20px/1.35 Inter,system-ui,-apple-system,"Segoe UI",sans-serif; }
+    .slide { width:1600px; height:900px; padding:30px 48px 24px; overflow:hidden; display:flex; flex-direction:column; position:relative; page-break-after:always; break-after:page; background:var(--paper); }
+    .slide:last-child { page-break-after:auto; break-after:auto; }
+    .slide::before { content:""; position:absolute; top:0; left:0; width:100%; height:8px; background:linear-gradient(90deg,var(--blue) 0 78%,var(--yellow) 78% 89%,var(--green) 89%); }
+    .top { display:flex; align-items:center; justify-content:space-between; min-height:58px; flex:none; }
+    .top-brand { display:flex; align-items:center; gap:17px; }
+    .logo { display:flex; flex-direction:column; align-items:flex-start; line-height:1; }
+    .logo img { width:212px; height:auto; display:block; }
+    .logo small { color:#14508c; font-weight:850; font-size:10px; letter-spacing:.6px; margin:2px 0 0 4px; }
+    .app-name { border-left:1px solid #b8c1d0; padding-left:17px; font-size:22px; font-weight:800; letter-spacing:-.5px; }
+    .top-meta { display:flex; gap:26px; align-items:center; color:#53627b; font-size:15px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; }
+    .top-meta .page { display:grid; place-items:center; color:var(--blue); border:1px solid var(--line); background:white; border-radius:50%; width:44px; height:44px; font-size:18px; letter-spacing:0; }
+    .eyebrow { color:var(--blue); text-transform:uppercase; font-weight:850; font-size:16px; letter-spacing:2.4px; margin:18px 0 6px; }
+    h1 { font-size:53px; line-height:1.08; letter-spacing:-1.7px; margin:0 0 11px; max-width:1430px; }
+    .sub { color:var(--text); font-size:22px; margin:0 0 18px; max-width:1350px; }
+    .body { flex:1 1 auto; min-height:0; }
+    .claim { flex:none; display:flex; align-items:center; gap:18px; margin-top:17px; padding:16px 22px; min-height:64px; background:#e7edff; border-left:5px solid var(--blue); border-radius:8px; color:#123274; font-size:23px; font-weight:800; letter-spacing:-.25px; }
+    .claim::before { content:"↗"; font-size:26px; color:var(--blue); }
+    .foot { flex:none; display:flex; justify-content:space-between; align-items:center; color:#67738a; font-size:12px; margin-top:9px; height:17px; }
+    .foot b { color:#334155; }
+    .screen { overflow:hidden; border:1px solid #c7d1e4; border-radius:13px; background:#fff; box-shadow:0 15px 35px #213e7820,0 2px 5px #213e7812; min-width:0; min-height:0; }
+    .screen img { display:block; width:100%; height:100%; object-fit:cover; object-position:left top; }
+    .screen > figcaption { position:absolute; }
+    .label { display:inline-flex; align-items:center; gap:9px; color:#1647d9; font-weight:850; font-size:17px; }
+    .label .dot { width:12px; height:12px; border-radius:50%; background:var(--blue); }
+    .body-hero { display:grid; grid-template-columns:420px minmax(0,1fr); gap:30px; }
+    .intro-panel { border-radius:18px; padding:28px 30px; background:white; border:1px solid var(--line); display:flex; flex-direction:column; justify-content:space-between; }
+    .intro-panel h2 { font-size:28px; margin:0 0 16px; }
+    .intro-panel .step { padding:12px 0; border-top:1px solid #e3e8f2; font-size:20px; font-weight:700; color:var(--text); }
+    .intro-panel .step strong { color:var(--blue); font-size:23px; margin-right:12px; }
+    .intro-panel .mini-note { margin-top:18px; background:#f3f6ff; border-radius:10px; padding:14px 16px; font-size:18px; color:#214279; }
+    .body-hero .screen { margin:0; }
+    .flow { display:flex; gap:16px; align-items:center; margin:0 0 17px; }
+    .flow span { color:var(--blue); font-weight:850; background:white; border:1px solid #c7d6ff; border-radius:100px; padding:10px 22px; font-size:19px; }
+    .flow i { color:#7e8ba6; font-size:27px; font-style:normal; }
+    .trio { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:17px; min-height:0; height:calc(100% - 64px); }
+    .view-card { display:flex; flex-direction:column; background:white; border:1px solid var(--line); border-radius:16px; padding:12px; min-width:0; min-height:0; }
+    .view-card .screen { width:100%; aspect-ratio:16/9; flex:none; box-shadow:none; }
+    .view-card .screen img { object-fit:cover; }
+    .view-card h2 { font-size:25px; margin:15px 7px 5px; }
+    .view-card p { color:#526079; font-size:18px; margin:0 7px; }
+    .duo { display:grid; grid-template-columns:minmax(0,1fr) 405px; gap:26px; height:100%; }
+    .duo .screen { margin:0; }
+    .side { display:flex; flex-direction:column; gap:13px; min-height:0; }
+    .side-card { background:white; border:1px solid var(--line); border-radius:14px; padding:18px 20px; }
+    .side-card h2 { margin:0 0 8px; font-size:24px; }
+    .side-card p { margin:0; color:var(--text); font-size:18px; }
+    .side-card ul { margin:5px 0 0; padding-left:24px; color:var(--text); font-size:18px; line-height:1.5; }
+    .metric-row { display:grid; grid-template-columns:repeat(3,1fr); gap:11px; }
+    .metric { padding:15px; background:white; border:1px solid var(--line); border-radius:12px; }
+    .metric small { display:block; font-size:15px; color:#53627b; margin-bottom:3px; }
+    .metric strong { color:var(--navy); font-size:28px; line-height:1; }
+    .metric em { display:block; margin-top:5px; color:var(--blue); font-style:normal; font-size:15px; font-weight:850; }
+    .whatsapp { display:grid; grid-template-columns:minmax(0,1fr) 365px; gap:18px; height:100%; }
+    .wa-main { display:flex; flex-direction:column; min-height:0; }
+    .wa-main .screen { flex:1; }
+    .wa-main .screen-caption { font-size:17px; margin-top:8px; color:var(--text); }
+    .wa-side { display:flex; flex-direction:column; gap:12px; min-height:0; }
+    .wa-side .screen { height:145px; flex:none; }
+    .wa-side .side-card { flex:1; padding:15px 17px; }
+    .wa-side .side-card h2 { font-size:21px; margin-bottom:6px; }
+    .wa-side .side-card p { font-size:16px; line-height:1.35; }
+    .path { display:flex; gap:18px; align-items:center; color:#0f337e; font-size:26px; font-weight:900; letter-spacing:-.4px; margin:0 0 18px; }
+    .path span { background:#e7edff; padding:9px 19px; border-radius:10px; }
+    .path i { font-style:normal; color:var(--blue); }
+    .two-screens { display:grid; grid-template-columns:1fr 1fr; gap:24px; height:calc(100% - 74px); }
+    .mini-screen-block { display:flex; flex-direction:column; min-height:0; }
+    .mini-screen-block .screen { flex:1; }
+    .mini-screen-block h2 { font-size:20px; margin:9px 0 0; }
+    .collage { display:grid; grid-template-columns:230px minmax(0,1fr) 230px; gap:17px; height:100%; }
+    .collage-col { display:flex; flex-direction:column; gap:17px; min-height:0; }
+    .collage-col .mini { flex:1; display:flex; flex-direction:column; min-height:0; }
+    .collage-col .mini .screen { flex:1; }
+    .collage-col .mini span { font-size:15px; font-weight:850; color:#526079; margin-top:5px; }
+    .collage-center { display:flex; flex-direction:column; min-height:0; }
+    .collage-center .screen { flex:1; }
+    .collage-center strong { font-size:18px; color:var(--blue); margin:8px 0 0; }
+    .tiny { color:#64748b; font-size:15px; }
+  </style>
+</head>
+<body>
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">SVILUPPO CUSTOM · DEMO FUNZIONALE <span class="page">01</span></div></div>
+    <div class="eyebrow">Un unico ambiente</div>
+    <h1>Tutto il processo ordine, in un’unica app</h1>
+    <p class="sub">Centro Cash order app accompagna l’agente dalla creazione dell’ordine alla verifica e alla gestione delle informazioni sul cliente.</p>
+    <div class="body body-hero">
+      <div class="intro-panel"><div><h2>L’ordine è il centro</h2><div class="step"><strong>01</strong> Nuovi ordini e WhatsApp</div><div class="step"><strong>02</strong> Bozze, da inviare, inviati</div><div class="step"><strong>03</strong> Clienti, catalogo, disponibilità</div><div class="step"><strong>04</strong> Storico e segnalazioni</div></div><div class="mini-note">Un’unica vista di lavoro per l’agente, con le attività principali a portata di mano.</div></div>
+      <figure class="screen"><img src="screens/home.png" alt="Home reale della Centro Cash order app"></figure>
+    </div>
+    <div class="claim">Creare, verificare e controllare un ordine senza cambiare strumento.</div>
+    <div class="foot"><span>Schermate effettive della demo · dati sintetici</span><b>Centro Cash order app · 1 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">CREAZIONE ORDINE <span class="page">02</span></div></div>
+    <div class="eyebrow">Flusso lineare</div>
+    <h1>Dal cliente al riepilogo in pochi passaggi</h1>
+    <p class="sub">Ricerca per nome o codice, catalogo e disponibilità, quantità e unità di misura: il carrello si costruisce progressivamente.</p>
+    <div class="body">
+      <div class="flow"><span>Cliente</span><i>→</i><span>Prodotti + carrello</span><i>→</i><span>Riepilogo</span></div>
+      <div class="trio">
+        <div class="view-card"><div class="screen"><img src="screens/customer.png" alt="Selezione cliente nella demo"></div><h2>Trova il cliente</h2><p>Nome, codice o P. IVA: listino e condizioni seguono la scelta.</p></div>
+        <div class="view-card"><div class="screen"><img src="screens/products.png" alt="Prodotti e carrello nella demo"></div><h2>Componi l’ordine</h2><p>Ricerca, filtri, disponibilità, UM e carrello condiviso.</p></div>
+        <div class="view-card"><div class="screen"><img src="screens/review.png" alt="Riepilogo ordine nella demo"></div><h2>Verifica il riepilogo</h2><p>Consegna, deposito, pagamento, nota e totale.</p></div>
+      </div>
+    </div>
+    <div class="claim">Un flusso rapido anche mentre l’agente è dal cliente.</div>
+    <div class="foot"><span>Le schermate mostrano un ordine dimostrativo già popolato</span><b>Centro Cash order app · 2 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">PREZZI E CONDIZIONI <span class="page">03</span></div></div>
+    <div class="eyebrow">Controllo di dettaglio</div>
+    <h1>Ogni riga d’ordine rimane sotto controllo</h1>
+    <p class="sub">L’agente può lavorare su quantità, unità, listino, prezzo libero, sconto e commento, vedendo subito imponibile e margine.</p>
+    <div class="body duo">
+      <figure class="screen"><img src="screens/line.png" alt="Modifica articolo e calcolo margine nella demo"></figure>
+      <div class="side"><div class="side-card"><h2>Prezzo e margine insieme</h2><p>Il totale della riga e il margine si aggiornano mentre l’agente modifica le condizioni.</p></div><div class="side-card"><h2>Le opzioni della riga</h2><ul><li>Listino, prezzo libero, sconto %</li><li>Quantità e unità di misura</li><li>Riga omaggio e commento</li><li>Condizione cliente con validità</li></ul></div><div class="side-card"><span class="label"><span class="dot"></span>CONDIZIONI CLIENTE</span><p style="margin-top:8px">Una condizione ricorrente può essere salvata per quel cliente e prodotto, con date inclusive.</p></div></div>
+    </div>
+    <div class="claim">Velocità nell’inserimento, controllo sulle condizioni.</div>
+    <div class="foot"><span>Prezzi e margini della demo calcolati sui dati sintetici</span><b>Centro Cash order app · 3 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">ORDINI WHATSAPP <span class="page">04</span></div></div>
+    <div class="eyebrow">Dalla richiesta alla bozza</div>
+    <h1>Il messaggio diventa un ordine da verificare</h1>
+    <p class="sub">Le righe riconosciute entrano nella bozza; l’agente si concentra sulle eccezioni e poi usa lo stesso riepilogo dell’ordine manuale.</p>
+    <div class="body whatsapp">
+      <div class="wa-main"><div class="screen"><img src="screens/wa-review.png" alt="Verifica ordine WhatsApp con due richieste da definire"></div><div class="screen-caption"><span class="label"><span class="dot"></span>6 richieste abbinate · 2 da definire</span> — l’ordine resta verificabile prima della conferma.</div></div>
+      <div class="wa-side"><div class="screen"><img src="screens/inbox.png" alt="Elenco degli ordini WhatsApp simulati"></div><div class="screen"><img src="screens/wa-resolve.png" alt="Risoluzione prodotto con alternative e confidenza"></div><div class="side-card"><h2>Solo ciò che richiede attenzione</h2><p>Prodotto abituale esaurito, descrizione ambigua, quantità o UM da confermare. La confidenza indica la qualità dell’associazione prodotto.</p></div></div>
+    </div>
+    <div class="claim">Automatizzare ciò che è chiaro. Far verificare all’agente ciò che non lo è.</div>
+    <div class="foot"><span>Flusso WhatsApp e associazioni simulati nella demo; nessuna ricezione reale</span><b>Centro Cash order app · 4 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">STORICO ORDINI <span class="page">05</span></div></div>
+    <div class="eyebrow">Il contesto prima del prossimo ordine</div>
+    <h1>Lo storico mostra come cambia l’acquisto</h1>
+    <p class="sub">Frequenza, spesa, valore medio, categorie e prodotti abituali vengono letti insieme, così l’agente vede il cambiamento nel suo contesto.</p>
+    <div class="body duo">
+      <figure class="screen"><img src="screens/analysis.png" alt="Analisi acquisti della demo: frequenza, spesa e assortimento"></figure>
+      <div class="side"><div class="metric-row"><div class="metric"><small>Ordini</small><strong>8 → 4</strong><em>−50%</em></div><div class="metric"><small>Spesa</small><strong>−35%</strong><em>€ 2.400 → 1.560</em></div><div class="metric"><small>Valore medio</small><strong>+30%</strong><em>€ 300 → 390</em></div></div><div class="side-card"><h2>Non solo “quanto compra”</h2><p>Gli ordini sono meno frequenti, mentre il valore medio sale. La composizione degli ordini spiega meglio il segnale.</p></div><div class="side-card"><h2>Un dettaglio da guardare</h2><p>Nel caso sintetico, la categoria bevande registra <strong>−76%</strong> e un prodotto abituale non compare negli ultimi ordini.</p></div></div>
+    </div>
+    <div class="claim">Lo storico aiuta a leggere il prossimo ordine nel suo contesto.</div>
+    <div class="foot"><span>Snapshot e confronti costruiti su dati dimostrativi approvati</span><b>Centro Cash order app · 5 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">SEGNALAZIONI <span class="page">06</span></div></div>
+    <div class="eyebrow">Dal dato alla verifica</div>
+    <h1>Le anomalie diventano segnali da controllare</h1>
+    <p class="sub">L’app attira l’attenzione su ordini meno frequenti, prodotti assenti e cambiamenti nel mix. L’agente valuta le ipotesi prima dell’ordine successivo.</p>
+    <div class="body">
+      <div class="path"><span>Segnala</span><i>→</i><span>Contestualizza</span><i>→</i><span>Verifica</span></div>
+      <div class="two-screens"><div class="mini-screen-block"><div class="screen"><img src="screens/insights.png" alt="Elenco segnalazioni nella demo"></div><h2>Le segnalazioni indicano dove guardare</h2></div><div class="mini-screen-block"><div class="screen"><img src="screens/analysis-bottom.png" alt="Ipotesi da verificare e azioni consigliate nella demo"></div><h2>Analisi e ipotesi riportano il segnale al cliente</h2></div></div>
+    </div>
+    <div class="claim">Più contesto per gestire meglio il prossimo ordine.</div>
+    <div class="foot"><span>Ipotesi dimostrative: richiedono sempre la verifica dell’agente</span><b>Centro Cash order app · 6 / 7</b></div>
+  </section>
+
+  <section class="slide">
+    <div class="top"><div class="top-brand"><div class="logo"><img src="logo-official.png" alt="Centro Cash"><small>ALIMENTARI ALL’INGROSSO</small></div><div class="app-name">order app</div></div><div class="top-meta">GESTIONE COMPLETA <span class="page">07</span></div></div>
+    <div class="eyebrow">Un processo collegato</div>
+    <h1>Ordine, cliente e operatività restano insieme</h1>
+    <p class="sub">Bozze e ordini inviati, anagrafica e partite aperte, catalogo e segnalazioni accompagnano la creazione dell’ordine.</p>
+    <div class="body collage"><div class="collage-col"><div class="mini"><div class="screen"><img src="screens/orders.png" alt="Bozze d'ordine nella demo"></div><span>ORDINI</span></div><div class="mini"><div class="screen"><img src="screens/open-items.png" alt="Partite aperte del cliente nella demo"></div><span>CLIENTE E PARTITE</span></div></div><div class="collage-center"><div class="screen"><img src="screens/products.png" alt="Creazione ordine al centro del flusso"></div><strong>NUOVO ORDINE · IL CENTRO DEL FLUSSO</strong></div><div class="collage-col"><div class="mini"><div class="screen"><img src="screens/catalog.png" alt="Catalogo prodotti nella demo"></div><span>CATALOGO</span></div><div class="mini"><div class="screen"><img src="screens/insights.png" alt="Segnalazioni nella demo"></div><span>ANALISI ORDINI</span></div></div></div>
+    <div class="claim">Un’unica app per creare l’ordine, verificarlo e comprenderne il contesto.</div>
+    <div class="foot"><span>Demo locale: dati sintetici, offline e invii esterni simulati</span><b>Centro Cash order app · 7 / 7</b></div>
+  </section>
+</body>
+</html>

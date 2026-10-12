@@ -1,0 +1,55 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "status": "PASS",
+  "results": [
+    {
+      "width": 390,
+      "height": 844,
+      "scrollable": true,
+      "status": "PASS",
+      "reopeningAtBottom": "PASS"
+    },
+    {
+      "width": 768,
+      "height": 500,
+      "scrollable": true,
+      "status": "PASS",
+      "reopeningAtBottom": "PASS"
+    },
+    {
+      "width": 1276,
+      "height": 550,
+      "scrollable": true,
+      "status": "PASS",
+      "reopeningAtBottom": "PASS"
+    },
+    {
+      "width": 1440,
+      "height": 400,
+      "scrollable": true,
+      "status": "PASS",
+      "reopeningAtBottom": "PASS"
+    },
+    {
+      "width": 768,
+      "height": 1024,
+      "scrollable": false,
+      "status": "PASS",
+      "reopeningAtBottom": "NOT_APPLICABLE"
+    },
+    {
+      "width": 1024,
+      "height": 768,
+      "scrollable": false,
+      "status": "PASS",
+      "reopeningAtBottom": "NOT_APPLICABLE"
+    },
+    {
+      "width": 1440,
+      "height": 900,
+      "scrollable": false,
+      "status": "PASS",
+      "reopeningAtBottom": "NOT_APPLICABLE"
+    }
+  ]
+}

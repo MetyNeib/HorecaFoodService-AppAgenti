@@ -3,8 +3,18 @@
 PACKAGE_ID=HFS-STEP3-CODEX-KIT-20260922-V1
 DATASET_ID=HFS-AGENT-DEMO-20260922-V1
 BOOTSTRAP_STATUS=READY
-FULL_APP_STATUS=NOT_IMPLEMENTED
+FULL_APP_STATUS=COMPLETE_LOCAL
 DEPLOY_STATUS=NOT_DEPLOYED
+
+## Aggiornamento layout — 11/10/2026
+
+Header/footer automatici e liste compatte completati localmente: 90 E2E e 437 controlli sulle viste PASS. Entrambe le barre partono aperte e si richiudono dopo un secondo; la riapertura manuale dura fino allo scroll centrale o delle liste. Da chiuse restano l'icona account e il tasto footer. Le sottoliste proteggono lo spazio per due schede leggibili; la compattazione precede lo scorrimento di sicurezza. Preview attiva e nuova build verificata su http://127.0.0.1:4173/. Report corrente: [ADAPTIVE_DOCKS_REPORT.md](../qa/ADAPTIVE_DOCKS_REPORT.md); [footer precedente](../qa/FOOTER_BEHAVIOR_REPORT.md); [layout iniziale](../qa/ELASTIC_LAYOUT_REPORT.md). Le certificazioni sottostanti sono storiche.
+
+## Consegna locale completata — 22/09/2026
+
+Refitting completato il 23/09: viste a piena finestra, pannelli scorrevoli, maggior contrasto e icone aggiornate. Collaudo corrente: 44 E2E e 176 verifiche layout PASS; vedere [REFIT_REPORT.md](../qa/REFIT_REPORT.md).
+
+Il bootstrap è stato sostituito dall'app completa. M1–M8 concluse: 49 unit test e 36 E2E PASS, build e quattro viewport verificati. Stato corrente in [PROGRESS.md](PROGRESS.md), evidenze in [IMPLEMENTATION_REPORT.md](../qa/IMPLEMENTATION_REPORT.md). Le descrizioni del kit sotto riportano il contesto iniziale e le specifiche di partenza.
 
 ## Obiettivo richiesto dall'utente
 Costruire un mockup interattivo HTML/CSS/JS, semplice ma curato, della App Agenti presentata in call. La consegna corrente è un pacchetto di setup e avvio Codex per implementarla localmente, non un nuovo giro di progettazione.

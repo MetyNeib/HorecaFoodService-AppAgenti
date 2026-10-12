@@ -1,0 +1,42 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "status": "PASS",
+  "results": [
+    {
+      "viewport": "phone",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "externalRequests": 0,
+      "unexpectedDownloads": 0,
+      "errors": 0
+    },
+    {
+      "viewport": "tablet-portrait",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "externalRequests": 0,
+      "unexpectedDownloads": 0,
+      "errors": 0
+    },
+    {
+      "viewport": "tablet-landscape",
+      "width": 1024,
+      "height": 768,
+      "status": "PASS",
+      "externalRequests": 0,
+      "unexpectedDownloads": 0,
+      "errors": 0
+    },
+    {
+      "viewport": "desktop",
+      "width": 1440,
+      "height": 900,
+      "status": "PASS",
+      "externalRequests": 0,
+      "unexpectedDownloads": 0,
+      "errors": 0
+    }
+  ]
+}

@@ -1,5 +1,21 @@
 # Design system — estratto verificato, non layout dell'altra app
 
+## Header/footer e liste approvati il 11/10/2026
+
+`adaptive.css` segue `elastic.css` e applica la nuova decisione: header e footer si richiudono dopo un secondo; la riapertura manuale termina allo scroll centrale o delle liste. L'header ridotto ha soltanto l'icona account; il footer ha soltanto il tasto di apertura. Le barre da 48px mantengono touch target da 44px e non sovrappongono controlli al workspace. I dock usano la stessa logica di timer, focus e scroll, con animazione da 220ms e reduced motion.
+
+Le liste usano titoli da 18px, testo operativo da 16px, metadati da 14px e controlli da almeno 44px. Nessuna colonna o funzione viene eliminata. Container query e ricomposizione di quantità/UM/CTA riducono le schede; l'altezza della regione protegge almeno due righe complete misurate sul DOM. L'obiettivo 2,5–6 rimane flessibile, con priorità alla leggibilità. Dettagli e verifiche in DECISIONS.md e qa/ADAPTIVE_DOCKS_REPORT.md.
+
+## Elasticità approvata il 11/10/2026 (intervento precedente)
+
+La richiesta successiva permette lo scorrimento centrale su qualsiasi rapporto quando proporzioni leggibili non bastano. `elastic.css` viene applicato dopo `workspace.css`: modalità normale, compatta e scorrevole rilevate sul contenuto effettivo. Titoli e icone si riducono moderatamente; i pulsanti principali rimangono almeno 44px. Clienti/Catalogo/Statistiche restano tre card, affiancate in modalità compatta solo da 1100px. Il footer parte aperto all'ingresso nella vista, poi si comprime al primo avanzamento dello scorrimento centrale mantenendo soltanto il tasto di apertura. La riapertura è manuale; l'animazione ridimensiona l'area centrale senza coprire i controlli. Il rapporto mobile non blocca più lo scorrimento di sicurezza. Dettagli in DECISIONS.md e qa/FOOTER_BEHAVIOR_REPORT.md.
+
+## Refitting approvato il 23/09/2026
+
+La richiesta successiva dell'utente aggiorna le proporzioni: niente max-width su desktop/tablet, shell a piena finestra e scorrimenti interni; layout a pagina scorrevole sui telefoni verticali dal rapporto nominale 19,5:9. Il foglio `workspace.css` applica queste regole dopo i token e gli stili di base.
+
+Titoli più scuri (#111827), testo #344054, bordi #cbd2df; restano fondo caldo, card bianche e accento blu. Titoli/card/contatori hanno maggiore enfasi. Le icone Home includono documento con + e fumetto circolare centrato. Queste variazioni sono decisioni del refitting richiesto, non nuovi valori estratti dal FIG.
+
 ## Provenienza
 I due file FIG allegati sono archivi con lo stesso `canvas.fig` (SHA-256 `b4434ed2b1910dcfee7ebe496fb70d34b1ebb1ba6f4bb14f0770f8ac1c62ac7f`) e thumbnail/meta differenti.
 Il canvas è stato decodificato localmente: 12.122 nodi. Pagine: `0:1 Design system`, `0:2 Internal Only Canvas`, `1:5825 Mockup`. Sono stati estratti 133 stili e 560 SYMBOL. È un inventario dei valori memorizzati, non un export di codice React né una renderizzazione completa di tutte le varianti/istanze.

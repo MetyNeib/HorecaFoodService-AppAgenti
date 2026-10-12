@@ -1,0 +1,110 @@
+/* Readable minima first; actual DOM measurements choose compact/flow mode. */
+html { overflow: hidden; }
+/* A fixed outer document keeps browser focus/scroll anchoring inside main. */
+body { position: fixed; inset: 0; width: 100%; }
+#root, .workspace-shell { overflow: hidden; }
+.workspace-shell { --region-min-height: 160px; }
+/* Dock resizing must not generate an anchored scroll that closes it again. */
+.workspace-shell main { overflow: auto; overflow-anchor: none; overscroll-behavior-y: contain; scroll-padding-block: 12px; }
+.workspace-shell .scroll-area { min-height: var(--region-min-height); }
+.workspace-shell .picker-view .scroll-area { min-height: 220px; }
+.workspace-shell .cart-lines { min-height: 180px; }
+.workspace-shell .home-view { grid-template-rows: auto minmax(190px, 1.7fr) auto minmax(88px, 1fr) minmax(188px, 2fr); }
+.workspace-shell .home-view > .home-links { grid-template-rows: repeat(2, minmax(88px, 1fr)); }
+.home-links .insight-entry { grid-column: 1 / -1; }
+
+.workspace-shell[data-density="compact"] { --workspace-gap: 8px; --region-min-height: 144px; }
+.workspace-shell[data-density="compact"] main { padding-block: 8px; }
+.workspace-shell[data-density="compact"] .view { gap: 8px; }
+.workspace-shell[data-density="compact"] .pane,
+.workspace-shell[data-density="compact"] .cart { gap: 8px; }
+.workspace-shell[data-density="compact"] h1 { font-size: clamp(24px, 1.8vw, 30px); }
+.workspace-shell[data-density="compact"] h2 { font-size: clamp(22px, 1.5vw, 26px); }
+.workspace-shell[data-density="compact"] .card { padding: 10px 14px; }
+.workspace-shell[data-density="compact"] .customer-strip { padding-block: 6px; }
+.workspace-shell[data-density="compact"] .order-toolbar { padding-bottom: 4px; }
+.workspace-shell[data-density="compact"] .home-view { grid-template-rows: auto minmax(150px, 1.7fr) auto minmax(76px, 1fr) minmax(160px, 2fr); }
+.workspace-shell[data-density="compact"] .home-view > .home-links { grid-template-rows: repeat(2, minmax(76px, 1fr)); }
+.workspace-shell[data-density="compact"] .hero-card .row { gap: 12px; }
+.workspace-shell[data-density="compact"] .hero-card .icon { width: 44px; height: 44px; }
+.workspace-shell[data-density="compact"] .hero-card p { font-size: 16px; }
+.workspace-shell[data-density="compact"] .hero-card .wide { margin-top: 8px; font-size: 16px; min-height: 44px; }
+.workspace-shell[data-density="compact"] .navigation-card { gap: 10px; }
+.workspace-shell[data-density="compact"] .navigation-card h3 { font-size: 22px; }
+.workspace-shell[data-density="compact"] .navigation-card p { font-size: 16px; }
+.workspace-shell[data-density="compact"] .navigation-card .icon { width: 34px; height: 34px; }
+.workspace-shell[data-density="compact"] .pane-heading h1,
+.workspace-shell[data-density="compact"] .pane-heading h2 { font-size: 23px; }
+.workspace-shell[data-density="compact"] .totals strong { font-size: 28px; }
+.workspace-shell[data-density="compact"] .product-visual { padding-block: 24px; }
+
+/* Three distinct cards only where their text has room to wrap comfortably. */
+@media (min-width: 1100px) {
+  .workspace-shell[data-density="compact"] .home-view { grid-template-rows: auto minmax(150px, 1.7fr) auto minmax(76px, 1fr) minmax(118px, 1.3fr); }
+  .workspace-shell[data-density="compact"] .grid.two.home-links { grid-template-columns: 1fr 1fr 1.45fr; grid-template-rows: minmax(118px, 1fr); }
+  .workspace-shell[data-density="compact"] .home-links .insight-entry { grid-column: auto; display: grid; grid-template-columns: 34px minmax(0, 1fr) 18px; column-gap: 10px; row-gap: 3px; }
+  .workspace-shell[data-density="compact"] .insight-entry > .icon { grid-column: 1; grid-row: 1 / span 2; }
+  .workspace-shell[data-density="compact"] .insight-entry > div { grid-column: 2; }
+  .workspace-shell[data-density="compact"] .insight-entry > .badge { grid-column: 2; margin: 0; justify-self: start; }
+  .workspace-shell[data-density="compact"] .insight-entry > .arrow { grid-column: 3; grid-row: 1 / span 2; margin: 0; }
+}
+
+/* When readable minima cannot fit, only the central workspace grows/scrolls.
+   Long lists stay bounded; forms and short information panels expand fully. */
+.workspace-shell[data-layout="flow"] main .view { height: auto; min-height: 100%; }
+.workspace-shell[data-layout="flow"] .workspace-split { flex: none; overflow: visible; align-items: start !important; }
+.workspace-shell[data-layout="flow"] .view > .pane,
+.workspace-shell[data-layout="flow"] .workspace-split > *,
+.workspace-shell[data-layout="flow"] .pane,
+.workspace-shell[data-layout="flow"] .cart { flex: none; min-height: 0; }
+.workspace-shell[data-layout="flow"] .scroll-area { flex: none; height: auto; min-height: 0; max-height: none; overflow: visible; }
+.workspace-shell[data-layout="flow"] .scroll-area[data-kind="list"] { max-height: clamp(240px, 55dvh, 520px); overflow: auto; }
+.workspace-shell[data-layout="flow"] .resolver-options { min-height: 0; }
+.workspace-shell[data-layout="flow"] .home-view { min-height: 0; }
+.workspace-shell[data-layout="flow"] .action-bar { position: static; }
+
+/* Footer opens in place rather than travelling with the page. Its growing
+   height resizes the workspace, so it never overlays controls or content. */
+.workspace-shell .status-dock { position: relative; display: flex; flex-direction: row; align-items: center; flex-wrap: nowrap; gap: 10px; min-height: 48px; padding: 2px 16px; }
+.footer-panel { display: grid; grid-template-rows: 0fr; flex: 1; min-width: 0; transition: grid-template-rows 220ms ease; }
+.footer-panel-clip { overflow: hidden; min-height: 0; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; padding-block: 8px; max-height: max(88px, 28dvh); overflow: auto; overscroll-behavior: contain; }
+.status-dock[data-open="true"] .footer-panel { grid-template-rows: 1fr; }
+.status-dock[data-open="false"] .footer-content { visibility: hidden; }
+.workspace-shell .footer-toggle { flex: 0 0 44px; width: 44px; height: 44px; min-height: 44px; padding: 8px; }
+.footer-toggle svg { transition: transform 220ms ease; }
+.status-dock[data-open="true"] .footer-toggle svg { transform: rotate(180deg); }
+.workspace-shell .snackbar { bottom: auto; top: 76px; }
+@media (max-width: 850px) {
+  .workspace-shell .footer-content { align-items: start; }
+  .workspace-shell .footer-content > .actions { margin-left: 0; }
+  .workspace-shell .hero-card .row > div { min-width: 0; }
+  .workspace-shell .navigation-card .badge { white-space: normal; }
+}
+@media (max-width: 650px) {
+  .workspace-shell[data-layout="flow"] .workspace-split,
+  .workspace-shell[data-layout="flow"] .grid.two,
+  .workspace-shell[data-layout="flow"] .grid.three,
+  .workspace-shell[data-layout="flow"] .grid.editor,
+  .workspace-shell[data-layout="flow"] .grid.catalog-grid { grid-template-columns: minmax(0, 1fr); }
+  .workspace-shell[data-layout="flow"] .home-view { display: flex; }
+  .workspace-shell[data-layout="flow"] .home-links { grid-template-rows: auto; }
+  .workspace-shell[data-layout="flow"] .home-links .insight-entry { grid-column: auto; }
+  .workspace-shell[data-layout="flow"] .home-view .navigation-card { min-height: 100px; }
+  .workspace-shell .footer-content > .row { flex-wrap: wrap; gap: 6px; }
+  .workspace-shell .footer-content > .actions { gap: 6px; }
+  .workspace-shell .status-dock { padding-inline: 10px; }
+  .workspace-shell .status-dock button { font-size: 13px; padding-inline: 8px; }
+}
+/* Keep the dock fixed even for tall portrait phones; the main area scrolls. */
+@media (max-width: 650px) and (max-aspect-ratio: 93/200) {
+  html, body, #root { height: 100%; }
+  body { overflow: hidden; }
+  #root { height: 100dvh; min-height: 0; }
+  .workspace-shell { height: 100%; min-height: 0; }
+  .workspace-shell main { flex: 1 1 0; min-height: 0; overflow: auto; }
+  .workspace-shell .view { min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer-panel, .footer-toggle svg { transition: none; }
+}

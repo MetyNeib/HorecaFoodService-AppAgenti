@@ -1,38 +1,68 @@
-# Horeca Food Service · App Agenti
+﻿# Horeca Food Service — App Agenti
 
-**Consegna: kit di implementazione locale Step 3, v1.0.0.**
-Questo progetto contiene una base React/TypeScript, non ancora l'applicazione completa a 22 viste. Il prompt Codex e tutte le fonti necessarie all'implementazione sono inclusi.
+Demo locale React + TypeScript + Vite. Comprende ordine manuale, FastOrder WhatsApp, bozze/coda/storico, schede clienti, partite, catalogo e insight. Tutti i dati sono sintetici; nessuna trasmissione business è reale.
 
-## Avvio
-Da questa cartella, con Node LTS (raccomandato 24.x; minimo del kit 22.12):
+## Avvio dalla root già installata
+
 ```powershell
-npm.cmd install
-npm.cmd run validate:data
-npm.cmd test
+cd C:\HorecaFoodService-AppAgenti
 npm.cmd run dev
 ```
-Il browser a `http://127.0.0.1:5173` mostra il bootstrap con verifica catalogo. In Codex aprire la cartella radice del progetto e inviare `docs/CODEX_START_PROMPT.md`.
 
-## Cosa è già disponibile
-Seed approvato, token/colori verificati nei FIG, inventario componenti, PDF originale, 22 immagini, 204 collegamenti estratti, specifica route/stati/controlli, funzioni pure prezzi/UM/margini/partite/coda con test, configurazione Playwright e script di verifica.
-Il file `qa/BOOTSTRAP_VALIDATION.json` distingue le verifiche effettivamente eseguite dalle verifiche da eseguire localmente.
+Apri **http://127.0.0.1:5173/**. Non occorre reinstallare il progetto né fornire API key.
 
-## Ordine di lettura
-`AGENTS.md` → `docs/00_START_HERE.md` → specifiche → fonti. Il PDF conserva la struttura; la call precisa il comportamento; Figma fornisce lo stile. Il mockup Figma è un'altra applicazione, mai il target funzionale.
+Per usare la build statica già prodotta:
 
-## Organizzazione
-- `src/`: codice applicativo, helper e seed sintetico importabile.
-- `docs/`: specifiche, avvio Codex, checkpoint e accettazione.
-- `references/functional/`: PDF, immagini e navigazione, solo per lo sviluppo.
-- `references/design/`: FIG e token/inventari estratti, solo per lo sviluppo.
-- `references/data/`: contratto approvato e copie leggibili del seed.
-- `fixtures/`: casi di accettazione e messaggi sintetici inclusi nel seed.
-- `tests/`: unit test presenti; E2E bootstrap da estendere/sostituire.
-- `qa/`: esiti verifiche, screenshot e report.
-- `scripts/`: controlli integrità/dati/bundle.
+```powershell
+npm.cmd run preview
+```
 
-Non includere `references/` nella build o in un deploy. Non copiare raw cataloghi, FIDO, INSOLUTO o screenshot WhatsApp reali nel progetto. Sono stati deliberatamente esclusi.
+Apri **http://127.0.0.1:4173/**. Servire `dist/` via HTTP; non aprire `dist/index.html` con doppio click.
 
-## Dipendenze / riproducibilità
-Non sono inclusi `node_modules`, font binari o un lockfile fittizio. Nel container di preparazione il registry npm non era raggiungibile: la prima `npm install` locale deve risolvere le versioni compatibili e generare `package-lock.json`. Registrare i risultati nel report e usare poi `npm ci`.
-La guida esterna `GUIDA_SETUP.md` riguarda la copia iniziale da Download alla cartella Windows; non va rieseguito l'installer su un progetto già modificato.
+## Demo
+
+Refitting del 23/09: desktop e tablet (anche verticale) occupano tutta la finestra. Liste, carrello e contenuti estesi scorrono nei propri pannelli; totali e azioni restano visibili. I telefoni verticali dal rapporto nominale 19,5:9 usano lo scorrimento normale della pagina. Dettagli e screenshot in `qa/REFIT_REPORT.md`.
+
+L'agente è Marco Rossi (014), con otto clienti. Clock fisso: 22 settembre 2026, ore 09:30. Si parte offline, con 2 bozze, 1 ordine da inviare, 24 inviati e 3 verifiche WhatsApp.
+
+- **Nuovo ordine**: scegli cliente e prodotti, modifica quantità, UM, prezzi e condizioni; controlla il riepilogo e conferma.
+- **WhatsApp**: risolvi le richieste mancanti o ambigue, oppure escludile con motivazione. Il carrello e il riepilogo sono gli stessi del flusso manuale.
+- **Passa online**: simula il completamento dei job locali. Ordini confermati e inviati si aprono in lettura.
+- **Reset demo**: dal footer, conferma **Ripristina seed** per annullare tutte le modifiche, ripristinare il dataset e tornare offline.
+
+La persistenza usa `hfs-agent-demo-v1` in localStorage con schemaVersion. In caso di storage non disponibile si continua in memoria con avviso. Un dato corrotto non viene sovrascritto senza reset esplicito.
+
+WhatsApp, email e PDF sono simulazioni, compreso il download PDF. Le anteprime HTML non sono documenti fiscali. I visual dei prodotti sono vettoriali sintetici; i dati tecnici mancanti rimangono indicati come non disponibili.
+
+## Verifica
+
+```powershell
+npm.cmd run validate:data
+npm.cmd test
+npm.cmd run typecheck
+npm.cmd run build
+npm.cmd run test:e2e
+npm.cmd run check:bundle
+```
+
+Playwright usa Chromium nella cache `.playwright-browsers` del progetto. Se si trasferisce la repository su un altro PC:
+
+```powershell
+$env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.playwright-browsers'
+npx.cmd playwright install chromium
+```
+
+Il lockfile originale è conservato. Per una reinstallazione necessaria delle dipendenze usare `npm.cmd ci`, senza aggiornare le versioni.
+
+Risultati: `qa/IMPLEMENTATION_REPORT.md`, `qa/e2e-results.json`, `qa/playwright-report/index.html` e `qa/screenshots/`. Il report bootstrap preesistente rimane distinto dalle verifiche del prodotto.
+
+## Struttura
+
+- `src/app`: shell, router, provider, persistenza e filtri URL.
+- `src/domain`: helper puri, modello runtime e reducer.
+- `src/design-system`: token verificati, CSS e controlli condivisi.
+- `src/features`: moduli separati per i flussi applicativi.
+- `src/data/hfs_demo_data.json`: seed approvato e immutato.
+- `references`, `docs`, `fixtures`: fonti di sviluppo, escluse dalla build.
+
+La consegna è locale. Non è stato eseguito un deploy pubblico.

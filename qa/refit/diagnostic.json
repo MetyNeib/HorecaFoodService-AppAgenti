@@ -1,0 +1,1252 @@
+{
+  "url": "http://127.0.0.1:4173",
+  "status": "PASS",
+  "results": [
+    {
+      "viewport": "phone",
+      "screen": "home",
+      "status": "PASS",
+      "problems": [],
+      "mobile": true,
+      "width": 390,
+      "height": 844,
+      "documentWidth": 375,
+      "documentHeight": 1746,
+      "view": {
+        "x": 16,
+        "y": 159.96875,
+        "width": 343,
+        "height": 1412.25,
+        "bottom": 1572.21875,
+        "right": 359
+      },
+      "footer": {
+        "x": 0,
+        "y": 1588.21875,
+        "width": 375,
+        "height": 157.375,
+        "bottom": 1745.59375,
+        "right": 375
+      },
+      "clipped": [],
+      "regions": [],
+      "actions": []
+    },
+    {
+      "viewport": "phone",
+      "screen": "products-cart",
+      "status": "PASS",
+      "problems": [],
+      "mobile": true,
+      "width": 390,
+      "height": 844,
+      "documentWidth": 375,
+      "documentHeight": 35828,
+      "view": {
+        "x": 16,
+        "y": 159.96875,
+        "width": 343,
+        "height": 35495.125,
+        "bottom": 35655.09375,
+        "right": 359
+      },
+      "footer": {
+        "x": 0,
+        "y": 35671.09375,
+        "width": 375,
+        "height": 157.375,
+        "bottom": 35828.46875,
+        "right": 375
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Lista prodotti",
+          "x": 16,
+          "y": 615.484375,
+          "width": 343,
+          "height": 34195.21875,
+          "bottom": 34810.703125,
+          "right": 359,
+          "scrollHeight": 34195,
+          "clientHeight": 34195
+        },
+        {
+          "name": "Articoli nel carrello",
+          "x": 16,
+          "y": 34918.703125,
+          "width": 343,
+          "height": 520.53125,
+          "bottom": 35439.234375,
+          "right": 359,
+          "scrollHeight": 521,
+          "clientHeight": 521
+        }
+      ],
+      "actions": [
+        {
+          "x": 16,
+          "y": 35451.234375,
+          "width": 343,
+          "height": 193.859375,
+          "bottom": 35645.09375,
+          "right": 359
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "screen": "line-editor",
+      "status": "PASS",
+      "problems": [],
+      "mobile": true,
+      "width": 390,
+      "height": 844,
+      "documentWidth": 375,
+      "documentHeight": 2025,
+      "view": {
+        "x": 16,
+        "y": 159.96875,
+        "width": 343,
+        "height": 1692.015625,
+        "bottom": 1851.984375,
+        "right": 359
+      },
+      "footer": {
+        "x": 0,
+        "y": 1867.984375,
+        "width": 375,
+        "height": 157.375,
+        "bottom": 2025.359375,
+        "right": 375
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Quantità e prezzo",
+          "x": 16,
+          "y": 450.890625,
+          "width": 343,
+          "height": 623.765625,
+          "bottom": 1074.65625,
+          "right": 359,
+          "scrollHeight": 622,
+          "clientHeight": 622
+        },
+        {
+          "name": "Margine e condizioni",
+          "x": 16,
+          "y": 1090.65625,
+          "width": 343,
+          "height": 509.59375,
+          "bottom": 1600.25,
+          "right": 359,
+          "scrollHeight": 510,
+          "clientHeight": 510
+        }
+      ],
+      "actions": [
+        {
+          "x": 16,
+          "y": 1616.25,
+          "width": 343,
+          "height": 235.734375,
+          "bottom": 1851.984375,
+          "right": 359
+        }
+      ]
+    },
+    {
+      "viewport": "phone",
+      "screen": "wa-resolve",
+      "status": "PASS",
+      "problems": [],
+      "mobile": true,
+      "width": 390,
+      "height": 844,
+      "documentWidth": 375,
+      "documentHeight": 1741,
+      "view": {
+        "x": 16,
+        "y": 159.96875,
+        "width": 343,
+        "height": 980.484375,
+        "bottom": 1140.453125,
+        "right": 359
+      },
+      "footer": {
+        "x": 0,
+        "y": 1156.453125,
+        "width": 375,
+        "height": 157.375,
+        "bottom": 1313.828125,
+        "right": 375
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Richieste WhatsApp",
+          "x": 29,
+          "y": 499.5,
+          "width": 317,
+          "height": 451.953125,
+          "bottom": 951.453125,
+          "right": 346,
+          "scrollHeight": 452,
+          "clientHeight": 452
+        },
+        {
+          "name": "Prodotti da associare",
+          "x": 29,
+          "y": 1124.234375,
+          "width": 317,
+          "height": 560.3125,
+          "bottom": 1684.546875,
+          "right": 346,
+          "scrollHeight": 560,
+          "clientHeight": 560
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "phone",
+      "screen": "open-items",
+      "status": "PASS",
+      "problems": [],
+      "mobile": true,
+      "width": 390,
+      "height": 844,
+      "documentWidth": 375,
+      "documentHeight": 2251,
+      "view": {
+        "x": 16,
+        "y": 159.96875,
+        "width": 343,
+        "height": 590.0625,
+        "bottom": 750.03125,
+        "right": 359
+      },
+      "footer": {
+        "x": 0,
+        "y": 766.03125,
+        "width": 375,
+        "height": 157.375,
+        "bottom": 923.40625,
+        "right": 375
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Partite del cliente",
+          "x": 29,
+          "y": 737.03125,
+          "width": 317,
+          "height": 1462.921875,
+          "bottom": 2199.953125,
+          "right": 346,
+          "scrollHeight": 1463,
+          "clientHeight": 1463
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-portrait",
+      "screen": "home",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 768,
+      "height": 1024,
+      "documentWidth": 768,
+      "documentHeight": 1024,
+      "view": {
+        "x": 16,
+        "y": 84.96875,
+        "width": 736,
+        "height": 861.03125,
+        "bottom": 946,
+        "right": 752
+      },
+      "footer": {
+        "x": 0,
+        "y": 958,
+        "width": 768,
+        "height": 66,
+        "bottom": 1024,
+        "right": 768
+      },
+      "clipped": [],
+      "regions": [],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-portrait",
+      "screen": "products-cart",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 768,
+      "height": 1024,
+      "documentWidth": 768,
+      "documentHeight": 1024,
+      "view": {
+        "x": 16,
+        "y": 84.96875,
+        "width": 736,
+        "height": 861.03125,
+        "bottom": 946,
+        "right": 752
+      },
+      "footer": {
+        "x": 0,
+        "y": 958,
+        "width": 768,
+        "height": 66,
+        "bottom": 1024,
+        "right": 768
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Lista prodotti",
+          "x": 16,
+          "y": 422.484375,
+          "width": 368.765625,
+          "height": 523.515625,
+          "bottom": 946,
+          "right": 384.765625,
+          "scrollHeight": 34150,
+          "clientHeight": 524
+        },
+        {
+          "name": "Articoli nel carrello",
+          "x": 400.765625,
+          "y": 282.359375,
+          "width": 351.234375,
+          "height": 418.5625,
+          "bottom": 700.921875,
+          "right": 752,
+          "scrollHeight": 549,
+          "clientHeight": 419
+        }
+      ],
+      "actions": [
+        {
+          "x": 400.765625,
+          "y": 710.921875,
+          "width": 351.234375,
+          "height": 225.078125,
+          "bottom": 936,
+          "right": 752
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-portrait",
+      "screen": "line-editor",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 768,
+      "height": 1024,
+      "documentWidth": 768,
+      "documentHeight": 1024,
+      "view": {
+        "x": 16,
+        "y": 84.96875,
+        "width": 736,
+        "height": 861.03125,
+        "bottom": 946,
+        "right": 752
+      },
+      "footer": {
+        "x": 0,
+        "y": 958,
+        "width": 768,
+        "height": 66,
+        "bottom": 1024,
+        "right": 768
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Quantità e prezzo",
+          "x": 16,
+          "y": 228.953125,
+          "width": 362,
+          "height": 569.6875,
+          "bottom": 798.640625,
+          "right": 378,
+          "scrollHeight": 568,
+          "clientHeight": 568
+        },
+        {
+          "name": "Margine e condizioni",
+          "x": 390,
+          "y": 228.953125,
+          "width": 362,
+          "height": 569.6875,
+          "bottom": 798.640625,
+          "right": 752,
+          "scrollHeight": 570,
+          "clientHeight": 570
+        }
+      ],
+      "actions": [
+        {
+          "x": 16,
+          "y": 810.640625,
+          "width": 736,
+          "height": 135.359375,
+          "bottom": 946,
+          "right": 752
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-portrait",
+      "screen": "wa-resolve",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 768,
+      "height": 1024,
+      "documentWidth": 768,
+      "documentHeight": 1024,
+      "view": {
+        "x": 16,
+        "y": 84.96875,
+        "width": 736,
+        "height": 861.03125,
+        "bottom": 946,
+        "right": 752
+      },
+      "footer": {
+        "x": 0,
+        "y": 958,
+        "width": 768,
+        "height": 66,
+        "bottom": 1024,
+        "right": 768
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Richieste WhatsApp",
+          "x": 29,
+          "y": 292.90625,
+          "width": 342.765625,
+          "height": 640.09375,
+          "bottom": 933,
+          "right": 371.765625,
+          "scrollHeight": 640,
+          "clientHeight": 640
+        },
+        {
+          "name": "Prodotti da associare",
+          "x": 413.765625,
+          "y": 338.40625,
+          "width": 325.234375,
+          "height": 540.59375,
+          "bottom": 879,
+          "right": 739,
+          "scrollHeight": 566,
+          "clientHeight": 541
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-portrait",
+      "screen": "open-items",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 768,
+      "height": 1024,
+      "documentWidth": 768,
+      "documentHeight": 1024,
+      "view": {
+        "x": 16,
+        "y": 84.96875,
+        "width": 736,
+        "height": 861.03125,
+        "bottom": 946,
+        "right": 752
+      },
+      "footer": {
+        "x": 0,
+        "y": 958,
+        "width": 768,
+        "height": 66,
+        "bottom": 1024,
+        "right": 768
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Partite del cliente",
+          "x": 29,
+          "y": 375.921875,
+          "width": 710,
+          "height": 527.484375,
+          "bottom": 903.40625,
+          "right": 739,
+          "scrollHeight": 527,
+          "clientHeight": 527
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-landscape",
+      "screen": "home",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 976,
+        "height": 608,
+        "bottom": 688,
+        "right": 1000
+      },
+      "footer": {
+        "x": 0,
+        "y": 702,
+        "width": 1024,
+        "height": 66,
+        "bottom": 768,
+        "right": 1024
+      },
+      "clipped": [],
+      "regions": [],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-landscape",
+      "screen": "products-cart",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 976,
+        "height": 608,
+        "bottom": 688,
+        "right": 1000
+      },
+      "footer": {
+        "x": 0,
+        "y": 702,
+        "width": 1024,
+        "height": 66,
+        "bottom": 768,
+        "right": 1024
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Lista prodotti",
+          "x": 24,
+          "y": 383.796875,
+          "width": 493.75,
+          "height": 304.203125,
+          "bottom": 688,
+          "right": 517.75,
+          "scrollHeight": 22658,
+          "clientHeight": 304
+        },
+        {
+          "name": "Articoli nel carrello",
+          "x": 529.75,
+          "y": 242.796875,
+          "width": 470.25,
+          "height": 291.71875,
+          "bottom": 534.515625,
+          "right": 1000,
+          "scrollHeight": 429,
+          "clientHeight": 292
+        }
+      ],
+      "actions": [
+        {
+          "x": 529.75,
+          "y": 544.515625,
+          "width": 470.25,
+          "height": 133.484375,
+          "bottom": 678,
+          "right": 1000
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-landscape",
+      "screen": "line-editor",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 976,
+        "height": 608,
+        "bottom": 688,
+        "right": 1000
+      },
+      "footer": {
+        "x": 0,
+        "y": 702,
+        "width": 1024,
+        "height": 66,
+        "bottom": 768,
+        "right": 1024
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Quantità e prezzo",
+          "x": 24,
+          "y": 195.59375,
+          "width": 482,
+          "height": 397.328125,
+          "bottom": 592.921875,
+          "right": 506,
+          "scrollHeight": 395,
+          "clientHeight": 395
+        },
+        {
+          "name": "Margine e condizioni",
+          "x": 518,
+          "y": 195.59375,
+          "width": 482,
+          "height": 397.328125,
+          "bottom": 592.921875,
+          "right": 1000,
+          "scrollHeight": 447,
+          "clientHeight": 397
+        }
+      ],
+      "actions": [
+        {
+          "x": 24,
+          "y": 604.921875,
+          "width": 976,
+          "height": 83.078125,
+          "bottom": 688,
+          "right": 1000
+        }
+      ]
+    },
+    {
+      "viewport": "tablet-landscape",
+      "screen": "wa-resolve",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 976,
+        "height": 608,
+        "bottom": 688,
+        "right": 1000
+      },
+      "footer": {
+        "x": 0,
+        "y": 702,
+        "width": 1024,
+        "height": 66,
+        "bottom": 768,
+        "right": 1024
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Richieste WhatsApp",
+          "x": 43,
+          "y": 265.75,
+          "width": 455.75,
+          "height": 407.25,
+          "bottom": 673,
+          "right": 498.75,
+          "scrollHeight": 407,
+          "clientHeight": 407
+        },
+        {
+          "name": "Prodotti da associare",
+          "x": 548.75,
+          "y": 311.25,
+          "width": 432.25,
+          "height": 307.75,
+          "bottom": 619,
+          "right": 981,
+          "scrollHeight": 529,
+          "clientHeight": 308
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "tablet-landscape",
+      "screen": "open-items",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1024,
+      "height": 768,
+      "documentWidth": 1024,
+      "documentHeight": 768,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 976,
+        "height": 608,
+        "bottom": 688,
+        "right": 1000
+      },
+      "footer": {
+        "x": 0,
+        "y": 702,
+        "width": 1024,
+        "height": 66,
+        "bottom": 768,
+        "right": 1024
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Partite del cliente",
+          "x": 33,
+          "y": 376.953125,
+          "width": 958,
+          "height": 266.453125,
+          "bottom": 643.40625,
+          "right": 991,
+          "scrollHeight": 307,
+          "clientHeight": 266
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "home",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1392,
+        "height": 740,
+        "bottom": 820,
+        "right": 1416
+      },
+      "footer": {
+        "x": 0,
+        "y": 834,
+        "width": 1440,
+        "height": 66,
+        "bottom": 900,
+        "right": 1440
+      },
+      "clipped": [],
+      "regions": [],
+      "actions": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "products-cart",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1392,
+        "height": 740,
+        "bottom": 820,
+        "right": 1416
+      },
+      "footer": {
+        "x": 0,
+        "y": 834,
+        "width": 1440,
+        "height": 66,
+        "bottom": 900,
+        "right": 1440
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Lista prodotti",
+          "x": 24,
+          "y": 383.796875,
+          "width": 706.828125,
+          "height": 436.203125,
+          "bottom": 820,
+          "right": 730.828125,
+          "scrollHeight": 21778,
+          "clientHeight": 436
+        },
+        {
+          "name": "Articoli nel carrello",
+          "x": 742.828125,
+          "y": 242.796875,
+          "width": 673.171875,
+          "height": 422.765625,
+          "bottom": 665.5625,
+          "right": 1416,
+          "scrollHeight": 423,
+          "clientHeight": 423
+        }
+      ],
+      "actions": [
+        {
+          "x": 742.828125,
+          "y": 675.5625,
+          "width": 673.171875,
+          "height": 134.4375,
+          "bottom": 810,
+          "right": 1416
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "screen": "line-editor",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1392,
+        "height": 740,
+        "bottom": 820,
+        "right": 1416
+      },
+      "footer": {
+        "x": 0,
+        "y": 834,
+        "width": 1440,
+        "height": 66,
+        "bottom": 900,
+        "right": 1440
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Quantità e prezzo",
+          "x": 24,
+          "y": 195.59375,
+          "width": 690,
+          "height": 525.96875,
+          "bottom": 721.5625,
+          "right": 714,
+          "scrollHeight": 524,
+          "clientHeight": 524
+        },
+        {
+          "name": "Margine e condizioni",
+          "x": 726,
+          "y": 195.59375,
+          "width": 690,
+          "height": 525.96875,
+          "bottom": 721.5625,
+          "right": 1416,
+          "scrollHeight": 526,
+          "clientHeight": 526
+        }
+      ],
+      "actions": [
+        {
+          "x": 24,
+          "y": 733.5625,
+          "width": 1392,
+          "height": 86.4375,
+          "bottom": 820,
+          "right": 1416
+        }
+      ]
+    },
+    {
+      "viewport": "desktop",
+      "screen": "wa-resolve",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1392,
+        "height": 740,
+        "bottom": 820,
+        "right": 1416
+      },
+      "footer": {
+        "x": 0,
+        "y": 834,
+        "width": 1440,
+        "height": 66,
+        "bottom": 900,
+        "right": 1440
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Richieste WhatsApp",
+          "x": 43,
+          "y": 271.46875,
+          "width": 668.828125,
+          "height": 533.53125,
+          "bottom": 805,
+          "right": 711.828125,
+          "scrollHeight": 534,
+          "clientHeight": 534
+        },
+        {
+          "name": "Prodotti da associare",
+          "x": 761.828125,
+          "y": 317.53125,
+          "width": 635.171875,
+          "height": 433.46875,
+          "bottom": 751,
+          "right": 1397,
+          "scrollHeight": 485,
+          "clientHeight": 433
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "desktop",
+      "screen": "open-items",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1440,
+      "height": 900,
+      "documentWidth": 1440,
+      "documentHeight": 900,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1392,
+        "height": 740,
+        "bottom": 820,
+        "right": 1416
+      },
+      "footer": {
+        "x": 0,
+        "y": 834,
+        "width": 1440,
+        "height": 66,
+        "bottom": 900,
+        "right": 1440
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Partite del cliente",
+          "x": 43,
+          "y": 361.609375,
+          "width": 1354,
+          "height": 413.796875,
+          "bottom": 775.40625,
+          "right": 1397,
+          "scrollHeight": 414,
+          "clientHeight": 414
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "wide-desktop",
+      "screen": "home",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1920,
+      "height": 872,
+      "documentWidth": 1920,
+      "documentHeight": 872,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1872,
+        "height": 712,
+        "bottom": 792,
+        "right": 1896
+      },
+      "footer": {
+        "x": 0,
+        "y": 806,
+        "width": 1920,
+        "height": 66,
+        "bottom": 872,
+        "right": 1920
+      },
+      "clipped": [],
+      "regions": [],
+      "actions": []
+    },
+    {
+      "viewport": "wide-desktop",
+      "screen": "products-cart",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1920,
+      "height": 872,
+      "documentWidth": 1920,
+      "documentHeight": 872,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1872,
+        "height": 712,
+        "bottom": 792,
+        "right": 1896
+      },
+      "footer": {
+        "x": 0,
+        "y": 806,
+        "width": 1920,
+        "height": 66,
+        "bottom": 872,
+        "right": 1920
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Lista prodotti",
+          "x": 24,
+          "y": 390.734375,
+          "width": 952.671875,
+          "height": 401.265625,
+          "bottom": 792,
+          "right": 976.671875,
+          "scrollHeight": 22463,
+          "clientHeight": 401
+        },
+        {
+          "name": "Articoli nel carrello",
+          "x": 988.671875,
+          "y": 246.78125,
+          "width": 907.3125,
+          "height": 380.953125,
+          "bottom": 627.734375,
+          "right": 1895.984375,
+          "scrollHeight": 393,
+          "clientHeight": 381
+        }
+      ],
+      "actions": [
+        {
+          "x": 988.671875,
+          "y": 637.734375,
+          "width": 907.3125,
+          "height": 144.265625,
+          "bottom": 782,
+          "right": 1895.984375
+        }
+      ]
+    },
+    {
+      "viewport": "wide-desktop",
+      "screen": "line-editor",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1920,
+      "height": 872,
+      "documentWidth": 1920,
+      "documentHeight": 872,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1872,
+        "height": 712,
+        "bottom": 792,
+        "right": 1896
+      },
+      "footer": {
+        "x": 0,
+        "y": 806,
+        "width": 1920,
+        "height": 66,
+        "bottom": 872,
+        "right": 1920
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Quantità e prezzo",
+          "x": 24,
+          "y": 195.59375,
+          "width": 930,
+          "height": 489.328125,
+          "bottom": 684.921875,
+          "right": 954,
+          "scrollHeight": 487,
+          "clientHeight": 487
+        },
+        {
+          "name": "Margine e condizioni",
+          "x": 966,
+          "y": 195.59375,
+          "width": 930,
+          "height": 489.328125,
+          "bottom": 684.921875,
+          "right": 1896,
+          "scrollHeight": 489,
+          "clientHeight": 489
+        }
+      ],
+      "actions": [
+        {
+          "x": 24,
+          "y": 696.921875,
+          "width": 1872,
+          "height": 95.078125,
+          "bottom": 792,
+          "right": 1896
+        }
+      ]
+    },
+    {
+      "viewport": "wide-desktop",
+      "screen": "wa-resolve",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1920,
+      "height": 872,
+      "documentWidth": 1920,
+      "documentHeight": 872,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1872,
+        "height": 712,
+        "bottom": 792,
+        "right": 1896
+      },
+      "footer": {
+        "x": 0,
+        "y": 806,
+        "width": 1920,
+        "height": 66,
+        "bottom": 872,
+        "right": 1920
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Richieste WhatsApp",
+          "x": 43,
+          "y": 286.25,
+          "width": 914.671875,
+          "height": 490.75,
+          "bottom": 777,
+          "right": 957.671875,
+          "scrollHeight": 491,
+          "clientHeight": 491
+        },
+        {
+          "name": "Prodotti da associare",
+          "x": 1007.671875,
+          "y": 334.25,
+          "width": 869.3125,
+          "height": 387.5625,
+          "bottom": 721.8125,
+          "right": 1876.984375,
+          "scrollHeight": 504,
+          "clientHeight": 388
+        }
+      ],
+      "actions": []
+    },
+    {
+      "viewport": "wide-desktop",
+      "screen": "open-items",
+      "status": "PASS",
+      "problems": [],
+      "mobile": false,
+      "width": 1920,
+      "height": 872,
+      "documentWidth": 1920,
+      "documentHeight": 872,
+      "view": {
+        "x": 24,
+        "y": 80,
+        "width": 1872,
+        "height": 712,
+        "bottom": 792,
+        "right": 1896
+      },
+      "footer": {
+        "x": 0,
+        "y": 806,
+        "width": 1920,
+        "height": 66,
+        "bottom": 872,
+        "right": 1920
+      },
+      "clipped": [],
+      "regions": [
+        {
+          "name": "Partite del cliente",
+          "x": 43,
+          "y": 380.84375,
+          "width": 1834,
+          "height": 366.5625,
+          "bottom": 747.40625,
+          "right": 1877,
+          "scrollHeight": 367,
+          "clientHeight": 367
+        }
+      ],
+      "actions": []
+    }
+  ],
+  "failures": []
+}
