@@ -61,7 +61,7 @@ npx.cmd playwright install chromium webkit
 npm.cmd run test:e2e
 ```
 
-La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, RSpec, RuboCop e Brakeman. Gli esiti storici React nei report QA non certificano la nuova versione Rails. I report Rails distinguono PASS, FAIL e NOT_RUN.
+La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, RSpec, RuboCop, Brakeman, i flussi UI nei quattro viewport e l'offline Chromium/WebKit. Gli esiti storici React nei report QA non certificano la nuova versione Rails. I report Rails distinguono PASS, FAIL e NOT_RUN. Le schermate sono consultabili nella [galleria Rails](qa/rails-ui/screenshots/index.html).
 
 ## Struttura e dati
 

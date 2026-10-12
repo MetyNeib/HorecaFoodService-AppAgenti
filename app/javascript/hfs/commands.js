@@ -43,6 +43,7 @@ export class WorkspaceClient extends EventTarget {
     if (this.authRequired) throw new Error('Accedi nuovamente con lo stesso account prima di salvare altre modifiche. Le modifiche precedenti sono conservate.');
     if (!this.reachable && !OFFLINE_COMMANDS.has(type)) throw new Error('Questa funzione richiede il collegamento al server.');
     this.record = await this.storage.update(record => {
+      if (record.closing?.until > Date.now()) throw new Error('Uscita in corso in un’altra finestra. Le modifiche non sono state salvate.');
       if (record.conflict) throw new Error('Risolvi prima il conflitto di sincronizzazione. Le modifiche locali sono conservate.');
       const command = { operationId: crypto.randomUUID(), baseVersion: record.server.version + record.outbox.length,
         epoch: record.server.epoch, type, payload: structuredClone(payload) };
@@ -76,6 +77,7 @@ export class WorkspaceClient extends EventTarget {
     const response = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Impossibile aggiornare i dati dal server.');
     const snapshot = this.acceptSnapshot(await response.json());
+    if (snapshot.csrfToken) this.setCsrf(snapshot.csrfToken);
     this.record = await this.storage.initialize(snapshot);
     this.changed();
     return snapshot;
@@ -98,11 +100,12 @@ export class WorkspaceClient extends EventTarget {
       // Durable lease also works on browsers without Web Locks. A crashed tab expires.
       const leaseUntil = Date.now() + 20000;
       this.record = await this.storage.update(record => {
+        if (record.closing?.until > Date.now()) return record;
         if (record.lease?.until > Date.now() && record.lease.owner !== this.owner) return record;
         record.lease = { owner: this.owner, until: leaseUntil };
         return record;
       });
-      if (this.record.lease?.owner !== this.owner) return;
+      if (this.record.closing?.until > Date.now() || this.record.lease?.owner !== this.owner) return;
       while (true) {
         this.record = await this.storage.read();
         if (!this.record.outbox.length || this.record.conflict) break;
@@ -177,19 +180,41 @@ export class WorkspaceClient extends EventTarget {
     const response = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Collegati al server per risolvere il conflitto.');
     const server = this.acceptSnapshot(await response.json());
-    this.record = await this.storage.update(record => ({ schemaVersion: 2, server, projected: server.state, outbox: [], conflict: null,
-      savedAt: new Date().toISOString(), recovery: [...(record.recovery || []), { projected: record.projected, outbox: record.outbox, savedAt: record.savedAt }] }));
+    this.record = await this.storage.update(record => {
+      if (record.closing?.until > Date.now()) throw new Error('Uscita in corso in un’altra finestra. Attendi e riprova.');
+      return { schemaVersion: 2, server, projected: server.state, outbox: [], conflict: null,
+        savedAt: new Date().toISOString(), recovery: [...(record.recovery || []), { projected: record.projected, outbox: record.outbox, savedAt: record.savedAt }] };
+    });
     this.changed();
   }
 
   async logout(form) {
-    this.record = await this.storage.read();
-    if (this.record.outbox.length) throw new Error('Sincronizza le modifiche prima di uscire. Restano conservate su questo dispositivo.');
-    const data = new FormData(form);
-    const response = await this.fetch(form.action, { method: 'POST', credentials: 'same-origin', body: data, headers: { 'X-CSRF-Token': find('meta[name="csrf-token"]')?.content || '' } });
-    if (!response.ok) throw new Error('Uscita non completata.');
-    this.channel?.close();
-    await this.storage.purge();
-    location.assign('/users/sign_in');
+    // Mark the record atomically before the network request, blocking edits in another tab.
+    this.record = await this.storage.update(record => {
+      if (record.outbox.length) throw new Error('Sincronizza le modifiche prima di uscire. Restano conservate su questo dispositivo.');
+      if (record.closing?.until > Date.now()) throw new Error('Uscita già in corso in un’altra finestra.');
+      record.closing = { owner: this.owner, until: Date.now() + 20000 }; return record;
+    });
+    const abort = new AbortController(); const timeout = setTimeout(() => abort.abort(), 12000);
+    let signedOut = false;
+    try {
+      const response = await this.fetch(form.action, { method: 'POST', credentials: 'same-origin', signal: abort.signal,
+        body: new FormData(form), headers: { 'X-CSRF-Token': find('meta[name="csrf-token"]')?.content || '' } });
+      if (!response.ok) throw new Error('Uscita non completata.');
+      signedOut = true;
+      this.record = await this.storage.update(record => {
+        if (record.closing?.owner !== this.owner || record.closing.until <= Date.now() || record.outbox.length) {
+          throw new Error('Sessione chiusa. Nuove modifiche locali conservate: accedi con lo stesso account per sincronizzarle.');
+        }
+        record.closing.until = Date.now() + 20000; return record;
+      });
+      this.storage.deactivate(); this.channel?.close();
+      await this.storage.purge();
+      location.assign('/users/sign_in');
+    } catch (error) {
+      if (signedOut) this.authRequired = true;
+      else this.record = await this.storage.update(record => { if (record.closing?.owner === this.owner) delete record.closing; return record; });
+      throw error;
+    } finally { clearTimeout(timeout); }
   }
 }

@@ -62,7 +62,7 @@ test('offline reale: riapertura, clienti/catalogo, ordine modificato e sincroniz
   await page.getByLabel('Nota sul documento di consegna').fill('Salvata senza rete');
   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');
   await page.getByRole('button', { name: /Conferma ordine/ }).click();
-  expect((await state(page)).data.orders.find(item => item.id === orderId)).toMatchObject({ status: 'PENDING_SEND', note: 'Salvata senza rete', paymentId: 'PAY-BON30' });
+  await expect.poll(async () => (await state(page)).data.orders.find(item => item.id === orderId)).toMatchObject({ status: 'PENDING_SEND', note: 'Salvata senza rete', paymentId: 'PAY-BON30' });
   expect((await outbox(page)).length).toBeGreaterThan(2);
   await page.reload();
   await expect(page.getByRole('heading', { name: 'I miei ordini' })).toBeVisible();
@@ -205,6 +205,7 @@ test('sessione di un altro account non riceve la coda del precedente utente', as
 });
 
 test('viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili', async ({ page, context }, info) => {
+  test.setTimeout(120000); // Twenty full-page screenshots plus all controls on both browser engines.
   await context.setOffline(true); await page.reload();
   await page.waitForFunction(() => !!window.HFS?.client?.record);
   for (const [width, height] of [[390, 844], [768, 1024], [1024, 768], [1440, 900]]) {
@@ -257,7 +258,9 @@ test('archivio negato: modifica online via form Rails e nessun falso salvataggio
   await page.goto('/orders/BOZ-26-00021/review');
   await page.waitForFunction(() => !!window.HFS?.storageFailure);
   await page.getByLabel('Nota sul documento di consegna').fill('Salvata dal form Rails senza IndexedDB');
+  const navigation = page.waitForEvent('framenavigated', frame => frame === page.mainFrame());
   await page.getByRole('button', { name: 'Salva bozza', exact: true }).click();
+  await navigation;
   await page.waitForLoadState('load');
   const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
   expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Salvata dal form Rails senza IndexedDB');
@@ -326,4 +329,53 @@ test('token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati
   const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
   expect(server.version).toBe(before.version + 1);
   expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Token aggiornato automaticamente');
+});
+
+test('uscita concorrente: altra scheda non può aggiungere operazioni durante il logout', async ({ page, context }) => {
+  const second = await context.newPage(); await second.goto('/');
+  await second.waitForFunction(() => !!window.HFS?.client?.record); await second.evaluate(() => window.HFS.ready);
+  const holdLogout = async fail => {
+    await page.evaluate(fail => {
+      const client = window.HFS.client;
+      client.testOriginalFetch ||= client.fetch;
+      client.fetch = async (...args) => {
+        if (String(args[0]).includes('/users/sign_out')) {
+          await new Promise(resolve => { window.releaseLogout = resolve; });
+          if (fail) throw new TypeError('Connessione interrotta prima dell’uscita');
+        }
+        return client.testOriginalFetch(...args);
+      };
+      window.logoutResult = client.logout(document.querySelector('.logout_form_js')).then(() => null).catch(error => error.message);
+    }, fail);
+    await page.waitForFunction(() => !!window.HFS.client.record.closing);
+    const error = await second.evaluate(async () => {
+      try { await window.HFS.client.enqueue('SAVE_REVIEW', { orderId: 'BOZ-26-00021', note: 'Non eliminare senza avviso' }); }
+      catch (error) { return error.message; }
+    });
+    expect(error).toContain('Uscita in corso');
+    expect(await page.evaluate(async () => (await window.HFS.client.storage.read()).outbox)).toEqual([]);
+  };
+  await holdLogout(true);
+  await page.evaluate(() => window.releaseLogout());
+  expect(await page.evaluate(() => window.logoutResult)).toContain('Connessione interrotta');
+  expect(await page.evaluate(async () => (await window.HFS.client.storage.read()).closing)).toBeUndefined();
+  await second.evaluate(() => {
+    const client = window.HFS.client, fetchOriginal = client.fetch;
+    client.fetch = async (...args) => {
+      const response = await fetchOriginal(...args);
+      if (String(args[0]) === '/snapshot') await new Promise(resolve => { window.releaseSnapshot = resolve; });
+      return response;
+    };
+    window.lateSnapshot = client.refresh().then(() => 'unexpected-success').catch(error => error.message);
+  });
+  await second.waitForFunction(() => !!window.releaseSnapshot);
+  await holdLogout(false);
+  await page.evaluate(() => window.releaseLogout());
+  await expect(page).toHaveURL(/users\/sign_in/);
+  expect(await second.evaluate(() => localStorage.getItem('hfs-rails-active-user-v2'))).toBeNull();
+  await second.evaluate(() => window.releaseSnapshot());
+  expect(await second.evaluate(() => window.lateSnapshot)).toContain('Sessione locale chiusa');
+  expect(await second.evaluate(() => localStorage.getItem('hfs-rails-active-user-v2'))).toBeNull();
+  expect(await second.evaluate(async () => (await indexedDB.databases()).some(db => db.name === `hfs-rails-user-v2-${window.HFS.client.userId}`))).toBe(false);
+  await second.close();
 });

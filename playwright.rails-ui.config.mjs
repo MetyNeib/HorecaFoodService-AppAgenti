@@ -8,8 +8,9 @@ export default defineConfig({
   workers: 1,
   timeout: 240000,
   retries: 0,
-  outputDir: 'test-results/rails-ui',
-  reporter: [['list'], ['json', { outputFile: 'qa/rails-ui/results.json' }]],
+  expect: { timeout: 15000 },
+  outputDir: process.env.HFS_UI_OUTPUT || 'test-results/rails-ui',
+  reporter: [['list'], ['json', { outputFile: process.env.HFS_UI_REPORT || 'qa/rails-ui/results.json' }]],
   use: {
     baseURL: process.env.HFS_RAILS_URL || 'http://127.0.0.1:3002',
     locale: 'it-IT',

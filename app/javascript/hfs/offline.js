@@ -167,10 +167,10 @@ function lineEditor(data, order, line) {
 function review(data, order) {
   const readOnly = !editable(order), errors = orderErrors(data, order), customer = data.customers.find(item => item.id === order.customerId);
   const rows = order.lines.map(line => node('article', 'summary-line', text('h3', data.products.find(item => item.id === line.productId)?.name), text('p', `${line.quantity} ${line.unit} · ${line.baseQuantity} ${data.products.find(item => item.id === line.productId)?.baseUnit} · ${money(line.lineNetCents)}`), text('small', `Margine ${money(line.marginCents)} · ${percent(line.marginPercent)}`), line.note ? text('p', line.note) : null));
-  const details = node('fieldset', '', select('Destinazione', 'destinationId', data.destinations.filter(item => item.customerId === order.customerId), order.destinationId), field('Data consegna', 'deliveryDate', order.deliveryDate, 'date'),
+  const details = node('div', 'delivery-form', text('h2', 'Consegna e pagamento'), select('Destinazione', 'destinationId', data.destinations.filter(item => item.customerId === order.customerId), order.destinationId), field('Data consegna', 'deliveryDate', order.deliveryDate, 'date'),
     field('Ora consegna (opzionale)', 'deliveryTime', order.deliveryTime, 'time'), select('Deposito', 'warehouseId', data.warehouses, order.warehouseId), field('Riferimento cliente', 'customerReference', order.customerReference),
     select('Referente', 'contactId', [{ id: '', name: 'Nessun referente' }, ...data.contacts.filter(item => item.customerId === order.customerId)], order.contactId), select('Pagamento dell’ordine', 'paymentId', data.paymentMethods, order.paymentId), button('Ripristina pagamento cliente', 'reset_payment_js', { 'data-payment-id': customer.defaultPaymentId }));
-  details.disabled = readOnly;
+  if (readOnly) details.querySelectorAll('input,select,button').forEach(input => { input.disabled = true; });
   const note = field('Nota sul documento di consegna', 'note', order.note, 'textarea'); note.querySelector('textarea').readOnly = readOnly;
   const error = text('p', errors.join(' '), 'error form_error_js'); error.setAttribute('role', 'alert'); error.hidden = readOnly || !errors.length;
   const content = [node('div', 'grid two review-layout workspace-split', node('section', 'card pane', text('h2', 'Articoli'), region('Articoli del riepilogo', rows.length ? rows : empty('Nessun articolo.')), note), region('Dati di consegna', details, 'card', 'content')),

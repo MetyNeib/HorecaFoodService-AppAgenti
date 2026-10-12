@@ -1,6 +1,11 @@
 const SCHEMA = 2;
 const POINTER = 'hfs-rails-active-user-v2';
 const DATABASE_PREFIX = 'hfs-rails-user-v2-';
+const GENERATION_PREFIX = 'hfs-rails-session-generation-';
+
+function generation(userId) {
+  try { return localStorage.getItem(GENERATION_PREFIX + userId) || 'initial'; } catch { return null; }
+}
 
 function requestResult(request) {
   return new Promise((resolve, reject) => {
@@ -46,9 +51,17 @@ export class OfflineStorage {
     if (!userId) throw new Error('Accedi online prima di utilizzare i dati offline.');
     this.userId = String(userId);
     this.factory = factory;
+    this.generation = generation(this.userId);
+  }
+
+  assertActive() {
+    if (this.revoked || generation(this.userId) !== this.generation) {
+      throw new Error('Sessione locale chiusa. Accedi nuovamente prima di utilizzare questo archivio.');
+    }
   }
 
   async open() {
+    this.assertActive();
     if (this.db) return this;
     if (!this.factory) throw new Error('Archivio offline non disponibile in questo browser.');
     const request = this.factory.open(DATABASE_PREFIX + this.userId, 1);
@@ -83,6 +96,7 @@ export class OfflineStorage {
     const request = objectStore.get('state');
     request.onsuccess = () => {
       try {
+        this.assertActive();
         next = change(request.result ? structuredClone(request.result) : null);
         if (!next || next.schemaVersion !== SCHEMA) throw new Error('Stato locale non valido.');
         validateSnapshot(next.server, this.userId);
@@ -90,6 +104,7 @@ export class OfflineStorage {
       } catch (error) { failure = error; tx.abort(); }
     };
     try { await completed; } catch (error) { throw failure || error; }
+    this.assertActive();
     try { localStorage.setItem(POINTER, this.userId); } catch { /* IDB remains authoritative. */ }
     return next;
   }
@@ -98,7 +113,7 @@ export class OfflineStorage {
     validateSnapshot(snapshot, this.userId);
     return this.update(record => {
       if (record) validateRecord(record, this.userId);
-      if (record?.outbox.length || record?.conflict) return record;
+      if (record?.outbox.length || record?.conflict || record?.closing?.until > Date.now()) return record;
       return { schemaVersion: SCHEMA, server: snapshot, projected: snapshot.state, outbox: [], conflict: null, recovery: record?.recovery || [], savedAt: new Date().toISOString() };
     });
   }
@@ -106,8 +121,19 @@ export class OfflineStorage {
   /** Only used after explicit confirmation; the entire old record is retained for export. */
   async recover(snapshot) {
     validateSnapshot(snapshot, this.userId);
-    return this.update(raw => ({ schemaVersion: SCHEMA, server: snapshot, projected: snapshot.state, outbox: [], conflict: null,
-      savedAt: new Date().toISOString(), recovery: raw ? [{ raw, savedAt: new Date().toISOString() }] : [] }));
+    return this.update(raw => {
+      if (raw?.closing?.until > Date.now()) throw new Error('Uscita in corso in un’altra finestra. Attendi e riprova.');
+      return { schemaVersion: SCHEMA, server: snapshot, projected: snapshot.state, outbox: [], conflict: null,
+        savedAt: new Date().toISOString(), recovery: raw ? [{ raw, savedAt: new Date().toISOString() }] : [] };
+    });
+  }
+
+  deactivate() {
+    if (!this.revoked) {
+      try { localStorage.setItem(GENERATION_PREFIX + this.userId, crypto.randomUUID()); } catch { /* The current instance is still revoked. */ }
+      this.revoked = true;
+    }
+    try { if (activeUserId() === this.userId) localStorage.removeItem(POINTER); } catch { /* no pointer */ }
   }
 
   async purge() {
@@ -119,6 +145,6 @@ export class OfflineStorage {
       request.onerror = () => reject(request.error);
       request.onblocked = () => reject(new Error('Chiudi le altre finestre dell’app prima di uscire.'));
     });
-    try { if (activeUserId() === this.userId) localStorage.removeItem(POINTER); } catch { /* no pointer */ }
+    this.deactivate();
   }
 }

@@ -21,6 +21,19 @@ Le precedenti regole di layout/branding/calcoli/simulazioni restano applicabili;
 quelle di stack Vite, assenza backend/service worker e solo offline simulato sono
 sostituite dalle decisioni sopra. Non importare sidebar o funzioni dell'altra app.
 
+Comandi correnti: `npm.cmd run validate:data`, `npm.cmd test`,
+`npm.cmd run test:domain-parity`, `npm.cmd run check:rules`,
+`npm.cmd run test:rails` e `npm.cmd run test:e2e` (Docker avviato).
+Per stile e sicurezza: `docker compose exec web bundle exec rubocop` e
+`docker compose exec web bundle exec brakeman --no-pager`.
+Gli helper V1 sono conservati in `tests/reference-v1`, solo per il confronto.
+Il report corrente è `qa/RAILS_IMPLEMENTATION_REPORT.md`; quelli Vite sotto
+sono storici. Non ricreare il bootstrap React o i file runtime V1 rimossi.
+
+---
+
+Le sezioni seguenti descrivono il kit originale e i vincoli V1 ancora applicabili.
+
 ## Obiettivo corrente
 Realizzare e collaudare l'app dimostrativa completa Horeca Food Service. Il pacchetto consegnato è un BOOTSTRAP, non l'app finita. La schermata `src/app/App.tsx` serve soltanto a verificare che il seed e il tooling si carichino. Sostituirla con le viste applicative: non limitarsi a un piano o a una landing page.
 

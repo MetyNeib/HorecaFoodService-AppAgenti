@@ -49,8 +49,10 @@ export default class WorkspaceController {
   async registerWorker() {
     if (!('serviceWorker' in navigator) || !isSecureContext) return;
     try {
-      const registration = await navigator.serviceWorker.register('/service-worker.js', { scope: '/' });
+      const existing = await navigator.serviceWorker.getRegistration('/');
+      const registration = !navigator.onLine && existing ? existing : await navigator.serviceWorker.register('/service-worker.js', { scope: '/' });
       await navigator.serviceWorker.ready;
+      if (!navigator.onLine) { this.offlinePrepared = !!await caches.match('/offline'); return; }
       navigator.serviceWorker.addEventListener('message', event => {
         if (event.data?.type === 'PRECACHE_COMPLETE') {
           this.offlinePrepared = !event.data.failed?.length;
@@ -104,6 +106,8 @@ export default class WorkspaceController {
     target.dataset.reachable = String(this.client.reachable);
     findAll('.transport_status_js').forEach(element => { element.textContent = status; });
     findAll('.offline-user_js').forEach(item => { item.textContent = this.client.snapshot.user.email; });
+    findAll('.demo_network_value_js').forEach(item => { item.value = String(this.client.snapshot.state.network === 'OFFLINE'); });
+    findAll('.demo_network_label_js').forEach(item => { item.textContent = this.client.snapshot.state.network === 'OFFLINE' ? 'Passa online' : 'Passa offline'; });
     this.ui.schedule();
   }
 

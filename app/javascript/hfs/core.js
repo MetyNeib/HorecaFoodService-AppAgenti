@@ -1,4 +1,4 @@
-// Pure helpers generated from src/domain/core.ts; preserve parity tests.
+// Pure helpers ported from tests/reference-v1/core.ts; preserve parity tests.
 function integer(value, label) {
     if (!Number.isSafeInteger(value))
         throw new Error(`${label}: richiesto intero sicuro.`);
