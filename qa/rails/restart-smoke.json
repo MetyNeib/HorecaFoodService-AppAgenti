@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "LOCAL_CONTAINER_RECREATE_AND_READ_ONLY_LOGIN",
+  "url": "http://127.0.0.1:3002/",
+  "customers": 8,
+  "products": 120,
+  "orders": 30,
+  "version": 0,
+  "epoch": 1,
+  "browserErrors": []
+}

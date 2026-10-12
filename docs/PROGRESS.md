@@ -26,6 +26,8 @@ esclusivamente la V1 React conservata nel commit `81e72bc`.
   corrotto, memoria negata, due tab, aggiornamento shell e logout concorrente.
 - PASS: 22 viste ERB e Ralix, vecchio runtime React/Vite rimosso, build Docker e
   asset production compilati in container isolato: 39 file pubblici verificati.
+- PASS: container web e worker ricreati mantenendo PostgreSQL; login finale,
+  lettura degli otto clienti e 120 prodotti e nessun errore browser.
 - IN_PROGRESS: ultimo run CI GitHub; risultati locali finali e tentativi storici
   sono documentati nel rapporto Rails, con riepiloghi senza doppio conteggio.
 - NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.

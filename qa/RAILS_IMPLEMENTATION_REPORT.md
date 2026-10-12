@@ -33,6 +33,7 @@ realmente le modifiche; le trasmissioni commerciali restano simulate.
 | Stile e sicurezza | RuboCop **50 file**, zero segnalazioni; Brakeman **0 warning**: [risultato](rails/security-summary.json) |
 | Database da zero | Migrazioni realmente eseguite su database vuoto isolato; schema generato identico |
 | Installazione e build | Lockfile reali, nuova installazione npm, npm audit 0 vulnerabilità, immagine Docker ricompilata |
+| Riavvio finale | Web/worker ricreati, login riuscito, 8 clienti e 120 prodotti, zero errori browser: [prova](rails/restart-smoke.json) |
 | Asset pubblici | Precompilazione production in container senza rete, **39 file** senza riferimenti privati noti |
 | HTTPS locale | HTTP 200 e TLS verificato con CA esplicita: [prova](rails/https-check.json); trust globale invariato |
 
