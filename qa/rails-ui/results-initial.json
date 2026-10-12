@@ -1,0 +1,1208 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.rails-ui.config.mjs"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-ui.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-portrait",
+        "name": "tablet-portrait",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-landscape",
+        "name": "tablet-landscape",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-portrait",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-portrait"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-landscape",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/rails-ui/results.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "flows.spec.mjs",
+      "file": "flows.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 46263,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:50:38.584Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-b398c7deccfedbc6f44e",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33703,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:51:25.296Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-eff27cbdfcfb74fe114a",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 36545,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:51:59.027Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-417588fd909b61b7fd6d",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 43405,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:54.868Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-8a5c711b98fbad7ad63b",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 44599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:54:38.758Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-34759ebb3569d6466ef7",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 35580,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:23.389Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-e2a537a49db2a231d96e",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 57677,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:53:83",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 83,
+                      "line": 53
+                    },
+                    "snippet": "  51 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  52 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 53 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  54 |   let data = (await snapshot(page)).state.data;\n  55 |   let order = data.orders.find(item => item.id === id);\n  56 |   expect(order.status).toBe('PENDING_SEND');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 83,
+                        "line": 53
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n\n  51 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  52 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 53 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  54 |   let data = (await snapshot(page)).state.data;\n  55 |   let order = data.orders.find(item => item.id === id);\n  56 |   expect(order.status).toBe('PENDING_SEND');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:53:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:57:29.172Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-tablet-landscape\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-tablet-landscape\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-tablet-landscape\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 83,
+                    "line": 53
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-a14866b2ff6214277be9",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 28891,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('line-0207430')\nExpected substring: \u001b[32m\"24 PZ\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByTestId('line-0207430') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('line-0207430')\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('line-0207430')\nExpected substring: \u001b[32m\"24 PZ\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByTestId('line-0207430') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('line-0207430')\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:79:50",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 50,
+                      "line": 79
+                    },
+                    "snippet": "  77 |   await page.locator('article').filter({ hasText: '0207430' }).getByRole('button', { name: 'Scegli', exact: true }).click();\n  78 |   await page.getByRole('button', { name: 'Conferma associazione' }).click();\n> 79 |   await expect(page.getByTestId('line-0207430')).toContainText('24 PZ');\n     |                                                  ^\n  80 |   await page.getByRole('button', { name: 'Salva verifica' }).click();\n  81 |   await page.locator('article').filter({ hasText: 'WA-26-00841' }).getByRole('link', { name: /Riprendi/ }).click();\n  82 |   await page.getByRole('link', { name: /Cerca prodotto/ }).click();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 50,
+                        "line": 79
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('line-0207430')\nExpected substring: \u001b[32m\"24 PZ\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByTestId('line-0207430') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('line-0207430')\u001b[22m\n\n\n  77 |   await page.locator('article').filter({ hasText: '0207430' }).getByRole('button', { name: 'Scegli', exact: true }).click();\n  78 |   await page.getByRole('button', { name: 'Conferma associazione' }).click();\n> 79 |   await expect(page.getByTestId('line-0207430')).toContainText('24 PZ');\n     |                                                  ^\n  80 |   await page.getByRole('button', { name: 'Salva verifica' }).click();\n  81 |   await page.locator('article').filter({ hasText: 'WA-26-00841' }).getByRole('link', { name: /Riprendi/ }).click();\n  82 |   await page.getByRole('link', { name: /Cerca prodotto/ }).click();\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:79:50"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:58:31.732Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-tablet-landscape\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-tablet-landscape\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-tablet-landscape\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 50,
+                    "line": 79
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-ff2633a7892ede9ee03a",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 19285,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('main')\nTimeout: 5000ms\n\u001b[32m- Expected substring  -  1\u001b[39m\n\u001b[31m+ Received string     + 65\u001b[39m\n\n\u001b[32m- Laura Bianchi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+   ← Torna all’origine\u001b[39m\n\u001b[31m+   Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+     Anagrafica\u001b[39m\n\u001b[31m+     Ordini\u001b[39m\n\u001b[31m+     Partite aperte\u001b[39m\n\u001b[31m+     Info commerciali\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     Dati aziendali\u001b[39m\n\u001b[31m+       P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Referenti e ordini WhatsApp+ Aggiungi referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+         Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[39m\n\u001b[31m+         Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('main') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('main')\u001b[22m\n\u001b[2m    13 × locator resolved to <main id=\"main\" tabindex=\"-1\" class=\"main_js workspace_content_js\">…</main>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  ← Torna all’origine\u001b[22m\n\u001b[2m  Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    Anagrafica\u001b[22m\n\u001b[2m    Ordini\u001b[22m\n\u001b[2m    Partite aperte\u001b[22m\n\u001b[2m    Info commerciali\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    Dati aziendali\u001b[22m\n\u001b[2m      P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Referenti e ordini WhatsApp+ Aggiungi referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m        Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[22m\n\u001b[2m        Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('main')\nTimeout: 5000ms\n\u001b[32m- Expected substring  -  1\u001b[39m\n\u001b[31m+ Received string     + 65\u001b[39m\n\n\u001b[32m- Laura Bianchi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+   ← Torna all’origine\u001b[39m\n\u001b[31m+   Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+     Anagrafica\u001b[39m\n\u001b[31m+     Ordini\u001b[39m\n\u001b[31m+     Partite aperte\u001b[39m\n\u001b[31m+     Info commerciali\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     Dati aziendali\u001b[39m\n\u001b[31m+       P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Referenti e ordini WhatsApp+ Aggiungi referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+         Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[39m\n\u001b[31m+         Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('main') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('main')\u001b[22m\n\u001b[2m    13 × locator resolved to <main id=\"main\" tabindex=\"-1\" class=\"main_js workspace_content_js\">…</main>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  ← Torna all’origine\u001b[22m\n\u001b[2m  Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    Anagrafica\u001b[22m\n\u001b[2m    Ordini\u001b[22m\n\u001b[2m    Partite aperte\u001b[22m\n\u001b[2m    Info commerciali\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    Dati aziendali\u001b[22m\n\u001b[2m      P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Referenti e ordini WhatsApp+ Aggiungi referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m        Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[22m\n\u001b[2m        Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\"\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:126:38",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 38,
+                      "line": 126
+                    },
+                    "snippet": "  124 |   await page.getByRole('dialog').getByLabel('Abilita agli ordini WhatsApp').check();\n  125 |   await page.getByRole('button', { name: 'Salva referente' }).click();\n> 126 |   await expect(page.locator('main')).toContainText('Laura Bianchi');\n      |                                      ^\n  127 |   await expect(page.locator('main')).toContainText('in attesa sync');\n  128 |   await page.reload(); await expect(page.locator('main')).toContainText('Laura Bianchi');\n  129 |   await page.goto('/customers/CLI-061001?tab=open-items');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 38,
+                        "line": 126
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('main')\nTimeout: 5000ms\n\u001b[32m- Expected substring  -  1\u001b[39m\n\u001b[31m+ Received string     + 65\u001b[39m\n\n\u001b[32m- Laura Bianchi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+   ← Torna all’origine\u001b[39m\n\u001b[31m+   Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+     Anagrafica\u001b[39m\n\u001b[31m+     Ordini\u001b[39m\n\u001b[31m+     Partite aperte\u001b[39m\n\u001b[31m+     Info commerciali\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     Dati aziendali\u001b[39m\n\u001b[31m+       P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Referenti e ordini WhatsApp+ Aggiungi referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+         Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[39m\n\u001b[31m+         Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('main') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('main')\u001b[22m\n\u001b[2m    13 × locator resolved to <main id=\"main\" tabindex=\"-1\" class=\"main_js workspace_content_js\">…</main>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  ← Torna all’origine\u001b[22m\n\u001b[2m  Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    Anagrafica\u001b[22m\n\u001b[2m    Ordini\u001b[22m\n\u001b[2m    Partite aperte\u001b[22m\n\u001b[2m    Info commerciali\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    Dati aziendali\u001b[22m\n\u001b[2m      P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Referenti e ordini WhatsApp+ Aggiungi referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m        Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[22m\n\u001b[2m        Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\"\u001b[22m\n\n\n  124 |   await page.getByRole('dialog').getByLabel('Abilita agli ordini WhatsApp').check();\n  125 |   await page.getByRole('button', { name: 'Salva referente' }).click();\n> 126 |   await expect(page.locator('main')).toContainText('Laura Bianchi');\n      |                                      ^\n  127 |   await expect(page.locator('main')).toContainText('in attesa sync');\n  128 |   await page.reload(); await expect(page.locator('main')).toContainText('Laura Bianchi');\n  129 |   await page.goto('/customers/CLI-061001?tab=open-items');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:126:38"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:59:05.415Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-tablet-landscape\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-tablet-landscape\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-tablet-landscape\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 38,
+                    "line": 126
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-d6f98eacf6dc220722ec",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 23628,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:16:82",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 82,
+                      "line": 16
+                    },
+                    "snippet": "  14 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  15 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n> 16 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n     |                                                                                  ^\n  17 |   const id = new URL(page.url()).pathname.split('/')[2];\n  18 |   await page.getByRole('searchbox').fill('0107417');\n  19 |   await expect(page.locator('.product-card')).toHaveCount(1);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 82,
+                        "line": 16
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n\n  14 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  15 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n> 16 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n     |                                                                                  ^\n  17 |   const id = new URL(page.url()).pathname.split('/')[2];\n  18 |   await page.getByRole('searchbox').fill('0107417');\n  19 |   await expect(page.locator('.product-card')).toHaveCount(1);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:16:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:00:54.269Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-ordine-manuale-canon-a5c31-epilogo-e-invio-idempotente-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 82,
+                    "line": 16
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-bf53f2ca7827cc203c6c",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 40759,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:94:83",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 83,
+                      "line": 94
+                    },
+                    "snippet": "  92 |   await page.getByRole('button', { name: /Vai al riepilogo/ }).click();\n  93 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 94 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  95 |   await expect.poll(async () => (await snapshot(page)).state.data.orders.find(item => item.id === 'WA-26-00841').status).toBe('PENDING_SEND');\n  96 |   await page.goto('/fastorder'); await expect(page.locator('main')).not.toContainText('WA-26-00841');\n  97 |   await page.goto('/fastorder/WA-26-00843');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 83,
+                        "line": 94
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n\n  92 |   await page.getByRole('button', { name: /Vai al riepilogo/ }).click();\n  93 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 94 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  95 |   await expect.poll(async () => (await snapshot(page)).state.data.orders.find(item => item.id === 'WA-26-00841').status).toBe('PENDING_SEND');\n  96 |   await page.goto('/fastorder'); await expect(page.locator('main')).not.toContainText('WA-26-00841');\n  97 |   await page.goto('/fastorder/WA-26-00843');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:94:83"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:01:21.650Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-WA841-alternative-e--703b1--ed-esclusione-WA842-pronto-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 83,
+                    "line": 94
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-af4a1ed0ba3e0b821b49",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 62307,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:148:82",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                      "column": 82,
+                      "line": 148
+                    },
+                    "snippet": "  146 |   await page.goto('/insights/CLI-061001');\n  147 |   await page.getByRole('button', { name: 'Nuovo ordine', exact: true }).click();\n> 148 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n      |                                                                                  ^\n  149 |   let data = (await snapshot(page)).state.data;\n  150 |   expect(data.orders.at(-1).customerId).toBe('CLI-061001'); expect(data.orders.at(-1).lines).toHaveLength(0);\n  151 |   await page.goto('/insights/CLI-061001');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                        "column": 82,
+                        "line": 148
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n\n  146 |   await page.goto('/insights/CLI-061001');\n  147 |   await page.getByRole('button', { name: 'Nuovo ordine', exact: true }).click();\n> 148 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n      |                                                                                  ^\n  149 |   let data = (await snapshot(page)).state.data;\n  150 |   expect(data.orders.at(-1).customerId).toBe('CLI-061001'); expect(data.orders.at(-1).lines).toHaveLength(0);\n  151 |   await page.goto('/insights/CLI-061001');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:148:82"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:02:08.505Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui\\flows-referenti-partite-tr-02a57-ulate-e-insight-persistenti-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs",
+                    "column": 82,
+                    "line": 148
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-794bc86cb569558d8470",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "views.spec.mjs",
+      "file": "views.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 62349,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:52:35.674Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-d23107b39c1f916eaa38",
+          "file": "views.spec.mjs",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "dock, dialog, filtri, form cliente e visual prodotto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15285,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:38.051Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-2cb84911227558168833",
+          "file": "views.spec.mjs",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 67477,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:59.017Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-e83a75c64dfd17bb10ca",
+          "file": "views.spec.mjs",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "dock, dialog, filtri, form cliente e visual prodotto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20733,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:57:06.527Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-f220c72cb8f404132665",
+          "file": "views.spec.mjs",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 66572,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:59:27.338Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-a2407915bf0c45ca2bfc",
+          "file": "views.spec.mjs",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "dock, dialog, filtri, form cliente e visual prodotto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18548,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:00:34.446Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-f028bccec735a5d1e68b",
+          "file": "views.spec.mjs",
+          "line": 62,
+          "column": 1
+        },
+        {
+          "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 59835,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:03:13.704Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-c655dab7be2975ef9229",
+          "file": "views.spec.mjs",
+          "line": 35,
+          "column": 1
+        },
+        {
+          "title": "dock, dialog, filtri, form cliente e visual prodotto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17905,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:04:14.098Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "824d7414dc206ea9726c-2d9954c75299ae3bb01a",
+          "file": "views.spec.mjs",
+          "line": 62,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T08:50:37.750Z",
+    "duration": 834539.6329999999,
+    "expected": 14,
+    "skipped": 0,
+    "unexpected": 6,
+    "flaky": 0
+  }
+}

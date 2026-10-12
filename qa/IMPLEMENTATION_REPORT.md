@@ -1,3 +1,10 @@
+# Report corrente: versione Rails
+
+Il collaudo della migrazione è in [RAILS_IMPLEMENTATION_REPORT.md](RAILS_IMPLEMENTATION_REPORT.md).
+Il contenuto seguente riguarda esclusivamente la V1 React conservata su `main` e `v1-react`.
+
+---
+
 # Horeca Food Service — report di implementazione
 
 **Ultimo aggiornamento 11/10/2026 — COMPLETE_LOCAL.** Header e footer aperti all'ingresso, chiusi dopo un secondo; apertura manuale mantenuta fino allo scroll centrale o delle liste. Icona account sempre disponibile, liste compatte con spazio protetto per due schede leggibili e fallback allo scorrimento centrale. PASS: validate:data 20/20, unit 49/49, typecheck, build, check:bundle, E2E 90/90 (0 skipped/flaky), 437 verifiche del layout su 19 viewport, preview e ispezione visuale sui quattro formati principali. Nuova dist servita su http://127.0.0.1:4173/. Report corrente: [ADAPTIVE_DOCKS_REPORT.md](ADAPTIVE_DOCKS_REPORT.md).

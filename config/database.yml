@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV.fetch("DB_HOST", "127.0.0.1") %>
+  port: <%= ENV.fetch("DB_PORT", "5432") %>
+  username: <%= ENV.fetch("POSTGRES_USER", "hfs") %>
+  password: <%= ENV.fetch("POSTGRES_PASSWORD", "hfs-local-only") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS", "5") %>
+
+development:
+  <<: *default
+  database: <%= ENV.fetch("HFS_DATABASE", "hfs_agents_development") %>
+
+test:
+  <<: *default
+  database: <%= ENV.fetch("HFS_TEST_DATABASE", "hfs_agents_test") %>
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("POSTGRES_DB", "hfs_agents_production") %>

@@ -1,0 +1,19 @@
+<% candidates = resolver_candidates(wa_request); usual = record('products', wa_request['usualProductId']); chosen = record('products', params[:chosen]) %>
+<section class="pane resolver">
+  <div class="card pane resolver-options"><div class="row between"><h2><%= ui('Scegli il prodotto') %></h2><%= link_to "← #{ui('Torna alla bozza')}", "/fastorder/#{order['id']}" %></div>
+    <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= hidden_field_tag :chosen, params[:chosen] %><%= search_field('Cerca altro prodotto per nome o codice') %><% end %>
+    <%= tag.div(**list_attributes('Prodotti da associare')) do %><p><%= ui('Richiesta originale:') %> <b><%= wa_request['rawText'] %></b></p><% if usual %><p class="notice warning"><%= ui('Abituale esaurito:') %> <%= usual['name'] %> · <%= usual['code'] %></p><% end %>
+      <% candidates.each do |product| %><article class="card"><h3><%= product['name'] %></h3><small><%= ui('Cod.') %> <%= product['code'] %> · 1 CT = <%= quantity_text(product['caseQuantityBase']) %> <%= product['baseUnit'] %></small><p><%= render 'components/stock_badge', product: product, warehouse: order['warehouseId'] %></p><% alternative = wa_request['alternatives'].find { |item| item['productId'] == product['id'] } %><% if alternative %><small><%= ui('Confidenza:') %> <%= alternative['confidencePercent'] %>%</small><% end %><div class="actions">
+        <%= form_tag request.path, method: :get do %><%= hidden_field_tag :q, params[:q] %><%= hidden_field_tag :chosen, product['id'] %><button <%= 'disabled' unless stock_quantity(product, order['warehouseId']).positive? %>><%= ui(chosen&.fetch('id') == product['id'] ? 'Selezionato' : 'Scegli') %></button><% end %><%= link_to ui('Scheda'), contextual_path("/catalog/#{product['id']}", warehouse: order['warehouseId'], returnTo: request.fullpath), class: 'button' %>
+      </div></article><% end %><%= render 'components/empty', text: params[:q].present? ? 'Nessun prodotto trovato.' : 'Cerca il prodotto da associare alla richiesta.' if candidates.empty? %>
+    <% end %>
+    <button type="button" class="quiet danger dialog_open_js" data-dialog="exclude-request"><%= ui('Escludi questa richiesta') %></button>
+  </div>
+  <% if chosen %><section class="card resolver-confirm"><h2><%= ui('Conferma prodotto, quantità e UM') %></h2><p><%= chosen['name'] %></p>
+    <%= command_form('RESOLVE_REQUEST', { orderId: order['id'], requestId: wa_request['id'], productId: chosen['id'] }, return_to: "/fastorder/#{order['id']}") do %>
+      <%= render 'components/quantity', product: chosen, quantity: wa_request['quantityRequested'] || 0, unit: chosen['units'].any? { |item| item['code'] == wa_request['unitRequested'] } ? wa_request['unitRequested'] : '' %>
+      <% if wa_request['unitRequested'].blank? %><p class="notice warning"><%= ui('Il messaggio non specifica l’unità. Selezionala esplicitamente.') %></p><% end %><p class="error form_error_js" role="alert" hidden></p><button class="primary"><%= ui('Conferma associazione') %></button>
+    <% end %>
+  </section><% end %>
+  <%= render layout: 'components/dialog', locals: { id: 'exclude-request', title: ui('Escludi richiesta') } do %><p><%= ui('Il testo originale sarà conservato.') %></p><%= command_form('EXCLUDE_REQUEST', { orderId: order['id'], requestId: wa_request['id'] }, return_to: "/fastorder/#{order['id']}") do %><label class="field"><span><%= ui('Motivo dell’esclusione') %></span><%= text_area_tag 'payload[reason]', nil, required: true, class: 'required_reason_js' %></label><button class="primary reason_submit_js" disabled><%= ui('Conferma esclusione') %></button><% end %><% end %>
+</section>

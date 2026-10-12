@@ -1,0 +1,1123 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.rails-pwa.config.mjs"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-pwa.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "android-chromium",
+        "name": "android-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "ipad-webkit",
+        "name": "ipad-webkit",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "android-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "android-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "ipad-webkit",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "ipad-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/rails/pwa-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "qa/rails/pwa-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "offline.spec.mjs",
+      "file": "offline.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26329,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:52:26.845Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-ebc0d7e435c48ab493ae",
+          "file": "offline.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27571,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:52:53.766Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-b321c2a61b72c1ccf002",
+          "file": "offline.spec.mjs",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12664,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:21.365Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-1ea8a90422920db85ed5",
+          "file": "offline.spec.mjs",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14873,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:34.058Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-18ae38297501c663c4db",
+          "file": "offline.spec.mjs",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10987,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:48.957Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-b71c5925a00f82845460",
+          "file": "offline.spec.mjs",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "uscita completata elimina dati offline e non rivela il precedente account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12567,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:53:59.973Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-54967bbf3c4217a1bab5",
+          "file": "offline.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "sessione di un altro account non riceve la coda del precedente utente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16246,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:54:12.591Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-bdd202012963a8e6bf18",
+          "file": "offline.spec.mjs",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21002,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:54:28.850Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-e4da743885fa3a5a0df4",
+          "file": "offline.spec.mjs",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10697,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:54:49.873Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-7c7dcc88af8aa016b826",
+          "file": "offline.spec.mjs",
+          "line": 225,
+          "column": 1
+        },
+        {
+          "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19134,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:00.602Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c3bdf968b094d83402f1",
+          "file": "offline.spec.mjs",
+          "line": 253,
+          "column": 1
+        },
+        {
+          "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13058,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:19.761Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-d232b628b25e37c4dba9",
+          "file": "offline.spec.mjs",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17917,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:32.848Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-6b4c4cfaf9266c8a69be",
+          "file": "offline.spec.mjs",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13037,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:55:50.801Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-3df4b68a64bf73506067",
+          "file": "offline.spec.mjs",
+          "line": 317,
+          "column": 1
+        },
+        {
+          "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 39945,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:56:05.205Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-df633fada693a1c5e778",
+          "file": "offline.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42427,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:56:45.358Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-4264b62fe28fb8fbd2c9",
+          "file": "offline.spec.mjs",
+          "line": 86,
+          "column": 1
+        },
+        {
+          "title": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27649,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:57:27.833Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-e0a4db146561b71642eb",
+          "file": "offline.spec.mjs",
+          "line": 111,
+          "column": 1
+        },
+        {
+          "title": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 30182,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:57:55.517Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-e4ebfcc733f52830ea8b",
+          "file": "offline.spec.mjs",
+          "line": 130,
+          "column": 1
+        },
+        {
+          "title": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22124,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:58:25.735Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-ffef3e7e421c585a1b57",
+          "file": "offline.spec.mjs",
+          "line": 160,
+          "column": 1
+        },
+        {
+          "title": "uscita completata elimina dati offline e non rivela il precedente account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 30381,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:58:47.897Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-b5d8481b0d39cd1b5ce5",
+          "file": "offline.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "sessione di un altro account non riceve la coda del precedente utente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28599,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:59:18.312Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-499bcf118a37ab872213",
+          "file": "offline.spec.mjs",
+          "line": 191,
+          "column": 1
+        },
+        {
+          "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "timedOut",
+                  "duration": 62478,
+                  "error": {
+                    "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m",
+                    "stack": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                  },
+                  "errors": [
+                    {
+                      "message": "\u001b[31mTest timeout of 60000ms exceeded.\u001b[39m"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                        "column": 22,
+                        "line": 217
+                      },
+                      "message": "Error: locator.scrollIntoViewIfNeeded: Test timeout of 60000ms exceeded.\nCall log:\n\u001b[2m  - attempting scroll into view action\u001b[22m\n\u001b[2m    - waiting for element to be stable\u001b[22m\n\n\n  215 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${name} ${width}`).toBeTruthy();\n  216 |       for (const button of await page.locator('main button[type=submit],main a.button').all()) {\n> 217 |         await button.scrollIntoViewIfNeeded();\n      |                      ^\n  218 |         await expect(button).toBeVisible();\n  219 |       }\n  220 |       await page.screenshot({ path: `qa/rails/${info.project.name}-offline-${name}-${width}.png`, fullPage: true });\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:217:22"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T08:59:46.945Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-viste-offline-esse-3c019-ati-e-comandi-raggiungibili-ipad-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-viste-offline-esse-3c019-ati-e-comandi-raggiungibili-ipad-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-viste-offline-esse-3c019-ati-e-comandi-raggiungibili-ipad-webkit\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c4a3ae9e3e024f3354fa",
+          "file": "offline.spec.mjs",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 28004,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:00:52.264Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-bcf83922f0894df8d0d8",
+          "file": "offline.spec.mjs",
+          "line": 225,
+          "column": 1
+        },
+        {
+          "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18633,
+                  "error": {
+                    "message": "Fetch API cannot load http: /127.0.0.1:3002/snapshot due to access control checks.",
+                    "stack": "Fetch API cannot load http: /127.0.0.1:3002/snapshot due to access control checks."
+                  },
+                  "errors": [
+                    {
+                      "message": "Fetch API cannot load http: /127.0.0.1:3002/snapshot due to access control checks."
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                        "column": 29,
+                        "line": 262
+                      },
+                      "message": "Error: page.evaluate: TypeError: Load failed\n\n  260 |   await page.getByRole('button', { name: 'Salva bozza', exact: true }).click();\n  261 |   await page.waitForLoadState('load');\n> 262 |   const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));\n      |                             ^\n  263 |   expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Salvata dal form Rails senza IndexedDB');\n  264 |   expect(await page.evaluate(() => !!window.HFS?.storageFailure)).toBe(true);\n  265 |   await page.goto('/orders/BOZ-26-00021/lines/BOZ-26-00021-L01/edit');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:262:29"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:01:20.482Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-archivio-negato-mo-7957b-n-falso-salvataggio-offline-ipad-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-archivio-negato-mo-7957b-n-falso-salvataggio-offline-ipad-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-archivio-negato-mo-7957b-n-falso-salvataggio-offline-ipad-webkit\\trace.zip"
+                    }
+                  ]
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-2749b314416d4246a47d",
+          "file": "offline.spec.mjs",
+          "line": 253,
+          "column": 1
+        },
+        {
+          "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 29482,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:01:40.921Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c409aa6b37b6ea74df57",
+          "file": "offline.spec.mjs",
+          "line": 274,
+          "column": 1
+        },
+        {
+          "title": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 40480,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:02:10.604Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-9fdf24bf2bbfe890c60b",
+          "file": "offline.spec.mjs",
+          "line": 297,
+          "column": 1
+        },
+        {
+          "title": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24823,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:02:51.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-3a6b0f31db2cf44cc10c",
+          "file": "offline.spec.mjs",
+          "line": 317,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T08:52:25.780Z",
+    "duration": 650405.4990000001,
+    "expected": 24,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

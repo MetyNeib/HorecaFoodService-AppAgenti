@@ -1,0 +1,11 @@
+<% rows = ledger_rows(customer, filter: true); totals = ledger_totals(customer) %>
+<div class="pane ledger-pane">
+  <div class="grid three ledger-metrics"><% ['Saldo aperto', 'Di cui scaduto', 'Incassato'].each_with_index do |label, index| %><div class="card"><small><%= ui(label) %></small><strong class="metric-number"><%= money(totals[index]) %></strong></div><% end %></div>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filters' do %><%= hidden_field_tag :tab, 'open-items' %><%= hidden_field_tag :returnTo, params[:returnTo] %><%= search_field('Cerca numero documento') %><label class="check"><%= check_box_tag :only, '1', params[:only] == '1', class: 'filter_input_js' %><%= ui('Solo scadute') %></label><%= link_to ui('Invia / scarica PDF'), "/customers/#{customer['id']}/share", class: 'button primary' %><% end %>
+  <section class="card pane ledger-table"><%= tag.div(**list_attributes('Partite del cliente')) do %><%= render 'customers/ledger_table', rows: rows, open: true %><% end %><p><%= ui('%{count} partite · Importi per rata; i totali documento non vengono duplicati.', count: rows.length) %></p></section>
+  <% rows.map { |row| row['invoice'] }.uniq { |invoice| invoice['id'] }.each do |invoice| %>
+    <%= render layout: 'components/dialog', locals: { id: "invoice-#{invoice['id']}", title: ui('Documento %{number}', number: invoice['number']) } do %>
+      <p class="notice warning"><%= ui('Anteprima sintetica · Non è un documento fiscale') %></p><p><%= customer['businessName'] %> · <%= ui('Data') %> <%= display_date(invoice['issueDate']) %></p><p><%= ui('Totale documento:') %> <b><%= money(invoice['faceValueCents']) %></b></p><%= render 'customers/ledger_table', rows: ledger_rows(customer).select { |row| row['invoiceId'] == invoice['id'] } %>
+    <% end %>
+  <% end %>
+</div>

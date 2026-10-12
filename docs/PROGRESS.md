@@ -1,4 +1,47 @@
-﻿# Checkpoint di implementazione
+# Migrazione Rails — 12/10/2026 — COMPLETE_LOCAL
+
+La richiesta corrente sostituisce lo stack V1 con Rails + Ralix, PostgreSQL,
+Devise e PWA offline essenziale. Le certificazioni COMPLETE storiche riguardano
+esclusivamente la V1 React conservata nel commit `81e72bc`.
+
+- PASS: V1 committata e salvata nel repository privato
+  https://github.com/MetyNeib/HorecaFoodService-AppAgenti ; branch `main`, `v1-react`,
+  `feature/hfs-rails-migration` e tag `v1.0.0-react` verificati sul remoto.
+- PASS: Docker Desktop installato e avviato, immagine Ruby 4.0.5/Rails 8.1.4,
+  PostgreSQL 16, Redis 7, web su http://127.0.0.1:3002 e worker Sidekiq.
+- PASS: 94 RSpec dominio/modelli/request; calcoli, CSRF, account, scoping,
+  transazioni, idempotenza e conflitti. Brakeman: 0 warning.
+- PASS: migrazione eseguita realmente da database vuoto isolato; schema generato.
+- PASS: 49 test V1 conservati come riferimento, 12 test parità Ruby/JS offline
+  (20 passaggi e 10 rifiuti), 20 controlli seed, 7 test del checker e nessuna
+  violazione rilevata in 72 file frontend; RuboCop 50 file senza segnalazioni.
+- PASS: nuova installazione npm dal lockfile, npm audit 0 vulnerabilità, nuova
+  build Docker e verifica HTTPS locale con CA esplicita senza modificare trust OS.
+- PASS: 24 casi UI su quattro viewport, inclusi manuale, WA, clienti/condivisioni,
+  insight, cambio cliente, rimozione righe ed eliminazione bozze; 88 screenshot
+  delle 22 viste, nessun overflow e cinque stylesheet equivalenti alla V1.
+- PASS: regressione WebKit della versione Playwright 1.63 isolata e corretta con
+  Playwright 1.64; riproduzione indipendente 4/4 PASS, rapporto in `qa/rails`.
+- PASS: 28 casi PWA Chromium/WebKit, inclusi ripartenza offline, recupero archivio
+  corrotto, memoria negata, due tab, aggiornamento shell e logout concorrente.
+- PASS: 22 viste ERB e Ralix, vecchio runtime React/Vite rimosso, build Docker e
+  asset production compilati in container isolato: 39 file pubblici verificati.
+- PASS: container web e worker ricreati mantenendo PostgreSQL; login finale,
+  lettura degli otto clienti e 120 prodotti e nessun errore browser.
+- PASS: CI GitHub del commit applicativo `fbbaeec`, run `38229579621`: cinque
+  job riusciti, 24/24 UI e 28/28 PWA in un'unica esecuzione Ubuntu. Risultati e
+  tentativi locali storici sono documentati nel rapporto Rails senza doppio conteggio.
+- NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.
+
+Scelte: [RAILS_MIGRATION.md](RAILS_MIGRATION.md). Avvio: [README](../README.md).
+Collaudo: [RAILS_IMPLEMENTATION_REPORT.md](../qa/RAILS_IMPLEMENTATION_REPORT.md).
+Dispositivi locali: [LOCAL_PWA.md](LOCAL_PWA.md). Dopo il refactor è previsto un
+import separato dei dati reali di un cliente; il seed attuale resta immutato.
+
+
+---
+
+# Checkpoint di implementazione
 
 ## Header/footer automatici e liste compatte 11/10/2026 — COMPLETE_LOCAL
 

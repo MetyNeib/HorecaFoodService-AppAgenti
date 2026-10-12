@@ -1,0 +1,26 @@
+<% customers = portfolio_customers; changing = record('orders', params[:change]) %>
+<div class="view customer-list-view">
+  <%= render 'components/page_title', title: ui(picker ? 'Seleziona il cliente' : 'Clienti'), subtitle: ui(picker ? 'Listino e condizioni vengono applicati automaticamente.' : 'Anagrafiche, ordini e partite aperte') %>
+  <% if picker %><%= render 'components/stepper', step: 1 %><% end %>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= hidden_field_tag :change, params[:change] if changing %><%= search_field('Cerca per nome, codice o P. IVA') %><% end %>
+  <p class="result-count"><%= ui('%{count} clienti · Ordine alfabetico', count: customers.length) %></p>
+  <%= tag.div(**list_attributes('Lista clienti')) do %>
+    <% customers.each do |customer| %>
+      <article class="card list-row"><div><h3><%= customer['businessName'] %></h3><p><%= customer['code'] %> · <%= customer['city'] %> (<%= customer['province'] %>)</p><small><%= ui('P. IVA DEMO') %> <%= customer['taxId'] %></small></div>
+        <% if picker %>
+          <% id = changing&.fetch('id') || "BOZ-#{SecureRandom.uuid}"; confirm = changing && changing['lines'].any? && changing['customerId'] != customer['id'] %>
+          <% if confirm %><button type="button" class="primary dialog_open_js" data-dialog="change-<%= customer['id'] %>"><%= ui('Seleziona') %> →</button><% else %><%= render 'customers/select_form', customer: customer, changing: changing, id: id, label: 'Seleziona' %><% end %>
+        <% else %><%= link_to "#{ui('Apri scheda')} →", "/customers/#{customer['id']}", class: 'button' %><% end %>
+      </article>
+    <% end %>
+    <%= render 'components/empty' if customers.empty? %>
+  <% end %>
+  <% if picker && changing && changing['lines'].any? %>
+    <% customers.reject { |customer| customer['id'] == changing['customerId'] }.each do |customer| %>
+      <%= render layout: 'components/dialog', locals: { id: "change-#{customer['id']}", title: ui('Cambiare cliente?') } do %>
+        <p><%= ui('Il carrello verrà svuotato e destinazione, pagamento e condizioni saranno reimpostati per %{customer}.', customer: customer['businessName']) %></p>
+        <%= render 'customers/select_form', customer: customer, changing: changing, id: changing['id'], label: 'Svuota e cambia cliente' %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

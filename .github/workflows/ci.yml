@@ -1,0 +1,156 @@
+name: Rails checks
+on:
+  workflow_dispatch:
+  pull_request:
+  push:
+    branches: [main, feature/hfs-rails-migration, feature/amelia3-ftp-import]
+permissions:
+  contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:data
+      - run: node --test scripts/check_project_rules.test.cjs
+      - run: node scripts/check_project_rules.cjs
+      - run: npm test
+      - run: npm run test:domain-parity
+  ruby:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: hfs
+          POSTGRES_PASSWORD: hfs-local-only
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd="pg_isready -U hfs" --health-interval=5s --health-timeout=5s --health-retries=20
+      redis:
+        image: redis:7-alpine
+        ports: ['6379:6379']
+    env:
+      RAILS_ENV: test
+      DB_HOST: 127.0.0.1
+      REDIS_URL: redis://127.0.0.1:6379/0
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Create empty database and migrate
+        run: |
+          bundle exec rails db:create
+          bundle exec rails runner 'ActiveRecord::Base.connection.execute("CREATE TABLE IF NOT EXISTS schema_migrations (version character varying NOT NULL PRIMARY KEY)")'
+          bundle exec rails db:migrate
+          bundle exec rails db:schema:dump SCHEMA=tmp/schema_from_migrations.rb
+          diff -u db/schema.rb tmp/schema_from_migrations.rb
+      - run: bundle exec rspec
+  style:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec rubocop
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - run: bundle exec brakeman --no-pager --quiet
+  browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: hfs
+          POSTGRES_PASSWORD: hfs-local-only
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd="pg_isready -U hfs" --health-interval=5s --health-timeout=5s --health-retries=20
+      redis:
+        image: redis:7-alpine
+        ports: ['6379:6379']
+    env:
+      RAILS_ENV: development
+      DB_HOST: 127.0.0.1
+      POSTGRES_USER: hfs
+      POSTGRES_PASSWORD: hfs-local-only
+      REDIS_URL: redis://127.0.0.1:6379/0
+      HFS_DATABASE: hfs_agents_browser_ci
+      HFS_ALLOWED_HOSTS: localhost,127.0.0.1
+      HFS_RAILS_URL: http://127.0.0.1:3002
+      HFS_TEST_URL: http://127.0.0.1:3002
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.playwright-browsers
+      PORT: '3002'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci
+      - name: Install Chromium, WebKit and Linux browser dependencies
+        run: npx playwright install --with-deps chromium webkit
+      - name: Prepare local JavaScript assets from locked dependencies
+        run: npm run vendor:javascript
+      - name: Prepare isolated browser database and synthetic accounts
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rails runner scripts/prepare-browser-tests.rb
+      - name: Start local Rails server and wait for readiness
+        id: rails_server
+        run: |
+          mkdir -p tmp/pids log qa/rails qa/rails-ui
+          bundle exec puma -C config/puma.rb -b tcp://127.0.0.1:3002 >log/browser-ci.log 2>&1 &
+          echo $! >tmp/pids/browser-ci.pid
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:3002/up >/dev/null; then
+              exit 0
+            fi
+            sleep 1
+          done
+          cat log/browser-ci.log
+          exit 1
+      - name: Verify Rails application flows at all four viewport sizes
+        run: npm run test:ui
+      - name: Verify real offline operation in Chromium and WebKit
+        if: ${{ !cancelled() && steps.rails_server.outcome == 'success' }}
+        run: npm run test:pwa
+      - name: Preserve failure screenshots, traces, reports and Rails logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failure-evidence
+          retention-days: 14
+          if-no-files-found: warn
+          path: |
+            test-results/
+            qa/rails/
+            qa/rails-ui/
+            log/browser-ci.log
+            log/development.log
+      - name: Stop local Rails server
+        if: ${{ always() }}
+        run: |
+          if [ -f tmp/pids/browser-ci.pid ]; then
+            kill "$(cat tmp/pids/browser-ci.pid)" 2>/dev/null || true
+          fi

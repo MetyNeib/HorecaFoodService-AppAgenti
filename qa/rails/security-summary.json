@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "scanner": "8.1.0",
+  "rails": "8.1.4",
+  "warnings": 0,
+  "errors": [],
+  "scope": "STATIC_ANALYSIS_NOT_PENETRATION_TEST"
+}

@@ -1,0 +1,476 @@
+{
+  "generatedAt": "2026-10-12T09:15:29.503Z",
+  "framework": "Rails ERB + Ralix",
+  "playwrightVersion": "1.64.0",
+  "methodology": "Cases are deduplicated by file, test title and viewport. The latest executed result determines the final status; earlier executions from the retained JSON reports remain listed with their original report.",
+  "testAdjustments": [
+    "Expectation timeout increased from 5 to 15 seconds after traces showed successful command and SSR responses exceeding the original combined wait under concurrent Docker/browser test load. Assertions were unchanged.",
+    "The added draft-actions test waits for the customer-picker heading before typing, so it cannot fill the previous product-search field during asynchronous navigation.",
+    "The persisted quantity assertion compares the numeric value 2, accepting equivalent HTML representations 2 and 2.0 without changing the expected quantity.",
+    "Quantity persistence is compared numerically, accepting equivalent HTML number-input values such as 2 and 2.0 without changing the required quantity."
+  ],
+  "reports": [
+    "results-initial.json",
+    "results-recheck.json",
+    "results-draft-actions.json"
+  ],
+  "totals": {
+    "distinctCases": 24,
+    "passed": 24,
+    "failed": 0,
+    "notRun": 0
+  },
+  "screenshots": {
+    "directory": "screenshots",
+    "count": 88
+  },
+  "layouts": [
+    {
+      "project": "phone",
+      "views": 22,
+      "passed": true
+    },
+    {
+      "project": "tablet-portrait",
+      "views": 22,
+      "passed": true
+    },
+    {
+      "project": "tablet-landscape",
+      "views": 22,
+      "passed": true
+    },
+    {
+      "project": "desktop",
+      "views": 22,
+      "passed": true
+    }
+  ],
+  "originalCssRulesIdentical": true,
+  "cases": [
+    {
+      "file": "draft_actions.spec.mjs",
+      "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-recheck.json",
+          "status": "failed",
+          "durationMs": 24642,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await expect(page.getByRole('heading', { name: 'Seleziona il cliente', exact: true })).toBeVisible();\n> 12 |   await page.getByRole('searchbox').fill('061002');\n     |                                                    ^\n  13 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  14 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  15 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65"
+          ]
+        },
+        {
+          "report": "results-draft-actions.json",
+          "status": "passed",
+          "durationMs": 25962,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-draft-actions.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 23628,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n\n  14 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  15 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n> 16 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n     |                                                                                  ^\n  17 |   const id = new URL(page.url()).pathname.split('/')[2];\n  18 |   await page.getByRole('searchbox').fill('0107417');\n  19 |   await expect(page.locator('.product-card')).toHaveCount(1);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:16:82"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 42554,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 62307,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'Cerca e aggiungi prodotti' }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'Cerca e aggiungi prodotti' })\u001b[22m\n\n\n  146 |   await page.goto('/insights/CLI-061001');\n  147 |   await page.getByRole('button', { name: 'Nuovo ordine', exact: true }).click();\n> 148 |   await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti' })).toBeVisible();\n      |                                                                                  ^\n  149 |   let data = (await snapshot(page)).state.data;\n  150 |   expect(data.orders.at(-1).customerId).toBe('CLI-061001'); expect(data.orders.at(-1).lines).toHaveLength(0);\n  151 |   await page.goto('/insights/CLI-061001');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:148:82"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 33741,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 40759,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n\n  92 |   await page.getByRole('button', { name: /Vai al riepilogo/ }).click();\n  93 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 94 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  95 |   await expect.poll(async () => (await snapshot(page)).state.data.orders.find(item => item.id === 'WA-26-00841').status).toBe('PENDING_SEND');\n  96 |   await page.goto('/fastorder'); await expect(page.locator('main')).not.toContainText('WA-26-00841');\n  97 |   await page.goto('/fastorder/WA-26-00843');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:94:83"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 45786,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 59835,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "dock, dialog, filtri, form cliente e visual prodotto",
+      "project": "desktop",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 17905,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "draft_actions.spec.mjs",
+      "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-draft-actions.json",
+          "status": "passed",
+          "durationMs": 22476,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-draft-actions.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 46263,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 36545,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 33703,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 62349,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "dock, dialog, filtri, form cliente e visual prodotto",
+      "project": "phone",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 15285,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "draft_actions.spec.mjs",
+      "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-recheck.json",
+          "status": "failed",
+          "durationMs": 25622,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await page.getByRole('searchbox').fill('061002');\n> 12 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n     |                                                                 ^\n  13 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  14 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');\n  15 |   await page.keyboard.press('Escape');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65"
+          ]
+        },
+        {
+          "report": "results-draft-actions.json",
+          "status": "passed",
+          "durationMs": 24555,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-draft-actions.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 57677,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeVisible\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator: getByRole('heading', { name: 'I miei ordini', exact: true })\nExpected: visible\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" getByRole('heading', { name: 'I miei ordini', exact: true }) with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('heading', { name: 'I miei ordini', exact: true })\u001b[22m\n\n\n  51 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  52 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 53 |   await expect(page.getByRole('heading', { name: 'I miei ordini', exact: true })).toBeVisible();\n     |                                                                                   ^\n  54 |   let data = (await snapshot(page)).state.data;\n  55 |   let order = data.orders.find(item => item.id === id);\n  56 |   expect(order.status).toBe('PENDING_SEND');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:53:83"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 53708,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 19285,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: locator('main')\nTimeout: 5000ms\n\u001b[32m- Expected substring  -  1\u001b[39m\n\u001b[31m+ Received string     + 65\u001b[39m\n\n\u001b[32m- Laura Bianchi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+   ← Torna all’origine\u001b[39m\n\u001b[31m+   Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+     Anagrafica\u001b[39m\n\u001b[31m+     Ordini\u001b[39m\n\u001b[31m+     Partite aperte\u001b[39m\n\u001b[31m+     Info commerciali\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     Dati aziendali\u001b[39m\n\u001b[31m+       P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Referenti e ordini WhatsApp+ Aggiungi referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+         Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[39m\n\u001b[31m+         Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+   Modifica referente×\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+     NomeCognomeRuoloTelefono demo\u001b[39m\n\u001b[31m+     Abilita agli ordini WhatsApp\u001b[39m\n\u001b[31m+     Modifica simulata, applicata dopo sincronizzazione.\u001b[39m\n\u001b[31m+ \u001b[43m    \u001b[49m\u001b[39m\n\u001b[31m+     AnnullaSalva referente\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+   Chiudi\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+ \u001b[43m  \u001b[49m\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\u001b[31m+\u001b[39m\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" locator('main') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('main')\u001b[22m\n\u001b[2m    13 × locator resolved to <main id=\"main\" tabindex=\"-1\" class=\"main_js workspace_content_js\">…</main>\u001b[22m\n\u001b[2m       - unexpected value \"\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  ← Torna all’origine\u001b[22m\n\u001b[2m  Osteria del Faro SRLCod. 061001 · Pesaro (PU)\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    Anagrafica\u001b[22m\n\u001b[2m    Ordini\u001b[22m\n\u001b[2m    Partite aperte\u001b[22m\n\u001b[2m    Info commerciali\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    Dati aziendali\u001b[22m\n\u001b[2m      P. IVA DEMO99000000011IntestatarioOsteria del Faro SRLIndirizzoVia Esempio 7, Pesaro (indirizzo dimostrativo)Telefono+39 3XX XXX 0101Emailcliente01@example.invalidTerritorioMarche · PU\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Referenti e ordini WhatsApp+ Aggiungi referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m        Marco RossiResponsabile acquisti · +39 3XX XXX 0101WhatsApp abilitatoModifica referente\u001b[22m\n\u001b[2m        Andrea ContiAmministrazione · +39 3XX XXX 0102WhatsApp non abilitatoModifica referente\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m  Modifica referente×\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m    NomeCognomeRuoloTelefono demo\u001b[22m\n\u001b[2m    Abilita agli ordini WhatsApp\u001b[22m\n\u001b[2m    Modifica simulata, applicata dopo sincronizzazione.\u001b[22m\n\u001b[2m    \u001b[22m\n\u001b[2m    AnnullaSalva referente\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  Chiudi\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m  \u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\u001b[22m\n\u001b[2m\"\u001b[22m\n\n\n  124 |   await page.getByRole('dialog').getByLabel('Abilita agli ordini WhatsApp').check();\n  125 |   await page.getByRole('button', { name: 'Salva referente' }).click();\n> 126 |   await expect(page.locator('main')).toContainText('Laura Bianchi');\n      |                                      ^\n  127 |   await expect(page.locator('main')).toContainText('in attesa sync');\n  128 |   await page.reload(); await expect(page.locator('main')).toContainText('Laura Bianchi');\n  129 |   await page.goto('/customers/CLI-061001?tab=open-items');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:126:38"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 32958,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "failed",
+          "durationMs": 28891,
+          "errors": [
+            "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoContainText\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator: getByTestId('line-0207430')\nExpected substring: \u001b[32m\"24 PZ\"\u001b[39m\nTimeout: 5000ms\nError: element(s) not found\n\nCall log:\n\u001b[2m  - Expect \"toContainText\" getByTestId('line-0207430') with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for getByTestId('line-0207430')\u001b[22m\n\n\n  77 |   await page.locator('article').filter({ hasText: '0207430' }).getByRole('button', { name: 'Scegli', exact: true }).click();\n  78 |   await page.getByRole('button', { name: 'Conferma associazione' }).click();\n> 79 |   await expect(page.getByTestId('line-0207430')).toContainText('24 PZ');\n     |                                                  ^\n  80 |   await page.getByRole('button', { name: 'Salva verifica' }).click();\n  81 |   await page.locator('article').filter({ hasText: 'WA-26-00841' }).getByRole('link', { name: /Riprendi/ }).click();\n  82 |   await page.getByRole('link', { name: /Cerca prodotto/ }).click();\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\flows.spec.mjs:79:50"
+          ]
+        },
+        {
+          "report": "results-recheck.json",
+          "status": "passed",
+          "durationMs": 45830,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-recheck.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 66572,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "dock, dialog, filtri, form cliente e visual prodotto",
+      "project": "tablet-landscape",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 18548,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "draft_actions.spec.mjs",
+      "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-draft-actions.json",
+          "status": "passed",
+          "durationMs": 26615,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-draft-actions.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 43405,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 35580,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "flows.spec.mjs",
+      "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 44599,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "22 viste Rails: contenuti completi, layout e screenshot nei quattro formati",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 67477,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    },
+    {
+      "file": "views.spec.mjs",
+      "title": "dock, dialog, filtri, form cliente e visual prodotto",
+      "project": "tablet-portrait",
+      "executions": [
+        {
+          "report": "results-initial.json",
+          "status": "passed",
+          "durationMs": 20733,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "latestReport": "results-initial.json"
+    }
+  ]
+}

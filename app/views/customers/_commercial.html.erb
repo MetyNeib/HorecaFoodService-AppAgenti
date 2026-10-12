@@ -1,0 +1,14 @@
+<% conditions = customer_conditions(customer) %>
+<div class="pane commercial-pane">
+  <div class="grid two"><section class="card"><h2><%= ui('Pagamento predefinito') %></h2><p><%= record('paymentMethods', customer['defaultPaymentId'])['label'] %></p></section><section class="card"><h2><%= ui('Listino predefinito') %></h2><p><%= record('priceLists', customer['defaultPriceListId'])['name'] %></p></section></div>
+  <section class="card pane conditions-table"><h2><%= ui('Condizioni dedicate per prodotto') %></h2>
+    <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= hidden_field_tag :tab, 'commercial' %><%= hidden_field_tag :returnTo, params[:returnTo] %><%= search_field %><% end %>
+    <%= tag.div(**list_attributes('Condizioni dedicate')) do %>
+      <table><thead><tr><th><%= ui('Prodotto') %></th><th><%= ui('Condizione') %></th><th><%= ui('Validità') %></th></tr></thead><tbody>
+        <% conditions.each do |condition| %><% product = record('products', condition['productId']); status = condition_status(condition) %>
+          <tr><td data-label="<%= ui('Prodotto') %>"><div><b><%= product['name'] %></b><small><%= ui('Cod.') %> <%= product['code'] %></small></div></td><td data-label="<%= ui('Condizione') %>"><%= condition_description(condition) %></td><td data-label="<%= ui('Validità') %>"><div><%= display_date(condition['validFrom']) %> → <%= display_date(condition['validTo']) %><br><span class="badge <%= status == 'Attiva' ? 'success' : 'warning' %>"><%= ui(status) %></span></div></td></tr>
+        <% end %>
+      </tbody></table><%= render 'components/empty' if conditions.empty? %>
+    <% end %>
+  </section>
+</div>

@@ -1,0 +1,17 @@
+it:
+  devise:
+    failure:
+      unauthenticated: "Accedi per continuare."
+      invalid: "Email o password non valide."
+      not_found_in_database: "Email o password non valide."
+      timeout: "La sessione è scaduta. Accedi nuovamente."
+      inactive: "Account non attivo."
+      locked: "Account temporaneamente bloccato."
+    sessions:
+      signed_in: "Accesso effettuato."
+      signed_out: "Disconnessione effettuata."
+      already_signed_out: "Disconnessione effettuata."
+    errors:
+      messages:
+        already_confirmed: "L'account è già confermato."
+        not_found: "non trovato"

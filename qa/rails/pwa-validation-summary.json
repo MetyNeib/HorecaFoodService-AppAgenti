@@ -1,0 +1,551 @@
+{
+  "generatedAt": "2026-10-12T09:10:31.668Z",
+  "counts": {
+    "unique": 28,
+    "passed": 28,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sources": [
+    {
+      "path": "qa/rails/pwa-full-results.json",
+      "startedAt": "2026-10-12T08:52:25.780Z",
+      "stats": {
+        "startTime": "2026-10-12T08:52:25.780Z",
+        "duration": 650405.4990000001,
+        "expected": 24,
+        "skipped": 0,
+        "unexpected": 2,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "qa/rails/pwa-targeted-results.json",
+      "startedAt": "2026-10-12T09:04:17.441Z",
+      "stats": {
+        "startTime": "2026-10-12T09:04:17.441Z",
+        "duration": 219438.857,
+        "expected": 9,
+        "skipped": 0,
+        "unexpected": 1,
+        "flaky": 0
+      }
+    },
+    {
+      "path": "qa/rails/pwa-results.json",
+      "startedAt": "2026-10-12T09:08:40.774Z",
+      "stats": {
+        "startTime": "2026-10-12T09:08:40.774Z",
+        "duration": 56768.922999999995,
+        "expected": 2,
+        "skipped": 0,
+        "unexpected": 0,
+        "flaky": 0
+      }
+    }
+  ],
+  "harnessCorrections": [
+    {
+      "title": "viste offline essenziali",
+      "reason": "La matrice produce venti screenshot per motore. Il budget di 60 secondi è stato portato a 120; le verifiche di geometria e raggiungibilità sono invariate."
+    },
+    {
+      "title": "archivio negato",
+      "reason": "La verifica attende il commit della navigazione HTML allo stesso URL prima del fetch di controllo, evitando la cancellazione della richiesta durante unload."
+    },
+    {
+      "title": "offline reale",
+      "reason": "Dopo Conferma il test attende la transazione IndexedDB tramite expect.poll. Status PENDING_SEND, nota e pagamento attesi sono rimasti identici."
+    }
+  ],
+  "cases": [
+    {
+      "file": "offline.spec.mjs",
+      "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 26329,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 22205,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-results.json",
+          "status": "passed",
+          "durationMs": 20329,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 27571,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 12664,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 14873,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 10987,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "uscita completata elimina dati offline e non rivela il precedente account",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 12567,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 11135,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "sessione di un altro account non riceve la coda del precedente utente",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 16246,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 21002,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 26275,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 10697,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 19134,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 22184,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 13058,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 17917,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 13037,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 39945,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "failed",
+          "durationMs": 16571,
+          "errors": [
+            "Error: expect(received).toMatchObject(expected)\n\n- Expected  - 3\n+ Received  + 3\n\n  Object {\n-   \"note\": \"Salvata senza rete\",\n-   \"paymentId\": \"PAY-BON30\",\n-   \"status\": \"PENDING_SEND\",\n+   \"note\": \"\",\n+   \"paymentId\": \"PAY-BON15\",\n+   \"status\": \"DRAFT\",\n  }\n\n  63 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  64 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 65 |   expect((await state(page)).data.orders.find(item => item.id === orderId)).toMatchObject({ status: 'PENDING_SEND', note: 'Salvata senza rete', paymentId: 'PAY-BON30' });\n     |                                                                             ^\n  66 |   expect((await outbox(page)).length).toBeGreaterThan(2);\n  67 |   await page.reload();\n  68 |   await expect(page.getByRole('heading', { name: 'I miei ordini' })).toBeVisible();\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:65:77"
+          ]
+        },
+        {
+          "source": "qa/rails/pwa-results.json",
+          "status": "passed",
+          "durationMs": 32984,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 42427,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 27649,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 30182,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 22124,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "uscita completata elimina dati offline e non rivela il precedente account",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 30381,
+          "errors": []
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 15479,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "sessione di un altro account non riceve la coda del precedente utente",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 28599,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "timedOut",
+          "durationMs": 62478,
+          "errors": [
+            "Test timeout of 60000ms exceeded.",
+            "Error: locator.scrollIntoViewIfNeeded: Test timeout of 60000ms exceeded.\nCall log:\n  - attempting scroll into view action\n    - waiting for element to be stable\n\n\n  215 |       expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${name} ${width}`).toBeTruthy();\n  216 |       for (const button of await page.locator('main button[type=submit],main a.button').all()) {\n> 217 |         await button.scrollIntoViewIfNeeded();\n      |                      ^\n  218 |         await expect(button).toBeVisible();\n  219 |       }\n  220 |       await page.screenshot({ path: `qa/rails/${info.project.name}-offline-${name}-${width}.png`, fullPage: true });\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:217:22"
+          ]
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 49215,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 28004,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "failed",
+          "durationMs": 18633,
+          "errors": [
+            "Fetch API cannot load http: /127.0.0.1:3002/snapshot due to access control checks.",
+            "Error: page.evaluate: TypeError: Load failed\n\n  260 |   await page.getByRole('button', { name: 'Salva bozza', exact: true }).click();\n  261 |   await page.waitForLoadState('load');\n> 262 |   const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));\n      |                             ^\n  263 |   expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Salvata dal form Rails senza IndexedDB');\n  264 |   expect(await page.evaluate(() => !!window.HFS?.storageFailure)).toBe(true);\n  265 |   await page.goto('/orders/BOZ-26-00021/lines/BOZ-26-00021-L01/edit');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:262:29"
+          ]
+        },
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 20848,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 29482,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 40480,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-full-results.json",
+          "status": "passed",
+          "durationMs": 24823,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-full-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+      "project": "android-chromium",
+      "history": [
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 18380,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    },
+    {
+      "file": "offline.spec.mjs",
+      "title": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+      "project": "ipad-webkit",
+      "history": [
+        {
+          "source": "qa/rails/pwa-targeted-results.json",
+          "status": "passed",
+          "durationMs": 10922,
+          "errors": []
+        }
+      ],
+      "status": "passed",
+      "source": "qa/rails/pwa-targeted-results.json"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+<header class="view-heading">
+  <%= link_to "← #{ui(local_assigns.fetch(:back_label, 'Home'))}", local_assigns.fetch(:back, '/'), class: 'back' %>
+  <div class="page-title"><h1><%= title %></h1><% if local_assigns[:subtitle].present? %><p><%= subtitle %></p><% end %></div>
+</header>

@@ -1,68 +1,78 @@
 ﻿# Horeca Food Service — App Agenti
 
-Demo locale React + TypeScript + Vite. Comprende ordine manuale, FastOrder WhatsApp, bozze/coda/storico, schede clienti, partite, catalogo e insight. Tutti i dati sono sintetici; nessuna trasmissione business è reale.
+Riscrittura in **Rails 8.1, Ruby 4, Ralix, PostgreSQL e Devise**. Mantiene il seed sintetico e i flussi HFS: ordine manuale, FastOrder WhatsApp, bozze/coda/storico, clienti, partite, catalogo e insight. Il backend salva realmente i dati; gli invii commerciali WhatsApp/email/PDF ed ERP restano simulati.
 
-## Avvio dalla root già installata
+Branch corrente: `feature/hfs-rails-migration`. La V1 React completa è conservata su `main`, `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Lo stato del collaudo Rails è in [docs/PROGRESS.md](docs/PROGRESS.md).
+
+## Installazione locale su un altro computer
+
+Occorrono Git e Docker Desktop avviato con container Linux. Su Windows serve WSL2; su Mac scegliere Docker Desktop per il proprio processore. L'account GitHub deve avere accesso al repository privato. Non occorrono Ruby o PostgreSQL installati globalmente, né una chiave OpenAI.
 
 ```powershell
-cd C:\HorecaFoodService-AppAgenti
-npm.cmd run dev
+git clone --branch feature/hfs-rails-migration https://github.com/MetyNeib/HorecaFoodService-AppAgenti.git
+cd HorecaFoodService-AppAgenti
+docker compose up --build -d
 ```
 
-Apri **http://127.0.0.1:5173/**. Non occorre reinstallare il progetto né fornire API key.
+Aprire **http://127.0.0.1:3002/**. Il primo avvio scarica le immagini, installa le gemme e prepara database e account dimostrativo:
 
-Per usare la build statica già prodotta:
+- Email: `agente@hfs.invalid`
+- Password locale dimostrativa: `HfsDemoLocale2026!`
+
+Sono credenziali pubbliche del solo seed sintetico. Per personalizzarle prima del primo avvio copiare `.env.example` in `.env`; un database già inizializzato conserva gli account e i dati. La porta web è configurabile con `HFS_PORT`. Ogni installazione Docker su un altro PC crea un database indipendente: per condividere gli stessi ordini, i dispositivi devono collegarsi allo stesso backend locale.
 
 ```powershell
-npm.cmd run preview
+docker compose logs --tail=60 web
+docker compose stop
+docker compose up -d
 ```
 
-Apri **http://127.0.0.1:4173/**. Servire `dist/` via HTTP; non aprire `dist/index.html` con doppio click.
+`stop` conserva PostgreSQL e gli ordini. Il reset nell'app ripristina soltanto il workspace demo dell'utente connesso; non elimina account o dati di altri utenti. Non usare `docker compose down -v` per un normale arresto: elimina i volumi dati.
 
-## Demo
+## Installazione come app e offline
 
-Refitting del 23/09: desktop e tablet (anche verticale) occupano tutta la finestra. Liste, carrello e contenuti estesi scorrono nei propri pannelli; totali e azioni restano visibili. I telefoni verticali dal rapporto nominale 19,5:9 usano lo scorrimento normale della pagina. Dettagli e screenshot in `qa/REFIT_REPORT.md`.
+Aprire l'app online e accedere per preparare catalogo, clienti e copia locale. È possibile installarla dalla funzione del browser. Android e iPhone/iPad richiedono HTTPS riconosciuto quando accedono al PC tramite rete locale: seguire [docs/LOCAL_PWA.md](docs/LOCAL_PWA.md). Docker sul telefono non serve.
 
-L'agente è Marco Rossi (014), con otto clienti. Clock fisso: 22 settembre 2026, ore 09:30. Si parte offline, con 2 bozze, 1 ordine da inviare, 24 inviati e 3 verifiche WhatsApp.
+L'offline essenziale conserva clienti/catalogo già scaricati, creazione e modifica degli ordini e una coda in IndexedDB. Al ritorno della connessione, con app aperta, le modifiche vengono inviate a Rails una sola volta. I conflitti sono espliciti e il lavoro locale viene conservato. FastOrder, condivisioni e analisi richiedono il collegamento al backend. La simulazione «Passa online/offline» del footer riguarda il gestionale dimostrativo; lo stato della connessione a Rails è separato.
 
-- **Nuovo ordine**: scegli cliente e prodotti, modifica quantità, UM, prezzi e condizioni; controlla il riepilogo e conferma.
-- **WhatsApp**: risolvi le richieste mancanti o ambigue, oppure escludile con motivazione. Il carrello e il riepilogo sono gli stessi del flusso manuale.
-- **Passa online**: simula il completamento dei job locali. Ordini confermati e inviati si aprono in lettura.
-- **Reset demo**: dal footer, conferma **Ripristina seed** per annullare tutte le modifiche, ripristinare il dataset e tornare offline.
+Ogni utente ha dati e coda separati. Logout con modifiche da sincronizzare richiede di gestirle prima; cancellare i dati del browser può eliminare lavoro solo locale. L'app non promette sincronizzazione in background a browser chiuso su ogni OS.
 
-La persistenza usa `hfs-agent-demo-v1` in localStorage con schemaVersion. In caso di storage non disponibile si continua in memoria con avviso. Un dato corrotto non viene sovrascritto senza reset esplicito.
+## Sviluppo e controlli
 
-WhatsApp, email e PDF sono simulazioni, compreso il download PDF. Le anteprime HTML non sono documenti fiscali. I visual dei prodotti sono vettoriali sintetici; i dati tecnici mancanti rimangono indicati come non disponibili.
-
-## Verifica
+L'app viene eseguita interamente da Docker. Node 22.12+ sul computer serve soltanto per tooling, test browser e rigenerazione delle librerie JS vendorizzate.
 
 ```powershell
+npm.cmd ci
+npm.cmd run vendor:javascript
 npm.cmd run validate:data
 npm.cmd test
-npm.cmd run typecheck
-npm.cmd run build
-npm.cmd run test:e2e
-npm.cmd run check:bundle
+npm.cmd run test:domain-parity
+npm.cmd run check:rules
+docker compose exec web bundle exec rspec
+docker compose exec web bundle exec rubocop
+docker compose exec web bundle exec brakeman --no-pager
 ```
 
-Playwright usa Chromium nella cache `.playwright-browsers` del progetto. Se si trasferisce la repository su un altro PC:
+Per Playwright su Windows:
 
 ```powershell
 $env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.playwright-browsers'
-npx.cmd playwright install chromium
+npx.cmd playwright install chromium webkit
+npm.cmd run test:e2e
 ```
 
-Il lockfile originale è conservato. Per una reinstallazione necessaria delle dipendenze usare `npm.cmd ci`, senza aggiornare le versioni.
+La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, RSpec, RuboCop, Brakeman, i flussi UI nei quattro viewport e l'offline Chromium/WebKit. Gli esiti storici React nei report QA non certificano la nuova versione Rails. I report Rails distinguono PASS, FAIL e NOT_RUN. Le schermate sono consultabili nella [galleria Rails](qa/rails-ui/screenshots/index.html).
 
-Risultati: `qa/IMPLEMENTATION_REPORT.md`, `qa/e2e-results.json`, `qa/playwright-report/index.html` e `qa/screenshots/`. Il report bootstrap preesistente rimane distinto dalle verifiche del prodotto.
+## Struttura e dati
 
-## Struttura
+- `app/controllers`, `app/views`, `app/helpers`: pagine ERB e comandi autenticati.
+- `app/services/hfs`: regole di dominio, calcoli in centesimi, snapshot e idempotenza.
+- `app/models`, `db`: utenti, workspace PostgreSQL, ricevute dei comandi e migrazioni.
+- `app/javascript`: controller Ralix, IndexedDB e proiezione offline.
+- `app/assets/stylesheets`, `vendor/javascript`: CSS e librerie servite localmente.
+- `src/data/hfs_demo_data.json`: seed approvato immutato.
+- `tests/reference-v1`: helper puri originali conservati solo per i test di confronto; nessun runtime React.
+- `docs`, `references`, `fixtures`, `qa`: specifiche e verifiche, escluse dagli asset pubblici.
 
-- `src/app`: shell, router, provider, persistenza e filtri URL.
-- `src/domain`: helper puri, modello runtime e reducer.
-- `src/design-system`: token verificati, CSS e controlli condivisi.
-- `src/features`: moduli separati per i flussi applicativi.
-- `src/data/hfs_demo_data.json`: seed approvato e immutato.
-- `references`, `docs`, `fixtures`: fonti di sviluppo, escluse dalla build.
+Il clock dimostrativo resta il 22 settembre 2026 alle 09:30, agente Marco Rossi, otto clienti assegnati. I dati reali di un cliente saranno importati in una fase successiva documentata in [docs/RAILS_MIGRATION.md](docs/RAILS_MIGRATION.md); non vanno inseriti nel repository. Questa base usa un workspace JSONB atomico per utente: le scelte e i limiti di concorrenza sono descritti nello stesso documento.
 
-La consegna è locale. Non è stato eseguito un deploy pubblico.

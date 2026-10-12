@@ -1,0 +1,11 @@
+<% product = record('products', line['productId']); wa_request = request_for(order, line) %>
+<article class="card cart-line cart_line_js" data-testid="line-<%= product['code'] %>" data-line-id="<%= line['id'] %>">
+  <h3><%= product['name'] %></h3><small><%= ui('Cod.') %> <%= product['code'] %></small>
+  <% if wa_request %><p class="muted"><%= ui('Richiesta:') %> “<%= wa_request['rawText'] %>” · <%= ui('Confidenza:') %> <%= wa_request['confidencePercent'].nil? ? '—' : "#{wa_request['confidencePercent']}%" %></p><% end %>
+  <%= command_form('UPDATE_LINE', { orderId: order['id'], lineId: line['id'] }, class: 'quantity_autosave_js') do %><%= render 'components/quantity', product: product, quantity: line['quantity'], unit: line['unit'] %><noscript><button class="quantity-save"><%= ui('Aggiorna quantità') %></button></noscript><p class="error form_error_js" role="alert" hidden></p><% end %>
+  <p><%= quantity_text(line['baseQuantity']) %> <%= product['baseUnit'] %> × <%= money(line['unitPriceBaseCents']) %> = <b><%= money(line['lineNetCents']) %></b><%= " · #{ui('peso indicativo')}" if line['conversionIsEstimated'] %></p>
+  <small><%= ui('Costo') %> <%= money(line['lineCostCents']) %> · <%= ui('Margine') %> <%= money(line['marginCents']) %> / <%= percentage(line['marginPercent']) %></small><% if line['marginCents'].to_i.negative? %><p class="error"><%= ui('Attenzione: margine negativo') %></p><% end %>
+  <div class="actions"><%= link_to ui('Modifica'), "/orders/#{order['id']}/lines/#{line['id']}/edit", class: 'button' %>
+    <% if wa_request %><%= link_to ui('Rivedi richiesta'), "/fastorder/#{order['id']}/resolve/#{wa_request['id']}", class: 'button' %><% else %><%= command_form('REMOVE_LINE', { orderId: order['id'], lineId: line['id'] }) do %><button class="quiet danger"><%= ui('Rimuovi') %></button><% end %><% end %>
+  </div>
+</article>

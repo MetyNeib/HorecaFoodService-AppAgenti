@@ -1,0 +1,417 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.rails-ui.config.mjs",
+      "tests/rails-ui/draft_actions.spec.mjs"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-ui.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-portrait",
+        "name": "tablet-portrait",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-landscape",
+        "name": "tablet-landscape",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-portrait",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-portrait"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-landscape",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-draft-final",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/rails-ui/results-draft-actions.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "draft_actions.spec.mjs",
+      "file": "draft_actions.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone",
+              "projectName": "phone",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22476,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:12:21.314Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-edb243f2aa7b6a5bc1d9",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-portrait",
+              "projectName": "tablet-portrait",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26615,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:12:45.176Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-b6aa04a77a4fbf4e28f9",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 24555,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:13:12.759Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-abb6eba6d88a7929d17f",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 25962,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:13:38.382Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-fbf8137b3711dc643dd9",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T09:12:20.539Z",
+    "duration": 104543.007,
+    "expected": 4,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  }
+}

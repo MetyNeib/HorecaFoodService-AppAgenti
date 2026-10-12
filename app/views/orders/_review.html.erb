@@ -1,0 +1,28 @@
+<% readonly = !editable?(order); customer = record('customers', order['customerId']); errors = review_errors(order) %>
+<div class="view review-view">
+  <%= render 'components/page_title', title: readonly ? ui('Ordine %{number}', number: order['number']) : ui('Riepilogo ordine'), back: readonly ? safe_return('/orders?tab=sent') : order_location(order), back_label: readonly ? 'Ordini' : 'Prodotti' %>
+  <%= render 'components/stepper', step: 3 unless readonly %><%= render 'components/customer_strip', order: order %>
+  <% if readonly %><p class="notice warning"><%= ui(order['status'] == 'SENT' ? 'Inviato nella simulazione' : 'Confermato, in attesa di rete') %> · <%= ui('Dettaglio in sola lettura') %></p><% end %>
+  <%= form_tag '/commands', method: :post, class: 'command_form_js filter-form review_form_js', data: { order_id: order['id'] } do %>
+    <%= command_envelope %>
+    <%= hidden_field_tag 'payload[orderId]', order['id'] %><%= hidden_field_tag :return_to, order['status'] == 'WHATSAPP_REVIEW' ? '/fastorder' : '/orders?tab=drafts' %>
+    <div class="grid two workspace-split">
+      <section class="card pane review-lines"><div class="row between"><h2><%= ui('Articoli') %> <span class="badge"><%= order['lines'].length %></span></h2><%= link_to ui('Modifica prodotti'), order_location(order) unless readonly %></div>
+        <%= tag.div(**list_attributes('Articoli del riepilogo')) do %><% order['lines'].each do |line| %><% product = record('products', line['productId']) %><div class="summary-line"><strong><%= product['name'] %></strong><small><%= ui('Cod.') %> <%= product['code'] %></small><p><%= quantity_text(line['quantity']) %> <%= line['unit'] %> = <%= quantity_text(line['baseQuantity']) %> <%= product['baseUnit'] %><%= " · #{ui('peso indicativo')}" if line['conversionIsEstimated'] %></p><div class="row between"><span><%= money(line['unitPriceBaseCents']) %> / <%= product['baseUnit'] %><%= " · #{ui('Omaggio')}" if line['isGift'] %></span><b><%= money(line['lineNetCents']) %></b></div><% if line['note'].present? %><p><%= line['note'] %></p><% end %></div><% end %><% end %>
+        <label class="field delivery-note"><span><%= ui('Nota sul documento di consegna') %></span><%= text_area_tag 'payload[note]', order['note'], readonly: readonly, class: 'review_field_js' %></label>
+      </section>
+      <%= tag.div(**list_attributes('Consegna e pagamento', kind: 'content', classes: 'card delivery-form')) do %>
+        <h2><%= ui('Consegna e pagamento') %></h2><label class="field"><span><%= ui('Destinazione') %></span><%= select_tag 'payload[destinationId]', options_for_select(customer_records(customer, 'destinations').map { |item| ["#{item['name']} · #{item['city']}", item['id']] }, order['destinationId']), disabled: readonly, class: 'review_field_js destination_js' %></label><p><%= record('destinations', order['destinationId'])&.fetch('address') %></p>
+        <div class="grid two"><label class="field"><span><%= ui('Data consegna') %></span><%= date_field_tag 'payload[deliveryDate]', order['deliveryDate'], min: today, readonly: readonly, class: 'review_field_js' %></label><label class="field"><span><%= ui('Ora (facoltativa)') %></span><%= time_field_tag 'payload[deliveryTime]', order['deliveryTime'], readonly: readonly, class: 'review_field_js' %></label></div><p class="muted"><%= ui('Giorni del giro:') %> <%= delivery_weekdays(order) %></p>
+        <label class="field"><span><%= ui('Deposito') %></span><%= select_tag 'payload[warehouseId]', options_for_select(collection_options('warehouses'), order['warehouseId']), disabled: readonly, class: 'review_field_js' %></label>
+        <label class="field"><span><%= ui('Riferimento cliente (facoltativo)') %></span><%= text_field_tag 'payload[customerReference]', order['customerReference'], readonly: readonly, class: 'review_field_js' %></label>
+        <label class="field"><span><%= ui('Referente ordine') %></span><%= select_tag 'payload[contactId]', options_for_select([[ui('Nessuno'), '']] + customer_records(customer, 'contacts').map { |item| ["#{item['firstName']} #{item['lastName']}", item['id']] }, order['contactId']), disabled: readonly, class: 'review_field_js' %></label>
+        <label class="field"><span><%= ui('Pagamento dell’ordine') %></span><%= select_tag 'payload[paymentId]', options_for_select(collection_options('paymentMethods', 'label'), order['paymentId']), disabled: readonly, class: 'review_field_js payment_js', data: { default: customer['defaultPaymentId'] } %></label>
+        <p class="muted"><%= ui('Predefinito:') %> <%= record('paymentMethods', customer['defaultPaymentId'])['label'] %></p><% if order['paymentId'] != customer['defaultPaymentId'] %><span class="badge warning"><%= ui('Modificato per questo ordine') %></span><% end %><% unless readonly %><button type="button" class="quiet restore_payment_js"><%= ui('Ripristina predefinito') %></button><% end %>
+      <% end %>
+    </div>
+    <section class="card action-bar"><%= render 'components/totals', totals: order['totals'] %><div role="alert" class="error form_error_js" <%= 'hidden' if errors.empty? %>><% errors.each do |error| %><p><%= error %></p><% end %></div>
+      <% unless readonly %><div class="actions"><button name="type" value="SAVE_REVIEW"><%= ui(order['status'] == 'WHATSAPP_REVIEW' ? 'Salva verifica' : 'Salva bozza') %></button><button class="primary confirm_order_js" name="type" value="CONFIRM_ORDER" <%= 'disabled' if errors.any? %>><%= ui('Conferma ordine') %> →</button></div><% end %>
+    </section>
+  <% end %>
+</div>

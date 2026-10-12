@@ -1,0 +1,10 @@
+<% pending = inbox['requests'].select { |item| unresolved?(item) } %>
+<section class="card pane requests_js" id="requests" tabindex="-1"><h2><%= ui('Da definire') %> <span class="badge warning"><%= pending.length %></span></h2>
+  <%= tag.div(**list_attributes('Richieste WhatsApp')) do %>
+    <% inbox['requests'].select { |item| unresolved?(item) || item['id'] == params[:request_id] }.each do |item| %><article class="card"><h3><%= item['rawText'] %></h3><p class="muted"><%= item['reason'] || ui('Verifica la scelta e la quantità.') %></p><%= link_to "#{ui(item['status'] == 'NO_MATCH' ? 'Cerca prodotto' : 'Scegli prodotto')} →", "/fastorder/#{order['id']}/resolve/#{item['id']}", class: 'button wide' %></article><% end %>
+    <% if pending.empty? %><p class="notice"><%= ui('Tutte le richieste sono state definite.') %></p><% end %>
+    <p><%= ui('%{count} richieste abbinate nella bozza', count: inbox['requests'].count { |item| !unresolved?(item) && item['status'] != 'EXCLUDED' }) %></p>
+    <% inbox['requests'].select { |item| item['status'] == 'EXCLUDED' }.each do |item| %><p><%= ui('Esclusa:') %> “<%= item['rawText'] %>” · <%= item.dig('resolution', 'reason') %></p><% end %>
+    <details><summary><%= ui('Leggi il messaggio sintetico completo') %></summary><% inbox['messageParts'].each do |part| %><pre><%= part['text'] %></pre><% end %></details>
+  <% end %>
+</section>

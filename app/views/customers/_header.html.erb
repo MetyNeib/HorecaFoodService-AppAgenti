@@ -1,0 +1,6 @@
+<%= render 'components/page_title', title: customer['businessName'], subtitle: "#{ui('Cod.')} #{customer['code']} · #{customer['city']} (#{customer['province']})", back: safe_return('/customers'), back_label: 'Torna all’origine' %>
+<nav class="tabs" aria-label="<%= ui('Scheda cliente') %>">
+  <% [['details', 'Anagrafica'], ['orders', 'Ordini'], ['open-items', 'Partite aperte'], ['commercial', 'Info commerciali']].each do |id, label| %>
+    <%= link_to ui(label), contextual_path("/customers/#{customer['id']}", tab: id, returnTo: params[:returnTo]), class: 'button', 'aria-current': tab == id ? 'page' : nil %>
+  <% end %>
+</nav>

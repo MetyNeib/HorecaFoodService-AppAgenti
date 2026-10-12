@@ -1,0 +1,11 @@
+<% step = product['units'].find { |item| item['code'] == unit }&.fetch('step', 1) || 1 %>
+<div class="quantity-fields quantity_js" data-units="<%= product['units'].to_json %>">
+  <label class="field"><span><%= ui('Qtà') %></span><div class="step-controls">
+    <button type="button" class="quantity_step_js" data-direction="-1" aria-label="<%= ui('Diminuisci quantità') %>" <%= 'disabled' if quantity.to_f <= step %>>−</button>
+    <%= number_field_tag 'payload[quantity]', quantity, id: nil, min: step, step: step, 'aria-label': ui('Quantità'), class: 'quantity_input_js', required: true %>
+    <button type="button" class="quantity_step_js" data-direction="1" aria-label="<%= ui('Aumenta quantità') %>">+</button>
+  </div></label>
+  <label class="field"><span><%= ui('UM') %></span>
+    <%= select_tag 'payload[unit]', options_for_select(product['units'].map { |item| [item['code'] == 'CT' ? ui('CT · Colli') : item['code'], item['code']] }, unit), id: nil, include_blank: unit.blank? ? ui('Conferma UM…') : false, class: 'quantity_unit_js', 'aria-label': ui('Unità di misura'), required: true %>
+  </label>
+</div>

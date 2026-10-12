@@ -1,0 +1,36 @@
+{
+  "baselineCommit": "81e72bc",
+  "comparison": "Chromium CSSOM rule serialization: formatting and comments excluded, selectors/declarations/media preserved",
+  "sheets": [
+    {
+      "name": "tokens",
+      "originalRules": 1,
+      "currentRules": 1,
+      "identical": true
+    },
+    {
+      "name": "base",
+      "originalRules": 151,
+      "currentRules": 151,
+      "identical": true
+    },
+    {
+      "name": "workspace",
+      "originalRules": 236,
+      "currentRules": 236,
+      "identical": true
+    },
+    {
+      "name": "elastic",
+      "originalRules": 56,
+      "currentRules": 56,
+      "identical": true
+    },
+    {
+      "name": "adaptive",
+      "originalRules": 48,
+      "currentRules": 48,
+      "identical": true
+    }
+  ]
+}

@@ -1,0 +1,572 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.rails-ui.config.mjs",
+      "--project=tablet-landscape",
+      "--project=desktop",
+      "tests/rails-ui/flows.spec.mjs",
+      "tests/rails-ui/draft_actions.spec.mjs"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-ui.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone",
+        "name": "phone",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-portrait",
+        "name": "tablet-portrait",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-landscape",
+        "name": "tablet-landscape",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop",
+        "name": "desktop",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-ui",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.@(spec|test).?(c|m)[jt]s?(x)"
+        ],
+        "timeout": 240000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-landscape",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-landscape"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui",
+        "testIgnore": [],
+        "testMatch": "**/*.@(spec|test).?(c|m)[jt]s?(x)",
+        "timeout": 240000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "actionTimeout": 15000,
+          "launchOptions": {
+            "ignoreDefaultArgs": [
+              "--hide-scrollbars"
+            ]
+          },
+          "screenshot": "only-on-failure",
+          "trace": "retain-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/rails-ui/results-recheck.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "draft_actions.spec.mjs",
+      "file": "draft_actions.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 25622,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                      "column": 65,
+                      "line": 12
+                    },
+                    "snippet": "  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await page.getByRole('searchbox').fill('061002');\n> 12 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n     |                                                                 ^\n  13 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  14 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');\n  15 |   await page.keyboard.press('Escape');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                        "column": 65,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    32 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await page.getByRole('searchbox').fill('061002');\n> 12 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n     |                                                                 ^\n  13 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  14 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');\n  15 |   await page.keyboard.press('Escape');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:04:48.536Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-tablet-landscape\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-tablet-landscape\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-tablet-landscape\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                    "column": 65,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-abb6eba6d88a7929d17f",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        },
+        {
+          "title": "cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazione bozza",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 24642,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                      "column": 65,
+                      "line": 12
+                    },
+                    "snippet": "  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await expect(page.getByRole('heading', { name: 'Seleziona il cliente', exact: true })).toBeVisible();\n> 12 |   await page.getByRole('searchbox').fill('061002');\n     |                                                    ^\n  13 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  14 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  15 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                        "column": 65,
+                        "line": 12
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveCount\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: /Seleziona/ })\nExpected: \u001b[32m1\u001b[39m\nReceived: \u001b[31m0\u001b[39m\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toHaveCount\" getByRole('button', { name: /Seleziona/ }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: /Seleziona/ })\u001b[22m\n\u001b[2m    33 × locator resolved to 0 elements\u001b[22m\n\u001b[2m       - unexpected value \"0\"\u001b[22m\n\n\n  10 |   await page.getByRole('link', { name: 'Cambia cliente' }).click();\n  11 |   await expect(page.getByRole('heading', { name: 'Seleziona il cliente', exact: true })).toBeVisible();\n> 12 |   await page.getByRole('searchbox').fill('061002');\n     |                                                    ^\n  13 |   await expect(page.getByRole('button', { name: /Seleziona/ })).toHaveCount(1);\n  14 |   await page.getByRole('button', { name: /Seleziona/ }).click();\n  15 |   await expect(page.getByRole('dialog')).toContainText('Il carrello verrà svuotato');\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs:12:65"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:07:30.828Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-desktop\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-desktop\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-ui-recheck\\draft_actions-cambio-clien-67b6c-zione-e-cancellazione-bozza-desktop\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-ui\\draft_actions.spec.mjs",
+                    "column": 65,
+                    "line": 12
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "1732d097a8b853c2dfce-fbf8137b3711dc643dd9",
+          "file": "draft_actions.spec.mjs",
+          "line": 4,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "flows.spec.mjs",
+      "file": "flows.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 53708,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:05:16.690Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-a14866b2ff6214277be9",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 45830,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:06:10.934Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-ff2633a7892ede9ee03a",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-landscape",
+              "projectName": "tablet-landscape",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 32958,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:06:56.790Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-d6f98eacf6dc220722ec",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        },
+        {
+          "title": "ordine manuale canonico, annulla, condizioni, riepilogo e invio idempotente",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 42554,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:07:57.119Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-bf53f2ca7827cc203c6c",
+          "file": "flows.spec.mjs",
+          "line": 11,
+          "column": 1
+        },
+        {
+          "title": "WA841 alternative e ricerca, WA843 UM esplicita ed esclusione, WA842 pronto",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 45786,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:08:40.034Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-af4a1ed0ba3e0b821b49",
+          "file": "flows.spec.mjs",
+          "line": 73,
+          "column": 1
+        },
+        {
+          "title": "referenti, partite, tre condivisioni simulate e insight persistenti",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 240000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop",
+              "projectName": "desktop",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 33741,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:09:25.888Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "334273ddc7f653bc3485-794bc86cb569558d8470",
+          "file": "flows.spec.mjs",
+          "line": 117,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T09:04:47.502Z",
+    "duration": 312369.262,
+    "expected": 6,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

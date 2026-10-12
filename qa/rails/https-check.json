@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "scope": "LOCAL_LOOPBACK_HTTPS_ONLY_NOT_PHYSICAL_DEVICE",
+  "httpStatus": 200,
+  "tlsAuthorized": true,
+  "globalTrustModified": false
+}

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#2e60ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="HFS Agenti">
+    <title>HFS · App Agenti offline</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/icons/hfs-180.png">
+    <%= stylesheet_link_tag "tokens", "base", "workspace", "elastic", "adaptive", "presentation" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body data-offline="true" data-page-controller="workspace">
+    <div class="app-shell workspace-shell workspace_shell_js" data-layout="flow" data-density="regular">
+      <a class="skip skip_js" href="#main">Vai al contenuto</a>
+      <header class="app-header header-dock dock_js" data-open="true" aria-label="Intestazione e agente">
+        <div class="header-panel dock-panel dock_panel_js" id="header-controls"><div class="dock-panel-clip"><div class="header-content dock_content_js">
+          <a href="/" class="wordmark"><b>HFS<span>•</span></b><span>Horeca Food Service<small>App Agenti</small></span></a>
+          <div class="agent"><span class="offline-user_js">Archivio offline</span></div>
+          <form action="/users/sign_out" method="post" class="logout_form_js"><input type="hidden" name="_method" value="delete"><button type="submit" class="quiet">Esci</button></form>
+        </div></div></div>
+        <button type="button" class="header-toggle dock-toggle dock_toggle_js" aria-label="Comprimi intestazione e agente" aria-controls="header-controls" aria-expanded="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="3"/><path d="M5 19a7 7 0 0 1 14 0"/></svg></button>
+      </header>
+      <main id="main" class="main_js workspace_content_js" tabindex="-1">
+        <div class="view"><h1>Preparazione archivio offline</h1><p>Per il primo utilizzo accedi con il server raggiungibile.</p><a class="button" href="/users/sign_in">Accedi online</a></div>
+      </main>
+      <footer class="app-footer status-dock dock_js" data-open="true" aria-label="Stato e sincronizzazione">
+        <div class="footer-panel dock-panel dock_panel_js" id="footer-controls"><div class="footer-panel-clip"><div class="footer-content dock_content_js">
+          <div class="row"><span class="badge warning">Offline</span><span><b>Archivio sul dispositivo</b><small>Dati sintetici · Invii simulati</small></span></div>
+          <div class="actions"><button type="button" class="dialog_open_js" data-dialog="sync-dialog">Stato sincronizzazione</button>
+            <form action="/commands" method="post" class="command_form_js"><input type="hidden" name="type" value="SET_DEMO_NETWORK"><input type="hidden" name="payload[online]" value="true" class="demo_network_value_js"><button type="submit" class="demo_network_label_js">Passa online</button></form>
+            <button type="button" class="quiet dialog_open_js" data-dialog="reset-dialog">Reset demo</button><button type="button" class="quiet install_app_js">Installa app</button>
+          </div>
+        </div></div></div>
+        <button type="button" class="footer-toggle dock-toggle dock_toggle_js" aria-label="Comprimi stato e sincronizzazione" aria-controls="footer-controls" aria-expanded="true"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+      </footer>
+      <dialog id="sync-dialog" class="dialog_js" aria-label="Stato sincronizzazione"><h2>Stato sincronizzazione</h2><p>I salvataggi sul server sono separati dagli invii commerciali simulati.</p><div id="device-sync-status" class="device-sync-status" role="status"></div><button type="button" class="dialog_close_js">Chiudi</button></dialog>
+      <dialog id="reset-dialog" class="dialog_js" aria-label="Ripristinare la demo?"><h2>Ripristinare la demo?</h2><p>Il ripristino richiede il server raggiungibile e nessuna modifica locale da sincronizzare.</p><form action="/commands" method="post" class="command_form_js"><input type="hidden" name="type" value="RESET_DEMO"><input type="hidden" name="return_to" value="/"><button type="submit" class="primary">Ripristina seed</button></form><button type="button" class="dialog_close_js">Annulla</button></dialog>
+    </div>
+    <%= render 'offline/templates' %>
+  </body>
+</html>

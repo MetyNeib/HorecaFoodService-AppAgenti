@@ -1,5 +1,16 @@
 # Step 3 — entrare nel progetto
 
+## Versione corrente: migrazione Rails + Ralix
+
+Dal 12/10/2026 il branch `feature/hfs-rails-migration` implementa Rails/PostgreSQL
+con Devise e PWA offline essenziale, su richiesta dell'utente. Leggere
+[RAILS_MIGRATION.md](RAILS_MIGRATION.md), [PROGRESS.md](PROGRESS.md) e il
+[README corrente](../README.md). La V1 è conservata su `main` e `v1-react`.
+Gli stati COMPLETE e i comandi Vite sotto riguardano il contesto storico V1;
+non certificano la migrazione Rails. Nessun deploy server autorizzato.
+
+## Contesto storico V1
+
 PACKAGE_ID=HFS-STEP3-CODEX-KIT-20260922-V1
 DATASET_ID=HFS-AGENT-DEMO-20260922-V1
 BOOTSTRAP_STATUS=READY

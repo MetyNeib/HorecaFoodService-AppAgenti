@@ -1,0 +1,7 @@
+<div class="totals totals_js">
+  <div><small><%= ui('Totale imponibile · IVA esclusa') %></small><strong class="total_net_js"><%= money(totals['netCents']) %></strong></div>
+  <div><small><%= ui('Margine %{label}', label: ui(local_assigns.fetch(:label, 'ordine'))) %></small>
+    <b class="total_margin_js"><%= money(totals['marginCents']) %> · <%= percentage(totals['marginPercent']) %></b>
+    <% if totals['marginCents'].to_i.negative? %><p class="error"><%= ui('Attenzione: margine negativo') %></p><% end %>
+  </div>
+</div>

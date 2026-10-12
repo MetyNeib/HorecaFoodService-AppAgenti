@@ -1,0 +1,5 @@
+<% customer = current_customer; tab = %w[details orders open-items commercial].include?(params[:tab]) ? params[:tab] : 'details' %>
+<div class="view customer-view">
+  <%= render 'customers/header', customer: customer, tab: tab %>
+  <%= render(tab == 'orders' ? 'orders/filters' : "customers/#{tab.tr('-', '_')}", customer: customer) %>
+</div>

@@ -1,0 +1,271 @@
+/* One-second header/footer introductions; touch-sized reopening controls. */
+.workspace-shell .header-dock {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 2px 24px;
+}
+.header-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  flex: 1;
+  min-width: 0;
+  transition: grid-template-rows 220ms ease;
+}
+.dock-panel-clip {
+  overflow: hidden;
+  min-height: 0;
+}
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px 20px;
+  padding-block: 8px;
+}
+.header-dock[data-open="true"] .header-panel {
+  grid-template-rows: 1fr;
+}
+.header-dock[data-open="false"] .header-content {
+  visibility: hidden;
+}
+.workspace-shell .header-toggle {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  min-height: 44px;
+  padding: 8px;
+}
+.workspace-shell .dock-panel {
+  overflow-anchor: none;
+}
+/* Dense data cards keep every field and a minimum 44px touch target. */
+.workspace-shell .scroll-area[data-kind="list"] {
+  container-type: inline-size;
+  container-name: list;
+  min-height: var(--list-min-height, 120px);
+  overflow-anchor: none;
+}
+.workspace-shell[data-layout="flow"] .scroll-area[data-kind="list"] {
+  height: max(var(--list-min-height, 120px), min(65dvh, 640px));
+  min-height: var(--list-min-height, 120px);
+  max-height: none;
+}
+.workspace-shell[data-layout="flow"] .scroll-area[data-short-list="true"] {
+  height: var(--list-min-height, 120px);
+}
+.workspace-shell .scroll-area[data-kind="list"] > .card {
+  padding: 8px 10px;
+  margin-bottom: 6px;
+}
+.workspace-shell .scroll-area[data-kind="list"] :is(h2,h3) {
+  font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 3px;
+}
+.workspace-shell .scroll-area[data-kind="list"] p {
+  margin-block: 3px;
+  font-size: 16px;
+}
+.workspace-shell .scroll-area[data-kind="list"] small {
+  font-size: 14px;
+}
+.workspace-shell .scroll-area[data-kind="list"] .badge {
+  font-size: 13px;
+  padding: 2px 6px;
+}
+.workspace-shell .scroll-area[data-kind="list"] .list-row {
+  gap: 6px 10px;
+}
+.workspace-shell .scroll-area[data-kind="list"] .list-row .icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.workspace-shell .scroll-area[data-kind="list"] .actions {
+  gap: 6px;
+  margin-top: 4px;
+}
+.workspace-shell .scroll-area[data-kind="list"] :is(button,.button,input,select) {
+  min-height: 44px;
+}
+.workspace-shell .scroll-area[data-kind="list"] :is(button,.button) {
+  font-size: 15px;
+  padding: 6px 10px;
+}
+.workspace-shell .scroll-area[data-kind="list"] .summary-line {
+  padding-block: 6px;
+}
+.workspace-shell .scroll-area[data-kind="list"] :is(th,td) {
+  padding-block: 6px;
+}
+.workspace-shell .scroll-area .product-card {
+  display: grid;
+  gap: 3px;
+}
+.workspace-shell .scroll-area .product-heading {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  gap: 6px;
+  align-items: center;
+}
+.workspace-shell .scroll-area .product-heading h3 {
+  margin: 0;
+  min-width: 0;
+}
+.workspace-shell .scroll-area .product-detail-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 14px;
+}
+.workspace-shell .scroll-area .product-card .meta {
+  font-size: 14px;
+  margin: 0;
+}
+.workspace-shell .scroll-area .product-card > .row {
+  gap: 5px 8px;
+}
+.workspace-shell .scroll-area .product-controls {
+  display: grid;
+  grid-template-columns: minmax(0,1fr) auto;
+  align-items: end;
+  gap: 6px;
+  margin-top: 0;
+}
+.workspace-shell .scroll-area .product-controls > button {
+  width: auto;
+  min-width: 80px;
+  font-size: 14px;
+  padding-inline: 8px;
+}
+.workspace-shell .scroll-area .quantity-fields {
+  display: grid;
+  grid-template-columns: minmax(124px,1.4fr) minmax(64px,1fr);
+  gap: 6px;
+  margin-top: 0;
+  max-width: none;
+}
+.workspace-shell .scroll-area .quantity-fields .field {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: auto;
+  min-width: 0;
+  gap: 2px;
+  margin: 0;
+}
+.workspace-shell .scroll-area .quantity-fields .field > span {
+  font-size: 14px;
+  line-height: 1.2;
+}
+.workspace-shell .scroll-area .quantity-fields select {
+  font-size: 14px;
+  padding-inline: 5px;
+}
+.workspace-shell .scroll-area .step-controls {
+  display: grid;
+  grid-template-columns: 44px minmax(36px,1fr) 44px;
+  gap: 0;
+}
+.workspace-shell .scroll-area .step-controls button {
+  min-width: 44px;
+  font-size: 20px;
+  padding: 4px;
+}
+.workspace-shell .scroll-area .step-controls input {
+  min-width: 0;
+  padding-inline: 2px;
+  font-size: 16px;
+}
+.workspace-shell .scroll-area .cart-line {
+  display: grid;
+  grid-template-columns: minmax(0,1fr);
+  gap: 3px;
+}
+.workspace-shell .scroll-area .cart-line > * {
+  grid-column: 1;
+}
+.workspace-shell .scroll-area .cart-line p {
+  margin-block: 0;
+}
+.workspace-shell .scroll-area .cart-line .actions {
+  grid-column: 1;
+  grid-row: auto;
+  flex-direction: row;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  justify-content: flex-end;
+}
+.workspace-shell .scroll-area .cart-line .quantity-fields {
+  margin-top: 0;
+}
+@container list (min-width: 440px) {
+  .workspace-shell .scroll-area .quantity-fields .field {
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+  }
+  .workspace-shell .scroll-area .product-controls .quantity-fields {
+    grid-template-columns: minmax(148px,1.3fr) minmax(100px,1fr);
+  }
+  .workspace-shell .scroll-area .cart-line {
+    grid-template-columns: minmax(0,1fr) auto;
+    column-gap: 8px;
+  }
+  .workspace-shell .scroll-area .cart-line > h3 {
+    grid-column: 1/-1;
+  }
+  .workspace-shell .scroll-area .cart-line .actions {
+    grid-column: 2;
+    grid-row: 2/span 5;
+    flex-direction: column;
+    border-left: 1px solid #dde2eb;
+    padding-left: 8px;
+  }
+}
+@container list (max-width: 310px) {
+  .workspace-shell .scroll-area .product-controls {
+    grid-template-columns: minmax(0,1fr);
+  }
+  .workspace-shell .scroll-area .product-controls > button {
+    width: 100%;
+  }
+  .workspace-shell .scroll-area .product-heading {
+    grid-template-columns: minmax(0,1fr);
+  }
+}
+@media (max-width: 650px) {
+  .workspace-shell .header-dock {
+    padding-inline: 16px;
+  }
+  .workspace-shell .header-content .wordmark > span {
+    font-size: 14px;
+  }
+  .workspace-shell .scroll-area[data-kind="list"] tr {
+    margin-bottom: 6px;
+    padding: 6px;
+  }
+  .workspace-shell .scroll-area[data-kind="list"] td {
+    padding-block: 4px;
+  }
+}
+@media (max-width: 850px) {
+  .workspace-shell .cart-summary .actions {
+    display: grid;
+    grid-template-columns: minmax(0,1.2fr) minmax(0,1fr);
+  }
+  .workspace-shell .cart-summary .actions button {
+    font-size: 15px;
+    padding-inline: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .header-panel {
+    transition: none;
+  }
+}

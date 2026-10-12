@@ -1,0 +1,12 @@
+<% orders, count = filtered_orders(customer); tab = params[:tab] || 'drafts'; from, to = order_date_range %>
+<div class="pane orders-pane">
+  <% unless customer %><nav class="tabs" aria-label="<%= ui('Stato ordini') %>"><% [['drafts', 'Bozze'], ['pending', 'Da inviare'], ['sent', 'Inviati']].each do |id, label| %><%= link_to "/orders?tab=#{id}", class: 'button', 'aria-current': tab == id ? 'page' : nil do %><%= ui(label) %> <span class="badge"><%= home_counts[id.to_sym] %></span><% end %><% end %></nav><% end %>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %>
+    <%= hidden_field_tag :tab, tab %><%= hidden_field_tag :returnTo, params[:returnTo] %>
+    <div class="filters"><%= search_field(customer ? 'Cerca numero ordine' : 'Cerca cliente o numero ordine') %><% if customer %><label class="field"><span><%= ui('Stato') %></span><%= select_tag :status, options_for_select([[ui('Tutti'), '']] + order_status_labels.map { |value, label| [ui(label), value] }, params[:status]), class: 'filter_input_js' %></label><% end %></div>
+    <% if customer || tab == 'sent' %><section class="card date-filters"><div class="tabs" aria-label="<%= ui('Periodo') %>"><% [['today', 'Oggi'], ['week', 'Ultimi 7 giorni'], ['month', 'Questo mese'], ['custom', 'Personalizzato'], ['all', 'Tutti']].each do |value, label| %><button name="period" value="<%= value %>" aria-pressed="<%= (params[:period] || 'all') == value %>"><%= ui(label) %></button><% end %></div><div class="filters"><label class="field"><span><%= ui('Dal') %></span><%= date_field_tag :from, from %></label><label class="field"><span><%= ui('Al') %></span><%= date_field_tag :to, to %></label><button class="primary" name="period" value="custom"><%= ui('Applica') %></button><%= link_to ui('Azzera filtri'), contextual_path(request.path, tab: tab), class: 'button' %></div><% if from.present? && to.present? && from > to %><p role="alert" class="error"><%= ui('Intervallo non valido.') %></p><% end %></section><% end %>
+  <% end %>
+  <p><%= ui('%{count} risultati su %{total} ordini · Più recenti prima', count: orders.length, total: count) %></p>
+  <%= tag.div(**list_attributes('Lista ordini')) do %><%= render 'orders/rows', orders: orders %><% end %>
+  <% if tab == 'pending' && !customer %><div class="notice warning"><b><%= ui('Invio automatico al ritorno della connessione') %></b><p><%= ui('Gli ordini sono confermati e in sola lettura. La trasmissione è simulata.') %></p></div><% end %>
+</div>

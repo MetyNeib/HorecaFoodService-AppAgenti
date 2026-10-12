@@ -1,0 +1,7 @@
+<% customer = record('customers', order['customerId']) %>
+<div class="customer-strip">
+  <span><b><%= customer['businessName'] %></b> · <%= customer['code'] %> · <%= customer['city'] %></span>
+  <%= link_to ui('Scheda cliente'), contextual_path("/customers/#{customer['id']}", returnTo: order_location(order)) %>
+  <% if local_assigns[:change] %><%= link_to ui('Cambia cliente'), "/orders/new/customer?change=#{order['id']}", class: 'change-customer' %><% end %>
+  <% if local_assigns[:detail] %><span class="strip-detail"><%= detail %></span><% end %>
+</div>

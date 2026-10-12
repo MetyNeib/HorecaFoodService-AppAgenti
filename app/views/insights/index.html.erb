@@ -1,0 +1,7 @@
+<% groups = insight_customers; reviewed = params[:tab] == 'reviewed' %>
+<div class="view insights-view"><%= render 'components/page_title', title: ui('Statistiche e segnalazioni'), subtitle: ui('Evolutiva · Analisi dimostrative del portafoglio clienti') %>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= hidden_field_tag :tab, params[:tab] %><%= search_field('Cerca cliente per nome o codice') %><% end %>
+  <nav class="tabs"><%= link_to ui('Da valutare'), '/insights?tab=pending', class: 'button', 'aria-current': !reviewed ? 'page' : nil %><%= link_to ui('Valutate'), '/insights?tab=reviewed', class: 'button', 'aria-current': reviewed ? 'page' : nil %></nav>
+  <p class="result-count"><%= ui('%{count} clienti · %{total} segnalazioni', count: groups.length, total: groups.sum { |_, insights| insights.length }) %></p>
+  <%= tag.div(**list_attributes('Segnalazioni clienti')) do %><% groups.each do |customer, insights| %><article class="card"><div class="row between"><h2><%= customer['businessName'] %></h2><span class="badge warning"><%= ui('%{count} segnalazioni', count: insights.length) %></span></div><% insights.each do |insight| %><p><%= insight['summary'] %></p><% end %><%= link_to "#{ui('Apri analisi')} →", "/insights/#{customer['id']}", class: 'button' %></article><% end %><%= render 'components/empty', text: 'Nessuna segnalazione in questa vista.' if groups.empty? %><% end %>
+</div>

@@ -1,0 +1,14 @@
+<% product = current_product; warehouse = params[:warehouse] || 'DEP-07'; back = safe_return('/catalog') %>
+<div class="view product-detail-view">
+  <%= render 'components/page_title', title: product['name'], subtitle: "#{ui('Cod.')} #{product['code']} · #{record('categories', product['categoryId'])['name']}", back: back, back_label: 'Torna alla selezione' %>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= hidden_field_tag :returnTo, back %><label class="field"><span><%= ui('Deposito consultato') %></span><%= select_tag :warehouse, options_for_select(collection_options('warehouses'), warehouse), disabled: back.start_with?('/orders/', '/fastorder/'), class: 'filter_input_js' %></label><% end %>
+  <div class="grid editor workspace-split">
+    <%= tag.div(**list_attributes('Visual prodotto', kind: 'content', classes: 'card')) do %><%= render 'catalog/product_visual', product: product %><button type="button" class="wide spaced dialog_open_js" data-dialog="product-zoom"><%= ui('Ingrandisci visual') %></button><% end %>
+    <%= tag.div(**list_attributes('Informazioni prodotto', kind: 'content')) do %>
+      <section class="card"><h2><%= ui('Disponibilità nel deposito') %></h2><%= render 'components/stock_badge', product: product, warehouse: warehouse %><p class="muted"><%= ui('Snapshot demo del 22/09/2026 alle 08:30') %></p></section>
+      <div class="grid two"><section class="card"><h2><%= ui('Confezionamento') %></h2><p><%= ui('UM base:') %> <%= product['baseUnit'] %></p><p><%= product['caseLabel'] %></p><% product['units'].each do |unit| %><p>1 <%= unit['code'] %> = <%= quantity_text(unit['factorToBase']) %> <%= product['baseUnit'] %><%= " · #{ui('peso indicativo')}" if unit['estimated'] %></p><% end %></section><section class="card"><h2><%= ui('Altri dati') %></h2><p><%= ui('Conservazione:') %> <%= product['storage'] %></p><p><%= ui('Allergeni:') %> <%= product['allergens'] || ui('Non disponibile nella demo') %></p><p><%= ui('Nutrizione:') %> <%= product['nutrition'] || ui('Non disponibile nella demo') %></p></section></div>
+      <section class="card"><h2><%= ui('Descrizione') %></h2><p class="description_short_js"><%= product['description'][0, 85] %>…</p><div class="description_full_js" hidden><p><%= product['description'] %></p><p><%= product['baseUnitMeaning'] %></p></div><button type="button" class="description_toggle_js" aria-expanded="false"><%= ui('Leggi tutto') %></button></section>
+    <% end %>
+  </div>
+  <%= render layout: 'components/dialog', locals: { id: 'product-zoom', title: product['name'] } do %><%= render 'catalog/product_visual', product: product %><p><%= product['caseLabel'] %></p><% end %>
+</div>

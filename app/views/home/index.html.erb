@@ -1,0 +1,20 @@
+<% counts = home_counts %>
+<div class="view home-view">
+  <div class="page-title home-title"><div><p class="eyebrow"><%= ui('MARTEDÌ 22 SETTEMBRE 2026') %></p><h1><%= ui('Home') %></h1></div><span><%= ui('La tua giornata, a portata di mano.') %></span></div>
+  <div class="grid two home-heroes">
+    <section class="card hero-card"><div class="row"><%= icon('new-order') %><div><h2><%= ui('Nuovo ordine') %></h2><p><%= ui('Seleziona il cliente e componi l’ordine.') %></p></div></div><a class="button primary wide" href="/orders/new/customer"><%= ui('Inserisci nuovo ordine') %><span>→</span></a></section>
+    <section class="card hero-card"><div class="row"><%= icon('chat') %><div><h2><%= ui('Ordini WhatsApp') %></h2><p><%= ui('Controlla, modifica e conferma.') %></p></div><span class="badge warning"><%= ui('%{count} da verificare', count: counts[:whatsapp]) %></span></div><a class="button primary wide" href="/fastorder"><%= ui('Verifica ordini') %><span>→</span></a></section>
+  </div>
+  <h2 class="section-heading"><%= icon('order') %> <%= ui('I miei ordini') %></h2>
+  <div class="grid three order-metrics">
+    <% [['drafts', 'Bozze', 'Da completare', ''], ['pending', 'Da inviare', 'Confermati, in attesa di rete', 'warning'], ['sent', 'Inviati', 'Trasmissione simulata riuscita', 'success']].each do |tab, label, description, tone| %>
+      <a class="card navigation-card" href="/orders?tab=<%= tab %>"><div><h3><%= ui(label) %> <span class="badge <%= tone %>"><%= counts[tab.to_sym] %></span></h3><p><%= ui(description) %></p></div><span class="arrow">→</span></a>
+    <% end %>
+  </div>
+  <div class="grid two home-links">
+    <% [['customers', 'Clienti', 'Anagrafiche, ordini e partite aperte', 'users'], ['catalog', 'Catalogo', 'Prodotti e disponibilità', 'box']].each do |path, title, description, image| %>
+      <a class="card navigation-card" href="/<%= path %>"><%= icon(image) %><div><h2><%= ui(title) %></h2><p><%= ui(description) %></p></div><span class="arrow">→</span></a>
+    <% end %>
+    <a class="card navigation-card insight-entry" href="/insights"><%= icon('chart') %><div><h2><%= ui('Statistiche e segnalazioni') %></h2><p><%= ui('%{count} segnalazioni da valutare · Abitudini d’acquisto e riordini', count: records('insights').count { |item| item['status'] == 'TO_REVIEW' }) %></p></div><span class="badge"><%= ui('Evolutiva') %></span><span class="arrow">→</span></a>
+  </div>
+</div>

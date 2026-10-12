@@ -19,3 +19,18 @@ audit_private/
 
 __pycache__/
 *.pyc
+
+# Rails runtime, developer tools and private imports
+/.bundle/
+/log/
+/tmp/
+/storage/
+/public/assets/
+/.tools/
+/config/master.key
+/config/credentials/*.key
+/imports/private/
+/backups/
+/qa/rails/playwright-report/
+/qa/rails/test-results/
+/qa/rails/pwa-report/

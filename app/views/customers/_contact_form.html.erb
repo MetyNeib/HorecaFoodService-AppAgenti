@@ -1,0 +1,9 @@
+<%= render layout: 'components/dialog', locals: { id: dialog_id, title: ui('Modifica referente') } do %>
+  <%= command_form('UPSERT_CONTACT', { id: contact['id'], customerId: customer['id'], email: contact['email'] }) do %>
+    <div class="grid two"><% [['firstName', 'Nome'], ['lastName', 'Cognome'], ['role', 'Ruolo'], ['phoneDisplay', 'Telefono demo']].each do |key, label| %><label class="field"><span><%= ui(label) %></span><%= text_field_tag "payload[#{key}]", contact[key], id: "#{dialog_id}-#{key}", required: true %></label><% end %></div>
+    <label class="check"><%= hidden_field_tag 'payload[whatsappEnabled]', false, id: nil %><%= check_box_tag 'payload[whatsappEnabled]', true, contact['whatsappEnabled'], id: "#{dialog_id}-whatsapp" %><%= ui('Abilita agli ordini WhatsApp') %></label>
+    <small><%= ui('Modifica simulata, applicata dopo sincronizzazione.') %></small>
+    <div role="alert" class="error form_error_js" hidden></div>
+    <div class="actions"><button type="button" class="dialog_close_js"><%= ui('Annulla') %></button><button class="primary"><%= ui('Salva referente') %></button></div>
+  <% end %>
+<% end %>

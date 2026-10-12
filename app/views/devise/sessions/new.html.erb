@@ -1,0 +1,11 @@
+<section class="card login-card">
+  <div class="wordmark"><b>HFS<span>•</span></b><span>Horeca Food Service<small><%= ui('App Agenti') %></small></span></div>
+  <h1><%= ui('Accedi alla tua area agente') %></h1>
+  <p><%= ui('Il primo accesso richiede la connessione al server locale. I dati della demo sono sintetici.') %></p>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
+    <label class="field"><span><%= ui('Email') %></span><%= form.email_field :email, autofocus: true, autocomplete: 'username', required: true %></label>
+    <label class="field"><span><%= ui('Password') %></span><%= form.password_field :password, autocomplete: 'current-password', required: true %></label>
+    <label class="check"><%= form.check_box :remember_me %><%= ui('Ricordami su questo dispositivo') %></label>
+    <%= form.submit ui('Accedi'), class: 'primary wide' %>
+  <% end %>
+</section>
