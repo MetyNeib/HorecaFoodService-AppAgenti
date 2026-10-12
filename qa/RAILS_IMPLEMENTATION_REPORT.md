@@ -2,7 +2,7 @@
 
 Data: 12 ottobre 2026. Branch `feature/hfs-rails-migration`.
 Stato: **COMPLETE_LOCAL**. Nessun deploy. I report React sono evidenze storiche.
-La CI del codice finale viene verificata separatamente prima della consegna GitHub.
+CI del codice finale: **PASS**, cinque job superati su GitHub.
 
 ## Versioni conservate
 
@@ -79,7 +79,12 @@ La CI ripete regole, dominio, migrazione da database vuoto, stile, sicurezza,
 **24 casi UI** e **28 casi PWA** su Ubuntu. Gli esiti appartengono al commit
 verificato e sono consultabili nelle
 [GitHub Actions del repository](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions).
-Stato del run finale: **IN_PROGRESS**; aggiornare questa riga dopo il risultato.
+Run finale [38229579621](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38229579621),
+commit applicativo e test `fbbaeec6d47e0cafcfc4011e6587f93ef673c3a0`: **PASS**.
+Tutti e cinque i job riusciti; **24/24 UI** e **28/28 PWA** in un'unica esecuzione,
+con conteggi verificati nei log. [Evidenza CI](rails/ci-results.json).
+Il successivo commit di consegna aggiorna soltanto documentazione ed evidenze;
+non modifica il codice o i test verificati.
 
 ## NOT_RUN e ambito successivo
 

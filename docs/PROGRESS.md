@@ -28,8 +28,9 @@ esclusivamente la V1 React conservata nel commit `81e72bc`.
   asset production compilati in container isolato: 39 file pubblici verificati.
 - PASS: container web e worker ricreati mantenendo PostgreSQL; login finale,
   lettura degli otto clienti e 120 prodotti e nessun errore browser.
-- IN_PROGRESS: ultimo run CI GitHub; risultati locali finali e tentativi storici
-  sono documentati nel rapporto Rails, con riepiloghi senza doppio conteggio.
+- PASS: CI GitHub del commit applicativo `fbbaeec`, run `38229579621`: cinque
+  job riusciti, 24/24 UI e 28/28 PWA in un'unica esecuzione Ubuntu. Risultati e
+  tentativi locali storici sono documentati nel rapporto Rails senza doppio conteggio.
 - NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.
 
 Scelte: [RAILS_MIGRATION.md](RAILS_MIGRATION.md). Avvio: [README](../README.md).

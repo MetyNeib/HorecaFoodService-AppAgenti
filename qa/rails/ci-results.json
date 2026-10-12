@@ -1,0 +1,46 @@
+{
+  "runURL": "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38229579621",
+  "runID": 38229579621,
+  "headSHA": "fbbaeec6d47e0cafcfc4011e6587f93ef673c3a0",
+  "conclusion": "success",
+  "jobs": [
+    {
+      "name": "ruby",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "rules",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "browser",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "style",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "name": "security",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "tests": {
+    "ui": {
+      "total": 24,
+      "passed": 24,
+      "failed": 0
+    },
+    "pwa": {
+      "total": 28,
+      "passed": 28,
+      "failed": 0
+    }
+  },
+  "evidence": "Job conclusions from GitHub Actions API; browser test counts verified in job 114745855104 logs."
+}
