@@ -1,0 +1,17 @@
+<% order = current_order %>
+<% if editable?(order) %>
+  <div class="view picker-view">
+    <div class="order-toolbar"><%= link_to "← #{ui('Home')}", '/', class: 'quiet button leave_order_js' %><%= render 'components/stepper', step: 2 %></div>
+    <%= render 'components/customer_strip', order: order, change: true %>
+    <div class="grid editor workspace-split">
+      <section id="product-search" class="pane product_search_js" tabindex="-1"><div class="pane-heading"><h1><%= ui('Cerca e aggiungi prodotti') %></h1><button type="button" class="quiet pane-jump focus_jump_js" data-target="cart_list_js"><%= ui('Vai al carrello') %> ↓</button></div>
+        <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %>
+          <%= search_field %><div class="filters"><label class="field"><span><%= ui('Categoria') %></span><%= select_tag :category, options_for_select([[ui('Tutte'), '']] + collection_options('categories'), params[:category]), class: 'filter_input_js' %></label><label class="check"><%= check_box_tag :past, '1', params[:past] == '1', class: 'filter_input_js' %><%= ui('Già acquistati') %></label></div>
+        <% end %>
+        <% products = filtered_products(order) %><p class="result-count"><%= ui('%{count} prodotti', count: products.length) %> · <%= record('warehouses', order['warehouseId'])['name'] %></p>
+        <%= tag.div(**list_attributes('Lista prodotti')) do %><% products.each do |product| %><%= render 'orders/product_card', product: product, order: order %><% end %><%= render 'components/empty' if products.empty? %><% end %>
+      </section>
+      <%= render 'orders/cart', order: order, blocked: false %>
+    </div>
+  </div>
+<% else %><%= render 'orders/review', order: order %><% end %>

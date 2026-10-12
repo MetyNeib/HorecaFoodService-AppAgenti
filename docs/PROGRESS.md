@@ -1,3 +1,37 @@
+# Migrazione Rails — 12/10/2026 — IN_PROGRESS
+
+La richiesta corrente sostituisce lo stack V1 con Rails + Ralix, PostgreSQL,
+Devise e PWA offline essenziale. Le certificazioni COMPLETE storiche riguardano
+esclusivamente la V1 React conservata nel commit `81e72bc`.
+
+- PASS: V1 committata e salvata nel repository privato
+  https://github.com/MetyNeib/HorecaFoodService-AppAgenti ; branch `main`, `v1-react`,
+  `feature/hfs-rails-migration` e tag `v1.0.0-react` verificati sul remoto.
+- PASS: Docker Desktop installato e avviato, immagine Ruby 4.0.5/Rails 8.1.4,
+  PostgreSQL 16, Redis 7, web su http://127.0.0.1:3002 e worker Sidekiq.
+- PASS: 94 RSpec dominio/modelli/request; calcoli, CSRF, account, scoping,
+  transazioni, idempotenza e conflitti. Brakeman: 0 warning.
+- PASS: migrazione eseguita realmente da database vuoto isolato; schema generato.
+- PASS: 49 test V1 conservati come riferimento, 12 test parità Ruby/JS offline
+  (20 passaggi e 10 rifiuti), 20 controlli seed, 7 test del checker e nessuna
+  violazione rilevata in 72 file frontend; RuboCop 50 file senza segnalazioni.
+- PASS: nuova installazione npm dal lockfile, npm audit 0 vulnerabilità, nuova
+  build Docker e verifica HTTPS locale con CA esplicita senza modificare trust OS.
+- PASS: tre flussi funzionali completi desktop (manuale, WA, clienti/condivisioni/insight).
+- IN_PROGRESS: matrice finale UI 20 test/88 viste; PWA Chromium e WebKit, inclusi
+  ripartenza offline e recupero archivio corrotto. Gli errori WebKit offline Windows
+  sono in diagnosi: non equivalgono a verifica superata della compatibilità Apple.
+- IN_PROGRESS: 22 viste ERB, controlli Ralix, confronti visuali, offline reale,
+  test Chromium/WebKit, regole ZIP, pulizia del vecchio runtime e salvataggio Rails.
+- NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.
+
+Scelte: [RAILS_MIGRATION.md](RAILS_MIGRATION.md). Avvio: [README](../README.md).
+Dispositivi locali: [LOCAL_PWA.md](LOCAL_PWA.md). Dopo il refactor è previsto un
+import separato dei dati reali di un cliente; il seed attuale resta immutato.
+
+
+---
+
 ﻿# Checkpoint di implementazione
 
 ## Header/footer automatici e liste compatte 11/10/2026 — COMPLETE_LOCAL

@@ -1,0 +1,10 @@
+<% warehouse = params[:warehouse] || 'DEP-07'; products = filtered_products %>
+<div class="view catalog-view"><%= render 'components/page_title', title: ui('Catalogo prodotti'), subtitle: ui('Ricerca, categorie e disponibilità') %>
+  <%= form_tag request.path, method: :get, class: 'filter_form_js filter-form' do %><%= search_field %><%= hidden_field_tag :category, params[:category] %><div class="filters"><label class="field"><span><%= ui('Deposito') %></span><%= select_tag :warehouse, options_for_select(collection_options('warehouses'), warehouse), class: 'filter_input_js' %></label><label class="check"><%= check_box_tag :available, '1', params[:available] == '1', class: 'filter_input_js' %><%= ui('Solo disponibili') %></label></div><% end %>
+  <div class="grid catalog-grid workspace-split">
+    <%= tag.div(**list_attributes('Categorie prodotti', classes: 'card categories')) do %><h2><%= ui('Categorie') %></h2>
+      <% [[nil, ui('Tutti i prodotti')]] .concat(collection_options('categories').map { |name, id| [id, name] }).each do |id, name| %><%= link_to name, contextual_path('/catalog', q: params[:q], warehouse: warehouse, available: params[:available], category: id), class: "button #{params[:category].to_s == id.to_s ? 'primary' : ''}" %><% end %>
+    <% end %>
+    <section class="pane"><h2><%= ui('%{count} prodotti', count: products.length) %></h2><%= tag.div(**list_attributes('Lista catalogo')) do %><% products.each do |product| %><article class="card list-row"><%= icon %><div class="details"><h3><%= product['name'] %></h3><p><%= ui('Cod.') %> <%= product['code'] %> · UM <%= product['baseUnit'] %></p><%= render 'components/stock_badge', product: product, warehouse: warehouse %></div><%= link_to "#{ui('Scheda prodotto')} →", contextual_path("/catalog/#{product['id']}", warehouse: warehouse, returnTo: request.fullpath), class: 'button' %></article><% end %><%= render 'components/empty' if products.empty? %><% end %></section>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+# Optional local network HTTPS. Default compose remains loopback-only.
+services:
+  web:
+    environment:
+      HFS_ALLOWED_HOSTS: localhost,127.0.0.1,web,${HFS_LAN_HOST:?Set HFS_LAN_HOST to this computer's private LAN IP}
+  https:
+    image: caddy:2-alpine
+    ports:
+      - "${HFS_LAN_HOST}:3443:443"
+    environment:
+      HFS_LAN_HOST: ${HFS_LAN_HOST}
+    volumes:
+      - ./config/Caddyfile.local:/etc/caddy/Caddyfile:ro
+      - local_tls_data:/data
+      - local_tls_config:/config
+    depends_on:
+      - web
+volumes:
+  local_tls_data:
+  local_tls_config:

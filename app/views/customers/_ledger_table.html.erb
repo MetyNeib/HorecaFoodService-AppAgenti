@@ -1,0 +1,9 @@
+<table><thead><tr><% ['Documento / rata', 'Scadenza', 'Importo rata', 'Incassato', 'Residuo', 'Stato', 'Dettaglio'].each do |label| %><th><%= ui(label) %></th><% end %></tr></thead><tbody>
+  <% rows.each do |row| %>
+    <tr><td data-label="<%= ui('Documento / rata') %>"><div><b><%= row['invoice']['number'] %></b><small><%= row['invoice']['documentType'] == 'CREDIT_NOTE' ? ui('Nota credito') : ui('Rata %{number}', number: row['instalmentNumber']) %> · <%= ui('Del') %> <%= display_date(row['invoice']['issueDate']) %></small></div></td>
+      <td data-label="<%= ui('Scadenza') %>"><%= display_date(row['dueDate']) %></td><td data-label="<%= ui('Importo rata') %>"><%= money(row['faceValueCents']) %></td><td data-label="<%= ui('Incassato') %>"><%= money(row['paid']) %></td><td data-label="<%= ui('Residuo') %>"><b><%= money(row['residual']) %></b></td>
+      <td data-label="<%= ui('Stato') %>"><span class="badge <%= row['overdue'] ? 'error' : row['residual'].negative? ? 'success' : '' %>"><%= ui(row['residual'].negative? ? 'Credito' : row['residual'].zero? ? 'Saldata' : row['overdue'] ? 'Scaduta' : 'A scadere') %></span></td>
+      <td data-label="<%= ui('Dettaglio') %>"><% if local_assigns[:open] %><button type="button" class="dialog_open_js" data-dialog="invoice-<%= row['invoiceId'] %>"><%= ui('Apri') %></button><% else %><%= ui('Demo') %><% end %></td>
+    </tr>
+  <% end %>
+</tbody></table>

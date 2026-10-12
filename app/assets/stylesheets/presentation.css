@@ -1,0 +1,100 @@
+/* Rails forms retain the geometry of the approved React baseline. */
+[hidden] {
+  display: none !important;
+}
+
+.actions > form {
+  display: inline-flex;
+  margin: 0;
+}
+
+.product-controls > form,
+.cart-line > form {
+  min-width: 0;
+}
+
+.filter-form {
+  display: contents;
+}
+
+.workspace-shell {
+  height: 100dvh;
+}
+
+.view > .filter-form > * {
+  flex-shrink: 0;
+}
+
+.view > .filter-form > .workspace-split {
+  flex: 1 1 0;
+}
+
+.workspace-shell[data-layout="flow"] .view > .filter-form > .workspace-split {
+  flex: none;
+}
+
+.view > .filter-form > .card {
+  margin-bottom: 0;
+}
+
+.cart-summary .actions > form > button {
+  width: 100%;
+}
+
+.categories > .button {
+  flex-shrink: 0;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+.actions > form > button {
+  max-width: 100%;
+}
+
+.login-page {
+  min-height: 100dvh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.login-card {
+  width: min(100%, 480px);
+}
+
+.login-card .wordmark {
+  margin-bottom: 24px;
+}
+
+.quantity-save {
+  margin-top: 6px;
+}
+
+.product-visual b {
+  display: block;
+}
+
+.analysis-progress {
+  accent-color: var(--primary, #2e60ff);
+  width: 100%;
+  height: 12px;
+}
+
+.device-sync-status {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 48px;
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+.device-sync-status button {
+  flex-shrink: 0;
+  min-height: 44px;
+  padding: 6px 12px;
+  font-size: 14px;
+}
+

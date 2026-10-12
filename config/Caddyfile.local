@@ -1,0 +1,10 @@
+{
+  auto_https disable_redirects
+  default_sni {$HFS_LAN_HOST}
+  skip_install_trust
+}
+
+https://{$HFS_LAN_HOST} {
+  tls internal
+  reverse_proxy web:3000
+}

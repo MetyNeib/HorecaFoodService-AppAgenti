@@ -1,0 +1,5 @@
+<ol class="stepper" aria-label="<%= ui('Avanzamento ordine') %>">
+  <% ['Cliente', 'Prodotti', 'Riepilogo'].each_with_index do |label, index| %>
+    <li <%= 'aria-current="step"'.html_safe if index + 1 == step %>><b><%= index + 1 < step ? '✓' : index + 1 %></b><%= ui(label) %></li>
+  <% end %>
+</ol>

@@ -1,0 +1,10 @@
+<header class="app-header header-dock dock_js" data-open="true" aria-label="<%= ui('Intestazione e agente') %>">
+  <div class="dock-panel header-panel dock_panel_js" id="header-controls"><div class="dock-panel-clip"><div class="header-content dock_content_js">
+    <a href="/" class="wordmark"><b>HFS<span>•</span></b><span>Horeca Food Service<small><%= ui('App Agenti') %></small></span></a>
+    <div class="agent"><span class="avatar">MR</span><span><b>Marco Rossi</b><small><%= ui('Agente 014 · Marche / Emilia-Romagna') %></small></span></div>
+    <%= button_to ui('Esci'), '/users/sign_out', method: :delete, form_class: 'logout_form_js', class: 'quiet' %>
+  </div></div></div>
+  <button type="button" class="dock-toggle header-toggle dock_toggle_js" aria-controls="header-controls" aria-expanded="true" aria-label="<%= ui('Comprimi intestazione e agente') %>">
+    <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="3"/><path d="M5 19a7 7 0 0 1 14 0"/></svg>
+  </button>
+</header>

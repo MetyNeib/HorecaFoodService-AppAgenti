@@ -1,0 +1,9 @@
+<article class="card product-card product_card_js" data-testid="product-<%= product['code'] %>" data-product-id="<%= product['id'] %>">
+  <div class="product-heading"><h3><%= product['name'] %></h3><%= link_to ui('Scheda prodotto'), contextual_path("/catalog/#{product['id']}", warehouse: order['warehouseId'], returnTo: request.fullpath), class: 'product-detail-link' %></div>
+  <p class="meta"><%= ui('Cod.') %> <%= product['code'] %> · 1 CT = <%= quantity_text(product['caseQuantityBase']) %> <%= product['baseUnit'] %></p>
+  <div class="row"><b><%= money(product_price(product, order)) %> / <%= product['baseUnit'] %></b><%= render 'components/stock_badge', product: product, warehouse: order['warehouseId'] %></div>
+  <%= command_form('ADD_LINE', { orderId: order['id'], lineId: SecureRandom.uuid, productId: product['id'] }, class: 'product-controls') do %>
+    <%= render 'components/quantity', product: product, quantity: 1, unit: product['baseUnit'] %><button class="primary"><%= ui('+ Aggiungi') %></button>
+    <p class="error form_error_js" role="alert" hidden></p>
+  <% end %>
+</article>

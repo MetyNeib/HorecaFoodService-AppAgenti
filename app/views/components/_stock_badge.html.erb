@@ -1,0 +1,2 @@
+<% label, tone, quantity = stock_presentation(product, warehouse) %>
+<span class="badge <%= tone %>"><%= ui(label) %> · <%= quantity_text(quantity) %> <%= product['baseUnit'] %></span>

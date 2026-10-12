@@ -5,3 +5,8 @@
 *.pdf binary
 *.png binary
 *.xlsx binary
+*.rb text eol=lf
+*.yml text eol=lf
+*.erb text eol=lf
+bin/* text eol=lf
+Dockerfile text eol=lf

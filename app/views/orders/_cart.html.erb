@@ -1,0 +1,11 @@
+<section class="cart" id="cart">
+  <div class="pane-heading"><h2><%= icon('order') %> <%= ui('Il tuo ordine') %> <span class="badge"><%= ui('%{count} articoli', count: order['lines'].length) %></span></h2><button type="button" class="quiet pane-jump focus_jump_js" data-target="<%= order['status'] == 'WHATSAPP_REVIEW' ? 'requests_js' : 'product_search_js' %>">↑ <%= ui(order['status'] == 'WHATSAPP_REVIEW' ? 'Torna alle richieste' : 'Torna ai prodotti') %></button></div>
+  <%= tag.div(**list_attributes('Articoli nel carrello', classes: 'cart-lines cart_list_js')) do %><% order['lines'].each do |line| %><%= render 'orders/cart_line', order: order, line: line %><% end %><%= render 'components/empty', text: 'Il carrello è vuoto. Scegli i prodotti a sinistra.' if order['lines'].empty? %><% end %>
+  <div class="card cart-summary"><%= render 'components/totals', totals: order['totals'] %>
+    <div class="actions">
+      <%= form_tag "/orders/#{order['id']}/review", method: :get do %><button class="primary" <%= 'disabled' if blocked || order['lines'].empty? %>><%= ui('Vai al riepilogo') %> →</button><% end %>
+      <% if order['status'] == 'WHATSAPP_REVIEW' %><%= command_form('SAVE_VERIFICATION', { orderId: order['id'] }, return_to: '/fastorder') do %><button><%= ui('Salva verifica') %></button><% end %><% else %><%= form_tag '/orders', method: :get do %><%= hidden_field_tag :tab, 'drafts' %><button><%= ui('Salva bozza') %></button><% end %><% end %>
+    </div>
+    <% if blocked %><p class="error"><%= ui('Completa le richieste da definire prima del riepilogo.') %></p><% end %>
+  </div>
+</section>

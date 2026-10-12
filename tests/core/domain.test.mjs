@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {baseQuantity,lineAmounts,sumAmounts,halfUp,resolvePrice,isConditionActive,normalizeSearch,homeCounts,receivablesSummary,queueValidatedOrder,transmitQueuedOrders} from '../../src/domain/core.ts';
+import {baseQuantity,lineAmounts,sumAmounts,halfUp,resolvePrice,isConditionActive,normalizeSearch,homeCounts,receivablesSummary,queueValidatedOrder,transmitQueuedOrders} from '../reference-v1/core.ts';
 const d=JSON.parse(readFileSync(new URL('../../src/data/hfs_demo_data.json',import.meta.url),'utf8'));
 const product=d.products.find(p=>p.demoKey==='lager');
 const customer=d.customers.find(c=>c.id==='CLI-061001');
@@ -50,7 +50,7 @@ test('unknown order rejected',()=>assert.throws(()=>queueValidatedOrder(d,'UNKNO
 test('three whatsapp orders reference canonical objects',()=>assert.ok(d.whatsappInbox.every(w=>d.orders.some(o=>o.id===w.orderId && o.status==='WHATSAPP_REVIEW'))));
 test('first whatsapp keeps two unresolved requests',()=>assert.equal(d.whatsappInbox[0].requests.filter(r=>r.status!=='MATCHED').length,2));
 
-import {initialState,reducer,newOrder,makeLine,recalc,orderErrors,parseCents,nextDelivery} from '../../src/domain/model.ts';
+import {initialState,reducer,newOrder,makeLine,recalc,orderErrors,parseCents,nextDelivery} from '../reference-v1/model.ts';
 test('runtime money parsing accepts Italian decimals and rejects truncation',()=>{assert.equal(parseCents('1,25'),125);assert.throws(()=>parseCents('1,255'));assert.throws(()=>parseCents('-1'));});
 test('runtime order uses next delivery day and no preselected articles',()=>{const s=initialState();const o=newOrder(s.data,'CLI-061001','TEST-1');assert.equal(o.deliveryDate,'2026-09-23');assert.equal(o.lines.length,0);assert.equal(o.totals.marginPercent,null);});
 test('runtime stock aggregates separate units and prices for the same product',()=>{const s=initialState(),d=s.data,o=newOrder(d,'CLI-061001','TEST-2');const p=d.products.find(p=>p.id==='ART-0107417');o.lines=[makeLine(d,o,p,19,'CT','L1'),makeLine(d,o,p,1,'PZ','L2')];recalc(o);assert.equal(o.lines[0].baseQuantity,285);assert.ok(orderErrors(d,o).some(e=>e.includes('disponibilità insufficiente')));d.orders.push(o);const confirmed=reducer(s,{type:'CONFIRM',id:o.id});assert.equal(confirmed.data.orders.at(-1).status,'DRAFT');});

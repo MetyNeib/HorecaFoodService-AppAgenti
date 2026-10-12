@@ -1,0 +1,11 @@
+<% inbox = inbox_for(order) %>
+<% if order['status'] == 'WHATSAPP_REVIEW' %>
+<div class="view fastorder-view">
+  <%= render 'components/page_title', title: ui('Verifica %{number}', number: order['number']), subtitle: ui('Consegna richiesta %{date} · %{count} richieste', date: display_date(inbox['requestedDeliveryDate']), count: inbox['requests'].length), back: '/fastorder', back_label: 'Ordini WhatsApp' %>
+  <%= render 'components/customer_strip', order: order, detail: "#{ui('Mittente:')} #{record('contacts', inbox['contactId'])['phoneDisplay']} · #{ui('Ricevuto')} #{display_date(inbox['receivedAt'])} #{inbox['receivedAt'][11, 5]}" %>
+  <div class="grid editor workspace-split"><%= render 'fastorder/exceptions', order: order, inbox: inbox %>
+    <% selected = inbox['requests'].find { |item| item['id'] == params[:request_id] } %>
+    <% if selected %><%= render 'fastorder/resolver', order: order, wa_request: selected %><% else %><%= render 'orders/cart', order: order, blocked: inbox['requests'].any? { |item| unresolved?(item) } %><% end %>
+  </div>
+</div>
+<% else %><%= render 'orders/review', order: order %><% end %>

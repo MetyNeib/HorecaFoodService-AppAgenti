@@ -1,0 +1,1 @@
+<%= command_form(changing ? 'CHANGE_CUSTOMER' : 'CREATE_DRAFT', changing ? { orderId: id, customerId: customer['id'], confirmClear: true } : { id: id, customerId: customer['id'] }, return_to: "/orders/#{id}/products") do %><button class="primary"><%= ui(label) %><%= ' →' if label == 'Seleziona' %></button><% end %>

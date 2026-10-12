@@ -1,0 +1,25 @@
+<% online = @state['network'] != 'OFFLINE' %>
+<footer class="app-footer status-dock dock_js" data-open="true" aria-label="<%= ui('Stato e sincronizzazione') %>">
+  <div class="footer-panel dock-panel dock_panel_js" id="footer-controls"><div class="footer-panel-clip"><div class="footer-content dock_content_js">
+    <div class="row"><span class="badge <%= online ? 'success' : 'warning' %>"><%= ui(online ? 'Online' : 'Offline') %></span>
+      <span><b><%= ui('Ultimo aggiornamento %{time}', time: @state['lastSyncAt'].to_s[11, 5]) %></b><small><%= ui('22 settembre 2026 · Dati sintetici · Invii simulati') %></small></span>
+    </div>
+    <div class="actions">
+      <button type="button" class="dialog_open_js" data-dialog="sync-dialog"><%= ui('Stato sincronizzazione') %></button>
+      <%= command_form('SET_DEMO_NETWORK', { online: !online }) do %><button><%= ui(online ? 'Passa offline' : 'Passa online') %></button><% end %>
+      <button type="button" class="quiet dialog_open_js" data-dialog="reset-dialog"><%= ui('Reset demo') %></button>
+      <button type="button" class="quiet install_app_js"><%= ui('Installa app') %></button>
+    </div>
+  </div></div></div>
+  <button type="button" class="footer-toggle dock-toggle dock_toggle_js" aria-controls="footer-controls" aria-expanded="true" aria-label="<%= ui('Comprimi stato e sincronizzazione') %>"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 15 6-6 6 6"/></svg></button>
+</footer>
+<%= render layout: 'components/dialog', locals: { id: 'sync-dialog', title: ui('Sincronizzazione demo') } do %>
+  <p><%= ui('Gli ordini confermati vengono trasmessi nella simulazione al ritorno online. Nessun invio reale.') %></p>
+  <p class="transport_status_js" role="status"><%= ui('I salvataggi sul server sono separati dagli invii commerciali simulati.') %></p>
+  <div id="device-sync-status" class="device-sync-status" role="status"><span><%= ui('Verifica dei salvataggi sul server…') %></span><button type="button" class="device_sync_js"><%= ui('Sincronizza') %></button></div>
+  <% records('syncQueue').each do |job| %><p><%= job['entityId'] %> · <%= ui(job['status'] == 'DONE' ? 'Completata' : 'In attesa di rete') %> · <%= ui('tentativi %{count}', count: job['attempts']) %></p><% end %>
+<% end %>
+<%= render layout: 'components/dialog', locals: { id: 'reset-dialog', title: ui('Ripristinare la demo?') } do %>
+  <p><%= ui('Tutte le modifiche della tua demo saranno sostituite dal seed iniziale. La rete tornerà offline.') %></p>
+  <%= command_form('RESET_DEMO', {}, return_to: '/') do %><button class="primary"><%= ui('Ripristina seed') %></button><% end %>
+<% end %>

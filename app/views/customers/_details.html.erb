@@ -1,0 +1,16 @@
+<div class="grid two workspace-split">
+  <%= tag.div(**list_attributes('Dati aziendali', kind: 'content', classes: 'card')) do %>
+    <h2><%= ui('Dati aziendali') %></h2><dl>
+      <% [['P. IVA DEMO', customer['taxId']], ['Intestatario', customer['businessName']], ['Indirizzo', customer['address']], ['Telefono', customer['phoneDisplay']], ['Email', customer['email']], ['Territorio', "#{customer['region']} · #{customer['province']}"]].each do |label, value| %><div><dt><%= ui(label) %></dt><dd><%= value %></dd></div><% end %>
+    </dl>
+  <% end %>
+  <section class="card pane contacts-pane"><div class="row between"><h2><%= ui('Referenti e ordini WhatsApp') %></h2><button type="button" class="dialog_open_js" data-dialog="contact-new">+ <%= ui('Aggiungi referente') %></button></div>
+    <%= tag.div(**list_attributes('Referenti cliente')) do %>
+      <% customer_records(customer, 'contacts').each do |contact| %>
+        <article class="card spaced"><h3><%= contact['firstName'] %> <%= contact['lastName'] %></h3><p><%= contact['role'] %> · <%= contact['phoneDisplay'] %></p><span class="badge <%= contact['whatsappActivationStatus'] == 'PENDING_SYNC' ? 'warning' : contact['whatsappEnabled'] ? 'success' : '' %>"><%= ui(contact['whatsappActivationStatus'] == 'PENDING_SYNC' ? 'WhatsApp: in attesa sync' : contact['whatsappEnabled'] ? 'WhatsApp abilitato' : 'WhatsApp non abilitato') %></span><div class="actions"><button type="button" class="dialog_open_js" data-dialog="contact-<%= contact['id'] %>"><%= ui('Modifica referente') %></button></div></article>
+      <% end %>
+    <% end %>
+    <% customer_records(customer, 'contacts').each do |contact| %><%= render 'customers/contact_form', customer: customer, contact: contact, dialog_id: "contact-#{contact['id']}" %><% end %>
+    <%= render 'customers/contact_form', customer: customer, contact: { 'id' => SecureRandom.uuid, 'phoneDisplay' => '+39 3XX XXX ', 'email' => 'referente@example.invalid' }, dialog_id: 'contact-new' %>
+  </section>
+</div>

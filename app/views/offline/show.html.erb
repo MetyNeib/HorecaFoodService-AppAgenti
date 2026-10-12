@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#2e60ff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="HFS Agenti">
+    <title>HFS · App Agenti offline</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/icons/hfs-180.png">
+    <%= stylesheet_link_tag "tokens", "base", "workspace", "elastic", "adaptive", "presentation" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body data-offline="true" data-page-controller="workspace">
+    <a class="skip-link" href="#main">Vai al contenuto</a>
+    <div class="app-shell workspace-shell" data-layout="flow" data-density="regular">
+      <header class="header-dock" data-open="true">
+        <div class="header-panel dock-panel" id="header-controls"><div class="header-panel-clip"><div class="app-header dock_content_js">
+          <a class="wordmark" href="/">HFS<span>•</span><small>Horeca Food Service<br>App Agenti</small></a>
+          <span class="offline-user_js">Archivio offline</span><a class="button" href="/">Home</a>
+        </div></div></div>
+        <button class="header-toggle dock-toggle" aria-label="Apri dati agente" aria-controls="header-controls" aria-expanded="true">●</button>
+      </header>
+      <main id="main" class="main_js workspace_content_js" tabindex="-1">
+        <div class="view"><h1>Preparazione archivio offline</h1><p>Per il primo utilizzo accedi con il server raggiungibile.</p><a class="button" href="/users/sign_in">Accedi online</a></div>
+      </main>
+      <footer class="app-footer status-dock" data-open="true" aria-label="Stato e sincronizzazione">
+        <div class="footer-panel dock-panel" id="footer-controls"><div class="footer-panel-clip"><div class="footer-content dock_content_js"><div><b>Horeca Food Service</b><small>Dati sintetici · Invii commerciali simulati</small></div><div class="actions"><button class="device_sync_js">Sincronizza</button><button class="install_app_js">Installa app</button></div></div></div></div>
+        <button class="footer-toggle dock-toggle" aria-label="Apri stato e sincronizzazione" aria-controls="footer-controls" aria-expanded="true">⌃</button>
+      </footer>
+    </div>
+    <%= render 'offline/templates' %>
+  </body>
+</html>

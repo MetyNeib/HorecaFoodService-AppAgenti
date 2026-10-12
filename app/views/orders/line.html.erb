@@ -1,0 +1,28 @@
+<% order = current_order; line = current_line; product = record('products', line['productId']) %>
+<% if editable?(order) %>
+<div class="view line-editor-view">
+  <%= render 'components/page_title', title: ui('Modifica articolo · %{product}', product: product['name']), back: order_location(order), back_label: order['channel'] == 'WHATSAPP' ? 'Verifica WhatsApp' : 'Prodotti' %>
+  <%= render 'components/customer_strip', order: order, detail: "#{ui('Cod.')} #{product['code']} · 1 CT = #{quantity_text(product['caseQuantityBase'])} #{product['baseUnit']}" %>
+  <%= command_form('UPDATE_LINE', { orderId: order['id'], lineId: line['id'] }, return_to: order_location(order), class: 'filter-form line_editor_js', data: { product: product.to_json, line: line.to_json, price_lists: records('priceLists').to_json, price_list_items: records('priceListItems').to_json, conditions: customer_conditions(record('customers', order['customerId'])).to_json }) do %>
+    <div class="grid two workspace-split form-split">
+      <%= tag.div(**list_attributes('Quantità e prezzo', kind: 'content', classes: 'card price-form')) do %>
+        <h2><%= ui('Quantità e prezzo') %></h2><%= render 'components/quantity', product: product, quantity: line['quantity'], unit: line['unit'] %>
+        <label class="field"><span><%= ui('Listino di riferimento') %><small class="reference_price_js"><%= ui('Prezzo:') %> <%= money(Hfs::Calculations.list_price(@data, product, order['priceListId'])) %> / <%= product['baseUnit'] %></small></span><%= select_tag 'payload[priceListId]', options_for_select(collection_options('priceLists'), order['priceListId']), class: 'price_list_js' %></label>
+        <%= hidden_field_tag 'payload[priceMode]', 'FIXED_PRICE', class: 'price_mode_value_js' %>
+        <div class="tabs"><% [['PRICE_LIST', 'Listino'], ['FIXED_PRICE', 'Prezzo libero'], ['DISCOUNT', 'Sconto %']].each do |value, label| %><button type="button" class="price_mode_js" data-mode="<%= value %>" aria-pressed="<%= value == 'FIXED_PRICE' %>"><%= ui(label) %></button><% end %></div>
+        <div class="grid two price-inputs"><label class="field"><span><%= ui('Prezzo finale € / %{unit}', unit: product['baseUnit']) %></span><%= text_field_tag :price_display, decimal_input(line['unitPriceBaseCents']), inputmode: 'decimal', class: 'price_input_js' %><%= hidden_field_tag 'payload[unitPriceBaseCents]', line['unitPriceBaseCents'], class: 'price_cents_js' %></label><label class="field"><span><%= ui('Sconto sul listino %') %></span><%= text_field_tag :discount_display, '0', inputmode: 'decimal', disabled: true, class: 'discount_input_js' %><%= hidden_field_tag 'payload[discountBasisPoints]', '0', class: 'discount_basis_js' %></label></div>
+        <div class="grid two line-extras"><label class="check"><%= hidden_field_tag 'payload[isGift]', false %><%= check_box_tag 'payload[isGift]', true, line['isGift'], class: 'gift_input_js' %><%= ui('Riga in omaggio') %></label><label class="field"><span><%= ui('Commento di riga') %></span><%= text_area_tag 'payload[note]', line['note'] %></label></div>
+      <% end %>
+      <%= tag.div(**list_attributes('Margine e condizioni', kind: 'content', classes: 'conditions-pane')) do %>
+        <section class="card margin-card"><h2><%= ui('Calcolo del margine') %></h2><div class="cost-facts"><p><small><%= ui('Costo unitario') %></small><b><%= money(line['costBaseCents']) %> / <%= product['baseUnit'] %></b></p><p><small><%= ui('Quantità base') %></small><b class="preview_quantity_js"><%= quantity_text(line['baseQuantity']) %> <%= product['baseUnit'] %></b></p><p><small><%= ui('Costo riga') %></small><b class="preview_cost_js"><%= money(line['lineCostCents']) %></b></p></div><div class="margin-highlight"><small><%= ui('Margine riga') %></small><strong class="preview_margin_js"><%= money(line['marginCents']) %> · <%= percentage(line['marginPercent']) %></strong></div></section>
+        <section class="card"><h2><%= ui('Condizioni per ordini futuri') %></h2><label class="check"><%= check_box_tag :save_condition, '1', false, class: 'save_condition_js' %><%= ui('Salva queste condizioni') %></label><p class="muted"><%= ui('Solo per questo cliente e prodotto. L’omaggio rimane relativo alla singola riga.') %></p>
+          <%= hidden_field_tag 'payload[condition][id]', SecureRandom.uuid, disabled: true, class: 'condition_field_js' %><%= hidden_field_tag 'payload[condition][replaceOverlaps]', true, disabled: true, class: 'condition_field_js' %>
+          <div class="grid two"><label class="field"><span><%= ui('Validità dal') %></span><%= date_field_tag 'payload[condition][validFrom]', nil, disabled: true, class: 'condition_field_js' %></label><label class="field"><span><%= ui('Validità al (incluso)') %></span><%= date_field_tag 'payload[condition][validTo]', nil, disabled: true, class: 'condition_field_js' %></label></div><small><%= ui('Senza date: validità indeterminata. Eventuali sovrapposizioni richiedono conferma di sostituzione.') %></small>
+        </section>
+      <% end %>
+    </div>
+    <p class="error form_error_js" role="alert" hidden></p>
+    <section class="card action-bar"><p><%= ui('Prezzo finale:') %> <b class="preview_price_js"><%= money(line['isGift'] ? 0 : line['unitPriceBaseCents']) %> / <%= product['baseUnit'] %></b></p><%= render 'components/totals', label: 'riga', totals: { 'netCents' => line['lineNetCents'], 'marginCents' => line['marginCents'], 'marginPercent' => line['marginPercent'] } %><div class="actions"><%= link_to ui('Annulla'), order_location(order), class: 'button' %><button class="primary line_save_js"><%= ui('Salva modifiche') %> →</button></div></section>
+  <% end %>
+</div>
+<% else %><%= render 'orders/review', order: order %><% end %>

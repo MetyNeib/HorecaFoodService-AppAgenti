@@ -1,0 +1,5 @@
+<dialog id="<%= id %>" class="dialog_js" aria-label="<%= title %>">
+  <div class="row"><h2><%= title %></h2><button type="button" class="dialog_close_js" aria-label="<%= ui('Chiudi finestra') %>">×</button></div>
+  <%= yield %>
+  <div class="actions"><button type="button" class="dialog_close_js"><%= ui('Chiudi') %></button></div>
+</dialog>

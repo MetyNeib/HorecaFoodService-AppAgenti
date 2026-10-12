@@ -1,5 +1,26 @@
 # HFS App Agenti — istruzioni di progetto per Codex
 
+## Migrazione autorizzata — 12 ottobre 2026 (prevale sulle regole V1 sotto)
+
+L'utente ha scelto Rails + Ralix, PostgreSQL, Devise e PWA offline essenziale
+(clienti/catalogo scaricati e creazione/modifica ordini), Android e Apple.
+La V1 completa è conservata su main/v1-react, tag v1.0.0-react, commit 81e72bc.
+Lavorare sul branch feature/hfs-rails-migration. Sono autorizzati commit e push
+GitHub del progetto in repository privato e installazione Docker Desktop locale.
+Nessun deploy server. Test autonomi per milestone, senza attesa di approvazione
+fra le normali iterazioni. Usare docs/RAILS_MIGRATION.md per decisioni e stato.
+
+ERB e CSS/JS separati, proprietà CSS per riga, Ralix con importmap e asset locali,
+componenti/partial riusabili, i18n italiano. Niente React/Turbo/Stimulus nel runtime
+Rails. Backend autorevole: comandi validati, isolamento utenti, idempotenza e
+conflitti espliciti. IndexedDB + service worker per l'offline; non confondere la
+sincronizzazione Rails con le trasmissioni commerciali ancora simulate.
+Seed iniziale immutato. Dopo il refactor sarà importato un dataset reale cliente,
+con fase separata, staging e riconciliazione; nessun dato reale o segreto in Git.
+Le precedenti regole di layout/branding/calcoli/simulazioni restano applicabili;
+quelle di stack Vite, assenza backend/service worker e solo offline simulato sono
+sostituite dalle decisioni sopra. Non importare sidebar o funzioni dell'altra app.
+
 ## Obiettivo corrente
 Realizzare e collaudare l'app dimostrativa completa Horeca Food Service. Il pacchetto consegnato è un BOOTSTRAP, non l'app finita. La schermata `src/app/App.tsx` serve soltanto a verificare che il seed e il tooling si carichino. Sostituirla con le viste applicative: non limitarsi a un piano o a una landing page.
 

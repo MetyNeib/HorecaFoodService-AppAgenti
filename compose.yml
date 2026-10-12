@@ -1,0 +1,59 @@
+name: hfs-agents
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-hfs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hfs-local-only}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER}"]
+      interval: 3s
+      timeout: 3s
+      retries: 20
+    ports:
+      - "127.0.0.1:5433:5432"
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6380:6379"
+  web:
+    image: hfs-agents-web
+    build: .
+    command: sh -c "bundle exec rails db:prepare && bundle exec puma -C config/puma.rb"
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    ports:
+      - "127.0.0.1:${HFS_PORT:-3002}:3000"
+    environment: &rails_environment
+      RAILS_ENV: development
+      DB_HOST: db
+      POSTGRES_USER: ${POSTGRES_USER:-hfs}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-hfs-local-only}
+      REDIS_URL: redis://redis:6379/0
+      HFS_DEMO_EMAIL: ${HFS_DEMO_EMAIL:-agente@hfs.invalid}
+      HFS_DEMO_PASSWORD: ${HFS_DEMO_PASSWORD:-HfsDemoLocale2026!}
+      HFS_ALLOWED_HOSTS: ${HFS_ALLOWED_HOSTS:-localhost,127.0.0.1,web}
+      LISTEN_GEM_USE_POLLING: "1"
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  worker:
+    image: hfs-agents-web
+    command: bundle exec sidekiq
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    environment: *rails_environment
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+volumes:
+  postgres_data:
+  bundle_cache:

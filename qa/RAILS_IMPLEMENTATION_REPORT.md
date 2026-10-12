@@ -1,0 +1,44 @@
+# HFS Rails — collaudo in corso
+
+Data: 12 ottobre 2026. Branch `feature/hfs-rails-migration`.
+Stato: **IN_PROGRESS**, nessun deploy. I report V1 restano evidenze storiche.
+
+## PASS
+
+- V1 completa conservata nel commit `81e72bc`, tre branch e tag su GitHub privato.
+- Rails 8.1.4/Ruby 4.0.5, PostgreSQL 16, Redis 7, Devise e Sidekiq avviati in Docker.
+- 94 RSpec: calcoli, dominio, autorizzazioni, transazioni, idempotenza, CSRF,
+  isolamento account, versioni/epoch, conferma HTML atomica e scope server.
+- 49 test originali conservati in `tests/reference-v1`; 12 test Ruby/JavaScript
+  confrontano stato completo per 20 passaggi e 10 comandi invalidi.
+- 20 controlli seed: SHA256 e dataset immutati.
+- 7 test del checker; 72 file frontend senza pattern vietati rilevati.
+- RuboCop: 50 file, zero segnalazioni. Brakeman: zero warning.
+- Migrazione realmente eseguita su database vuoto isolato; schema identico.
+- Build Docker, nuova installazione npm dal lockfile, npm audit zero vulnerabilità.
+- HTTPS locale con CA esplicita: HTTP 200 e TLS verificato; trust del PC invariato.
+- Tre flussi completi desktop: manuale, tre casi WhatsApp, clienti/condivisioni/insight.
+- Prima suite PWA Chromium: offline reale, conflitto/reset, sessione scaduta,
+  risposta persa dopo commit, quota atomica e logout/pulizia: 6/6 PASS.
+
+## IN_PROGRESS / FAIL da risolvere
+
+- Matrice finale UI: 20 test su quattro viewport, 88 schermate e relativi screenshot.
+- Estensione PWA Chromium/WebKit: un test cambio account ha evidenziato una race
+  nell'attesa del test; la ripartenza offline WebKit Windows restituisce un errore
+  interno del motore. Diagnosi in corso, nessun test saltato o dichiarato PASS.
+- Recupero esplicito archivio IndexedDB corrotto e aggiornamento della shell offline.
+- Verifica asset precompilati e CI GitHub finale sul commit di consegna.
+
+## NOT_RUN
+
+- Installazione su dispositivi Android/iPhone/iPad fisici e trust della CA su tali
+  dispositivi; la prova browser non li sostituisce.
+- Installazione Docker su un secondo PC/Mac fisico.
+- Import di dati reali cliente, previsto dopo il refactor.
+- Deploy server, invii business e integrazioni reali: fuori dallo scope autorizzato.
+
+Avvio e credenziali locali: [README](../README.md). Decisioni e limiti:
+[RAILS_MIGRATION](../docs/RAILS_MIGRATION.md). Prova su dispositivi:
+[LOCAL_PWA](../docs/LOCAL_PWA.md). Evidenze correnti in `qa/rails-ui` e `qa/rails`;
+durante il collaudo i file JSON vengono aggiornati anche con gli esiti falliti.
