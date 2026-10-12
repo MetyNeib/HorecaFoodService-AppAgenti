@@ -46,6 +46,7 @@ npm.cmd ci
 npm.cmd run vendor:javascript
 npm.cmd run validate:data
 npm.cmd test
+npm.cmd run test:domain-parity
 npm.cmd run check:rules
 docker compose exec web bundle exec rspec
 docker compose exec web bundle exec rubocop
@@ -70,6 +71,7 @@ La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, R
 - `app/javascript`: controller Ralix, IndexedDB e proiezione offline.
 - `app/assets/stylesheets`, `vendor/javascript`: CSS e librerie servite localmente.
 - `src/data/hfs_demo_data.json`: seed approvato immutato.
+- `tests/reference-v1`: helper puri originali conservati solo per i test di confronto; nessun runtime React.
 - `docs`, `references`, `fixtures`, `qa`: specifiche e verifiche, escluse dagli asset pubblici.
 
 Il clock dimostrativo resta il 22 settembre 2026 alle 09:30, agente Marco Rossi, otto clienti assegnati. I dati reali di un cliente saranno importati in una fase successiva documentata in [docs/RAILS_MIGRATION.md](docs/RAILS_MIGRATION.md); non vanno inseriti nel repository. Questa base usa un workspace JSONB atomico per utente: le scelte e i limiti di concorrenza sono descritti nello stesso documento.

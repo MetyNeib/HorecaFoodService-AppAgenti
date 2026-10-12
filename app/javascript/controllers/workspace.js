@@ -133,6 +133,7 @@ export default class WorkspaceController {
   async navigate(path, options = {}) {
     await this.ready;
     const target = safePath(path);
+    const samePage = target === location.pathname + location.search;
     const focus = options.preserveFocus ? this.captureFocus() : null;
     const positions = options.preserveScroll ? [...findAll('main,.scroll-area')].map(element => [element.getAttribute('aria-label') || 'main', element.scrollTop]) : [];
     const serial = this.navigationSerial = (this.navigationSerial || 0) + 1;
@@ -151,6 +152,7 @@ export default class WorkspaceController {
         if (String(snapshot.user.id) !== this.client.userId) { location.reload(); return; }
         await this.client.storage.initialize(snapshot);
         this.client.record = await this.client.storage.read();
+        const docks = samePage ? ['.status-dock', '.header-dock'].map(selector => [selector, find(selector)?.dataset.open === 'true']) : [];
         find('main').replaceWith(main);
         for (const selector of ['.status-dock', '.header-dock', '#workspace-bootstrap']) {
           const replacement = html.querySelector(selector); const current = find(selector);
@@ -162,7 +164,8 @@ export default class WorkspaceController {
         if (token) this.client.setCsrf(token);
         document.title = html.title;
         this.offlineView = false;
-        this.ui.mount({ introduce: !options.preserveFocus });
+        this.ui.mount({ introduce: !samePage && !options.preserveFocus });
+        for (const [selector, open] of docks) this.ui.setOpen(find(selector), open);
       } catch (error) {
         if (serial !== this.navigationSerial) return;
         this.render({ preserveFocus: options.preserveFocus });
@@ -173,7 +176,7 @@ export default class WorkspaceController {
       const element = label === 'main' ? find('main') : find(`.scroll-area[aria-label="${CSS.escape(label)}"]`);
       if (element) element.scrollTop = top;
     }
-    if (!options.preserveFocus) {
+    if (!samePage && !options.preserveFocus) {
       const title = find('main h1');
       if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
     }
@@ -189,7 +192,7 @@ export default class WorkspaceController {
     await this.client.enqueue(type, payload);
     if (navigator.onLine && this.client.reachable) await this.client.sync();
     const target = safePath(returnTo || location.pathname + location.search).replace(':id', encodeURIComponent(payload.id || payload.orderId || ''));
-    await this.navigate(target, { replace: target === location.pathname + location.search, preserveFocus: options.preserveFocus, preserveScroll: options.preserveScroll });
+    await this.navigate(target, { replace: target === location.pathname + location.search, preserveFocus: options.preserveFocus || target === location.pathname + location.search, preserveScroll: options.preserveScroll });
     if (this.client.record.conflict) announce(this.client.record.conflict.message, true);
     else if (this.client.authRequired) announce('Sessione scaduta. Le modifiche sono conservate; accedi con lo stesso account.', true);
     else announce(this.client.record.outbox.length ? 'Salvato sul dispositivo · da sincronizzare.' : 'Modifiche salvate.');
@@ -207,7 +210,7 @@ export default class WorkspaceController {
   async submit(event) {
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
-    if (this.storageFailure) return; // Online HTML forms remain usable when IndexedDB is unavailable.
+    if (this.storageFailure) { this.nativeSubmit(event, form); return; }
     if (new URL(form.action).pathname === '/users/sign_out') {
       event.preventDefault(); await this.ready;
       try { await this.client.logout(form); } catch (error) { announce(error.message, true); }
@@ -260,6 +263,34 @@ export default class WorkspaceController {
     if (submitter?.name) params.set(submitter.name, submitter.value);
     const target = new URL(form.action).pathname + '?' + params;
     if (target !== location.pathname + location.search) this.navigate(target, { replace: true, preserveFocus: true, preserveScroll: true });
+  }
+
+  nativeSubmit(event, form) {
+    // Server-rendered forms remain usable online; do not claim a durable local save.
+    if (new URL(form.action).pathname === '/users/sign_out' && activeUserId()) {
+      event.preventDefault();
+      announce('Recupera prima l’archivio locale: non è possibile verificare se contiene modifiche ancora da sincronizzare.', true);
+      return;
+    }
+    if (!form.matches('.command_form_js')) return;
+    const dialog = document.getElementById(form.dataset.confirmDialog || '');
+    if (dialog && !form.dataset.confirmed && !event.submitter?.closest('dialog')) {
+      event.preventDefault(); dialog._pendingForm = form; dialog._pendingSubmitter = event.submitter; openDialog(dialog); return;
+    }
+    try {
+      const command = formCommand(form, event.submitter);
+      for (const [key, value] of Object.entries(command.payload)) {
+        if (typeof value !== 'number') continue;
+        const field = form.querySelector(`[name="payload[${CSS.escape(key)}]"]`);
+        if (field) field.value = value;
+      }
+      if (command.payload.condition && form.dataset.conditions) {
+        const condition = command.payload.condition;
+        const line = JSON.parse(form.dataset.line || '{}');
+        const overlap = JSON.parse(form.dataset.conditions).some(item => item.productId === line.productId && (!item.validTo || !condition.validFrom || item.validTo >= condition.validFrom) && (!condition.validTo || !item.validFrom || item.validFrom <= condition.validTo));
+        if (overlap && !window.confirm('Sostituire le condizioni sovrapposte per questo cliente e prodotto?')) event.preventDefault();
+      }
+    } catch (error) { event.preventDefault(); announce(error.message, true); }
   }
 
   input(event) {

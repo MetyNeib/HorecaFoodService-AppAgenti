@@ -131,15 +131,25 @@ test('risposta persa dopo commit: retry idempotente e nessun duplicato', async (
   const id = 'BOZ-' + crypto.randomUUID();
   await context.setOffline(true);
   await page.evaluate(id => window.HFS.client.enqueue('CREATE_DRAFT', { id, customerId: 'CLI-061001' }), id);
-  let committed = false;
-  await page.route('**/commands', async route => { await route.fetch(); committed = true; await route.abort('failed'); });
+  await page.evaluate(() => {
+    const client = window.HFS.client;
+    client.testOriginalFetch = client.fetch;
+    client.fetch = async (...args) => {
+      const response = await client.testOriginalFetch(...args);
+      if (String(args[0]) === '/commands' && response.ok) {
+        window.testCommitted = true;
+        throw new TypeError('Risposta di rete persa dopo il commit');
+      }
+      return response;
+    };
+  });
   await context.setOffline(false);
   await page.evaluate(() => window.HFS.reconnect());
-  await expect.poll(() => committed).toBe(true);
+  await expect.poll(() => page.evaluate(() => !!window.testCommitted), { timeout: 20000 }).toBe(true);
   expect(await outbox(page)).toHaveLength(1);
   const afterCommit = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
   expect(afterCommit.state.data.orders.filter(order => order.id === id)).toHaveLength(1);
-  await page.unroute('**/commands');
+  await page.evaluate(() => { window.HFS.client.fetch = window.HFS.client.testOriginalFetch; });
   await page.evaluate(() => window.HFS.reconnect());
   await expect.poll(() => outbox(page), { timeout: 20000 }).toEqual([]);
   const afterRetry = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
@@ -184,9 +194,10 @@ test('sessione di un altro account non riceve la coda del precedente utente', as
   await page.evaluate(id => window.HFS.client.enqueue('CREATE_DRAFT', { id, customerId: 'CLI-061001' }), id);
   await context.clearCookies(); await context.setOffline(false);
   const second = await context.newPage(); await login(second, 'agente@hfs.invalid');
-  await page.evaluate(() => { window.HFS.client.authRequired = false; return window.HFS.client.sync(); });
+  await page.waitForFunction(() => !window.HFS.client.syncing);
+  await page.evaluate(async () => { window.HFS.client.authRequired = false; await window.HFS.client.sync(); });
   expect(await outbox(page)).toHaveLength(1);
-  expect(await page.evaluate(() => window.HFS.client.authRequired)).toBe(true);
+  await expect.poll(() => page.evaluate(() => window.HFS.client.authRequired)).toBe(true);
   const other = await second.evaluate(() => fetch('/snapshot').then(response => response.json()));
   expect(other.user.email).toBe('agente@hfs.invalid');
   expect(other.state.data.orders.some(order => order.id === id)).toBe(false);
@@ -209,4 +220,110 @@ test('viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili
       await page.screenshot({ path: `qa/rails/${info.project.name}-offline-${name}-${width}.png`, fullPage: true });
     }
   }
+});
+
+test('archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia', async ({ page }) => {
+  const original = await page.evaluate(async () => {
+    const storage = window.HFS.client.storage;
+    const raw = { schemaVersion: 999, outbox: [{ operationId: 'local-unsent-original', payload: { note: 'Da riconciliare' } }], diagnostic: 'Archivio incompatibile' };
+    await new Promise((resolve, reject) => {
+      const tx = storage.db.transaction('workspace', 'readwrite');
+      tx.objectStore('workspace').put(raw, 'state'); tx.oncomplete = resolve; tx.onerror = () => reject(tx.error);
+    });
+    return raw;
+  });
+  await page.reload();
+  await page.waitForFunction(() => !!window.HFS?.storageFailure);
+  expect(await page.evaluate(() => window.HFS.client.storage.readRaw())).toEqual(original);
+  await page.evaluate(() => window.HFS.storageRecoveryDialog());
+  await page.getByRole('button', { name: 'Annulla', exact: true }).click();
+  expect(await page.evaluate(() => window.HFS.client.storage.readRaw())).toEqual(original);
+  await page.evaluate(() => window.HFS.storageRecoveryDialog());
+  const downloaded = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Scarica archivio originale JSON', exact: true }).click();
+  expect((await downloaded).suggestedFilename()).toBe('hfs-archivio-originale.json');
+  await page.getByRole('button', { name: 'Ripristina dal server e conserva copia', exact: true }).click();
+  await page.waitForFunction(() => !window.HFS.storageFailure && window.HFS.client.record?.schemaVersion === 2);
+  expect(await page.evaluate(() => window.HFS.client.record.recovery[0].raw)).toEqual(original);
+  expect(await outbox(page)).toEqual([]);
+  await page.reload(); await page.waitForFunction(() => !!window.HFS?.client?.record);
+  expect(await page.evaluate(() => window.HFS.client.record.recovery[0].raw)).toEqual(original);
+});
+
+test('archivio negato: modifica online via form Rails e nessun falso salvataggio offline', async ({ page }) => {
+  await page.addInitScript(() => {
+    IDBFactory.prototype.open = function () { throw new DOMException('Archivio negato', 'SecurityError'); };
+  });
+  await page.goto('/orders/BOZ-26-00021/review');
+  await page.waitForFunction(() => !!window.HFS?.storageFailure);
+  await page.getByLabel('Nota sul documento di consegna').fill('Salvata dal form Rails senza IndexedDB');
+  await page.getByRole('button', { name: 'Salva bozza', exact: true }).click();
+  await page.waitForLoadState('load');
+  const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
+  expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Salvata dal form Rails senza IndexedDB');
+  expect(await page.evaluate(() => !!window.HFS?.storageFailure)).toBe(true);
+  await page.goto('/orders/BOZ-26-00021/lines/BOZ-26-00021-L01/edit');
+  await page.waitForFunction(() => !!window.HFS?.storageFailure);
+  await page.locator('.price_input_js').fill('1,50');
+  await page.getByRole('button', { name: /Salva modifiche/ }).click();
+  await page.waitForURL(/\/products/);
+  const priced = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
+  expect(priced.state.data.orders.find(order => order.id === 'BOZ-26-00021').lines[0].unitPriceBaseCents).toBe(150);
+});
+
+test('aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali', async ({ page, context }) => {
+  await context.setOffline(true);
+  await page.evaluate(() => window.HFS.client.enqueue('SAVE_REVIEW', { orderId: 'BOZ-26-00021', note: 'Conservata durante aggiornamento' }));
+  const pending = await outbox(page);
+  await page.evaluate(async () => {
+    const key = (await caches.keys()).find(name => name.startsWith('hfs-public-shell-'));
+    const cache = await caches.open(key); const shell = await cache.match('/offline');
+    await cache.put('/offline', new Response((await shell.text()).replace('App Agenti offline', 'SHELL PRECEDENTE'), { headers: shell.headers }));
+    // Prevent automatic synchronization so this test isolates the asset update from user data.
+    window.HFS.reconnect = async () => {};
+  });
+  await context.setOffline(false);
+  await page.evaluate(async () => { window.HFS.offlinePrepared = false; await window.HFS.registerWorker(); });
+  await readyOffline(page);
+  expect(await outbox(page)).toEqual(pending);
+  const shell = await page.evaluate(async () => (await caches.match('/offline')).text());
+  expect(shell).not.toContain('SHELL PRECEDENTE'); expect(shell).not.toContain(email);
+  await context.setOffline(true); await page.reload();
+  await page.waitForFunction(() => !!window.HFS?.client?.record);
+  expect(await outbox(page)).toEqual(pending);
+  expect((await state(page)).data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Conservata durante aggiornamento');
+});
+
+test('due schede: salvataggi simultanei serializzati e invio unico della stessa coda', async ({ page, context }) => {
+  const second = await context.newPage(); await second.goto('/');
+  await second.waitForFunction(() => !!window.HFS?.client?.record); await second.evaluate(() => window.HFS.ready);
+  await context.setOffline(true);
+  await Promise.all([
+    page.evaluate(() => window.HFS.client.enqueue('SAVE_REVIEW', { orderId: 'BOZ-26-00021', note: 'Prima scheda' })),
+    second.evaluate(() => window.HFS.client.enqueue('SAVE_REVIEW', { orderId: 'BOZ-26-00021', customerReference: 'Seconda scheda' }))
+  ]);
+  const pending = await page.evaluate(() => window.HFS.client.storage.read());
+  expect(pending.outbox).toHaveLength(2);
+  expect(pending.outbox[1].baseVersion).toBe(pending.outbox[0].baseVersion + 1);
+  await context.setOffline(false);
+  await Promise.all([page.evaluate(() => window.HFS.reconnect()), second.evaluate(() => window.HFS.reconnect())]);
+  await expect.poll(() => outbox(page), { timeout: 20000 }).toEqual([]);
+  const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
+  expect(server.version).toBe(pending.server.version + 2);
+  expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021')).toMatchObject({ note: 'Prima scheda', customerReference: 'Seconda scheda' });
+  await second.close();
+});
+
+test('token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati', async ({ page }) => {
+  const before = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
+  await page.evaluate(async () => {
+    const client = window.HFS.client;
+    await client.enqueue('SAVE_REVIEW', { orderId: 'BOZ-26-00021', note: 'Token aggiornato automaticamente' });
+    client.setCsrf('token-scaduto'); await client.sync();
+  });
+  expect(await outbox(page)).toEqual([]);
+  expect(await page.evaluate(() => window.HFS.client.record.conflict)).toBeNull();
+  const server = await page.evaluate(() => fetch('/snapshot').then(response => response.json()));
+  expect(server.version).toBe(before.version + 1);
+  expect(server.state.data.orders.find(order => order.id === 'BOZ-26-00021').note).toBe('Token aggiornato automaticamente');
 });

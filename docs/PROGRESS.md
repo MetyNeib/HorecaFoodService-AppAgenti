@@ -18,9 +18,10 @@ esclusivamente la V1 React conservata nel commit `81e72bc`.
 - PASS: nuova installazione npm dal lockfile, npm audit 0 vulnerabilità, nuova
   build Docker e verifica HTTPS locale con CA esplicita senza modificare trust OS.
 - PASS: tre flussi funzionali completi desktop (manuale, WA, clienti/condivisioni/insight).
-- IN_PROGRESS: matrice finale UI 20 test/88 viste; PWA Chromium e WebKit, inclusi
-  ripartenza offline e recupero archivio corrotto. Gli errori WebKit offline Windows
-  sono in diagnosi: non equivalgono a verifica superata della compatibilità Apple.
+- PASS: regressione WebKit della versione Playwright 1.63 isolata e corretta con
+  Playwright 1.64; riproduzione indipendente 4/4 PASS, rapporto in `qa/rails`.
+- IN_PROGRESS: matrice finale UI 20 test/88 viste e PWA 26 test Chromium/WebKit,
+  inclusi ripartenza offline, recupero archivio corrotto, due tab e aggiornamento shell.
 - IN_PROGRESS: 22 viste ERB, controlli Ralix, confronti visuali, offline reale,
   test Chromium/WebKit, regole ZIP, pulizia del vecchio runtime e salvataggio Rails.
 - NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.
@@ -32,7 +33,7 @@ import separato dei dati reali di un cliente; il seed attuale resta immutato.
 
 ---
 
-﻿# Checkpoint di implementazione
+# Checkpoint di implementazione
 
 ## Header/footer automatici e liste compatte 11/10/2026 — COMPLETE_LOCAL
 

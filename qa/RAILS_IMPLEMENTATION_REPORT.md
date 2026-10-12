@@ -24,11 +24,16 @@ Stato: **IN_PROGRESS**, nessun deploy. I report V1 restano evidenze storiche.
 ## IN_PROGRESS / FAIL da risolvere
 
 - Matrice finale UI: 20 test su quattro viewport, 88 schermate e relativi screenshot.
-- Estensione PWA Chromium/WebKit: un test cambio account ha evidenziato una race
-  nell'attesa del test; la ripartenza offline WebKit Windows restituisce un errore
-  interno del motore. Diagnosi in corso, nessun test saltato o dichiarato PASS.
-- Recupero esplicito archivio IndexedDB corrotto e aggiornamento della shell offline.
-- Verifica asset precompilati e CI GitHub finale sul commit di consegna.
+- Matrice PWA finale: 26 test Chromium/WebKit. La regressione upstream Playwright
+  1.63 è stata isolata e risolta passando a 1.64: riproduzione indipendente 4/4 PASS.
+  Dettagli in [WEBKIT_OFFLINE_AUDIT](rails/WEBKIT_OFFLINE_AUDIT.md).
+- Recupero archivio IndexedDB corrotto, memoria negata, due tab, token CSRF,
+  risposta persa e aggiornamento shell: sette test mirati Chromium PASS; ripetizione
+  nella suite finale su entrambi i motori in corso.
+- Asset Rails compilati in modalità production in container senza rete: PASS,
+  39 file pubblici senza riferimenti privati noti. Nessun server production avviato.
+- CI GitHub checkpoint: Ruby/migrazioni, regole, stile e sicurezza PASS; browser
+  da ripetere sul commit aggiornato e sul commit finale di consegna.
 
 ## NOT_RUN
 

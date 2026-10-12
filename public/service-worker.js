@@ -17,16 +17,31 @@ self.addEventListener('activate', event => {
 
 self.addEventListener('message', event => {
   if (event.data?.type !== 'PRECACHE' || !Array.isArray(event.data.assets)) return;
-  const assets = [...new Set(event.data.assets)].map(value => new URL(value, self.location.origin)).filter(isPublic);
   event.waitUntil((async () => {
     const cache = await caches.open(CACHE);
     const failed = [];
-    await Promise.all(assets.map(async url => {
-      try { const response = await fetch(url.href, { credentials: 'same-origin' }); if (response.ok && !response.redirected) await cache.put(url.href, response); else failed.push(url.pathname); } catch { failed.push(url.pathname); }
-    }));
-    if (!failed.length) {
-      try { const shell = await fetch('/offline', { cache: 'no-store' }); if (shell.ok && !shell.redirected) await cache.put('/offline', shell); else failed.push('/offline'); } catch { failed.push('/offline'); }
-    }
+    try {
+      // Parse the current neutral server shell, so an already open page cannot pin an old importmap.
+      const shell = await fetch('/offline', { cache: 'no-store', credentials: 'same-origin' });
+      if (!shell.ok || shell.redirected) throw new Error('Shell non disponibile');
+      const markup = await shell.clone().text();
+      const importmap = JSON.parse(markup.match(/<script\b[^>]*type=["']importmap["'][^>]*>([\s\S]*?)<\/script>/i)?.[1] || '{}');
+      const linked = [...markup.matchAll(/<link\b[^>]*href=["']([^"']+)["'][^>]*>/gi)].map(match => match[1]);
+      const assets = [...new Set([...event.data.assets, ...Object.values(importmap.imports || {}), ...linked, ...PUBLIC_PATHS])]
+        .map(value => new URL(value, self.location.origin)).filter(url => isPublic(url) && url.pathname !== '/offline');
+      const prepared = await Promise.all(assets.map(async url => {
+        try {
+          const response = await fetch(url.href, { cache: 'no-store', credentials: 'same-origin' });
+          if (!response.ok || response.redirected) throw new Error('Risorsa non disponibile');
+          return [url.href, response];
+        } catch { failed.push(url.pathname); return null; }
+      }));
+      if (!failed.length) {
+        await Promise.all(prepared.map(([url, response]) => cache.put(url, response)));
+        // Publish the new shell only when all of its dependencies have been saved successfully.
+        await cache.put('/offline', shell);
+      }
+    } catch { failed.push('/offline'); }
     event.source?.postMessage({ type: 'PRECACHE_COMPLETE', failed });
   })());
 });
