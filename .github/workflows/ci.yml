@@ -1,8 +1,9 @@
 name: Rails checks
 on:
+  workflow_dispatch:
   pull_request:
   push:
-    branches: [main, feature/hfs-rails-migration]
+    branches: [main, feature/hfs-rails-migration, feature/amelia3-ftp-import]
 permissions:
   contents: read
 concurrency:
