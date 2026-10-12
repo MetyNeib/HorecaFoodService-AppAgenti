@@ -1,5 +1,10 @@
 # HFS Rails — rapporto di collaudo
 
+Questo rapporto certifica la baseline Rails precedente all'integrazione Amelia3.
+La versione corrente e i suoi esiti sono nel
+[rapporto Amelia3](AMELIA3_IMPORT_REPORT.md); lo stato COMPLETE sotto riguarda
+soltanto lo SHA storico indicato in questo documento.
+
 Data: 12 ottobre 2026. Branch `feature/hfs-rails-migration`.
 Stato: **COMPLETE_LOCAL**. Nessun deploy. I report React sono evidenze storiche.
 CI del codice finale: **PASS**, cinque job superati su GitHub.

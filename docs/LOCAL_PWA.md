@@ -5,6 +5,14 @@ l'app installata. Il backend resta locale, senza pubblicazione Internet.
 Il PC deve essere acceso e sulla stessa rete per accesso iniziale e sincronizzazione.
 Dopo la preparazione online, il nucleo offline funziona anche senza PC raggiungibile.
 
+Per Amelia3 il PC corrente risponde su **https://192.168.1.12:3443**.
+TLS e cinque endpoint sono stati verificati con CA esplicita, senza modificare
+il trust di Windows. La CA pubblica da trasferire è `tmp/hfs-local-root.crt`.
+L'IP può cambiare con la rete Wi-Fi: aggiornare `HFS_LAN_HOST` nella copia
+privata `.env` e riavviare il compose LAN se necessario. Account Admin/agente34,
+password nel file privato `imports/private/amelia3/local_accounts.json`.
+Installazione fisica NOT_RUN, distinta dalle prove browser e TLS.
+
 ## Sul computer
 
 `http://127.0.0.1:3002` è un'origine locale utilizzabile dai browser per il service

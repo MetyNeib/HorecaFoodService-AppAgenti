@@ -1,0 +1,42 @@
+{
+  "status": "AMELIA3_PASS",
+  "evidenceSource": "GitHub Actions step logs",
+  "headSha": "c180cdf6b99f8411896a00ecc56a0f1ddfa37cb8",
+  "runId": 38289890582,
+  "url": "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38289890582",
+  "overallCiConclusion": "failure",
+  "amelia3": {
+    "passed": 45,
+    "failed": 0,
+    "projects": {
+      "apple-webkit": 9,
+      "desktop-chromium": 9,
+      "landscape-chromium": 9,
+      "phone-chromium": 9,
+      "tablet-chromium": 9
+    },
+    "data": "isolated fixtures; real CSV evidence is separate"
+  },
+  "pwa": {
+    "passed": 28,
+    "failed": 0
+  },
+  "ruby": {
+    "passed": 134,
+    "failed": 0
+  },
+  "legacyDemoUi": {
+    "passed": 23,
+    "failed": 1,
+    "failure": "synthetic draft deletion dialog",
+    "disposition": "No further demo fixes; user requested removal next turn"
+  },
+  "realCsvEvidence": [
+    "real-browser-results.json",
+    "real-cold-start.json",
+    "local-import.json",
+    "live-ftp.json",
+    "order-smoke.json"
+  ],
+  "physicalDevices": "NOT_RUN"
+}

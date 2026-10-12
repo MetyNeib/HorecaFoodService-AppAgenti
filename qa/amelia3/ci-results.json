@@ -1,0 +1,55 @@
+﻿{
+    "observedAt":  "2026-10-12T18:35:50.3913402Z",
+    "headSha":  "c180cdf6b99f8411896a00ecc56a0f1ddfa37cb8",
+    "runId":  38289890582,
+    "url":  "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38289890582",
+    "status":  "completed",
+    "conclusion":  "failure",
+    "jobs":  [
+                 {
+                     "id":  114947164527,
+                     "name":  "browser",
+                     "status":  "completed",
+                     "conclusion":  "failure",
+                     "failedSteps":  [
+                                         "Verify Rails application flows at all four viewport sizes"
+                                     ]
+                 },
+                 {
+                     "id":  114947164693,
+                     "name":  "security",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "failedSteps":  [
+
+                                     ]
+                 },
+                 {
+                     "id":  114947164768,
+                     "name":  "rules",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "failedSteps":  [
+
+                                     ]
+                 },
+                 {
+                     "id":  114947164879,
+                     "name":  "ruby",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "failedSteps":  [
+
+                                     ]
+                 },
+                 {
+                     "id":  114947164912,
+                     "name":  "style",
+                     "status":  "completed",
+                     "conclusion":  "success",
+                     "failedSteps":  [
+
+                                     ]
+                 }
+             ]
+}

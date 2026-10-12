@@ -1,0 +1,338 @@
+{
+  "observedAt": "2026-10-12T18:43:09.952Z",
+  "screenshotLocation": "private (excluded from Git)",
+  "results": [
+    {
+      "role": "admin",
+      "status": "PASS",
+      "cache": {
+        "customers": 100,
+        "products": 214,
+        "portfolio": 8311,
+        "snapshotBytes": 100822,
+        "heapBytes": 10000000
+      },
+      "timings": [
+        {
+          "page": "home",
+          "status": 200,
+          "elapsedMs": 1106,
+          "responseBytes": 116821
+        },
+        {
+          "page": "customers",
+          "status": 200,
+          "elapsedMs": 786,
+          "responseBytes": 133245
+        },
+        {
+          "page": "customer-details",
+          "status": 200,
+          "elapsedMs": 628,
+          "responseBytes": 115824
+        },
+        {
+          "page": "customer-orders",
+          "status": 200,
+          "elapsedMs": 471,
+          "responseBytes": 115716
+        },
+        {
+          "page": "customer-open_items",
+          "status": 200,
+          "elapsedMs": 695,
+          "responseBytes": 115731
+        },
+        {
+          "page": "customer-commercial",
+          "status": 200,
+          "elapsedMs": 656,
+          "responseBytes": 115822
+        },
+        {
+          "page": "catalog",
+          "status": 200,
+          "elapsedMs": 651,
+          "responseBytes": 147687
+        },
+        {
+          "page": "search",
+          "status": 200,
+          "elapsedMs": 524,
+          "responseBytes": 116317
+        },
+        {
+          "page": "history",
+          "status": 200,
+          "elapsedMs": 1671,
+          "responseBytes": 138585
+        },
+        {
+          "page": "insights",
+          "status": 200,
+          "elapsedMs": 1993,
+          "responseBytes": 129009
+        },
+        {
+          "page": "order",
+          "status": 200,
+          "elapsedMs": 694,
+          "responseBytes": 116114
+        },
+        {
+          "page": "sync",
+          "status": 200,
+          "elapsedMs": 571,
+          "responseBytes": 115812
+        }
+      ],
+      "visuals": [
+        {
+          "page": "customers",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 1440,
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "remote": []
+    },
+    {
+      "role": "agent",
+      "status": "PASS",
+      "cache": {
+        "customers": 16,
+        "products": 266,
+        "portfolio": 16,
+        "snapshotBytes": 87404,
+        "heapBytes": 17100000
+      },
+      "timings": [
+        {
+          "page": "home",
+          "status": 200,
+          "elapsedMs": 1094,
+          "responseBytes": 103417
+        },
+        {
+          "page": "customers",
+          "status": 200,
+          "elapsedMs": 478,
+          "responseBytes": 107404
+        },
+        {
+          "page": "customer-details",
+          "status": 200,
+          "elapsedMs": 597,
+          "responseBytes": 102751
+        },
+        {
+          "page": "customer-orders",
+          "status": 200,
+          "elapsedMs": 486,
+          "responseBytes": 102932
+        },
+        {
+          "page": "customer-open_items",
+          "status": 200,
+          "elapsedMs": 444,
+          "responseBytes": 102603
+        },
+        {
+          "page": "customer-commercial",
+          "status": 200,
+          "elapsedMs": 446,
+          "responseBytes": 102734
+        },
+        {
+          "page": "catalog",
+          "status": 200,
+          "elapsedMs": 447,
+          "responseBytes": 134295
+        },
+        {
+          "page": "search",
+          "status": 200,
+          "elapsedMs": 736,
+          "responseBytes": 102925
+        },
+        {
+          "page": "history",
+          "status": 200,
+          "elapsedMs": 398,
+          "responseBytes": 119744
+        },
+        {
+          "page": "insights",
+          "status": 200,
+          "elapsedMs": 727,
+          "responseBytes": 114960
+        },
+        {
+          "page": "order",
+          "status": 200,
+          "elapsedMs": 746,
+          "responseBytes": 102622
+        }
+      ],
+      "visuals": [
+        {
+          "page": "customers",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 390,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 768,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 1024,
+          "overflow": false
+        },
+        {
+          "page": "customers",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "catalog",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "history",
+          "width": 1440,
+          "overflow": false
+        },
+        {
+          "page": "order",
+          "width": 1440,
+          "overflow": false
+        }
+      ],
+      "errors": [],
+      "remote": []
+    }
+  ]
+}

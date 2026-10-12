@@ -1,4 +1,4 @@
-# Amelia3 — 12/10/2026 — IN_PROGRESS
+# Amelia3 — 12/10/2026 — CHECKPOINT_DATI_REALI_TESTATI
 
 Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
 `docs/amelia3/`, rapporto corrente [AMELIA3_IMPORT_REPORT](../qa/AMELIA3_IMPORT_REPORT.md).
@@ -7,13 +7,13 @@ Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
   merge `81587c7`; V1 conservata su v1-react e tag v1.0.0-react.
 - Import locale IMPLEMENTATO e TESTATO: nove hash/header/dimensioni uguali al
   manifest, dry-run streaming ~52s, publish atomico e secondo import idempotente;
-  5 test sintetici importer PASS, anche rollback su file finale corrotto.
+  6 test sintetici importer PASS, anche rollback su file finale corrotto.
 - Riconciliazione agente 34 TESTATA: 16 clienti (12 attivi/4 bloccati), 2.237 righe,
   606 riferimenti ordine e 447 articoli. Storico totale 1.036.814 righe in PostgreSQL.
 - Account Admin e agente 34 TESTATI: login reale, ordine locale a due prodotti
   creato dall'Admin e visibile al 34, unico record canonico. Password soltanto nel
   file privato `imports/private/amelia3/local_accounts.json`.
-- PASS 132 RSpec (nuova verifica con 134 casi in corso), 49 test dominio originali,
+- PASS 134 RSpec, 49 test dominio originali,
   12 parità offline e 8 nuovi test
   BigInt Amelia3; 20 controlli seed e checker 95 file senza violazioni.
 - FTP LIVE TESTATO: primo job Sidekiq automatico riuscito il 12/10 alle 18:10
@@ -21,18 +21,28 @@ Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
   alle 18:43, ~38s, nove hash invariati e nessun duplicato. Scheduler attivo
   06:05 Europe/Rome, heartbeat e prossimo avvio 13/10 registrati; DST/retry/lock
   testati. Nessuna esecuzione alle 06:05 future dichiarata già avvenuta.
-- PASS regressioni originali: 24 UI e 28 PWA Chromium/WebKit.
-- Matrice Amelia3: 40/40 PASS dopo correzione del controllo iniziale del service
-  worker; ampliata a 45 casi per prodotto cercato, nuovo ordine offline
-  sincronizzato dall'editor e rinnovo della coda scaduta.
-- Prima CI e0c6570: Ruby/regole/stile/sicurezza PASS, 28 PWA e 40 Amelia3 PASS;
-  UI 23/24 per pulsante Salva bozza reso come link nella copia offline.
-  Correzione coerente con il controllo HTML originale, tre ripetizioni PASS;
-  nuova CI sul prossimo SHA IN_PROGRESS.
+- PASS finale Amelia3: 45/45 browser su cinque progetti Chromium/WebKit,
+  inclusi nuovo ordine offline, prodotto cercato, rinnovo permessi, conflitti,
+  isolamento account e moduli HTML senza IndexedDB. SHA testato `c180cdf`.
+- PASS sui CSV reali: 23 viste HTTP, 32 verifiche layout Admin/agente e quattro
+  riaperture offline dal manifest Chromium/WebKit; ultimo controllo 20:43.
+- CI `38289890582`: Ruby/regole/stile/sicurezza PASS, Amelia3 45/45 e PWA 28/28
+  PASS. UI demo 23/24: un FAIL nel dialogo di cancellazione della bozza sintetica.
+  La CI complessiva è FAILURE, non viene dichiarata verde.
+- STOP richiesto dall'utente: ignorare ulteriori fix della demo e predisporre
+  il prossimo turno per eliminarla. Nessuna eliminazione effettuata ora;
+  ripetizione locale aggiuntiva interrotta, esito Amelia3 definitivo dalla CI.
 - Due ordini di collaudo locali conservati; l'ultimo verifica due prodotti,
   destinazione attestata e visibilità Admin/34, un solo record per UUID.
 - Docker ricostruito da Gemfile.lock, RuboCop 101 file e Brakeman 0 warning PASS.
+- HTTPS LAN verificato sul nuovo IP Wi-Fi `192.168.1.12:3443`; credenziali
+  FTP, dati e volumi conservati. Vedere prova TLS e rapporto corrente.
 - Nessun deploy pubblico. Test su dispositivi fisici NOT_RUN.
+
+Prossimo turno: eliminare i dati demo come annunciato dall'utente e adeguare
+avvio, viste/API e CI all'app reale; conservare integrazione Amelia3, ordini,
+importazioni private, scheduler, PWA e fixture isolate dei test pertinenti.
+Verificare poi Android/Apple fisici e l'esecuzione delle 06:05, ancora NOT_RUN.
 
 ---
 

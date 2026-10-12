@@ -1,5 +1,14 @@
 # Decision log
 
+## Checkpoint richiesto dall'utente — 12/10/2026
+
+Dopo i test Amelia3 e le verifiche sui CSV reali, interrompere il lavoro.
+Non correggere ulteriormente la demo: l'utente ne richiede l'eliminazione nel
+prossimo turno. La rimozione non è eseguita nel checkpoint; la CI resta
+complessivamente FAILURE per un test della UI demo, mentre i 45 casi Amelia3
+passano. Conservare dati privati e integrazione commerciale nel lavoro seguente;
+le fixture sintetiche isolate servono ancora ai test dell'integrazione reale.
+
 ## Amelia3 — dati condivisi, fonte commerciale e offline — 12/10/2026
 
 Il pacchetto operativo approvato in `docs/amelia3/` sostituisce per questo tenant

@@ -1,0 +1,46 @@
+{
+  "status": "PASS",
+  "observedAt": "2026-10-12T18:50:01.619Z",
+  "privateLanHost": "192.168.1.12",
+  "port": 3443,
+  "explicitLocalCA": true,
+  "systemTrustModified": false,
+  "physicalDeviceTest": "NOT_RUN",
+  "results": [
+    {
+      "path": "/up",
+      "status": 200,
+      "bytes": 73,
+      "tlsAuthorized": true,
+      "certificateFingerprint": "D1:42:93:63:FB:AA:C7:39:48:C4:3C:00:EF:57:85:11:27:7B:F1:41:C7:D7:7D:C8:64:08:4B:C6:35:63:B6:7C"
+    },
+    {
+      "path": "/users/sign_in",
+      "status": 200,
+      "bytes": 6894,
+      "tlsAuthorized": true,
+      "certificateFingerprint": "D1:42:93:63:FB:AA:C7:39:48:C4:3C:00:EF:57:85:11:27:7B:F1:41:C7:D7:7D:C8:64:08:4B:C6:35:63:B6:7C"
+    },
+    {
+      "path": "/manifest.webmanifest",
+      "status": 200,
+      "bytes": 379,
+      "tlsAuthorized": true,
+      "certificateFingerprint": "D1:42:93:63:FB:AA:C7:39:48:C4:3C:00:EF:57:85:11:27:7B:F1:41:C7:D7:7D:C8:64:08:4B:C6:35:63:B6:7C"
+    },
+    {
+      "path": "/offline",
+      "status": 200,
+      "bytes": 15392,
+      "tlsAuthorized": true,
+      "certificateFingerprint": "D1:42:93:63:FB:AA:C7:39:48:C4:3C:00:EF:57:85:11:27:7B:F1:41:C7:D7:7D:C8:64:08:4B:C6:35:63:B6:7C"
+    },
+    {
+      "path": "/service-worker.js",
+      "status": 200,
+      "bytes": 3994,
+      "tlsAuthorized": true,
+      "certificateFingerprint": "D1:42:93:63:FB:AA:C7:39:48:C4:3C:00:EF:57:85:11:27:7B:F1:41:C7:D7:7D:C8:64:08:4B:C6:35:63:B6:7C"
+    }
+  ]
+}

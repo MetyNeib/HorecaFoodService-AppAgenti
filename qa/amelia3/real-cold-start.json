@@ -1,0 +1,58 @@
+[
+  {
+    "status": "PASS",
+    "engine": "chromium",
+    "manifestStartUrl": "/",
+    "coldRootRedirect": "/amelia3",
+    "preparedCustomers": 100,
+    "products": 214,
+    "role": "admin",
+    "orderCount": 2,
+    "outbox": 0,
+    "overflow": false,
+    "controlled": true,
+    "offlinePage": true
+  },
+  {
+    "status": "PASS",
+    "engine": "chromium",
+    "manifestStartUrl": "/",
+    "coldRootRedirect": "/amelia3",
+    "preparedCustomers": 16,
+    "products": 266,
+    "role": "agent",
+    "orderCount": 2,
+    "outbox": 0,
+    "overflow": false,
+    "controlled": true,
+    "offlinePage": true
+  },
+  {
+    "status": "PASS",
+    "engine": "webkit",
+    "manifestStartUrl": "/",
+    "coldRootRedirect": "/amelia3",
+    "preparedCustomers": 100,
+    "products": 214,
+    "role": "admin",
+    "orderCount": 2,
+    "outbox": 0,
+    "overflow": false,
+    "controlled": true,
+    "offlinePage": true
+  },
+  {
+    "status": "PASS",
+    "engine": "webkit",
+    "manifestStartUrl": "/",
+    "coldRootRedirect": "/amelia3",
+    "preparedCustomers": 16,
+    "products": 266,
+    "role": "agent",
+    "orderCount": 2,
+    "outbox": 0,
+    "overflow": false,
+    "controlled": true,
+    "offlinePage": true
+  }
+]
