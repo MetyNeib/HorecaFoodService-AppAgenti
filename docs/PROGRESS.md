@@ -1,4 +1,4 @@
-# Migrazione Rails — 12/10/2026 — IN_PROGRESS
+# Migrazione Rails — 12/10/2026 — COMPLETE_LOCAL
 
 La richiesta corrente sostituisce lo stack V1 con Rails + Ralix, PostgreSQL,
 Devise e PWA offline essenziale. Le certificazioni COMPLETE storiche riguardano
@@ -17,16 +17,21 @@ esclusivamente la V1 React conservata nel commit `81e72bc`.
   violazione rilevata in 72 file frontend; RuboCop 50 file senza segnalazioni.
 - PASS: nuova installazione npm dal lockfile, npm audit 0 vulnerabilità, nuova
   build Docker e verifica HTTPS locale con CA esplicita senza modificare trust OS.
-- PASS: tre flussi funzionali completi desktop (manuale, WA, clienti/condivisioni/insight).
+- PASS: 24 casi UI su quattro viewport, inclusi manuale, WA, clienti/condivisioni,
+  insight, cambio cliente, rimozione righe ed eliminazione bozze; 88 screenshot
+  delle 22 viste, nessun overflow e cinque stylesheet equivalenti alla V1.
 - PASS: regressione WebKit della versione Playwright 1.63 isolata e corretta con
   Playwright 1.64; riproduzione indipendente 4/4 PASS, rapporto in `qa/rails`.
-- IN_PROGRESS: matrice finale UI 20 test/88 viste e PWA 26 test Chromium/WebKit,
-  inclusi ripartenza offline, recupero archivio corrotto, due tab e aggiornamento shell.
-- IN_PROGRESS: 22 viste ERB, controlli Ralix, confronti visuali, offline reale,
-  test Chromium/WebKit, regole ZIP, pulizia del vecchio runtime e salvataggio Rails.
+- PASS: 28 casi PWA Chromium/WebKit, inclusi ripartenza offline, recupero archivio
+  corrotto, memoria negata, due tab, aggiornamento shell e logout concorrente.
+- PASS: 22 viste ERB e Ralix, vecchio runtime React/Vite rimosso, build Docker e
+  asset production compilati in container isolato: 39 file pubblici verificati.
+- IN_PROGRESS: ultimo run CI GitHub; risultati locali finali e tentativi storici
+  sono documentati nel rapporto Rails, con riepiloghi senza doppio conteggio.
 - NOT_RUN: installazione fisica Android/iOS; nessun deploy richiesto o eseguito.
 
 Scelte: [RAILS_MIGRATION.md](RAILS_MIGRATION.md). Avvio: [README](../README.md).
+Collaudo: [RAILS_IMPLEMENTATION_REPORT.md](../qa/RAILS_IMPLEMENTATION_REPORT.md).
 Dispositivi locali: [LOCAL_PWA.md](LOCAL_PWA.md). Dopo il refactor è previsto un
 import separato dei dati reali di un cliente; il seed attuale resta immutato.
 

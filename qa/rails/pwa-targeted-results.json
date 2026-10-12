@@ -1,0 +1,557 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "--config=playwright.rails-pwa.config.mjs",
+      "--grep",
+      "offline reale|viste offline essenziali|archivio negato|uscita concorrente|uscita completata"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-pwa.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "android-chromium",
+        "name": "android-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "ipad-webkit",
+        "name": "ipad-webkit",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "android-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "android-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "ipad-webkit",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "ipad-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/rails/pwa-results.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "qa/rails/pwa-report",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "offline.spec.mjs",
+      "file": "offline.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22205,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:04:19.198Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-ebc0d7e435c48ab493ae",
+          "file": "offline.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "uscita completata elimina dati offline e non rivela il precedente account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11135,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:04:42.232Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-54967bbf3c4217a1bab5",
+          "file": "offline.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26275,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:04:53.403Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-e4da743885fa3a5a0df4",
+          "file": "offline.spec.mjs",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 22184,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:05:19.701Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c3bdf968b094d83402f1",
+          "file": "offline.spec.mjs",
+          "line": 254,
+          "column": 1
+        },
+        {
+          "title": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18380,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:05:41.923Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-7dd5de53bf27acd6ab1f",
+          "file": "offline.spec.mjs",
+          "line": 334,
+          "column": 1
+        },
+        {
+          "title": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 16571,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 3\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"note\": \"Salvata senza rete\",\u001b[39m\n\u001b[32m-   \"paymentId\": \"PAY-BON30\",\u001b[39m\n\u001b[32m-   \"status\": \"PENDING_SEND\",\u001b[39m\n\u001b[31m+   \"note\": \"\",\u001b[39m\n\u001b[31m+   \"paymentId\": \"PAY-BON15\",\u001b[39m\n\u001b[31m+   \"status\": \"DRAFT\",\u001b[39m\n\u001b[2m  }\u001b[22m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 3\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"note\": \"Salvata senza rete\",\u001b[39m\n\u001b[32m-   \"paymentId\": \"PAY-BON30\",\u001b[39m\n\u001b[32m-   \"status\": \"PENDING_SEND\",\u001b[39m\n\u001b[31m+   \"note\": \"\",\u001b[39m\n\u001b[31m+   \"paymentId\": \"PAY-BON15\",\u001b[39m\n\u001b[31m+   \"status\": \"DRAFT\",\u001b[39m\n\u001b[2m  }\u001b[22m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:65:77",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                      "column": 77,
+                      "line": 65
+                    },
+                    "snippet": "  63 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  64 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 65 |   expect((await state(page)).data.orders.find(item => item.id === orderId)).toMatchObject({ status: 'PENDING_SEND', note: 'Salvata senza rete', paymentId: 'PAY-BON30' });\n     |                                                                             ^\n  66 |   expect((await outbox(page)).length).toBeGreaterThan(2);\n  67 |   await page.reload();\n  68 |   await expect(page.getByRole('heading', { name: 'I miei ordini' })).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                        "column": 77,
+                        "line": 65
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoMatchObject\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\n\u001b[32m- Expected  - 3\u001b[39m\n\u001b[31m+ Received  + 3\u001b[39m\n\n\u001b[2m  Object {\u001b[22m\n\u001b[32m-   \"note\": \"Salvata senza rete\",\u001b[39m\n\u001b[32m-   \"paymentId\": \"PAY-BON30\",\u001b[39m\n\u001b[32m-   \"status\": \"PENDING_SEND\",\u001b[39m\n\u001b[31m+   \"note\": \"\",\u001b[39m\n\u001b[31m+   \"paymentId\": \"PAY-BON15\",\u001b[39m\n\u001b[31m+   \"status\": \"DRAFT\",\u001b[39m\n\u001b[2m  }\u001b[22m\n\n  63 |   await page.getByLabel('Pagamento dell’ordine').selectOption('PAY-BON30');\n  64 |   await page.getByRole('button', { name: /Conferma ordine/ }).click();\n> 65 |   expect((await state(page)).data.orders.find(item => item.id === orderId)).toMatchObject({ status: 'PENDING_SEND', note: 'Salvata senza rete', paymentId: 'PAY-BON30' });\n     |                                                                             ^\n  66 |   expect((await outbox(page)).length).toBeGreaterThan(2);\n  67 |   await page.reload();\n  68 |   await expect(page.getByRole('heading', { name: 'I miei ordini' })).toBeVisible();\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:65:77"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:06:01.381Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-offline-reale-riap-a8de7-incronizzato-una-sola-volta-ipad-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-offline-reale-riap-a8de7-incronizzato-una-sola-volta-ipad-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\rails-pwa\\offline-offline-reale-riap-a8de7-incronizzato-una-sola-volta-ipad-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                    "column": 77,
+                    "line": 65
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-df633fada693a1c5e778",
+          "file": "offline.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "uscita completata elimina dati offline e non rivela il precedente account",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15479,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:06:20.048Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-b5d8481b0d39cd1b5ce5",
+          "file": "offline.spec.mjs",
+          "line": 181,
+          "column": 1
+        },
+        {
+          "title": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 120000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 49215,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:06:35.689Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c4a3ae9e3e024f3354fa",
+          "file": "offline.spec.mjs",
+          "line": 207,
+          "column": 1
+        },
+        {
+          "title": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 20848,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:07:24.931Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-2749b314416d4246a47d",
+          "file": "offline.spec.mjs",
+          "line": 254,
+          "column": 1
+        },
+        {
+          "title": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10922,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T09:07:45.804Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-25a22129bf6491944d3f",
+          "file": "offline.spec.mjs",
+          "line": 334,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T09:04:17.441Z",
+    "duration": 219438.857,
+    "expected": 9,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

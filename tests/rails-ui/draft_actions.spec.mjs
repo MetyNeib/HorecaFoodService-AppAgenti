@@ -34,7 +34,7 @@ test('cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazi
   await line.getByRole('button', { name: 'Aumenta quantità' }).click();
   await expect.poll(async () => (await currentOrder()).lines[0].quantity).toBe(2);
   await page.reload();
-  await expect(line.getByRole('spinbutton', { name: 'Quantità' })).toHaveValue('2.0');
+  await expect.poll(async () => Number(await line.getByRole('spinbutton', { name: 'Quantità' }).inputValue())).toBe(2);
   await line.getByRole('button', { name: 'Rimuovi', exact: true }).click();
   await expect(line).toHaveCount(0);
   expect((await currentOrder()).lines).toHaveLength(0);

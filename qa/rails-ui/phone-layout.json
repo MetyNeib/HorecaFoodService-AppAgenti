@@ -41,30 +41,7 @@
     "footerTop": 795,
     "footerBottom": 844,
     "height": 844,
-    "clipped": [
-      {
-        "class": "view line-editor-view",
-        "width": [
-          343,
-          343
-        ],
-        "height": [
-          665,
-          856
-        ]
-      },
-      {
-        "class": "grid two workspace-split form-split",
-        "width": [
-          343,
-          343
-        ],
-        "height": [
-          178,
-          620
-        ]
-      }
-    ]
+    "clipped": []
   },
   {
     "name": "review",
@@ -75,30 +52,7 @@
     "footerTop": 795,
     "footerBottom": 844,
     "height": 844,
-    "clipped": [
-      {
-        "class": "view review-view",
-        "width": [
-          343,
-          343
-        ],
-        "height": [
-          665,
-          1134
-        ]
-      },
-      {
-        "class": "grid two workspace-split",
-        "width": [
-          343,
-          343
-        ],
-        "height": [
-          187,
-          880
-        ]
-      }
-    ]
+    "clipped": []
   },
   {
     "name": "inbox",

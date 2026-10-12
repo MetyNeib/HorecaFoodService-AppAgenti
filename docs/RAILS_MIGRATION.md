@@ -63,8 +63,10 @@ http://IP-del-PC non abilita il service worker. Nessuna apertura Internet implic
 | Snapshot V1 e branch dedicato | PASS locale e GitHub privato, 3 branch + tag verificati |
 | Docker e dipendenze Rails | PASS avvio web/PostgreSQL/Redis/Sidekiq locale; lockfile reale |
 | Dominio Ruby, Devise, persistenza e comandi | PASS 94 RSpec e 12 test di parità offline |
-| Tutte le viste ERB e Ralix equivalenti | IN_PROGRESS |
-| PWA offline, outbox e conflitti | IN_PROGRESS |
-| Test, sicurezza, visuale e documentazione installazione | IN_PROGRESS; Brakeman 0 warning, migrazione vuota PASS |
+| Tutte le viste ERB e Ralix equivalenti | PASS 24 casi UI, 22 viste su quattro viewport e 88 screenshot |
+| PWA offline, outbox e conflitti | PASS 28 casi Chromium/WebKit, logout concorrente e recupero dati inclusi |
+| Test, sicurezza, visuale e documentazione installazione | PASS locale; Brakeman 0 warning, migrazione vuota e build PASS |
 
-Questa pagina registra scelte e stato; non certifica la nuova applicazione.
+Collaudo locale concluso: [rapporto Rails](../qa/RAILS_IMPLEMENTATION_REPORT.md).
+La prova di installazione sui dispositivi fisici resta NOT_RUN; non è sostituita
+dai test dei motori browser.
