@@ -7,8 +7,9 @@ module Amelia3
       unless user.amelia3? && %w[admin agent].include?(user.role) && (user.role == "admin" || user.agent_id == "34")
         raise Error.new("Accesso commerciale non abilitato.", code: "FORBIDDEN", status: 403)
       end
-      @tenant = user.commercial_tenant || raise(Error.new("Tenant non configurato.", code: "FORBIDDEN", status: 403))
+      @tenant = Tenant.find_by(id: user.commercial_tenant_id) || raise(Error.new("Tenant non configurato.", code: "FORBIDDEN", status: 403))
       @batch_id = tenant.active_batch_id || raise(Error.new("Dataset non ancora disponibile.", code: "NO_DATASET", status: 503))
+      raise Error.new("Dataset di un altro tenant.", code: "FORBIDDEN", status: 403) unless tenant.active_batch.tenant_id == tenant.id
     end
 
     def customers
@@ -22,6 +23,10 @@ module Amelia3
 
     def products
       Product.where(batch_id: batch_id)
+    end
+
+    def destinations(customer)
+      customers.where(delivery_point: true).where("external_code = ? OR parent_code = ?", customer.external_code, customer.external_code)
     end
 
     def orders

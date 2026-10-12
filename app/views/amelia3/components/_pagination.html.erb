@@ -1,0 +1,5 @@
+<nav class="actions amelia-pagination" aria-label="Paginazione">
+  <% if @page > 1 %><%= link_to '← Precedente', url_for(request.query_parameters.merge(page: @page - 1)), class: 'button' %><% end %>
+  <span>Pagina <%= @page %> · <%= total %> risultati</span>
+  <% if @page * per_page < total %><%= link_to 'Successiva →', url_for(request.query_parameters.merge(page: @page + 1)), class: 'button' %><% end %>
+</nav>

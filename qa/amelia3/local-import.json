@@ -1,30 +1,30 @@
 {
   "status": "published",
-  "fingerprint": "0ae9096fb0f6b81ebb7c97de8f896e772be9a21c80ea1a914f673617a327a5cd",
+  "fingerprint": "9eca9f4b050d59a05a0dfc3f1f9e26749d52b1e6989b3605b65c571d590e188f",
   "counts": {
-    "FIDO.csv": 5064,
-    "TABGIR.csv": 19960,
-    "CLIENTI.csv": 8311,
-    "LISTINI.csv": 28940,
-    "STORICO.csv": 1036814,
     "ARTICOLI.csv": 9847,
+    "CLIENTI.csv": 8311,
+    "FIDO.csv": 5064,
     "GIACENZE.csv": 9245,
     "INSOLUTO.csv": 3017,
-    "LISTINI_PERS.csv": 12173
+    "LISTINI.csv": 28940,
+    "LISTINI_PERS.csv": 12173,
+    "STORICO.csv": 1036814,
+    "TABGIR.csv": 19960
   },
   "anomalies": {
-    "FIDO.csv": {},
-    "TABGIR.csv": {},
-    "CLIENTI.csv": {
-      "customer_unquoted_semicolon": 1,
-      "customer_extra_empty_columns": 586
-    },
-    "LISTINI.csv": {},
-    "STORICO.csv": {},
     "ARTICOLI.csv": {},
+    "CLIENTI.csv": {
+      "customer_extra_empty_columns": 586,
+      "customer_unquoted_semicolon": 1
+    },
+    "FIDO.csv": {},
     "GIACENZE.csv": {},
     "INSOLUTO.csv": {},
-    "LISTINI_PERS.csv": {}
+    "LISTINI.csv": {},
+    "LISTINI_PERS.csv": {},
+    "STORICO.csv": {},
+    "TABGIR.csv": {}
   },
   "metrics": {
     "all": {
@@ -36,14 +36,14 @@
     "agent34": {
       "rows": 2237,
       "orders": 606,
-      "blocked": 4,
       "products": 447,
+      "last_delivery": "2026-10-02",
       "customers": 16,
       "unblocked": 12,
-      "last_delivery": "2026-10-02"
+      "blocked": 4
     }
   },
-  "elapsed_seconds": 1.209,
+  "elapsed_seconds": 57.102,
   "dry_run": false,
-  "peak_rss_kb": 98000
+  "peak_rss_kb": 107188
 }

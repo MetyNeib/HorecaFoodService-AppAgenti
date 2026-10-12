@@ -1,21 +1,27 @@
+require "digest"
+
 module Amelia3
   class Snapshot
     CUSTOMER_LIMIT = 100
     PRODUCT_LIMIT = 500
     ORDER_LIMIT = 20
 
-    def self.identity(user)
-      "amelia3-#{user.id}-#{user.commercial_tenant_id}-#{user.role}-#{user.agent_id}"
+    def self.identity(user, batch_id: nil)
+      base = "amelia3-#{user.id}-#{user.commercial_tenant_id}-#{user.role}-#{user.agent_id}"
+      return base unless user.role == "agent"
+      batch_id ||= Tenant.where(id: user.commercial_tenant_id).pick(:active_batch_id)
+      codes = Customer.where(batch_id: batch_id, agent_code: user.agent_id).order(:external_code).pluck(:external_code)
+      base + "-" + Digest::SHA256.hexdigest(JSON.generate(codes))[0, 16]
     end
 
     def self.for(user, customer_codes: [], product_codes: [], order_id: nil)
       scope = Scope.new(user)
       context_order = order_id.present? ? scope.order(order_id) : nil
-      requested = Array(customer_codes) + [ context_order&.customer_code ].compact
+      requested = Array(customer_codes).take(50) + [ context_order&.customer_code, context_order&.destination_code ].compact
       # Explicitly requested codes are never trusted to expand the portfolio.
       allowed = scope.customers.where(external_code: requested).pluck(:external_code)
       customers = scope.customers.where(external_code: (allowed + scope.customers.order(:external_code).limit(CUSTOMER_LIMIT - allowed.length.clamp(0, CUSTOMER_LIMIT)).pluck(:external_code)).uniq.take(CUSTOMER_LIMIT)).to_a
-      codes = (Catalog.cached_products(scope).pluck(:external_code) + Array(product_codes)).uniq.take(PRODUCT_LIMIT)
+      codes = (Array(product_codes).take(50) + Array(context_order&.lines).map { |line| line["productId"] } + Catalog.cached_products(scope).pluck(:external_code)).uniq.take(PRODUCT_LIMIT)
       products = scope.products.where(external_code: codes).to_a
       quotes = Catalog.new(scope, products).quotes
       orders = scope.orders.order(updated_at: :desc).limit(ORDER_LIMIT).to_a
@@ -23,13 +29,14 @@ module Amelia3
       customer_ids = customers.map(&:external_code)
       conditions = Condition.where(batch_id: scope.batch_id, customer_code: customer_ids, product_code: codes)
       data = { "tenant" => { "code" => scope.tenant.code, "name" => scope.tenant.name }, "batchId" => scope.batch_id,
+               "portfolioCount" => scope.customers.count, "catalogCount" => scope.products.count,
                "asOf" => Time.zone.today.iso8601, "expiresAt" => 24.hours.from_now.iso8601,
                "customers" => customers.map { |customer| customer_data(customer, scope) },
                "products" => products.map { |product| product_data(product, quotes.fetch(product.external_code)) },
                "customerConditions" => conditions.map { |row| condition_data(row) }, "orders" => orders.map { |order| order_data(order) } }
       { state: { "schemaVersion" => 2, "datasetMode" => "amelia3", "datasetId" => "AMELIA3-#{scope.tenant.id}", "data" => data },
         version: scope.tenant.revision, epoch: 1,
-        user: { id: identity(user), ownerId: user.id, email: user.email, role: user.role, agentId: user.agent_id, displayName: user.display_name } }
+        user: { id: identity(user, batch_id: scope.batch_id), ownerId: user.id, email: user.email, role: user.role, agentId: user.agent_id, displayName: user.display_name } }
     end
 
     def self.customer_data(customer, scope)
@@ -51,10 +58,13 @@ module Amelia3
     end
 
     def self.condition_data(row)
+      exact_price = row.price.nil? || (row.price * 1_000_000).frac.zero?
+      exact_discount = row.discount.nil? || (row.discount * 10_000).frac.zero?
       { "id" => row.source_row, "customerId" => row.customer_code, "productId" => row.product_code,
         "validFrom" => row.valid_from.iso8601, "validTo" => row.valid_to.iso8601,
-        "priceMicros" => row.price && (row.price * 1_000_000).to_i.to_s,
-        "discountUnits" => row.discount && (row.discount * 10_000).to_i.to_s }
+        "priceMicros" => exact_price && row.price ? (row.price * 1_000_000).to_i.to_s : nil,
+        "discountUnits" => exact_discount && row.discount ? (row.discount * 10_000).to_i.to_s : nil,
+        "unavailableReason" => exact_price && exact_discount ? nil : "Precisione della condizione non attestata" }
     end
 
     def self.order_data(order)

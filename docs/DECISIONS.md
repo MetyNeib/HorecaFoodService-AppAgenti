@@ -1,5 +1,38 @@
 # Decision log
 
+## Amelia3 — dati condivisi, fonte commerciale e offline — 12/10/2026
+
+Il pacchetto operativo approvato in `docs/amelia3/` sostituisce per questo tenant
+i vincoli del bootstrap sintetico. Rails promosso su main mediante PR #1 e CI
+sullo SHA esatto; implementazione sul branch feature/amelia3-ftp-import, senza
+deploy pubblico. Seed originale e account sintetici restano separati.
+
+Tabelle commerciali per batch immutabile e un solo puntatore attivo per tenant.
+Import streaming PG COPY; nove checksum, staging, relazioni e pubblicazione
+atomica. Fingerprint comprende la versione del mapping; una correzione del
+mapping richiede un nuovo batch. Ordini normalizzati separati dalle importazioni,
+prezzi salvati per riga, revisioni per ordine e ricevute idempotenti per utente.
+Non cancellare automaticamente batch/ordini o copie private dell'utente.
+
+Listino 000 e sconto percentuale valido; precisione attestata, HALF_UP una volta
+per riga. Solo P/P con stock pz intero è attualmente ordinabile; altre UM restano
+consultabili con blocco motivato, senza conversioni supposte. Quantità cf/pz/pe
+rimangono distinte, costi e margini assenti. Destinazioni con flag punto consegna
+S, non bloccate e nello scope dell'account; cod_int non concede permessi.
+
+Admin e agente 34 hanno ordini condivisi per cliente, creatore separato
+dall'agente commerciale. Capoarea resta negato. Namespace IndexedDB include
+utente/tenant/ruolo/codice agente e hash del portafoglio; autorizzazione della
+copia scade dopo 24 ore. Cache limitata a 100 clienti/500 prodotti/20 ordini
+recenti più contesto; storico/finanze interrogati online. Coda e copia prezzo
+pendenti conservate in caso di import o conflitto, con recupero esplicito.
+
+Scheduler locale Sidekiq, controllo ogni 20s delle 06:05 Europe/Rome, DST,
+unicità giornaliera, lock PostgreSQL e cinque retry. Avvio tardivo recupera
+soltanto la giornata corrente. Credenziali FTP solo nel worker; protocollo
+in chiaro autorizzato, nessuna mutazione remota. Conferme ordini soltanto locali.
+LAN HTTPS via Caddy/CA esistente, niente router/tunnel o modifiche globali al trust.
+
 ## Header/footer dopo un secondo e densità delle liste — 11/10/2026
 
 La nuova decisione supera la sola chiusura del footer allo scroll. Entrambi i dock si presentano aperti all'ingresso in una vista e dopo reset, poi si richiudono dopo 1000 ms. La riapertura manuale rimane aperta fino al successivo scroll verticale del contenuto centrale o di una lista, in entrambe le direzioni. L'header chiuso lascia soltanto l'icona account in alto a destra; la riapertura mostra wordmark/Home e i dati dell'agente esistenti, senza aggiungere una funzione account. Il footer chiuso lascia soltanto il proprio tasto. I pulsanti sono da 44px e le barre ridotte non coprono il contenuto.

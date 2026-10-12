@@ -1,0 +1,4 @@
+<div class="quantity quantity_js" data-units="<%= [{ code: 'P', step: step.to_i }].to_json %>">
+  <label class="field">Quantità (P)<span class="stepper-input"><button type="button" class="quantity_step_js" data-direction="-1" aria-label="Riduci quantità">−</button><input type="number" name="payload[quantity]" class="quantity_input_js amelia_quantity_js" min="<%= step.to_i %>" max="100000" step="<%= step.to_i %>" value="<%= value %>" aria-label="Quantità" required><button type="button" class="quantity_step_js" data-direction="1" aria-label="Aumenta quantità">+</button></span></label>
+  <span class="field"><span>UM</span><b>P</b></span>
+</div>

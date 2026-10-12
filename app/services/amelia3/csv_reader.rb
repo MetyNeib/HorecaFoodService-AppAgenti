@@ -23,13 +23,13 @@ module Amelia3
         csv.each do |row|
           @count += 1
           raise Error.new("Riga CSV incompleta: #{@name}, riga #{@count}.", code: "INVALID_ROW") if row.nil?
-          row = row.map { |cell| cell.to_s.strip }
+          row = row.map { |cell| cell.to_s }
           row.pop if row.last == "" && row.length > @fields.length
           repair_customer(row) if @name == "CLIENTI.csv"
           unless row.length == @fields.length
             raise Error.new("Numero di colonne non valido: #{@name}, riga #{@count}.", code: "INVALID_ROW")
           end
-          yield @fields.zip(row).to_h, @count
+          yield @fields.zip(row.map(&:strip)).to_h, @count
         end
       end
       raise Error.new("CSV privo di dati: #{@name}.", code: "EMPTY_FILE") if @count.zero?
@@ -99,7 +99,7 @@ module Amelia3
     end
 
     def customer_prefix?(row)
-      [ 7, 8, 14 ].all? { |index| %w[S N].include?(row[index]) } &&
+      [ 7, 8, 14 ].all? { |index| %w[S N].include?(row[index].to_s.strip) } &&
         row[0].present? && row[1].present? && row[16].present?
     end
   end

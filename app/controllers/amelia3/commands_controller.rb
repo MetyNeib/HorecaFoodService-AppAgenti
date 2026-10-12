@@ -15,10 +15,17 @@ class Amelia3::CommandsController < Amelia3::BaseController
       command["payload"]["expectedVersion"] = Integer(command.dig("payload", "expectedVersion"), exception: false) if command["payload"].key?("expectedVersion")
     end
     result = Amelia3::Commands.call(user: current_user, command: command)
+    if !request.format.json? && params[:next_command] == "CONFIRM_ORDER" && command["type"] == "SAVE_REVIEW"
+      order = result.fetch(:state).fetch("data").fetch("orders").find { |row| row["id"] == command.dig("payload", "orderId") }
+      confirmation = { "operationId" => "#{command['operationId']}-confirm", "baseVersion" => result.fetch(:version), "epoch" => 1, "type" => "CONFIRM_ORDER",
+                       "payload" => { "orderId" => order.fetch("id"), "expectedVersion" => order.fetch("version"), "batchId" => @scope.batch_id } }
+      result = Amelia3::Commands.call(user: current_user, command: confirmation)
+    end
     if request.format.json?
       render json: result.merge(csrfToken: form_authenticity_token)
     else
-      candidate = params[:return_to].to_s
+      context_id = command.dig("payload", "id") || command.dig("payload", "orderId") || ""
+      candidate = params[:return_to].to_s.gsub(":id", ERB::Util.url_encode(context_id))
       path = candidate.start_with?("/amelia3") && !candidate.match?(/[\r\n\\]/) ? candidate : "/amelia3/orders"
       redirect_to path, status: :see_other, notice: "Ordine salvato nel database locale."
     end

@@ -1,0 +1,42 @@
+{
+  "scheduler": {
+    "observed_at": "2026-10-12T18:12:41+02:00",
+    "next_run_at": "2026-10-13T06:05:00+02:00",
+    "timezone": "Europe/Rome",
+    "cron": "5 6 * * *",
+    "enabled": true
+  },
+  "occurrences": [
+    {
+      "local_date": "2026-10-12",
+      "scheduled_at": "2026-10-12T06:05:00+02:00",
+      "status": "success",
+      "attempts": 1,
+      "error_code": null,
+      "completed_at": "2026-10-12T18:10:43+02:00",
+      "active_batch_matches": true
+    }
+  ],
+  "revision": 2,
+  "active_counts": {
+    "FIDO.csv": 5064,
+    "TABGIR.csv": 19960,
+    "CLIENTI.csv": 8311,
+    "LISTINI.csv": 28940,
+    "STORICO.csv": 1036814,
+    "ARTICOLI.csv": 9847,
+    "GIACENZE.csv": 9245,
+    "INSOLUTO.csv": 3017,
+    "LISTINI_PERS.csv": 12173
+  },
+  "agent34": {
+    "rows": 2237,
+    "orders": 606,
+    "blocked": 4,
+    "products": 447,
+    "customers": 16,
+    "unblocked": 12,
+    "last_delivery": "2026-10-02"
+  },
+  "canonical_orders": 1
+}

@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "REAL_LOCAL_SHARED_ORDER_NO_TRANSMISSION",
+  "lines": 2,
+  "shared_with_agent34": true,
+  "created_by_admin": true,
+  "canonical_order_count": 1,
+  "status_saved": "CONFIRMED_LOCAL",
+  "attested_delivery_point": true,
+  "total_local_test_orders": 2
+}

@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "purpose": "Validate percentage precision required by current mapper",
+  "checked_file": "LISTINI_PERS.csv",
+  "rows": 12173,
+  "full_history_reprofile": false
+}

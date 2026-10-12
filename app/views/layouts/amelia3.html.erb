@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <title>HFS · Amelia3</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#2e60ff">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <%= csrf_meta_tags %><%= csp_meta_tag %>
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <%= stylesheet_link_tag 'tokens', 'base', 'workspace', 'elastic', 'adaptive', 'presentation', 'amelia3' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body data-page-controller="amelia3">
+  <div class="app-shell workspace-shell workspace_shell_js" data-density="regular" data-layout="fit">
+    <a class="skip skip_js" href="#main">Vai al contenuto</a>
+    <%= render 'amelia3/components/header' %>
+    <main id="main" class="main_js workspace_content_js" tabindex="-1"><%= yield %></main>
+    <%= render 'amelia3/components/footer' %>
+    <div class="snackbar snackbar_js" role="status" <%= 'hidden' if flash[:notice].blank? %>><%= flash[:notice] %></div>
+  </div>
+  <script type="application/json" id="workspace-bootstrap"><%= raw json_escape(amelia_bootstrap.to_json) %></script>
+  <%= render 'offline/templates' %>
+  <%= render 'amelia3/offline/templates' %>
+</body>
+</html>

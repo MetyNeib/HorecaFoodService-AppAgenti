@@ -28,6 +28,7 @@ export default class WorkspaceController {
     try {
       bootstrap = source?.textContent.trim() ? JSON.parse(source.textContent) : null;
       const userId = bootstrap?.user?.id || (document.body.dataset.offline === 'true' ? activeUserId() : null);
+      if (!bootstrap && document.body.dataset.offline === 'true' && String(userId).startsWith('amelia3-')) { location.replace('/amelia3'); return; }
       if (!userId) { await this.registerWorker(); return; }
       this.client = new WorkspaceClient(userId);
       await this.client.initialize(bootstrap);
@@ -457,7 +458,7 @@ export default class WorkspaceController {
     dialog.querySelector('.restore_storage_js').addEventListener('click', async event => {
       const button = event.currentTarget; button.disabled = true;
       try {
-        const response = await this.client.request('/snapshot', { headers: { Accept: 'application/json' } });
+        const response = await this.client.request(this.client.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
         if (!response.ok) throw new Error('Collegati al server con lo stesso account prima di ripristinare.');
         const snapshot = this.client.acceptSnapshot(await response.json());
         this.client.record = await this.client.storage.recover(snapshot);

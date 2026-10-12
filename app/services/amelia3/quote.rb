@@ -46,6 +46,8 @@ module Amelia3
       return "UM o conversione non attestata" unless step
       return "Prezzo 000 o personalizzazione non validi" unless unit_price&.positive?
       return "Giacenza in pz non disponibile" unless stock&.pieces&.positive?
+      return "Giacenza pz non intera: UM non attestata" unless stock.pieces.frac.zero?
+      return "Giacenza insufficiente per quantità minima" if stock.pieces < step
       nil
     rescue Error => error
       error.message

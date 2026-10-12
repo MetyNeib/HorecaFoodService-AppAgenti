@@ -1,5 +1,5 @@
 /* Only public application assets are cached. User data lives in isolated IndexedDB databases. */
-const CACHE = 'hfs-public-shell-v2-20261012';
+const CACHE = 'hfs-public-shell-v3-amelia3-20261012';
 const PUBLIC_PATHS = ['/offline', '/manifest.webmanifest', '/icons/hfs-192.png', '/icons/hfs-512.png', '/icons/hfs-180.png'];
 const isPublic = url => url.origin === self.location.origin && (PUBLIC_PATHS.includes(url.pathname) || url.pathname.startsWith('/assets/'));
 
@@ -42,6 +42,10 @@ self.addEventListener('message', event => {
         await cache.put('/offline', shell);
       }
     } catch { failed.push('/offline'); }
+    // A login redirect can create a new document after activation's first claim.
+    // Claim again before announcing readiness so that initial offline reloads
+    // are controlled as well as documents that existed during activation.
+    await self.clients.claim();
     event.source?.postMessage({ type: 'PRECACHE_COMPLETE', failed });
   })());
 });

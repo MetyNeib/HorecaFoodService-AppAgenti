@@ -1,0 +1,2 @@
+<% orders.each do |order| %><article class="card list-row" data-order-id="<%= order.id %>"><div><h2><%= order.customer_snapshot['name'] %></h2><p>Ordine <%= order.id %></p><p><%= amelia_status(order) %> · Agente commerciale <%= order.assigned_agent_code %></p></div><div class="actions"><b><%= money(order.net_cents) %></b><%= link_to 'Apri ordine', "/amelia3/orders/#{order.id}", class: 'button' %></div></article><% end %>
+<% if orders.empty? %><p>Nessun ordine locale per questa selezione.</p><% end %>

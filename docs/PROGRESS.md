@@ -10,10 +10,23 @@ Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
   5 test sintetici importer PASS, anche rollback su file finale corrotto.
 - Riconciliazione agente 34 TESTATA: 16 clienti (12 attivi/4 bloccati), 2.237 righe,
   606 riferimenti ordine e 447 articoli. Storico totale 1.036.814 righe in PostgreSQL.
-- Account provisionati con password casuali nel solo file privato locale; UI,
-  comandi condivisi e isolamento/PWA in corso di integrazione e collaudo.
-- FTP metadata TESTATO: accesso read-only, nove nomi presenti. Download completo,
-  job e schedulazione quotidiana ancora DA_VERIFICARE.
+- Account Admin e agente 34 TESTATI: login reale, ordine locale a due prodotti
+  creato dall'Admin e visibile al 34, unico record canonico. Password soltanto nel
+  file privato `imports/private/amelia3/local_accounts.json`.
+- PASS 132 RSpec, 49 test dominio originali, 12 parità offline e 7 nuovi test
+  BigInt Amelia3; 20 controlli seed e checker 95 file senza violazioni.
+- FTP LIVE TESTATO: primo job Sidekiq automatico riuscito il 12/10 alle 18:10
+  come recupero dopo avvio worker; seconda verifica reale read-only completa
+  alle 18:43, ~38s, nove hash invariati e nessun duplicato. Scheduler attivo
+  06:05 Europe/Rome, heartbeat e prossimo avvio 13/10 registrati; DST/retry/lock
+  testati. Nessuna esecuzione alle 06:05 future dichiarata già avvenuta.
+- PASS regressioni originali: 24 UI e 28 PWA Chromium/WebKit.
+- Matrice Amelia3: 39/40 PASS nella prima esecuzione completa; un problema di
+  controllo iniziale del service worker corretto, relativo caso ripetuto tre
+  volte PASS. Nuova matrice completa e CI sullo SHA finale IN_PROGRESS.
+- Due ordini di collaudo locali conservati; l'ultimo verifica due prodotti,
+  destinazione attestata e visibilità Admin/34, un solo record per UUID.
+- Docker ricostruito da Gemfile.lock, RuboCop 101 file e Brakeman 0 warning PASS.
 - Nessun deploy pubblico. Test su dispositivi fisici NOT_RUN.
 
 ---

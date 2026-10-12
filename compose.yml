@@ -37,6 +37,9 @@ services:
       HFS_DEMO_PASSWORD: ${HFS_DEMO_PASSWORD:-HfsDemoLocale2026!}
       HFS_ALLOWED_HOSTS: ${HFS_ALLOWED_HOSTS:-localhost,127.0.0.1,web}
       LISTEN_GEM_USE_POLLING: "1"
+      AMELIA3_FTP_SYNC_ENABLED: ${AMELIA3_FTP_SYNC_ENABLED:-false}
+      AMELIA3_FTP_SYNC_CRON: ${AMELIA3_FTP_SYNC_CRON:-5 6 * * *}
+      AMELIA3_FTP_TIMEZONE: ${AMELIA3_FTP_TIMEZONE:-Europe/Rome}
     depends_on:
       db:
         condition: service_healthy
@@ -44,11 +47,18 @@ services:
         condition: service_started
   worker:
     image: hfs-agents-web
-    command: bundle exec sidekiq
+    command: bundle exec sidekiq -C config/sidekiq.yml
     volumes:
       - .:/app
       - bundle_cache:/usr/local/bundle
-    environment: *rails_environment
+    environment:
+      <<: *rails_environment
+      AMELIA3_FTP_HOST: ${AMELIA3_FTP_HOST:-}
+      AMELIA3_FTP_PORT: ${AMELIA3_FTP_PORT:-21}
+      AMELIA3_FTP_USERNAME: ${AMELIA3_FTP_USERNAME:-}
+      AMELIA3_FTP_PASSWORD: ${AMELIA3_FTP_PASSWORD:-}
+      AMELIA3_FTP_IMPORT_DIR: ${AMELIA3_FTP_IMPORT_DIR:-/UPLOAD}
+      AMELIA3_FTP_WRITE_ENABLED: ${AMELIA3_FTP_WRITE_ENABLED:-false}
     depends_on:
       db:
         condition: service_healthy

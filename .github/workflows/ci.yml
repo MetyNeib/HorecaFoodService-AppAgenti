@@ -24,6 +24,7 @@ jobs:
       - run: node scripts/check_project_rules.cjs
       - run: npm test
       - run: npm run test:domain-parity
+      - run: npm run test:amelia3-domain
   ruby:
     runs-on: ubuntu-latest
     services:
@@ -116,6 +117,7 @@ jobs:
         run: |
           bundle exec rails db:prepare
           bundle exec rails runner scripts/prepare-browser-tests.rb
+          bundle exec rails runner scripts/prepare-amelia3-browser-tests.rb
       - name: Start local Rails server and wait for readiness
         id: rails_server
         run: |
@@ -135,6 +137,9 @@ jobs:
       - name: Verify real offline operation in Chromium and WebKit
         if: ${{ !cancelled() && steps.rails_server.outcome == 'success' }}
         run: npm run test:pwa
+      - name: Verify Amelia3 roles, shared orders and offline operation
+        if: ${{ !cancelled() && steps.rails_server.outcome == 'success' }}
+        run: npm run test:amelia3
       - name: Preserve failure screenshots, traces, reports and Rails logs
         if: ${{ failure() }}
         uses: actions/upload-artifact@v4
@@ -146,6 +151,7 @@ jobs:
             test-results/
             qa/rails/
             qa/rails-ui/
+            qa/amelia3/
             log/browser-ci.log
             log/development.log
       - name: Stop local Rails server

@@ -4,7 +4,7 @@ module Amelia3
   class Commands
     FIELDS = {
       "CREATE_DRAFT" => %w[id customerId batchId],
-      "ADD_LINE" => %w[orderId lineId productId quantity expectedVersion batchId],
+      "ADD_LINE" => %w[orderId lineId productId quantity expectedUnitPrice expectedVersion batchId],
       "UPDATE_LINE" => %w[orderId lineId quantity expectedVersion batchId],
       "REMOVE_LINE" => %w[orderId lineId expectedVersion batchId],
       "SAVE_REVIEW" => %w[orderId destinationId deliveryDate paymentNote note expectedVersion batchId],
@@ -60,8 +60,9 @@ module Amelia3
       fail!("Identificativo ordine già presente.", "ORDER_CONFLICT", 409) if Order.exists?(id: id)
       customer = @scope.customer(@payload["customerId"])
       fail!("Cliente bloccato.", "CUSTOMER_BLOCKED") if customer.blocked
+      destination = @scope.destinations(customer).where(blocked: false).order(:external_code).first
       Order.create!(id: id, tenant: @scope.tenant, created_by_user: @user, customer_code: customer.external_code,
-                    assigned_agent_code: customer.agent_code, destination_code: customer.external_code,
+                    assigned_agent_code: customer.agent_code, destination_code: destination&.external_code,
                     customer_snapshot: { name: customer.name, city: customer.city }, delivery_date: Time.zone.today + 1)
     end
 
@@ -73,6 +74,9 @@ module Amelia3
         product = @scope.products.find_by!(external_code: @payload["productId"])
         quantity = quantity!
         quote = Quote.for(@scope, product, @scope.customer(order.customer_code))
+        if quote.unit_price && CsvReader.decimal(@payload["expectedUnitPrice"]) != quote.unit_price
+          fail!("Il prezzo è cambiato. La proposta locale è conservata.", "PRICE_CHANGED", 409)
+        end
         aggregate_quantity!(order, product, quantity, quote)
         order.lines = order.lines + [ quote.line(id: @payload["lineId"], quantity: quantity) ]
       when "UPDATE_LINE"
@@ -90,10 +94,7 @@ module Amelia3
         line!(order)
         order.lines = order.lines.reject { |line| line["id"] == @payload["lineId"] }
       when "SAVE_REVIEW"
-        destination = @scope.customer(@payload["destinationId"] || order.customer_code)
-        unless destination.external_code == order.customer_code || destination.parent_code == order.customer_code
-          fail!("Destinazione fuori anagrafica autorizzata.", "INVALID_DESTINATION")
-        end
+        destination = destination!(order, @payload["destinationId"] || order.destination_code)
         date = CsvReader.date(@payload["deliveryDate"].to_s)
         fail!("Data consegna precedente a oggi.", "INVALID_DATE") if date < Time.zone.today
         fail!("Nota troppo lunga.", "INVALID_NOTE") if @payload["note"].to_s.length > 2000 || @payload["paymentNote"].to_s.length > 200
@@ -113,8 +114,7 @@ module Amelia3
     def confirm!(order)
       fail!("Inserisci almeno un articolo.", "EMPTY_ORDER") if order.lines.empty?
       fail!("Data consegna non valida.", "INVALID_DATE") unless order.delivery_date && order.delivery_date >= Time.zone.today
-      destination = @scope.customer(order.destination_code)
-      fail!("Destinazione bloccata.", "CUSTOMER_BLOCKED") if destination.blocked
+      destination!(order, order.destination_code)
       order.lines.group_by { |line| line.fetch("productId") }.each do |code, lines|
         product = @scope.products.find_by!(external_code: code)
         quote = Quote.for(@scope, product, @scope.customer(order.customer_code))
@@ -128,6 +128,15 @@ module Amelia3
       quote.validate_quantity!(quantity)
       total = order.lines.select { |line| line["productId"] == product.external_code && line["id"] != excluding }.sum { |line| BigDecimal(line["quantity"]) } + quantity
       fail!("Disponibilità aggregata insufficiente.", "INSUFFICIENT_STOCK") if total > quote.stock.pieces
+    end
+
+    def destination!(order, code)
+      destination = @scope.customer(code)
+      unless destination.delivery_point && (destination.external_code == order.customer_code || destination.parent_code == order.customer_code)
+        fail!("Punto di consegna non autorizzato per questa anagrafica.", "INVALID_DESTINATION")
+      end
+      fail!("Destinazione bloccata.", "CUSTOMER_BLOCKED") if destination.blocked
+      destination
     end
 
     def line!(order)

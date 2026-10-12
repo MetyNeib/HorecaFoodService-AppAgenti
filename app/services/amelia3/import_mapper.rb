@@ -53,7 +53,11 @@ module Amelia3
     end
 
     def decimal(field, optional = false)
-      CsvReader.decimal(@row.fetch(field), optional: optional)
+      value = CsvReader.decimal(@row.fetch(field), optional: optional)
+      if value && %w[sconto perc_provv].include?(field) && !(value * 10_000).frac.zero?
+        raise Error.new("Precisione percentuale non attestata.", code: "DECIMAL_PRECISION")
+      end
+      value
     end
 
     def date(field)

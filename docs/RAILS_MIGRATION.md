@@ -22,14 +22,27 @@ CI verde sullo SHA esatto `9cbb124`. La fase successiva approvata Amelia3 usa
 - Docker Desktop locale. Nessun deploy, ERP o invio WhatsApp/email/PDF reale.
 - Collaudo autonomo per milestone, incluso confronto visivo e test Chromium/WebKit.
 
-## Dopo il refactor: importazione dati reali
+## Fase reale Amelia3 — autorizzata e implementata il 12 ottobre
 
-È richiesto un successivo import dei dati reali di un cliente. Questa fase NON li
-importa né li inventa. Occorrono sorgenti autorizzate, mapping dei codici stabili,
-validazione in staging, rapporto scarti e riconciliazione prima dell'attivazione.
-Dati reali, credenziali e backup non entrano mai nel repository GitHub. Il reset
-demo resta separato dai dati reali; nessun import può convertire implicitamente un
-dataset reale in demo. Il clock fisso riguarda soltanto il dataset dimostrativo.
+La fase prevista dopo il refactor è ora implementata secondo il pacchetto
+approvato in `docs/amelia3/`. Nove CSV privati, staging streaming e pubblicazione
+atomica per tenant, nessuna copia commerciale nei workspace JSONB. Gli ordini
+hanno UUID condiviso, creatore, agente commerciale e revisione propria; i prezzi
+salvati non vengono riscritti dagli import. Solo codice agente 34; Capoarea negato.
+Dettagli e installazione in [AMELIA3_LOCAL.md](AMELIA3_LOCAL.md), esiti correnti
+in [AMELIA3_IMPORT_REPORT.md](../qa/AMELIA3_IMPORT_REPORT.md).
+
+Admin vede tutti i clienti del tenant; l'agente esclusivamente quelli assegnati,
+incluse letture dirette, storico, finanze, ordini e cache preparata. I collegamenti
+di fatturazione non ampliano l'accesso. Destinazioni soltanto con flag punto
+consegna attestato. Il reset demo è negato agli account reali e non può convertire
+un dataset commerciale in sintetico. Il clock fisso riguarda solo la demo.
+
+FTP porta 21 non cifrato è esplicitamente autorizzato, soltanto lettura `/UPLOAD`.
+Worker Sidekiq effettivamente configurato, job quotidiano 06:05 Europe/Rome,
+un'occorrenza per tenant/giorno, DST, lock, retry e heartbeat. Primo recupero
+automatico e download live sono riusciti. Nessun ordine viene inviato sul FTP
+o ad altri canali. Dati, password, backup e screenshot reali restano fuori Git.
 
 ## Offline e consistenza
 
@@ -45,7 +58,7 @@ Il ritorno della connessione non implica ricezione da un ERP. La sincronizzazion
 La prima preparazione dei dati richiede accesso online. Logout e cambio account
 devono proteggere gli ordini non sincronizzati e impedire dati fra utenti diversi.
 
-La prima versione usa un workspace JSONB per agente, aggiornato atomicamente.
+La sola demo sintetica usa un workspace JSONB per agente, aggiornato atomicamente.
 Questo limita le scritture concorrenti dello stesso workspace: conflitti espliciti,
 nessuna sovrascrittura silenziosa. Prima di carichi multiagente reali occorrerà
 misurare e, dove necessario, normalizzare ordini e revisioni per entità. Le regole

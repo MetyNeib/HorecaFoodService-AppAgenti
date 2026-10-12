@@ -9,6 +9,12 @@ export class WorkspaceClient extends EventTarget {
     this.storage = options.storage || new OfflineStorage(userId);
     this.fetch = options.fetch || globalThis.fetch.bind(globalThis);
     this.owner = uid('tab');
+    this.apiBase = options.apiBase || '';
+    this.project = options.projectCommand || projectCommand;
+    this.allowedCommands = options.allowedCommands;
+    this.strictAccess = options.strictAccess || false;
+    this.mergeSnapshot = options.mergeSnapshot || (snapshot => snapshot);
+    this.reconcileRecord = options.reconcileRecord;
     this.reachable = navigator.onLine;
     this.authRequired = false;
   }
@@ -40,6 +46,8 @@ export class WorkspaceClient extends EventTarget {
   }
 
   async enqueue(type, payload) {
+    if (this.allowedCommands && !this.allowedCommands.has(type)) throw new Error('Operazione non consentita per questo dataset.');
+    if (this.strictAccess && new Date(this.snapshot.state.data.expiresAt).getTime() <= Date.now()) this.authRequired = true;
     if (this.authRequired) throw new Error('Accedi nuovamente con lo stesso account prima di salvare altre modifiche. Le modifiche precedenti sono conservate.');
     if (!this.reachable && !OFFLINE_COMMANDS.has(type)) throw new Error('Questa funzione richiede il collegamento al server.');
     this.record = await this.storage.update(record => {
@@ -47,7 +55,7 @@ export class WorkspaceClient extends EventTarget {
       if (record.conflict) throw new Error('Risolvi prima il conflitto di sincronizzazione. Le modifiche locali sono conservate.');
       const command = { operationId: crypto.randomUUID(), baseVersion: record.server.version + record.outbox.length,
         epoch: record.server.epoch, type, payload: structuredClone(payload) };
-      record.projected = projectCommand(record.projected, command);
+      record.projected = this.project(record.projected, command);
       record.outbox.push(command);
       record.savedAt = new Date().toISOString();
       return record;
@@ -62,7 +70,7 @@ export class WorkspaceClient extends EventTarget {
     try {
       const response = await this.fetch(path, { credentials: 'same-origin', cache: 'no-store', ...options, signal: controller.signal });
       this.reachable = true;
-      if (response.status === 401 || response.redirected && new URL(response.url).pathname.includes('sign_in')) {
+      if (response.status === 401 || this.strictAccess && response.status === 403 || response.redirected && new URL(response.url).pathname.includes('sign_in')) {
         this.authRequired = true;
         throw new Error('La sessione è scaduta. Accedi con lo stesso account per sincronizzare le modifiche conservate.');
       }
@@ -74,7 +82,7 @@ export class WorkspaceClient extends EventTarget {
   }
 
   async refresh() {
-    const response = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
+    const response = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Impossibile aggiornare i dati dal server.');
     const snapshot = this.acceptSnapshot(await response.json());
     if (snapshot.csrfToken) this.setCsrf(snapshot.csrfToken);
@@ -116,19 +124,19 @@ export class WorkspaceClient extends EventTarget {
         });
         const token = find('meta[name="csrf-token"]')?.content;
         if (!token) {
-          const response = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
+          const response = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
           if (!response.ok) break;
           const snapshot = this.acceptSnapshot(await response.json());
           if (snapshot.csrfToken) this.setCsrf(snapshot.csrfToken);
           else throw new Error('Riapri la pagina online per aggiornare la sessione e sincronizzare.');
         }
-        const transmit = () => this.request('/commands', { method: 'POST', headers: {
+        const transmit = () => this.request(this.apiBase + '/commands', { method: 'POST', headers: {
           Accept: 'application/json', 'Content-Type': 'application/json', 'X-CSRF-Token': find('meta[name="csrf-token"]')?.content || '', 'X-HFS-User-Id': this.userId
         }, body: JSON.stringify(command) });
         let response = await transmit();
         let result = await response.json();
         if (response.status === 422 && result.code === 'CSRF_EXPIRED') {
-          const session = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
+          const session = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
           if (!session.ok) throw new Error('Riapri la sessione per continuare.');
           const snapshot = this.acceptSnapshot(await session.json());
           this.setCsrf(snapshot.csrfToken);
@@ -147,8 +155,9 @@ export class WorkspaceClient extends EventTarget {
         this.acceptSnapshot(result);
         this.record = await this.storage.update(record => {
           record.outbox = record.outbox.filter(item => item.operationId !== command.operationId);
-          if (result.epoch > record.server.epoch || result.epoch === record.server.epoch && result.version >= record.server.version) record.server = result;
-          record.projected = record.outbox.reduce(projectCommand, record.server.state);
+          if (result.epoch > record.server.epoch || result.epoch === record.server.epoch && result.version >= record.server.version) record.server = this.mergeSnapshot(result, record.server, record.outbox);
+          if (this.reconcileRecord) this.reconcileRecord(record, result);
+          else record.projected = record.outbox.reduce(this.project, record.server.state);
           record.savedAt = new Date().toISOString();
           return record;
         });
@@ -177,7 +186,7 @@ export class WorkspaceClient extends EventTarget {
 
   /** Explicit conflict resolution preserves the prior local version as a recovery archive. */
   async useServerVersion() {
-    const response = await this.request('/snapshot', { headers: { Accept: 'application/json' } });
+    const response = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Collegati al server per risolvere il conflitto.');
     const server = this.acceptSnapshot(await response.json());
     this.record = await this.storage.update(record => {
@@ -199,7 +208,7 @@ export class WorkspaceClient extends EventTarget {
     let signedOut = false;
     try {
       const response = await this.fetch(form.action, { method: 'POST', credentials: 'same-origin', signal: abort.signal,
-        body: new FormData(form), headers: { 'X-CSRF-Token': find('meta[name="csrf-token"]')?.content || '' } });
+        body: new FormData(form), headers: { 'X-CSRF-Token': find('meta[name="csrf-token"]')?.content || '', 'X-HFS-User-Id': this.userId } });
       if (!response.ok) throw new Error('Uscita non completata.');
       signedOut = true;
       this.record = await this.storage.update(record => {

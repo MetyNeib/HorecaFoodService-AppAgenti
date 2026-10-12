@@ -1,0 +1,22 @@
+[
+  {
+    "role": "admin",
+    "customers": 100,
+    "products": 208,
+    "portfolio": 8311,
+    "bytes": 89169,
+    "heapBytes": 10000000,
+    "overflow": false,
+    "errors": []
+  },
+  {
+    "role": "agent",
+    "customers": 16,
+    "products": 266,
+    "portfolio": 16,
+    "bytes": 86054,
+    "heapBytes": 10000000,
+    "overflow": false,
+    "errors": []
+  }
+]

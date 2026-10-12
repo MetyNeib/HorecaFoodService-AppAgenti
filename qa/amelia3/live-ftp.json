@@ -1,0 +1,68 @@
+{
+  "status": "PASS",
+  "scope": "LIVE_FTP_DOWNLOAD_AND_ATOMIC_IMPORT",
+  "observed_at": "2026-10-12T18:43:56+02:00",
+  "encrypted": false,
+  "read_only": true,
+  "files": {
+    "ARTICOLI.csv": {
+      "bytes": 882638,
+      "modified": "2026-10-12T04:02:33Z",
+      "sha256": "11936ef69c3e52d07c9f76e3b1d6359e7f5f3496812f286d85c6df9ab757e5c1"
+    },
+    "CLIENTI.csv": {
+      "bytes": 1940814,
+      "modified": "2026-10-12T11:00:17Z",
+      "sha256": "ea765769e35839e82a987cc13e77aad0c49bb1249b09c149d593f1d92389ed51"
+    },
+    "FIDO.csv": {
+      "bytes": 97133,
+      "modified": "2026-10-12T04:02:30Z",
+      "sha256": "bf584f76104e9df04e5bc6aaca0371acc271e9d34c7f15fa49163ed2e340ba5e"
+    },
+    "GIACENZE.csv": {
+      "bytes": 137161,
+      "modified": "2026-10-12T11:00:18Z",
+      "sha256": "d01ad7fb3a7b6564367889ff66550424fad8dc477630944b56b903e0ac4f6b22"
+    },
+    "INSOLUTO.csv": {
+      "bytes": 176918,
+      "modified": "2026-10-12T04:00:57Z",
+      "sha256": "0b16c6998e10dba2d241b0e0c0834bd468cd2e7e37e27e9b08bf514b7f696c77"
+    },
+    "LISTINI.csv": {
+      "bytes": 499449,
+      "modified": "2026-10-12T04:00:47Z",
+      "sha256": "d0bc3d4565b3e311358b4425f1e88f33639929dd1ad10402420276775a45df87"
+    },
+    "LISTINI_PERS.csv": {
+      "bytes": 468175,
+      "modified": "2026-10-12T04:43:48Z",
+      "sha256": "315bc317a6303b1f42c82cb34f3eb98bca2d8bc9539ac414d01330e2936a38c4"
+    },
+    "STORICO.csv": {
+      "bytes": 47708098,
+      "modified": "2026-10-12T04:43:41Z",
+      "sha256": "fc33b2c9f6a3f2f3d239f548776c77eae2e9948014ab7a081e537ec8bca81d4f"
+    },
+    "TABGIR.csv": {
+      "bytes": 491554,
+      "modified": "2026-10-12T04:00:48Z",
+      "sha256": "0b8eb1274759805928c579776ed448160e595b680f02ec1fef73fcf96277997a"
+    }
+  },
+  "batch_fingerprint": "9eca9f4b050d59a05a0dfc3f1f9e26749d52b1e6989b3605b65c571d590e188f",
+  "unchanged_batch": true,
+  "counts": {
+    "FIDO.csv": 5064,
+    "TABGIR.csv": 19960,
+    "CLIENTI.csv": 8311,
+    "LISTINI.csv": 28940,
+    "STORICO.csv": 1036814,
+    "ARTICOLI.csv": 9847,
+    "GIACENZE.csv": 9245,
+    "INSOLUTO.csv": 3017,
+    "LISTINI_PERS.csv": 12173
+  },
+  "elapsed_seconds": 37.969
+}

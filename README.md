@@ -2,7 +2,22 @@
 
 Riscrittura in **Rails 8.1, Ruby 4, Ralix, PostgreSQL e Devise**. Mantiene il seed sintetico e i flussi HFS: ordine manuale, FastOrder WhatsApp, bozze/coda/storico, clienti, partite, catalogo e insight. Il backend salva realmente i dati; gli invii commerciali WhatsApp/email/PDF ed ERP restano simulati.
 
-Rails è su `main` dopo la [PR #1](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/pull/1). L'integrazione Amelia3 procede su `feature/amelia3-ftp-import` secondo [il pacchetto approvato](docs/amelia3/HFS_Amelia3_LEGGIMI_20261012.md). La V1 React completa è conservata su `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Lo stato corrente è in [docs/PROGRESS.md](docs/PROGRESS.md).
+Rails è su `main` dopo la [PR #1](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/pull/1). Il branch `feature/amelia3-ftp-import` aggiunge l'integrazione Amelia3 approvata: dati commerciali condivisi, Admin e agente **34**, storico PostgreSQL, ordini locali e FTP in sola lettura alle **06:05 Europe/Rome**. La V1 React è conservata su `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Esiti in [qa/AMELIA3_IMPORT_REPORT.md](qa/AMELIA3_IMPORT_REPORT.md).
+
+## Amelia3 sul computer già configurato
+
+Aprire **http://127.0.0.1:3002/amelia3** e accedere come `admin@amelia3.invalid`
+oppure `agente34@amelia3.invalid`. Le password casuali sono nel solo file locale
+`imports/private/amelia3/local_accounts.json`, escluso da Git. Admin e agente
+condividono gli stessi ordini autorizzati; la conferma salva nel database e non
+trasmette nulla al gestionale. Il seed HFS rimane accessibile con il suo account
+dimostrativo separato.
+
+Il worker deve restare acceso per l'import quotidiano. Se Docker riparte dopo
+le 06:05, recupera l'esecuzione della giornata una volta sola. La pagina
+**Sincronizzazione dati**, riservata all'Admin, mostra heartbeat, import ed errori.
+Per installazione con dati privati, diagnostica e limiti delle UM seguire
+[docs/AMELIA3_LOCAL.md](docs/AMELIA3_LOCAL.md).
 
 ## Installazione locale su un altro computer
 
@@ -47,6 +62,7 @@ npm.cmd run vendor:javascript
 npm.cmd run validate:data
 npm.cmd test
 npm.cmd run test:domain-parity
+npm.cmd run test:amelia3-domain
 npm.cmd run check:rules
 docker compose exec web bundle exec rspec
 docker compose exec web bundle exec rubocop
@@ -59,6 +75,8 @@ Per Playwright su Windows:
 $env:PLAYWRIGHT_BROWSERS_PATH = Join-Path (Get-Location) '.playwright-browsers'
 npx.cmd playwright install chromium webkit
 npm.cmd run test:e2e
+npm.cmd run test:amelia3-prepare
+npm.cmd run test:amelia3
 ```
 
 La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, RSpec, RuboCop, Brakeman, i flussi UI nei quattro viewport e l'offline Chromium/WebKit. Gli esiti storici React nei report QA non certificano la nuova versione Rails. I report Rails distinguono PASS, FAIL e NOT_RUN. Le schermate sono consultabili nella [galleria Rails](qa/rails-ui/screenshots/index.html).
@@ -74,5 +92,9 @@ La CI verifica regole CSS/JS/ERB, seed, dominio, migrazioni da database vuoto, R
 - `tests/reference-v1`: helper puri originali conservati solo per i test di confronto; nessun runtime React.
 - `docs`, `references`, `fixtures`, `qa`: specifiche e verifiche, escluse dagli asset pubblici.
 
-Il clock dimostrativo resta il 22 settembre 2026 alle 09:30, agente Marco Rossi, otto clienti assegnati. I dati reali di un cliente saranno importati in una fase successiva documentata in [docs/RAILS_MIGRATION.md](docs/RAILS_MIGRATION.md); non vanno inseriti nel repository. Questa base usa un workspace JSONB atomico per utente: le scelte e i limiti di concorrenza sono descritti nello stesso documento.
+Il clock del solo seed dimostrativo resta il 22 settembre 2026 alle 09:30, agente
+Marco Rossi, otto clienti assegnati. Amelia3 usa il calendario reale Europe/Rome,
+tabelle commerciali condivise per tenant e revisioni per ordine; i dati privati
+non vengono distribuiti con il codice. Il workspace JSONB per utente riguarda
+soltanto la demo sintetica. Decisioni in [docs/RAILS_MIGRATION.md](docs/RAILS_MIGRATION.md).
 

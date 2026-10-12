@@ -5,5 +5,6 @@ pin "dompurify", to: "dompurify.js", preload: true
   pin "ralix/src/#{name}", to: "ralix/#{name}.js", preload: true
 end
 pin_all_from "app/javascript/hfs", under: "hfs"
+pin_all_from "app/javascript/amelia3", under: "amelia3"
 pin_all_from "app/javascript/controllers", under: "controllers"
 pin_all_from "app/javascript/components", under: "components"

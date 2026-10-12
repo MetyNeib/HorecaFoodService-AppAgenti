@@ -1,0 +1,66 @@
+.amelia-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.amelia-nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid var(--color-border, #cbd3e2);
+  border-radius: 10px;
+  background: white;
+}
+[data-page-controller="amelia3"] .tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+[data-page-controller="amelia3"] .tabs a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border: 1px solid #cbd3e2;
+  border-radius: 10px;
+  flex: 1 1 130px;
+}
+[data-page-controller="amelia3"] .tabs a.active {
+  background: #2e60ff;
+  color: white;
+}
+.amelia-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+[data-page-controller="amelia3"] article,
+[data-page-controller="amelia3"] dd {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.amelia-quantities {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(80px, 1fr);
+  gap: 8px;
+}
+.amelia-quantities dd {
+  margin: 0;
+  font-weight: 600;
+}
+[data-page-controller="amelia3"] .cart-line form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 8px;
+}
+[data-page-controller="amelia3"] .quantity {
+  min-width: 0;
+  flex-wrap: wrap;
+}

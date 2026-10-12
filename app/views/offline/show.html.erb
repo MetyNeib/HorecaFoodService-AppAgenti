@@ -9,7 +9,7 @@
     <title>HFS · App Agenti offline</title>
     <link rel="manifest" href="/manifest.webmanifest">
     <link rel="apple-touch-icon" href="/icons/hfs-180.png">
-    <%= stylesheet_link_tag "tokens", "base", "workspace", "elastic", "adaptive", "presentation" %>
+    <%= stylesheet_link_tag "tokens", "base", "workspace", "elastic", "adaptive", "presentation", "amelia3" %>
     <%= javascript_importmap_tags %>
   </head>
   <body data-offline="true" data-page-controller="workspace">
@@ -40,5 +40,6 @@
       <dialog id="reset-dialog" class="dialog_js" aria-label="Ripristinare la demo?"><h2>Ripristinare la demo?</h2><p>Il ripristino richiede il server raggiungibile e nessuna modifica locale da sincronizzare.</p><form action="/commands" method="post" class="command_form_js"><input type="hidden" name="type" value="RESET_DEMO"><input type="hidden" name="return_to" value="/"><button type="submit" class="primary">Ripristina seed</button></form><button type="button" class="dialog_close_js">Annulla</button></dialog>
     </div>
     <%= render 'offline/templates' %>
+    <%= render 'amelia3/offline/templates' %>
   </body>
 </html>

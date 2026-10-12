@@ -4,6 +4,7 @@ require "pg"
 
 module Amelia3
   class Importer
+    MAPPING_VERSION = 1
     TABLES = {
       "ARTICOLI.csv" => Product, "CLIENTI.csv" => Customer, "FIDO.csv" => Credit,
       "GIACENZE.csv" => Stock, "INSOLUTO.csv" => OpenItem, "LISTINI.csv" => Price,
@@ -23,7 +24,7 @@ module Amelia3
 
     def call
       files = checksums
-      fingerprint = Digest::SHA256.hexdigest(files.sort.map { |name, info| "#{name}:#{info.fetch(:sha256)}" }.join("\n"))
+      fingerprint = Digest::SHA256.hexdigest("mapping:#{MAPPING_VERSION}\n" + files.sort.map { |name, info| "#{name}:#{info.fetch(:sha256)}" }.join("\n"))
       result = nil
       with_import_lock do
         existing = @tenant.import_batches.find_by(fingerprint: fingerprint, status: "published")

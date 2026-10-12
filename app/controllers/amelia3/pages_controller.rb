@@ -24,7 +24,7 @@ class Amelia3::PagesController < Amelia3::BaseController
     @open_items = @scope.open_items.where(account_code: @customer.account_code).order(:due_date).limit(100)
     @credit = @scope.credits.find_by(customer_code: @customer.external_code)
     @routes = @scope.routes.where(customer_code: @customer.external_code).order(:weekday, :route_code)
-    @destinations = @scope.customers.where("external_code = ? OR parent_code = ?", @customer.external_code, @customer.external_code).order(:name)
+    @destinations = @scope.destinations(@customer).order(:name)
   end
 
   def catalog
@@ -40,6 +40,8 @@ class Amelia3::PagesController < Amelia3::BaseController
     @total = rows.count
     @products = rows.order(:name, :external_code).offset((@page - 1) * 50).limit(50)
     @quotes = Amelia3::Catalog.new(@scope, @products, @customer).quotes
+    cart_products = @scope.products.where(external_code: Array(@order&.lines).map { |line| line["productId"] })
+    @cart_steps = Amelia3::Catalog.new(@scope, cart_products, @customer).quotes.transform_values { |quote| quote.step || 1 }
   end
 
   def product
@@ -58,7 +60,7 @@ class Amelia3::PagesController < Amelia3::BaseController
   def order
     @order = @scope.order(params[:id])
     @customer = @scope.customer(@order.customer_code)
-    @destinations = @scope.customers.where("external_code = ? OR parent_code = ?", @customer.external_code, @customer.external_code).order(:name)
+    @destinations = @scope.destinations(@customer).order(:name)
   end
 
   def history
@@ -80,6 +82,7 @@ class Amelia3::PagesController < Amelia3::BaseController
     rows = @scope.history
     rows = rows.where(customer_code: @customer.external_code) if @customer
     @summary = @customer ? Amelia3::History.summary(rows).stringify_keys : @scope.tenant.active_batch.metrics.fetch(current_user.role == "admin" ? "all" : "agent34", {})
+    @summary = @summary.merge("last_delivery" => rows.where("delivery_date <= ? AND shipped > 0", Time.zone.today).maximum(:delivery_date)&.iso8601)
     @usual = Amelia3::History.usual(rows)
     @product_names = @scope.products.where(external_code: @usual.map(&:product_code)).pluck(:external_code, :name).to_h
   end
@@ -88,6 +91,7 @@ class Amelia3::PagesController < Amelia3::BaseController
     @scope.admin!
     @batch = @scope.tenant.active_batch
     @runs = Amelia3::SyncOccurrence.where(tenant_id: @scope.tenant.id).order(local_date: :desc).limit(14)
+    @scheduler = Amelia3::Scheduler.status
   end
 
   private
