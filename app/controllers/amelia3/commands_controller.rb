@@ -12,7 +12,8 @@ class Amelia3::CommandsController < Amelia3::BaseController
     command = params.permit(:operationId, :baseVersion, :epoch, :type, payload: {}).to_h
     unless request.format.json?
       %w[baseVersion epoch].each { |key| command[key] = Integer(command[key], exception: false) }
-      command["payload"]["expectedVersion"] = Integer(command.dig("payload", "expectedVersion"), exception: false) if command["payload"].key?("expectedVersion")
+      payload = command["payload"]
+      payload["expectedVersion"] = Integer(payload["expectedVersion"], exception: false) if payload.is_a?(Hash) && payload.key?("expectedVersion")
     end
     result = Amelia3::Commands.call(user: current_user, command: command)
     if !request.format.json? && params[:next_command] == "CONFIRM_ORDER" && command["type"] == "SAVE_REVIEW"

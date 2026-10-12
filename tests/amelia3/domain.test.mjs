@@ -69,3 +69,12 @@ test('offline confirmation requires an attested delivery point without following
   assert.throws(() => projectCommand(state, { type: 'SAVE_REVIEW', payload: { orderId: 'synthetic-order', expectedVersion: 1, destinationId: 'foreign-client', deliveryDate: romeDate() } }));
   assert.equal(state.data.orders[0].status, 'DRAFT');
 });
+test('acknowledging another order retains products and conditions needed by queued additions', () => {
+  const previous = { state: draft() }, next = { state: initial() };
+  next.state.data.products = []; next.state.data.customerConditions = [];
+  const merged = mergeSnapshot(next, previous, [add]);
+  const projected = projectCommand(merged.state, add);
+  assert.equal(projected.data.orders[0].netCents, 357);
+  assert.equal(projected.data.orders[0].lines[0].unitPrice, '1.1913504');
+  assert.equal(merged.state.data.products.length, 1);
+});

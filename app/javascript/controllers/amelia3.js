@@ -14,9 +14,10 @@ export default class Amelia3Controller extends WorkspaceController {
       const bootstrap = source?.textContent.trim() ? JSON.parse(source.textContent) : null;
       const owner = bootstrap?.user.id || (document.body.dataset.offline === 'true' ? activeUserId() : null);
       if (!String(owner).startsWith('amelia3-')) { this.accessView(); return; }
-      this.client = new WorkspaceClient(owner, { apiBase: '/amelia3', projectCommand, mergeSnapshot, reconcileRecord, allowedCommands: COMMANDS, strictAccess: true });
+      this.client = new WorkspaceClient(owner, { apiBase: '/amelia3', snapshotPath: () => this.snapshotPath(), projectCommand, mergeSnapshot, reconcileRecord, allowedCommands: COMMANDS, strictAccess: true });
       await this.client.initialize(bootstrap);
-      if (!bootstrap && new Date(this.client.snapshot.state.data.expiresAt).getTime() <= Date.now()) { this.client.authRequired = true; this.accessView(); return; }
+      const expiry = new Date(this.client.snapshot.state.data.expiresAt).getTime();
+      if (!bootstrap && (!Number.isFinite(expiry) || expiry <= Date.now())) { this.client.authRequired = true; this.accessView(); return; }
       this.client.watchTabs();
       this.client.addEventListener('change', () => this.status());
       if (document.body.dataset.offline === 'true') {
@@ -39,7 +40,8 @@ export default class Amelia3Controller extends WorkspaceController {
   }
 
   status() {
-    if (this.client?.snapshot && new Date(this.client.snapshot.state.data.expiresAt).getTime() <= Date.now()) this.client.authRequired = true;
+    const expiry = this.client?.snapshot ? new Date(this.client.snapshot.state.data.expiresAt).getTime() : null;
+    if (this.client?.snapshot && (!Number.isFinite(expiry) || expiry <= Date.now())) this.client.authRequired = true;
     super.status();
     if (this.client?.snapshot) findAll('.amelia_user_js').forEach(element => { element.textContent = this.client.snapshot.user.displayName || 'Amelia3'; });
     if (this.client?.authRequired) this.accessView();
@@ -62,6 +64,19 @@ export default class Amelia3Controller extends WorkspaceController {
   }
 
   scheduleDemoSync() {}
+
+  snapshotPath() {
+    const params = new URLSearchParams();
+    [...findAll('main [data-product-code]')].slice(0, 50).forEach(row => params.append('products[]', row.dataset.productCode));
+    [...findAll('main [data-customer-code]')].slice(0, 50).forEach(row => params.append('customers[]', row.dataset.customerCode));
+    const url = new URL(location.href), orderId = url.searchParams.get('order_id') || url.pathname.match(/^\/amelia3\/orders\/([^/]+)$/)?.[1];
+    if (orderId && this.client.record.server.state.data.orders.some(order => order.id === orderId)) params.set('order_id', orderId);
+    const customer = url.pathname.match(/^\/amelia3\/customers\/([^/]+)$/)?.[1];
+    if (customer) params.append('customers[]', decodeURIComponent(customer));
+    const product = url.pathname.match(/^\/amelia3\/catalog\/([^/]+)$/)?.[1];
+    if (product) params.append('products[]', decodeURIComponent(product));
+    return '/amelia3/snapshot?' + params;
+  }
 
   async submit(event) {
     const form = event.target;
@@ -93,7 +108,7 @@ export default class Amelia3Controller extends WorkspaceController {
       }
       const type = form.dataset.command;
       payload.batchId = this.client.snapshot.state.data.batchId;
-      if (type === 'ADD_LINE') {
+      if (type === 'ADD_LINE' && payload.expectedUnitPrice == null) {
         const data = this.client.snapshot.state.data;
         const order = data.orders.find(row => row.id === payload.orderId);
         const product = data.products.find(row => row.id === payload.productId);

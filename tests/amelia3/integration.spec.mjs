@@ -129,6 +129,9 @@ test('expired sessions and expired offline permissions preserve the outbox and h
   expect(cached).not.toContain('/amelia3/snapshot'); expect(cached).not.toContain('/amelia3');
   const shell = await page.evaluate(async () => (await caches.match('/offline')).text());
   expect(shell).not.toContain('Cliente sintetico'); expect(shell).not.toContain(agent);
+  await context.setOffline(false); await login(page);
+  await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
+  expect((await snapshot(page)).state.data.orders.find(row => row.id === id)?.note).toBe('Da recuperare');
 });
 
 test('business blocks also apply to direct API calls and unverified units', async ({ page }) => {
@@ -142,6 +145,10 @@ test('business blocks also apply to direct API calls and unverified units', asyn
   expect(result).toEqual({ status: 422, code: 'CUSTOMER_BLOCKED' });
   const id = await create(page); await navigate(page, `/amelia3/catalog?order_id=${id}`);
   await expect(page.locator('[data-product-code="K001"]').getByRole('button', { name: '+ Aggiungi', exact: true })).toBeDisabled();
+  await page.evaluate(() => window.HFS.reconnect());
+  expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
+  await navigate(page, '/amelia3/catalog/K001'); await page.evaluate(() => window.HFS.reconnect());
+  expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
   const response = await page.request.get('/amelia3/customers/C003'); expect(response.status()).toBe(404);
 });
 
@@ -181,4 +188,24 @@ test('storage unavailable keeps online HTML order forms operational without clai
   await page.getByRole('button', { name: 'Conferma ordine locale', exact: true }).click();
   await expect(page.locator('main')).toContainText('Ordine confermato nel database locale');
   expect((await snapshot(page)).state.data.orders.find(row => row.id === id)?.status).toBe('CONFIRMED_LOCAL');
+});
+
+test('a new offline draft syncs from its editor and searched products remain prepared after refresh', async ({ page, context }) => {
+  await login(page); await readyOffline(page); await context.setOffline(true);
+  await navigate(page, '/amelia3/customers?pick=1&q=C001');
+  await page.getByRole('button', { name: /Seleziona/ }).click();
+  const id = new URL(page.url()).searchParams.get('order_id');
+  await page.locator('[data-product-code="P001"]').getByRole('button', { name: '+ Aggiungi', exact: true }).click();
+  expect(await outbox(page)).toHaveLength(2);
+  await context.setOffline(false); await page.evaluate(() => window.HFS.reconnect());
+  await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
+  const saved = (await snapshot(page)).state.data.orders.filter(row => row.id === id);
+  expect(saved).toHaveLength(1); expect(saved[0]).toMatchObject({ status: 'DRAFT', netCents: 119 });
+  await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);
+  await page.evaluate(() => window.HFS.reconnect());
+  expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
+  await context.setOffline(true); await page.reload();
+  await expect(page.getByRole('heading', { name: 'Prodotto sintetico senza conversione', exact: true })).toBeVisible();
+  await expect(page.locator('[data-product-code="K001"]').getByRole('button', { name: '+ Aggiungi', exact: true })).toBeDisabled();
+  expect((await state(page)).orders.find(row => row.id === id)?.netCents).toBe(119);
 });

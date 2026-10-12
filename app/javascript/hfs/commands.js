@@ -10,6 +10,7 @@ export class WorkspaceClient extends EventTarget {
     this.fetch = options.fetch || globalThis.fetch.bind(globalThis);
     this.owner = uid('tab');
     this.apiBase = options.apiBase || '';
+    this.snapshotPath = options.snapshotPath || (() => this.apiBase + '/snapshot');
     this.project = options.projectCommand || projectCommand;
     this.allowedCommands = options.allowedCommands;
     this.strictAccess = options.strictAccess || false;
@@ -22,7 +23,18 @@ export class WorkspaceClient extends EventTarget {
   async initialize(snapshot) {
     this.record = snapshot ? await this.storage.initialize(snapshot) : await this.storage.read();
     if (!this.record) throw new Error('Nessun dato offline disponibile. Accedi e prepara l’app con una connessione.');
+    if (snapshot) await this.renewAccess(snapshot);
     return this.record;
+  }
+
+  async renewAccess(snapshot) {
+    if (!this.strictAccess) return;
+    this.record = await this.storage.update(record => {
+      // Renew only the signed account lease; queued prices and edits stay intact.
+      record.server.state.data.expiresAt = snapshot.state.data.expiresAt;
+      record.projected.data.expiresAt = snapshot.state.data.expiresAt;
+      return record;
+    });
   }
 
   get snapshot() {
@@ -47,7 +59,8 @@ export class WorkspaceClient extends EventTarget {
 
   async enqueue(type, payload) {
     if (this.allowedCommands && !this.allowedCommands.has(type)) throw new Error('Operazione non consentita per questo dataset.');
-    if (this.strictAccess && new Date(this.snapshot.state.data.expiresAt).getTime() <= Date.now()) this.authRequired = true;
+    const expiresAt = new Date(this.snapshot.state.data.expiresAt).getTime();
+    if (this.strictAccess && (!Number.isFinite(expiresAt) || expiresAt <= Date.now())) this.authRequired = true;
     if (this.authRequired) throw new Error('Accedi nuovamente con lo stesso account prima di salvare altre modifiche. Le modifiche precedenti sono conservate.');
     if (!this.reachable && !OFFLINE_COMMANDS.has(type)) throw new Error('Questa funzione richiede il collegamento al server.');
     this.record = await this.storage.update(record => {
@@ -82,11 +95,13 @@ export class WorkspaceClient extends EventTarget {
   }
 
   async refresh() {
-    const response = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
+    let response = await this.request(this.snapshotPath(), { headers: { Accept: 'application/json' } });
+    if (this.strictAccess && response.status === 404) response = await this.request(this.apiBase + '/snapshot', { headers: { Accept: 'application/json' } });
     if (!response.ok) throw new Error('Impossibile aggiornare i dati dal server.');
     const snapshot = this.acceptSnapshot(await response.json());
     if (snapshot.csrfToken) this.setCsrf(snapshot.csrfToken);
     this.record = await this.storage.initialize(snapshot);
+    await this.renewAccess(snapshot);
     this.changed();
     return snapshot;
   }

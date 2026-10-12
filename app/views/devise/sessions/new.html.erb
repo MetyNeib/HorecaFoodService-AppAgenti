@@ -1,7 +1,7 @@
 <section class="card login-card">
   <div class="wordmark"><b>HFS<span>•</span></b><span>Horeca Food Service<small><%= ui('App Agenti') %></small></span></div>
   <h1><%= ui('Accedi alla tua area agente') %></h1>
-  <p><%= ui('Il primo accesso richiede la connessione al server locale. I dati della demo sono sintetici.') %></p>
+  <p><%= ui('Il primo accesso richiede il server locale. La demo HFS usa dati sintetici; Amelia3 apre i dati autorizzati al tuo account.') %></p>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |form| %>
     <label class="field"><span><%= ui('Email') %></span><%= form.email_field :email, autofocus: true, autocomplete: 'username', required: true %></label>
     <label class="field"><span><%= ui('Password') %></span><%= form.password_field :password, autocomplete: 'current-password', required: true %></label>

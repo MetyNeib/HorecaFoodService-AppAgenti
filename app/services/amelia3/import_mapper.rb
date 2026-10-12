@@ -16,6 +16,7 @@ module Amelia3
       when "GIACENZE.csv" then { product_code: required("cod_art"), packs: decimal("esistenza_att_cf", true), pieces: decimal("esistenza_att_pz", true), weight: decimal("esistenza_att_pe", true) }
       when "LISTINI.csv"
         amount = CsvReader.decimal(@row["prezzo"], optional: true, tolerate_invalid: true)
+        attest_precision!(amount, 10)
         { list_code: required("cod_lis"), product_code: required("cod_art"), amount: amount, valid_price: amount.present? && amount.positive? }
       when "LISTINI_PERS.csv"
         { source_row: @index, customer_code: required("cod_cli"), product_code: required("cod_art"), valid_from: date("da_data"), valid_to: date("a_data"),
@@ -54,10 +55,15 @@ module Amelia3
 
     def decimal(field, optional = false)
       value = CsvReader.decimal(@row.fetch(field), optional: optional)
-      if value && %w[sconto perc_provv].include?(field) && !(value * 10_000).frac.zero?
-        raise Error.new("Precisione percentuale non attestata.", code: "DECIMAL_PRECISION")
-      end
+      attest_precision!(value, 4) if %w[sconto perc_provv].include?(field)
+      attest_precision!(value, 10) if field == "prezzo"
       value
+    end
+
+    def attest_precision!(value, scale)
+      if value && !(value * (10**scale)).frac.zero?
+        raise Error.new("Precisione numerica non attestata.", code: "DECIMAL_PRECISION")
+      end
     end
 
     def date(field)

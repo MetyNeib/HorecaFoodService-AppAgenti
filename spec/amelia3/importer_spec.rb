@@ -51,4 +51,12 @@ RSpec.describe Amelia3::Importer do
     expect { described_class.call(tenant: tenant, directory: directory) }.to raise_error(Amelia3::Error)
     expect(tenant.reload.active_batch_id).to be_nil
   end
+
+  it "quarantines prices that PostgreSQL would otherwise round before attestation" do
+    previous = described_class.call(tenant: tenant, directory: directory)
+    path = File.join(directory, "LISTINI.csv")
+    File.write(path, File.read(path).sub("1.23456", "1.00000000004"))
+    expect { described_class.call(tenant: tenant, directory: directory) }.to raise_error(Amelia3::Error) { |error| expect(error.code).to eq("DECIMAL_PRECISION") }
+    expect(tenant.reload.active_batch_id).to eq(previous.id)
+  end
 end

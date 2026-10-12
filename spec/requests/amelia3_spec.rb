@@ -130,4 +130,14 @@ RSpec.describe "Amelia3 HTTP authorization", type: :request do
     expect(response).to have_http_status(:ok)
     expect(response.body).to include("Prodotto sintetico P")
   end
+
+  it "rejects an incomplete native form without exposing an exception or mutating orders" do
+    sign_in agent
+    data = snapshot
+    post "/amelia3/commands", params: { type: "ADD_LINE", operationId: SecureRandom.uuid, baseVersion: "1", epoch: "1",
+      owner_user_id: data.dig("user", "id"), authenticity_token: data["csrfToken"] }
+    expect(response).to have_http_status(:unprocessable_content)
+    expect(response.body).to include("Operazione non consentita")
+    expect(Amelia3::Order.count).to eq(0)
+  end
 end

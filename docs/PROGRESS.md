@@ -13,7 +13,8 @@ Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
 - Account Admin e agente 34 TESTATI: login reale, ordine locale a due prodotti
   creato dall'Admin e visibile al 34, unico record canonico. Password soltanto nel
   file privato `imports/private/amelia3/local_accounts.json`.
-- PASS 132 RSpec, 49 test dominio originali, 12 parità offline e 7 nuovi test
+- PASS 132 RSpec (nuova verifica con 134 casi in corso), 49 test dominio originali,
+  12 parità offline e 8 nuovi test
   BigInt Amelia3; 20 controlli seed e checker 95 file senza violazioni.
 - FTP LIVE TESTATO: primo job Sidekiq automatico riuscito il 12/10 alle 18:10
   come recupero dopo avvio worker; seconda verifica reale read-only completa
@@ -21,9 +22,13 @@ Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
   06:05 Europe/Rome, heartbeat e prossimo avvio 13/10 registrati; DST/retry/lock
   testati. Nessuna esecuzione alle 06:05 future dichiarata già avvenuta.
 - PASS regressioni originali: 24 UI e 28 PWA Chromium/WebKit.
-- Matrice Amelia3: 39/40 PASS nella prima esecuzione completa; un problema di
-  controllo iniziale del service worker corretto, relativo caso ripetuto tre
-  volte PASS. Nuova matrice completa e CI sullo SHA finale IN_PROGRESS.
+- Matrice Amelia3: 40/40 PASS dopo correzione del controllo iniziale del service
+  worker; ampliata a 45 casi per prodotto cercato, nuovo ordine offline
+  sincronizzato dall'editor e rinnovo della coda scaduta.
+- Prima CI e0c6570: Ruby/regole/stile/sicurezza PASS, 28 PWA e 40 Amelia3 PASS;
+  UI 23/24 per pulsante Salva bozza reso come link nella copia offline.
+  Correzione coerente con il controllo HTML originale, tre ripetizioni PASS;
+  nuova CI sul prossimo SHA IN_PROGRESS.
 - Due ordini di collaudo locali conservati; l'ultimo verifica due prodotti,
   destinazione attestata e visibilità Admin/34, un solo record per UUID.
 - Docker ricostruito da Gemfile.lock, RuboCop 101 file e Brakeman 0 warning PASS.

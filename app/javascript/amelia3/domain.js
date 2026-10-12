@@ -124,13 +124,21 @@ export function mergeSnapshot(snapshot, previous, outbox) {
   const ids = new Set(outbox.map(command => command.payload.orderId).filter(Boolean));
   previous.state.data.orders.filter(order => ids.has(order.id) && !data.orders.some(row => row.id === order.id)).forEach(order => {
     data.orders.push(order);
-    const customer = previous.state.data.customers.find(row => row.id === order.customerId);
-    if (customer && !data.customers.some(row => row.id === customer.id)) data.customers.push(customer);
-    order.lines.forEach(line => {
-      const product = previous.state.data.products.find(row => row.id === line.productId);
-      if (product && !data.products.some(row => row.id === product.id)) data.products.push(product);
-    });
   });
+  const customers = new Set(outbox.map(command => command.payload.customerId).filter(Boolean));
+  const products = new Set(outbox.map(command => command.payload.productId).filter(Boolean));
+  data.orders.filter(order => ids.has(order.id)).forEach(order => {
+    customers.add(order.customerId); if (order.destinationId) customers.add(order.destinationId);
+    order.lines.forEach(line => products.add(line.productId));
+  });
+  for (const [key, needed, limit] of [['customers', customers, 100], ['products', products, 500]]) {
+    const retained = previous.state.data[key].filter(row => needed.has(row.id) && !data[key].some(current => current.id === row.id));
+    const combined = [...retained, ...data[key]];
+    data[key] = [...combined.filter(row => needed.has(row.id)), ...combined.filter(row => !needed.has(row.id))].slice(0, limit);
+  }
+  const customerIds = new Set(data.customers.map(row => row.id)), productIds = new Set(data.products.map(row => row.id));
+  const conditionIds = new Set(data.customerConditions.map(row => row.id));
+  data.customerConditions.push(...previous.state.data.customerConditions.filter(row => customerIds.has(row.customerId) && productIds.has(row.productId) && !conditionIds.has(row.id)));
   return result;
 }
 

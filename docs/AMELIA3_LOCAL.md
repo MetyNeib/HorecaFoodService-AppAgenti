@@ -33,9 +33,11 @@ Capoarea non ha accesso. Non esiste registrazione pubblica.
 ## Prezzi, consegna e ordini
 
 Listino base `000`, sconto percentuale attivo per cliente/articolo, estremi
-di validità inclusivi sul calendario Europe/Rome. I prezzi mantengono fino
-a sei decimali attestati e lo sconto quattro; l'import rifiuta percentuali
-che richiederebbero arrotondamento. Condizioni sovrapposte, precisione
+di validità inclusivi sul calendario Europe/Rome. Il prezzo sorgente ordinabile
+mantiene fino a sei decimali e lo sconto quattro; il netto effettivo conserva
+tutta la precisione del calcolo. L'import rifiuta valori che PostgreSQL
+arrotonderebbe durante la memorizzazione del prezzo o della percentuale.
+Condizioni sovrapposte, precisione
 non rappresentabile e combinazioni ambigue prezzo+sconto bloccano la riga.
 Il totale viene arrotondato HALF_UP una volta per riga, ai centesimi.
 
@@ -67,7 +69,9 @@ aperto esplicitamente. L'agente prepara tutti i propri clienti; l'Admin usa
 ricerca e paginazione sul server. I prodotti preparati comprendono un campione
 ordinabile, abituali, condizioni e il contesto della pagina aperta.
 
-La copia autorizzata scade dopo 24 ore e richiede nuovo accesso online; scadenza,
+La copia autorizzata scade dopo 24 ore e richiede verifica online dell'account;
+il rinnovo conserva prezzi e modifiche pendenti e permette la sincronizzazione.
+Scadenza,
 cambio account o import con prezzi nuovi conservano il lavoro pendente e
 impediscono sovrascritture silenziose. Un conflitto può essere esportato e
 archiviato prima di scegliere la versione del server. Logout con coda pendente

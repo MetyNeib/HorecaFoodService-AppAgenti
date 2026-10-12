@@ -146,9 +146,11 @@ function cart(data, order, path) {
       actions(link('Modifica', `/orders/${order.id}/lines/${line.id}/edit`), line.whatsappRequestId ? null : form('REMOVE_LINE', { orderId: order.id, lineId: line.id }, button('Rimuovi', 'quiet danger', { type: 'submit' }), path)));
     card.dataset.testid = 'line-' + product.code; return card;
   });
+  const save = node('form', 'filter_form_js', hidden('tab', 'drafts'), button('Salva bozza', '', { type: 'submit' }));
+  save.method = 'get'; save.action = '/orders';
   const element = node('section', 'cart', node('div', 'pane-heading', node('h2', '', 'Il tuo ordine ', node('span', 'badge', `${order.lines.length} articoli`))),
     region('Articoli nel carrello', lines.length ? lines : empty('Il carrello è vuoto. Scegli i prodotti a sinistra.'), 'cart-lines'),
-    node('div', 'card cart-summary', totals(order.totals), actions(link('Vai al riepilogo →', `/orders/${order.id}/review`, 'button primary'), link('Salva bozza', '/orders?tab=drafts'))));
+    node('div', 'card cart-summary', totals(order.totals), actions(link('Vai al riepilogo →', `/orders/${order.id}/review`, 'button primary'), save)));
   element.id = 'cart'; return element;
 }
 function lineEditor(data, order, line) {
