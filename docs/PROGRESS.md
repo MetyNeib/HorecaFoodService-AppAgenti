@@ -1,4 +1,24 @@
-# Migrazione Rails — 12/10/2026 — COMPLETE_LOCAL
+# Amelia3 — 12/10/2026 — IN_PROGRESS
+
+Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
+`docs/amelia3/`, rapporto corrente [AMELIA3_IMPORT_REPORT](../qa/AMELIA3_IMPORT_REPORT.md).
+
+- M0 TESTATO: PR #1 Rails → main, head `9cbb124`, CI PR `38256349200` verde,
+  merge `81587c7`; V1 conservata su v1-react e tag v1.0.0-react.
+- Import locale IMPLEMENTATO e TESTATO: nove hash/header/dimensioni uguali al
+  manifest, dry-run streaming ~52s, publish atomico e secondo import idempotente;
+  5 test sintetici importer PASS, anche rollback su file finale corrotto.
+- Riconciliazione agente 34 TESTATA: 16 clienti (12 attivi/4 bloccati), 2.237 righe,
+  606 riferimenti ordine e 447 articoli. Storico totale 1.036.814 righe in PostgreSQL.
+- Account provisionati con password casuali nel solo file privato locale; UI,
+  comandi condivisi e isolamento/PWA in corso di integrazione e collaudo.
+- FTP metadata TESTATO: accesso read-only, nove nomi presenti. Download completo,
+  job e schedulazione quotidiana ancora DA_VERIFICARE.
+- Nessun deploy pubblico. Test su dispositivi fisici NOT_RUN.
+
+---
+
+# Migrazione Rails — 12/10/2026 — COMPLETE_LOCAL (baseline precedente)
 
 La richiesta corrente sostituisce lo stack V1 con Rails + Ralix, PostgreSQL,
 Devise e PWA offline essenziale. Le certificazioni COMPLETE storiche riguardano

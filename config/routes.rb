@@ -2,6 +2,20 @@ Rails.application.routes.draw do
   get "up", to: "rails/health#show", as: :rails_health_check
   devise_for :users, controllers: { sessions: "users/sessions" }
   root "home#index"
+  namespace :amelia3 do
+    get "/", to: "pages#home"
+    get "snapshot", to: "commands#snapshot"
+    post "commands", to: "commands#create"
+    get "customers", to: "pages#customers"
+    get "customers/:id", to: "pages#customer"
+    get "catalog", to: "pages#catalog"
+    get "catalog/:id", to: "pages#product"
+    get "orders", to: "pages#orders"
+    get "orders/:id", to: "pages#order"
+    get "history", to: "pages#history"
+    get "insights", to: "pages#insights"
+    get "sync", to: "pages#sync"
+  end
   get "snapshot", to: "commands#snapshot"
   post "commands", to: "commands#create"
   get "offline", to: "offline#show"

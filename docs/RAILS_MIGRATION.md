@@ -7,8 +7,10 @@ Riscrittura completa della V1 in Rails + Ralix, PostgreSQL e Devise. Identità H
 base della futura app reale. Non viene pubblicata su server: solo esecuzioni locali.
 GitHub conserva il codice in un repository privato per installazione su altri PC.
 
-V1 aggiornata conservata nel commit `81e72bc`, branch `main` e `v1-react`, tag
-`v1.0.0-react`. Migrazione sul branch `feature/hfs-rails-migration`.
+V1 aggiornata conservata nel commit `81e72bc`, branch `v1-react`, tag
+`v1.0.0-react`. Rails promossa su `main` tramite PR #1 e merge `81587c7`, dopo
+CI verde sullo SHA esatto `9cbb124`. La fase successiva approvata Amelia3 usa
+`feature/amelia3-ftp-import`; specifiche in `docs/amelia3/`.
 
 ## Scelte confermate
 

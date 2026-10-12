@@ -1,6 +1,7 @@
 module Hfs
   class Snapshot
     def self.workspace_for(user)
+      raise Forbidden, "Il reset e il workspace demo non accedono ad Amelia3." unless user.synthetic?
       Workspace.find_by(user_id: user.id) || Workspace.create!(user: user, state: Seed.initial_state, version: 0, epoch: 1)
     rescue ActiveRecord::RecordNotUnique, ActiveRecord::RecordInvalid => error
       Workspace.find_by(user_id: user.id) || raise(error)

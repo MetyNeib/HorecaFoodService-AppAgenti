@@ -18,6 +18,7 @@ module HfsAgents
     config.active_job.queue_adapter = :sidekiq
     config.action_controller.include_all_helpers = true
     config.filter_parameters += %i[password password_confirmation authenticity_token token secret]
+    config.filter_parameters += %i[payload note address telephone ftp_password]
     config.generators.system_tests = nil
     config.autoload_lib(ignore: %w[assets tasks])
   end

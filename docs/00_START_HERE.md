@@ -1,11 +1,12 @@
 # Step 3 — entrare nel progetto
 
-## Versione corrente: migrazione Rails + Ralix
+## Versione corrente: Rails + Ralix e integrazione Amelia3
 
-Dal 12/10/2026 il branch `feature/hfs-rails-migration` implementa Rails/PostgreSQL
-con Devise e PWA offline essenziale, su richiesta dell'utente. Leggere
+Dal 12/10/2026 Rails/PostgreSQL con Devise e PWA è stato promosso su `main`
+tramite PR #1. L'integrazione corrente usa `feature/amelia3-ftp-import` e la
+specifica in `docs/amelia3/`. Leggere
 [RAILS_MIGRATION.md](RAILS_MIGRATION.md), [PROGRESS.md](PROGRESS.md) e il
-[README corrente](../README.md). La V1 è conservata su `main` e `v1-react`.
+[README corrente](../README.md). La V1 è conservata su `v1-react` e tag V1.
 Gli stati COMPLETE e i comandi Vite sotto riguardano il contesto storico V1;
 non certificano la migrazione Rails. Nessun deploy server autorizzato.
 

@@ -1,0 +1,615 @@
+{
+  "manifest_version": "HFS-AMELIA3-HANDOFF-20261012-v3",
+  "date": "2026-10-12",
+  "scope": "Import Amelia3 / demo 13 ottobre 2026",
+  "repository": "MetyNeib/HorecaFoodService-AppAgenti",
+  "github_verified": {
+    "branch_rails": "feature/hfs-rails-migration",
+    "sha_rails": "3b15948d1d7f92c964c89619c93f06df715e438e",
+    "main_sha_before_promotion": "81e72bcabd9bbe6933cde8d52b5f0460f4a97a4f",
+    "ahead_rails_vs_main": 6,
+    "behind_rails_vs_main": 0,
+    "ci_last_app_sha": "fbbaeec6d47e0cafcfc4011e6587f93ef673c3a0",
+    "ci_status": "PASS",
+    "open_prs": 0,
+    "feature_amelia3_not_found": true,
+    "observation": "Ricontrollare SHA e working tree al momento dell’esecuzione Codex; report non certifica modifiche successive."
+  },
+  "confirmed_settings": {
+    "single_tenant": "Amelia3",
+    "operational_roles": [
+      "admin",
+      "agente"
+    ],
+    "reserved_future_role": "capoarea",
+    "selected_agent_code": "34",
+    "selected_agent_name": "Sophia Buzzicotti",
+    "listino": "000",
+    "discount_source": "LISTINI_PERS.sconto (solo con semantica e UM validate)",
+    "blocked_records": "visibili ma non ordinabili",
+    "history_scope": "quantita, frequenza e analisi per cliente; non ricavi/margini storici",
+    "outbound_order_transfer": false,
+    "ftp_protocol": "FTP in chiaro su porta 21 (autorizzato esplicitamente dal cliente; futura VPN)",
+    "ftp_remote_directory": "/UPLOAD",
+    "ftp_permissions_required": "read-only; vietati upload, delete, rename, mkdir",
+    "ftp_daily_sync_enabled": true,
+    "ftp_daily_sync_local_time": "06:05",
+    "ftp_daily_sync_timezone": "Europe/Rome",
+    "ftp_run_preconditions": "bootstrap iniziale valido, nove file completi/stabili, idempotenza, protezione concorrenza",
+    "ftp_env_keys_known": [
+      "AMELIA3_FTP_HOST",
+      "AMELIA3_FTP_PORT",
+      "AMELIA3_FTP_USERNAME",
+      "AMELIA3_FTP_PASSWORD",
+      "AMELIA3_FTP_WRITE_ENABLED",
+      "AMELIA3_FTP_IMPORT_DIR",
+      "AMELIA3_FTP_SYNC_ENABLED"
+    ],
+    "ftp_schedule_env_keys": "Nomi esatti per ora/timezone da rilevare nel .env locale in sola lettura per chiavi; non supporre nuovi nomi e non stampare valori sensibili",
+    "docker_cli": "Dichiarata dall’utente ora accessibile dalla cartella progetto; il test runtime resta da eseguire da Codex",
+    "git_authorization": "Codex autorizzato a fare PR, verificare checks, merge di Rails su main e creare branch feature/amelia3-ftp-import; mai force push o deploy pubblico",
+    "demo_access": "Tablet o telefono via LAN HTTPS Caddy, CA attendibile"
+  },
+  "selected_agent": {
+    "code": "34",
+    "display_name": "Sophia Buzzicotti",
+    "reference_field": "CLIENTI.cod_agente",
+    "source_name_field": "CLIENTI.des_age",
+    "match_rule": "cod_agente == \"34\" (stringa, nessun match per nome o telefono)",
+    "assigned_customers": 16,
+    "unblocked_customers_flag_N": 12,
+    "blocked_customers_flag_S": 4,
+    "linked_fido_rows": 10,
+    "linked_personal_price_rows": 12,
+    "linked_tabgir_rows": 58,
+    "linked_insoluto_rows_by_cod_conto": 3,
+    "linked_history_rows": 2237,
+    "history_distinct_order_ids": 606,
+    "history_distinct_articles": 447,
+    "scope_evidence": "Profilazione diretta CLIENTI.csv e join sugli altri CSV allegati; campioni del 12/10/2026",
+    "privacy": "Non incorporare telefono, email o righe cliente nel codice o nei report"
+  },
+  "source_data_policy": "File commerciali locali in imports/private/amelia3; nessun CSV o backup nei commit, nel browser statico o nel pacchetto.",
+  "contains_raw_rows": false,
+  "contains_secret_values": false,
+  "sources": [
+    {
+      "file": "ARTICOLI.csv",
+      "rows": 9847,
+      "bytes": 882638,
+      "sha256": "11936ef69c3e52d07c9f76e3b1d6359e7f5f3496812f286d85c6df9ab757e5c1",
+      "encoding": "cp1252",
+      "separator": ";",
+      "fields": [
+        "cod_art",
+        "des_art",
+        "tipo_um",
+        "pezzi_conf",
+        "peso_netto_conf",
+        "flag_bloccato",
+        "cls_linea",
+        "cls_sett",
+        "cls_fam",
+        "cls_sott",
+        "conf_collo",
+        "tipo_um_ordcli",
+        "tipo_um_ordforn",
+        "flag_conf_non_div",
+        "flag_colli_non_div",
+        "cod_linea_comm",
+        "cod_sett_comm",
+        "cod_fam_comm",
+        "cod_sott_comm"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "CLIENTI.csv",
+      "rows": 8311,
+      "bytes": 1940814,
+      "sha256": "ea765769e35839e82a987cc13e77aad0c49bb1249b09c149d593f1d92389ed51",
+      "encoding": "cp1252",
+      "separator": ";",
+      "fields": [
+        "cod_cli",
+        "cod_conto",
+        "rag_soc",
+        "part_iva",
+        "cod_fisc",
+        "localita",
+        "indirizzo",
+        "flag_intest",
+        "flag_punto_cons",
+        "cod_int",
+        "cod_stato",
+        "e_mail",
+        "telefono",
+        "cod_giro",
+        "flag_bloccato",
+        "cod_lis",
+        "cod_agente",
+        "des_age",
+        "telefono_age",
+        "email_age",
+        "cod_care",
+        "des_care"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "FIDO.csv",
+      "rows": 5064,
+      "bytes": 97133,
+      "sha256": "bf584f76104e9df04e5bc6aaca0371acc271e9d34c7f15fa49163ed2e340ba5e",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_cli",
+        "valore_fido",
+        "residuo_fido"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "GIACENZE.csv",
+      "rows": 9245,
+      "bytes": 137161,
+      "sha256": "d01ad7fb3a7b6564367889ff66550424fad8dc477630944b56b903e0ac4f6b22",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_art",
+        "esistenza_att_cf",
+        "esistenza_att_pz",
+        "esistenza_att_pe"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "INSOLUTO.csv",
+      "rows": 3017,
+      "bytes": 176918,
+      "sha256": "0b16c6998e10dba2d241b0e0c0834bd468cd2e7e37e27e9b08bf514b7f696c77",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_conto",
+        "nr_partita",
+        "nr_rif",
+        "data_rif",
+        "data_scad",
+        "tot_rata"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "LISTINI.csv",
+      "rows": 28940,
+      "bytes": 499449,
+      "sha256": "d0bc3d4565b3e311358b4425f1e88f33639929dd1ad10402420276775a45df87",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_lis",
+        "cod_art",
+        "prezzo"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "LISTINI_PERS.csv",
+      "rows": 12173,
+      "bytes": 468175,
+      "sha256": "315bc317a6303b1f42c82cb34f3eb98bca2d8bc9539ac414d01330e2936a38c4",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_cli",
+        "cod_art",
+        "da_data",
+        "a_data",
+        "prezzo",
+        "sconto",
+        "perc_provv"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "STORICO.csv",
+      "rows": 1036814,
+      "bytes": 47708098,
+      "sha256": "fc33b2c9f6a3f2f3d239f548776c77eae2e9948014ab7a081e537ec8bca81d4f",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "rif_ord_interno",
+        "cod_cli",
+        "cod_art",
+        "qta_ord_cf",
+        "qta_ord_pz",
+        "qta_ord_pe",
+        "qta_sped",
+        "data_cons"
+      ],
+      "trailing_empty_column": true
+    },
+    {
+      "file": "TABGIR.csv",
+      "rows": 19960,
+      "bytes": 491554,
+      "sha256": "0b8eb1274759805928c579776ed448160e595b680f02ec1fef73fcf96277997a",
+      "encoding": "utf-8-sig",
+      "separator": ";",
+      "fields": [
+        "cod_giro",
+        "des_giro",
+        "cod_cli",
+        "giorno_sett"
+      ],
+      "trailing_empty_column": true,
+      "upload_filename": "TABGIR(1).csv",
+      "note": "Stessi byte/hash della copia locale di origine; il nome nel workspace Codex è TABGIR.csv."
+    }
+  ],
+  "reconciliation": {
+    "FIDO.csv.cod_cli": {
+      "rows": 5064,
+      "matches": 5064,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 5064
+    },
+    "GIACENZE.csv.cod_art": {
+      "rows": 9245,
+      "matches": 9245,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 9245
+    },
+    "LISTINI.csv.cod_art": {
+      "rows": 28940,
+      "matches": 28940,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 9654
+    },
+    "LISTINI_PERS.csv.cod_cli": {
+      "rows": 12173,
+      "matches": 12173,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 1969
+    },
+    "LISTINI_PERS.csv.cod_art": {
+      "rows": 12173,
+      "matches": 12173,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 1969
+    },
+    "INSOLUTO.csv.cod_conto": {
+      "rows": 3017,
+      "matches": 3017,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 753
+    },
+    "hierarchy": {
+      "customers": 8311,
+      "unique_customer_codes": 8311,
+      "unique_account_codes": 8311,
+      "agent_count": 39,
+      "agents_with_no_clients": 0,
+      "agent_customer_distribution": {
+        "min": 1,
+        "max": 760,
+        "median": 192
+      },
+      "capoarea_refs": 1,
+      "capoarea_customers": 586,
+      "agents_with_explicit_capoarea": 1,
+      "unassigned_capoarea": 7725,
+      "empty_agent": 0,
+      "client_status": {
+        "N": 5437,
+        "S": 2874
+      },
+      "intest": {
+        "S": 6863,
+        "N": 1448
+      },
+      "punto_cons": {
+        "S": 7136,
+        "N": 1175
+      }
+    },
+    "listini": {
+      "distinct_price_lists": 3,
+      "rows_per_list": {
+        "001": 9647,
+        "000": 9644,
+        "PRO": 9649
+      },
+      "duplicate_pairs": 0,
+      "blank_or_nonnumeric_prices": 2,
+      "nonpositive_prices": 3,
+      "min_price": "0",
+      "max_price": "4620",
+      "customers_with_cod_lis": 0
+    },
+    "listini_pers": {
+      "rows": 12173,
+      "unique_client_product_pairs": 12098,
+      "duplicated_pairs_total_rows": 144,
+      "max_rows_per_pair": 3,
+      "overlapping_active_pairs": 0,
+      "active_rows": 12097,
+      "future_rows": 76,
+      "expired_rows": 0,
+      "invalid_dates": 0,
+      "price_vs_discount_presence": {
+        "(False, True)": 12145,
+        "(False, False)": 28
+      },
+      "discount_min": "0",
+      "discount_max": "27",
+      "discount_gt_100": 0,
+      "discount_eq_zero": 721,
+      "discount_common": [
+        [
+          "8",
+          1244
+        ],
+        [
+          "5",
+          1225
+        ],
+        [
+          "6",
+          1144
+        ],
+        [
+          "3",
+          1081
+        ],
+        [
+          "4",
+          896
+        ],
+        [
+          "7",
+          860
+        ],
+        [
+          "2",
+          857
+        ],
+        [
+          "1",
+          727
+        ],
+        [
+          "10",
+          722
+        ],
+        [
+          "0",
+          721
+        ],
+        [
+          "9",
+          469
+        ],
+        [
+          "12",
+          390
+        ],
+        [
+          "11",
+          328
+        ],
+        [
+          "13",
+          239
+        ],
+        [
+          "3.5",
+          126
+        ],
+        [
+          "14",
+          118
+        ],
+        [
+          "4.5",
+          112
+        ],
+        [
+          "15",
+          97
+        ],
+        [
+          "6.5",
+          94
+        ],
+        [
+          "1.5",
+          93
+        ]
+      ],
+      "discount_negative": 0
+    },
+    "stock": {
+      "rows": 9245,
+      "article_with_stock": 9245,
+      "article_without_stock": 602,
+      "columns": {
+        "esistenza_att_cf": {
+          "positive": 2907,
+          "zero": 5788,
+          "negative": 2,
+          "missing": 548,
+          "max": "7350"
+        },
+        "esistenza_att_pz": {
+          "positive": 2906,
+          "zero": 5790,
+          "negative": 1,
+          "missing": 548,
+          "max": "268800"
+        },
+        "esistenza_att_pe": {
+          "positive": 2911,
+          "zero": 5780,
+          "negative": 6,
+          "missing": 548,
+          "max": "18742.5"
+        }
+      }
+    },
+    "routes": {
+      "rows": 19960,
+      "distinct_giros": 49,
+      "distinct_clients": 6512,
+      "client_file_giros_distinct": 954,
+      "clients_in_both": 6512,
+      "clients_without_tabgir": 1799,
+      "route_duplicates": 0,
+      "weekdays": {
+        "6": 4179,
+        "7": 184,
+        "1": 543,
+        "5": 3506,
+        "2": 4062,
+        "3": 3604,
+        "4": 3882
+      },
+      "client_cod_giro_matches_any_tabgir": 188,
+      "tabgir_keys_in_client_cod_giro": 17
+    },
+    "insoluto": {
+      "rows": 3017,
+      "distinct_accounts": 753,
+      "distinct_partita": 2319,
+      "unique_compound_key": 3016,
+      "compound_key_duplicates": 1,
+      "invalid_amounts": 0,
+      "due_dates": {
+        "past": 2411,
+        "today_or_future": 606
+      },
+      "sum_tot_rata": "1164245.4600000000000923"
+    },
+    "fido": {
+      "rows": 5064,
+      "linked_client_pct": 100.0,
+      "fido_zero": 2,
+      "fido_negative": 0,
+      "residual_negative": 101
+    },
+    "articoli": {
+      "rows": 9847,
+      "active_N": 5420,
+      "blocked_S": 4427,
+      "type_um": {
+        "L": 1273,
+        "P": 3276,
+        "K": 4286,
+        "C": 1012
+      },
+      "pack_or_base_minimal": {
+        "pezzi_conf_nonpositive": 0,
+        "peso_netto_conf_nonpositive": 2,
+        "conf_collo_nonpositive": 0
+      }
+    },
+    "storico": {
+      "rows": 1036814,
+      "unique_orders": 234128,
+      "unique_customers": 5029,
+      "unique_articles": 4350,
+      "customer_orphans": 0,
+      "art_orphans": 0,
+      "orders_id_with_multiple_customers": 0,
+      "date_invalid": 0,
+      "date_relative": {
+        "today_or_past": 1036589,
+        "future": 225
+      },
+      "years": {
+        "2015": 10218,
+        "2016": 13450,
+        "2017": 16220,
+        "2018": 20490,
+        "2019": 29858,
+        "2020": 22217,
+        "2021": 37793,
+        "2022": 52082,
+        "2023": 72057,
+        "2024": 118145,
+        "2025": 266347,
+        "2026": 377937
+      },
+      "quantity_signs": {
+        "qta_ord_cf": {
+          "positive": 1036814
+        },
+        "qta_ord_pz": {
+          "positive": 1036813,
+          "zero": 1
+        },
+        "qta_ord_pe": {
+          "positive": 1036814
+        },
+        "qta_sped": {
+          "positive": 1012653,
+          "zero": 24161
+        }
+      },
+      "zero_all_quantities": 0,
+      "elapsed_sec": 9.43
+    },
+    "orphan_products_by_list": {
+      "stock": 0,
+      "pricelist": 0,
+      "personal": 0
+    },
+    "selected_agent_34": {
+      "code": "34",
+      "display_name": "Sophia Buzzicotti",
+      "reference_field": "CLIENTI.cod_agente",
+      "source_name_field": "CLIENTI.des_age",
+      "match_rule": "cod_agente == \"34\" (stringa, nessun match per nome o telefono)",
+      "assigned_customers": 16,
+      "unblocked_customers_flag_N": 12,
+      "blocked_customers_flag_S": 4,
+      "linked_fido_rows": 10,
+      "linked_personal_price_rows": 12,
+      "linked_tabgir_rows": 58,
+      "linked_insoluto_rows_by_cod_conto": 3,
+      "linked_history_rows": 2237,
+      "history_distinct_order_ids": 606,
+      "history_distinct_articles": 447,
+      "scope_evidence": "Profilazione diretta CLIENTI.csv e join sugli altri CSV allegati; campioni del 12/10/2026",
+      "privacy": "Non incorporare telefono, email o righe cliente nel codice o nei report"
+    },
+    "TABGIR.csv.cod_cli": {
+      "rows": 19960,
+      "matches": 19960,
+      "orphans": 0,
+      "match_pct": 100.0,
+      "distinct_matched": 6512
+    }
+  },
+  "not_tested_in_this_chat": [
+    "Raggiungibilità e lettura FTP da worker/PC con credenziali reali",
+    "Nomi e disponibilità effettiva dei nove file nella directory remota /UPLOAD",
+    "Configurazione esatta delle chiavi ora/timezone nel .env locale",
+    "Stabilità dei file alle 06:05 Europe/Rome e completezza batch remoto",
+    "Avvio Docker/Compose e test Rails sul PC dell’utente",
+    "PR e merge su main",
+    "Two-account permissions and persistence",
+    "Import storico nel DB PostgreSQL reale",
+    "HTTPS LAN con CA attendibile su dispositivo fisico"
+  ]
+}

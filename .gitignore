@@ -31,6 +31,8 @@ __pycache__/
 /config/credentials/*.key
 /imports/private/
 /backups/
+/qa/amelia3/private/
+/docs/HFS_Amelia3_Pacchetto_Codex_20261012_v3_COMPLETO.zip
 /qa/rails/playwright-report/
 /qa/rails/test-results/
 /qa/rails/pwa-report/

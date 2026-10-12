@@ -2,14 +2,14 @@
 
 Riscrittura in **Rails 8.1, Ruby 4, Ralix, PostgreSQL e Devise**. Mantiene il seed sintetico e i flussi HFS: ordine manuale, FastOrder WhatsApp, bozze/coda/storico, clienti, partite, catalogo e insight. Il backend salva realmente i dati; gli invii commerciali WhatsApp/email/PDF ed ERP restano simulati.
 
-Branch corrente: `feature/hfs-rails-migration`. La V1 React completa è conservata su `main`, `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Lo stato del collaudo Rails è in [docs/PROGRESS.md](docs/PROGRESS.md).
+Rails è su `main` dopo la [PR #1](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/pull/1). L'integrazione Amelia3 procede su `feature/amelia3-ftp-import` secondo [il pacchetto approvato](docs/amelia3/HFS_Amelia3_LEGGIMI_20261012.md). La V1 React completa è conservata su `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Lo stato corrente è in [docs/PROGRESS.md](docs/PROGRESS.md).
 
 ## Installazione locale su un altro computer
 
 Occorrono Git e Docker Desktop avviato con container Linux. Su Windows serve WSL2; su Mac scegliere Docker Desktop per il proprio processore. L'account GitHub deve avere accesso al repository privato. Non occorrono Ruby o PostgreSQL installati globalmente, né una chiave OpenAI.
 
 ```powershell
-git clone --branch feature/hfs-rails-migration https://github.com/MetyNeib/HorecaFoodService-AppAgenti.git
+git clone --branch feature/amelia3-ftp-import https://github.com/MetyNeib/HorecaFoodService-AppAgenti.git
 cd HorecaFoodService-AppAgenti
 docker compose up --build -d
 ```

@@ -4,6 +4,8 @@ node_modules
 dist
 references
 qa
+docs/amelia3
+docs/HFS_Amelia3_Pacchetto_Codex_20261012_v3_COMPLETO.zip
 test-results
 tmp
 log

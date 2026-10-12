@@ -1,0 +1,49 @@
+{
+  "status": "published",
+  "fingerprint": "0ae9096fb0f6b81ebb7c97de8f896e772be9a21c80ea1a914f673617a327a5cd",
+  "counts": {
+    "FIDO.csv": 5064,
+    "TABGIR.csv": 19960,
+    "CLIENTI.csv": 8311,
+    "LISTINI.csv": 28940,
+    "STORICO.csv": 1036814,
+    "ARTICOLI.csv": 9847,
+    "GIACENZE.csv": 9245,
+    "INSOLUTO.csv": 3017,
+    "LISTINI_PERS.csv": 12173
+  },
+  "anomalies": {
+    "FIDO.csv": {},
+    "TABGIR.csv": {},
+    "CLIENTI.csv": {
+      "customer_unquoted_semicolon": 1,
+      "customer_extra_empty_columns": 586
+    },
+    "LISTINI.csv": {},
+    "STORICO.csv": {},
+    "ARTICOLI.csv": {},
+    "GIACENZE.csv": {},
+    "INSOLUTO.csv": {},
+    "LISTINI_PERS.csv": {}
+  },
+  "metrics": {
+    "all": {
+      "rows": 1036814,
+      "orders": 234128,
+      "products": 4350,
+      "last_delivery": "2026-10-11"
+    },
+    "agent34": {
+      "rows": 2237,
+      "orders": 606,
+      "blocked": 4,
+      "products": 447,
+      "customers": 16,
+      "unblocked": 12,
+      "last_delivery": "2026-10-02"
+    }
+  },
+  "elapsed_seconds": 1.209,
+  "dry_run": false,
+  "peak_rss_kb": 98000
+}

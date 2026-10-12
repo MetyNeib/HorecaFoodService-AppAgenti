@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   prepend_before_action :authenticate_user!
   before_action :private_response
+  before_action :separate_datasets
 
   private
 
@@ -37,7 +38,17 @@ class ApplicationController < ActionController::Base
     order
   end
 
-  def after_sign_in_path_for(_resource)
-    root_path
+  def after_sign_in_path_for(resource)
+    resource.amelia3? ? "/amelia3" : root_path
+  end
+
+  def separate_datasets
+    return unless current_user&.amelia3?
+    return if devise_controller? || controller_path.start_with?("amelia3/")
+    if request.format.json?
+      render json: { error: "Il dataset demo è separato da Amelia3." }, status: :forbidden
+    else
+      redirect_to "/amelia3"
+    end
   end
 end

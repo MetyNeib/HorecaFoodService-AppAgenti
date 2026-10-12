@@ -10,6 +10,8 @@ gem "devise", "~> 4.9"
 gem "rails-i18n", "~> 8.0"
 gem "redis", "~> 5.4"
 gem "sidekiq", "~> 8.1"
+gem "csv", "~> 3.3"
+gem "net-ftp", "~> 0.3"
 gem "bootsnap", require: false
 gem "tzinfo-data", platforms: %i[windows jruby]
 

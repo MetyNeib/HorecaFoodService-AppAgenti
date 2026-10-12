@@ -1,5 +1,19 @@
 # HFS App Agenti — istruzioni di progetto per Codex
 
+## Amelia3 — specifica approvata 12 ottobre 2026 (precedenza corrente)
+
+Leggere `docs/amelia3/HFS_Amelia3_Prompt_Codex_20261012.md`, LEGGIMI, piano,
+mappa e manifest. Rails è ora su main tramite PR #1, merge 81587c7; la V1
+resta su v1-react e tag v1.0.0-react. Branch operativo: feature/amelia3-ftp-import.
+Implementare import commerciale condiviso, Admin e Agente esclusivamente codice
+34, storico paginato e FTP read-only schedulato attivo alle 06:05 Europe/Rome.
+Capoarea resta deny-by-default. Sono autorizzati commit/push privati e il merge
+Rails già effettuato; nessun deploy pubblico e nessuna scrittura FTP o invio ordini.
+CSV, account locali, .env, backup e screenshot reali restano privati e fuori Git.
+Non stampare segreti o righe commerciali; report solo aggregati e metadati.
+Il seed sintetico resta byte-identico e separato da Amelia3; RESET_DEMO non deve
+accedere ai dati reali. Seguire le milestone e aggiornare qa/AMELIA3_IMPORT_REPORT.md.
+
 ## Migrazione autorizzata — 12 ottobre 2026 (prevale sulle regole V1 sotto)
 
 L'utente ha scelto Rails + Ralix, PostgreSQL, Devise e PWA offline essenziale

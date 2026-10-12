@@ -1,0 +1,14 @@
+{
+  "main_before": "81e72bcabd9bbe6933cde8d52b5f0460f4a97a4f",
+  "rails_before": "3b15948d1d7f92c964c89619c93f06df715e438e",
+  "pr_url": "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/pull/1",
+  "pr_head": "9cbb124433a66cb090069c4e546e4c20301273e5",
+  "pr_ci_run": 38256349200,
+  "pr_ci_conclusion": "success",
+  "merge_commit": "81587c768343cb16b450b072b1b121cbbb1e28ca",
+  "merge_method": "merge_non_forced",
+  "new_branch": "feature/amelia3-ftp-import",
+  "v1_branch_preserved": "v1-react",
+  "v1_tag_preserved": "v1.0.0-react",
+  "deployment_performed": false
+}
