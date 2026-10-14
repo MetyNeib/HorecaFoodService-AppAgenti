@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "tested_commit": "938ccfdcebefdeb82a88dab9b66a1f41e64d5757",
+  "checkpoint_tag": "amelia3-demo-baseline-20261014",
+  "run_id": 38585110578,
+  "url": "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38585110578",
+  "jobs": {"ruby": "success", "rules": "success", "style": "success", "security": "success", "browser": "success"},
+  "tests": {"rspec": 170, "rails_ui": 24, "rails_pwa": 28, "amelia3": 70},
+  "physical_mac": "NOT_RUN",
+  "public_deployment": "NOT_RUN",
+  "main_unchanged": "81587c768343cb16b450b072b1b121cbbb1e28ca"
+}

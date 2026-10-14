@@ -55,7 +55,15 @@ di Escape e chiuso prima di riaprirlo; versione HTML allineata al comando prima
 di usare il footer. Nessuna asserzione rimossa e nessun retry configurato.
 Verifica locale della correzione: entrambi i flussi ripetuti tre volte su
 telefono, **6 PASS / 0 FAIL**. Controllo regole progetto: PASS.
-Il tag definitivo deve riferirsi al commit con tutti i controlli CI superati.
+**Esito finale: PASS.** Il tag `amelia3-demo-baseline-20261014` punta al commit
+`938ccfdcebefdeb82a88dab9b66a1f41e64d5757`, verificato dalla
+[CI 38585110578](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38585110578).
+Tutti e cinque i job sono conclusi con successo: Ruby (170 test), regole,
+stile, sicurezza e browser (**24 UI HFS + 28 PWA + 70 Amelia3 = 122 PASS**).
+Il nuovo branch `feature/amelia3-demo-polish` nasce da quel commit; il primo
+commit successivo aggiorna solo questo report, PROGRESS e l'esito JSON della
+CI, senza modificare codice applicativo, configurazione o test.
+Il riepilogo macchina è in [handoff-ci.json](amelia3-v5/handoff-ci.json).
 
 ## DA VERIFICARE / NOT_RUN
 

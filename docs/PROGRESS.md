@@ -2,7 +2,7 @@
 
 ## Handoff Mac — 14/10/2026
 
-Base V5 da salvare sul tag `amelia3-demo-baseline-20261014`; prosecuzione su
+Base V5 salvata sul tag `amelia3-demo-baseline-20261014`; prosecuzione su
 `feature/amelia3-demo-polish`. Repository pubblico confermato dall'utente:
 solo codice revisionato e QA sintetico/aggregato. Main invariato.
 Guida e priorità approvate in [MAC_HANDOFF](MAC_HANDOFF.md).
@@ -12,11 +12,14 @@ ripristino in database temporaneo PASS: 28 tabelle, 3.913.567 righe identiche.
 Controllo segreti nei file candidati PASS; confronto nomi cliente nei testi
 PASS (il solo nome agente esplicitamente approvato compare nelle specifiche).
 Build Linux ARM64 e caricamento completo Rails (`zeitwerk:check`) PASS.
-CI GitHub consultabile sul commit del checkpoint; Mac fisico NOT_RUN.
+CI GitHub PASS sul commit `938ccfd` del checkpoint; Mac fisico NOT_RUN.
 Prima CI: PASS 70 Amelia3, 28 PWA e controlli Ruby/regole/stile/sicurezza;
 un test UI HFS fallito per attese del dialog. Corrette le attese di dialog e
-rendering del footer; verifica ripetuta locale 6/6 PASS. Nuova CI sul commit
-di correzione necessaria prima del tag definitivo; dettagli nel report handoff.
+rendering del footer; verifica ripetuta locale 6/6 PASS. CI finale
+[38585110578](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38585110578):
+tutti i job PASS, inclusi 24 UI HFS, 28 PWA e 70 Amelia3. Il nuovo branch
+parte dal checkpoint verificato e aggiunge soltanto la documentazione finale
+del trasferimento; lo sviluppo della demo prosegue sul Mac.
 
 Follow-up 13/10 completato: UM unica statica, selettore per più alternative;
 clienti oltre 90 giorni separati in «Da riattivare» e rimossi dagli alert ordinari.
