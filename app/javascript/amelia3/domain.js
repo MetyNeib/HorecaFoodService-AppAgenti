@@ -1,24 +1,39 @@
 export const COMMANDS = new Set(['CREATE_DRAFT', 'ADD_LINE', 'UPDATE_LINE', 'REMOVE_LINE', 'SAVE_REVIEW', 'CONFIRM_ORDER', 'DELETE_DRAFT']);
 const MAX_CENTS = BigInt(Number.MAX_SAFE_INTEGER);
-const DIVISOR = 1000000000000n;
-
-export function integer(value) {
-  const text = String(value ?? '');
-  if (!/^\d+(?:\.0+)?$/.test(text)) throw new Error('Inserisci una quantità intera nell’UM P.');
-  return BigInt(text.split('.')[0]);
+export const CONTRACT_VERSION = 'AMELIA3-QUOTE-v2';
+const abs = value => value < 0n ? -value : value;
+function gcd(a, b) { a = abs(a); b = abs(b); while (b) [a, b] = [b, a % b]; return a || 1n; }
+function ratio(n, d = 1n) {
+  if (d === 0n) throw new Error('Rapporto non valido.');
+  if (d < 0n) { n = -n; d = -d; }
+  const divisor = gcd(n, d); return { n: n / divisor, d: d / divisor };
 }
-
-function decimal(value) {
+export function exact(value) {
+  if (value && typeof value === 'object') {
+    if (!/^-?\d{1,100}$/.test(String(value.n)) || !/^\d{1,100}$/.test(String(value.d))) throw new Error('Rapporto non valido.');
+    return ratio(BigInt(value.n), BigInt(value.d));
+  }
   const text = String(value ?? '');
-  if (!/^\d+(?:\.\d{1,12})?$/.test(text)) throw new Error('Prezzo non valido.');
-  const [whole, fraction = ''] = text.split('.');
-  return BigInt(whole) * DIVISOR + BigInt(fraction.padEnd(12, '0'));
+  if (!/^-?\d+(?:\.\d{1,12})?$/.test(text)) throw new Error('Valore decimale non valido.');
+  const digits = text.replace('-', ''), [whole, fraction = ''] = digits.split('.'), factor = 10n ** BigInt(fraction.length);
+  return ratio((BigInt(whole) * factor + BigInt(fraction || '0')) * (text.startsWith('-') ? -1n : 1n), factor);
 }
+export const fractionData = value => ({ n: exact(value).n.toString(), d: exact(value).d.toString() });
+const mul = (a, b) => ratio(a.n * b.n, a.d * b.d);
+const div = (a, b) => ratio(a.n * b.d, a.d * b.n);
+const sum = (a, b) => ratio(a.n * b.d + b.n * a.d, a.d * b.d);
+const greater = (a, b) => a.n * b.d > b.n * a.d;
+const equal = (a, b) => a.n * b.d === b.n * a.d;
 
 export function decimalText(value) {
-  const whole = value / DIVISOR;
-  const fraction = String(value % DIVISOR).padStart(12, '0').replace(/0+$/, '');
-  return String(whole) + (fraction ? '.' + fraction : '.0');
+  const r = exact(value), scale = 1000000000000n;
+  const scaled = (abs(r.n) * scale * 2n + r.d) / (r.d * 2n);
+  const fraction = String(scaled % scale).padStart(12, '0').replace(/0+$/, '');
+  return (r.n < 0n ? '-' : '') + String(scaled / scale) + (fraction ? '.' + fraction : '.0');
+}
+export function stepQuantity(value, step, direction) {
+  const minimum = exact(step === 'any' ? '0' : step), increment = exact(step === 'any' ? '1' : step), next = sum(exact(value || '0'), mul(increment, exact(direction)));
+  return decimalText(greater(minimum, next) ? minimum : greater(next, exact('100000')) ? exact('100000') : next);
 }
 
 export function romeDate() {
@@ -26,8 +41,14 @@ export function romeDate() {
   return ['year', 'month', 'day'].map(kind => parts.find(part => part.type === kind).value).join('-');
 }
 
-export function priceFor(data, customerId, product, date = romeDate()) {
-  if (product.unavailableReason || !product.basePriceMicros) throw new Error(product.unavailableReason || 'Prezzo base non disponibile.');
+export function priceFor(data, customerId, product, date = romeDate(), unit = product?.preferredUm) {
+  const terms = product?.unitQuotes?.[unit];
+  if (!terms || terms.contractVersion !== CONTRACT_VERSION) throw new Error('Collegati per aggiornare il contratto delle unità.');
+  if (product.blocked) throw new Error('Articolo bloccato.');
+  if (data.customers.find(customer => customer.id === customerId)?.blocked) throw new Error('Cliente bloccato.');
+  const assignedList = data.customers.find(customer => customer.id === customerId)?.assignedListCode;
+  if (assignedList && assignedList !== '000') throw new Error(`Listino cliente ${assignedList}: applicazione del prezzo da verificare`);
+  if (terms.reason || !product.basePriceMicros) throw new Error(terms.reason || 'Prezzo base non disponibile.');
   const matches = data.customerConditions.filter(row => row.customerId === customerId && row.productId === product.id && row.validFrom <= date && row.validTo >= date);
   if (matches.length > 1) throw new Error('Condizioni sovrapposte: prezzo non attestato.');
   const condition = matches[0];
@@ -35,25 +56,46 @@ export function priceFor(data, customerId, product, date = romeDate()) {
   const base = BigInt(condition?.priceMicros || product.basePriceMicros);
   const discount = BigInt(condition?.discountUnits || '0');
   if (base <= 0n || discount < 0n || discount >= 1000000n || condition?.priceMicros && discount > 0n) throw new Error('Personalizzazione prezzo non valida.');
-  return { amount: base * (1000000n - discount), condition };
+  const factor = condition?.priceMicros ? terms.personalPriceFactor : terms.priceFactor;
+  if (!factor) throw new Error('Unità del prezzo personalizzato non attestata.');
+  return { amount: mul(ratio(base * (1000000n - discount), 1000000000000n), exact(factor)), condition, terms };
+}
+
+export function orderableUnits(data, customerId, product, date = romeDate()) {
+  const name = String(product.name || '').toUpperCase().replace(/[^A-Z0-9]+/g, ' ').trim();
+  if (product.catalogExcluded || /^(?:(?:DS|OM)\s+)?(?:ARTICOL[OI]|ART|PRODOTT[OI]|MERCE|MERCI)\s+(?:VARI[OAIE]?|GENERIC[OAIE]|GENERICHE|DIVERS[OAIE])\b/.test(name)) return [];
+  return (product.orderableUms || []).filter(unit => {
+    try { priceFor(data, customerId, product, date, unit); return true; }
+    catch { return false; }
+  });
 }
 
 export function lineCents(quantity, amount) {
-  const cents = (integer(quantity) * amount + 5000000000n) / 10000000000n;
+  const value = mul(mul(exact(quantity), exact(amount)), exact('100'));
+  if (value.n < 0n) throw new Error('Importo fuori intervallo.');
+  const cents = (value.n * 2n + value.d) / (value.d * 2n);
   if (cents > MAX_CENTS) throw new Error('Importo fuori intervallo.');
   return Number(cents);
 }
 
-function validateProduct(data, customerId, productId, quantity, excluding, order) {
+function validateProduct(data, customerId, productId, quantity, excluding, order, unit) {
   const customer = data.customers.find(row => row.id === customerId);
   if (!customer || customer.blocked) throw new Error('Cliente bloccato o non preparato sul dispositivo.');
   const product = data.products.find(row => row.id === productId);
-  if (!product || product.blocked || product.unit !== 'P' || product.orderUnit !== 'P') throw new Error('Articolo o UM non ordinabile.');
-  const price = priceFor(data, customerId, product);
-  const count = integer(quantity), step = BigInt(product.quantityStep || 0);
-  const existing = order.lines.filter(line => line.productId === productId && line.id !== excluding).reduce((sum, line) => sum + integer(line.quantity), 0n);
-  if (count <= 0n || count > 100000n || step <= 0n || count % step || count + existing > integer(product.stockPieces)) throw new Error('Quantità non valida per divisibilità o disponibilità attestata.');
+  if (!product || product.blocked || !product.orderableUms?.includes(unit)) throw new Error('Articolo o UM non ordinabile.');
+  const price = priceFor(data, customerId, product, romeDate(), unit), terms = price.terms;
+  const count = exact(quantity), step = terms.quantityStep === 'any' ? null : exact(terms.quantityStep);
+  const existing = order.lines.filter(line => line.productId === productId && line.id !== excluding).reduce((total, line) => {
+    const other = product.unitQuotes[line.unit]; validateSaved(line, other);
+    if (other.stockUnit !== terms.stockUnit) throw new Error('Giacenze delle due UM non confrontabili.');
+    return sum(total, mul(div(exact(line.quantity), exact(other.stockFactor)), exact(terms.stockFactor)));
+  }, exact('0'));
+  if (count.n <= 0n || greater(count, exact('100000')) || step && (step.n <= 0n || div(count, step).d !== 1n) || greater(sum(count, existing), exact(terms.available))) throw new Error('Quantità non valida per divisibilità o disponibilità attestata.');
   return { product, price, count };
+}
+
+function validateSaved(line, terms) {
+  if (!terms || line.priceSnapshot?.conversionVersion !== terms.conversionVersion) throw new Error('Regole UM aggiornate: copia locale conservata, verifica la conversione.');
 }
 
 export function projectCommand(state, command) {
@@ -78,17 +120,20 @@ export function projectCommand(state, command) {
   switch (command.type) {
     case 'ADD_LINE': {
       if (line || order.lines.length >= 100) throw new Error('Riga duplicata o limite articoli raggiunto.');
-      const { product, price, count } = validateProduct(data, customer.id, payload.productId, payload.quantity, null, order);
-      if (decimal(payload.expectedUnitPrice) !== price.amount) throw new Error('Il prezzo è cambiato. Verifica la proposta locale.');
-      order.lines.push({ id: payload.lineId, productId: product.id, name: product.name, unit: 'P', quantity: String(count) + '.0',
-        unitPrice: decimalText(price.amount), lineNetCents: lineCents(count, price.amount), priceSnapshot: { batchId: data.batchId, listCode: '000',
-          basePrice: decimalText(BigInt(product.basePriceMicros) * 1000000n), discount: String(Number(price.condition?.discountUnits || 0) / 10000), conditionRow: price.condition?.id || null } });
+      const { product, price, count } = validateProduct(data, customer.id, payload.productId, payload.quantity, null, order, payload.unit);
+      if (payload.expectedConversionVersion !== price.terms.conversionVersion) throw new Error('Contratto UM aggiornato: verifica la proposta locale.');
+      if (!equal(exact(payload.expectedExactPrice || payload.expectedUnitPrice), price.amount)) throw new Error('Il prezzo è cambiato. Verifica la proposta locale.');
+      order.lines.push({ id: payload.lineId, productId: product.id, name: product.name, unit: payload.unit, quantity: decimalText(count),
+        unitPrice: decimalText(price.amount), exactUnitPrice: fractionData(price.amount), lineNetCents: lineCents(count, price.amount),
+        priceSnapshot: { ...structuredClone(price.terms), batchId: data.batchId, batchFingerprint: data.batchFingerprint, listCode: '000',
+          basePrice: decimalText(ratio(BigInt(product.basePriceMicros), 1000000n)), discount: decimalText(ratio(BigInt(price.condition?.discountUnits || '0'), 10000n)), conditionRow: price.condition?.id || null } });
       break;
     }
     case 'UPDATE_LINE': {
       if (!line) throw new Error('Riga non trovata.');
-      validateProduct(data, customer.id, line.productId, payload.quantity, line.id, order);
-      line.quantity = String(integer(payload.quantity)) + '.0'; line.lineNetCents = lineCents(payload.quantity, decimal(line.unitPrice));
+      validateSaved(line, data.products.find(product => product.id === line.productId)?.unitQuotes?.[line.unit]);
+      validateProduct(data, customer.id, line.productId, payload.quantity, line.id, order, line.unit);
+      line.quantity = decimalText(exact(payload.quantity)); line.lineNetCents = lineCents(payload.quantity, exact(line.exactUnitPrice));
       break;
     }
     case 'REMOVE_LINE':
@@ -106,7 +151,10 @@ export function projectCommand(state, command) {
       if (!order.lines.length || order.deliveryDate < romeDate()) throw new Error('Aggiungi articoli e verifica la consegna.');
       const destination = data.customers.find(row => row.id === order.destinationId);
       if (!destination?.deliveryPoint || destination.blocked || destination.id !== customer.id && destination.parentCode !== customer.id) throw new Error('Punto di consegna non autorizzato.');
-      order.lines.forEach(row => validateProduct(data, customer.id, row.productId, row.quantity, row.id, order));
+      order.lines.forEach(row => {
+        validateSaved(row, data.products.find(product => product.id === row.productId)?.unitQuotes?.[row.unit]);
+        validateProduct(data, customer.id, row.productId, row.quantity, row.id, order, row.unit);
+      });
       order.status = 'CONFIRMED_LOCAL'; order.confirmedAt = new Date().toISOString(); break;
     }
     case 'DELETE_DRAFT':
@@ -119,7 +167,7 @@ export function projectCommand(state, command) {
 }
 
 export function mergeSnapshot(snapshot, previous, outbox) {
-  if (snapshot.state.data.batchId !== previous.state.data.batchId) return snapshot;
+  if (snapshot.state.data.batchId !== previous.state.data.batchId || snapshot.state.data.verificationVersion !== previous.state.data.verificationVersion) return snapshot;
   const result = structuredClone(snapshot), data = result.state.data;
   const ids = new Set(outbox.map(command => command.payload.orderId).filter(Boolean));
   previous.state.data.orders.filter(order => ids.has(order.id) && !data.orders.some(row => row.id === order.id)).forEach(order => {
@@ -143,7 +191,9 @@ export function mergeSnapshot(snapshot, previous, outbox) {
 }
 
 export function reconcileRecord(record, snapshot) {
-  if (record.outbox.some(command => command.payload.batchId !== snapshot.state.data.batchId)) {
+  const previous = record.projected?.data, incoming = snapshot.state.data;
+  const changed = previous && (previous.quoteContractVersion !== incoming.quoteContractVersion || previous.verificationVersion !== incoming.verificationVersion);
+  if (record.outbox.length && changed || record.outbox.some(command => command.payload.batchId !== incoming.batchId)) {
     record.conflict = { kind: 'dataset', message: 'Il catalogo è stato aggiornato. Prezzi e modifiche locali sono conservati: verifica la copia prima di usare i dati nuovi.',
       server: snapshot, recordedAt: new Date().toISOString() };
     return;

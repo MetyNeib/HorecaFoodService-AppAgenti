@@ -1,8 +1,12 @@
-<header class="app-header header-dock dock_js" data-open="true" aria-label="Intestazione e agente">
-  <div class="dock-panel header-panel dock_panel_js" id="header-controls"><div class="dock-panel-clip"><div class="header-content dock_content_js">
-    <a href="/amelia3" class="wordmark"><b>HFS<span>•</span></b><span>Horeca Food Service<small>Amelia3</small></span></a>
-    <div class="agent"><span class="avatar"><%= current_user.role == 'admin' ? 'A' : '34' %></span><span><b class="amelia_user_js"><%= current_user.display_name %></b><small><%= current_user.role == 'admin' ? 'Admin · tutti i clienti' : 'Agente 34 · portafoglio assegnato' %></small></span></div>
-    <%= button_to 'Esci', '/users/sign_out', method: :delete, form_class: 'logout_form_js', class: 'quiet' %>
-  </div></div></div>
-  <button type="button" class="dock-toggle header-toggle dock_toggle_js" aria-controls="header-controls" aria-expanded="true" aria-label="Comprimi intestazione e agente"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="8" r="3"/><path d="M5 19a7 7 0 0 1 14 0"/></svg></button>
-</header>
+<button type="button" class="amelia-menu-button amelia_menu_open_js" aria-label="Apri menu" aria-controls="amelia-menu" aria-expanded="false">☰</button>
+<dialog id="amelia-menu" class="amelia-drawer dialog_js" aria-label="Menu principale">
+  <button type="button" class="quiet dialog_close_js" aria-label="Chiudi menu">Chiudi ×</button>
+  <%= image_tag 'amelia3-logo.png', alt: 'Amelia3 dal 1975', class: 'amelia-logo', data: { offline_asset: true } %>
+  <div class="amelia-identity"><b class="amelia_user_js">Amelia3</b><small class="amelia_identity_js">Archivio commerciale</small><small class="amelia_company_js"></small></div>
+  <button type="button" class="quiet amelia_status_open_js">Stato connessione e dati</button>
+  <%= render 'amelia3/components/nav' %>
+  <div class="amelia-menu-tools">
+  <button type="button" class="quiet install_app_js">Installa app</button>
+  <form action="/users/sign_out" method="post" class="logout_form_js"><input type="hidden" name="_method" value="delete"><% unless local_assigns[:neutral] %><%= hidden_field_tag :authenticity_token, form_authenticity_token %><% end %><button type="submit" class="quiet">Esci</button></form>
+  </div>
+</dialog>

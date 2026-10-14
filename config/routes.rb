@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     get "catalog/:id", to: "pages#product"
     get "orders", to: "pages#orders"
     get "orders/:id", to: "pages#order"
+    get "whatsapp", to: "pages#whatsapp"
+    get "alerts", to: "pages#alerts"
+    get "history/detail", to: "pages#history_detail"
     get "history", to: "pages#history"
     get "insights", to: "pages#insights"
     get "sync", to: "pages#sync"
@@ -19,6 +22,7 @@ Rails.application.routes.draw do
   get "snapshot", to: "commands#snapshot"
   post "commands", to: "commands#create"
   get "offline", to: "offline#show"
+  get "amelia3/offline", to: "offline#amelia"
   get "manifest.webmanifest", to: "offline#manifest", defaults: { format: :json }
   get "orders/new/customer", to: "orders#customer"
   get "orders/:id/products", to: "orders#products"

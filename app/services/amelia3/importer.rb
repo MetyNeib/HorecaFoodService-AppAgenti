@@ -45,6 +45,7 @@ module Amelia3
         end
         previous = @tenant.import_batches.find_by(fingerprint: fingerprint)
         if previous
+          HistoryOrderSummary.where(batch_id: previous.id).delete_all
           TABLES.values.each { |model| model.where(batch_id: previous.id).delete_all }
           previous.destroy!
         end
@@ -79,6 +80,8 @@ module Amelia3
     private
 
     def publish!
+      HistoryOrderSummary.prepare(@batch)
+      HistoryProfiles.prepare(@batch)
       Tenant.transaction do
         @tenant.lock!
         @batch.update!(status: "published", published_at: Time.current)

@@ -1,0 +1,900 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.amelia3.config.mjs",
+      "tests/amelia3/v5.spec.mjs"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.amelia3.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone-chromium",
+        "name": "phone-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-chromium",
+        "name": "tablet-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "landscape-chromium",
+        "name": "landscape-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "apple-webkit",
+        "name": "apple-webkit",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "landscape-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "landscape-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "apple-webkit",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "apple-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/amelia3-v5/browser-v5-final.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "v5.spec.mjs",
+      "file": "v5.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17274,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:33:37.843Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-fcffa09b71959bb31fa2",
+          "file": "v5.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "alert contacts are separate static rows and external chat links never send messages",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14658,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:33:56.266Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-f7a9c8b6d67fea526cfd",
+          "file": "v5.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21086,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:34:10.955Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-b741b921f93e6859b6bb",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16280,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:34:33.730Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-f5c23864d9cbf6d8e9e3",
+          "file": "v5.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "alert contacts are separate static rows and external chat links never send messages",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14682,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:34:50.574Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-8ff0b081bd22ac97aa9a",
+          "file": "v5.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21247,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:35:05.274Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-daea180908ff716b5980",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14672,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:35:27.313Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-440980d19a7a183c77da",
+          "file": "v5.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "alert contacts are separate static rows and external chat links never send messages",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 4614,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:35:42.390Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-c5e216686f584226d489",
+          "file": "v5.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15936,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:35:47.018Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-810511de2891ac974645",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12167,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:36:03.655Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-231ce1f115ccc9c5e3d7",
+          "file": "v5.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "alert contacts are separate static rows and external chat links never send messages",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14134,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:36:16.120Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-a391bde202b5d8e8793b",
+          "file": "v5.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16631,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:36:30.343Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-ad6c89c88f1ff71e61f7",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20874,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: 'Apri menu', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Apri menu', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Apri menu', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Apri menu\" aria-controls=\"amelia-menu\" class=\"amelia-menu-button amelia_menu_open_js\">☰</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: 'Apri menu', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Apri menu', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Apri menu', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Apri menu\" aria-controls=\"amelia-menu\" class=\"amelia-menu-button amelia_menu_open_js\">☰</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs:31:94",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                      "column": 94,
+                      "line": 31
+                    },
+                    "snippet": "  29 |   await expect.poll(() => menu.evaluate(el => Math.round(el.getBoundingClientRect().left))).toBe(0);\n  30 |   await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-drawer.png`, animations: 'disabled' });\n> 31 |   await page.keyboard.press('Escape'); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();\n     |                                                                                              ^\n  32 |   await opener.click(); await page.mouse.click(info.project.use.viewport.width - 8, 30); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();\n  33 |   await opener.click(); await menu.getByRole('link', { name: 'Ordini WhatsApp', exact: true }).click();\n  34 |   await expect(page.getByRole('heading', { name: 'Funzionalità non ancora disponibile', exact: true })).toBeVisible();"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                        "column": 94,
+                        "line": 31
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  getByRole('button', { name: 'Apri menu', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" getByRole('button', { name: 'Apri menu', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for getByRole('button', { name: 'Apri menu', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" aria-expanded=\"false\" aria-label=\"Apri menu\" aria-controls=\"amelia-menu\" class=\"amelia-menu-button amelia_menu_open_js\">☰</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  29 |   await expect.poll(() => menu.evaluate(el => Math.round(el.getBoundingClientRect().left))).toBe(0);\n  30 |   await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-drawer.png`, animations: 'disabled' });\n> 31 |   await page.keyboard.press('Escape'); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();\n     |                                                                                              ^\n  32 |   await opener.click(); await page.mouse.click(info.project.use.viewport.width - 8, 30); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();\n  33 |   await opener.click(); await menu.getByRole('link', { name: 'Ordini WhatsApp', exact: true }).click();\n  34 |   await expect(page.getByRole('heading', { name: 'Funzionalità non ancora disponibile', exact: true })).toBeVisible();\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs:31:94"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:36:47.561Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-seven-destination-drawe-0536d-cus-safe-areas-and-no-docks-apple-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-seven-destination-drawe-0536d-cus-safe-areas-and-no-docks-apple-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-seven-destination-drawe-0536d-cus-safe-areas-and-no-docks-apple-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                    "column": 94,
+                    "line": 31
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-681478913de93de76b3d",
+          "file": "v5.spec.mjs",
+          "line": 18,
+          "column": 1
+        },
+        {
+          "title": "alert contacts are separate static rows and external chat links never send messages",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 20768,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" class=\"dialog_open_js\" data-dialog=\"contact-2320\" aria-describedby=\"contact-2320-help\">Scrivi al cliente</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" class=\"dialog_open_js\" data-dialog=\"contact-2320\" aria-describedby=\"contact-2320-help\">Scrivi al cliente</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs:59:124",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                      "column": 124,
+                      "line": 59
+                    },
+                    "snippet": "  57 |   await expect(links.first()).toHaveAttribute('rel', 'noopener noreferrer');\n  58 |   await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-contact.png` });\n> 59 |   await page.keyboard.press('Escape'); await expect(alert.getByRole('button', { name: 'Scrivi al cliente', exact: true })).toBeFocused();\n     |                                                                                                                            ^\n  60 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n  61 | });\n  62 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                        "column": 124,
+                        "line": 59
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoBeFocused\u001b[2m(\u001b[22m\u001b[2m)\u001b[22m failed\n\nLocator:  locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\nExpected: focused\nReceived: inactive\nTimeout:  15000ms\n\nCall log:\n\u001b[2m  - Expect \"toBeFocused\" locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true }) with timeout 15000ms\u001b[22m\n\u001b[2m  - waiting for locator('[data-alert-id]').first().getByRole('button', { name: 'Scrivi al cliente', exact: true })\u001b[22m\n\u001b[2m    33 × locator resolved to <button type=\"button\" class=\"dialog_open_js\" data-dialog=\"contact-2320\" aria-describedby=\"contact-2320-help\">Scrivi al cliente</button>\u001b[22m\n\u001b[2m       - unexpected value \"inactive\"\u001b[22m\n\n\n  57 |   await expect(links.first()).toHaveAttribute('rel', 'noopener noreferrer');\n  58 |   await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-contact.png` });\n> 59 |   await page.keyboard.press('Escape'); await expect(alert.getByRole('button', { name: 'Scrivi al cliente', exact: true })).toBeFocused();\n     |                                                                                                                            ^\n  60 |   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);\n  61 | });\n  62 |\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs:59:124"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:37:09.352Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-alert-contacts-are-sepa-15d31-t-links-never-send-messages-apple-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-alert-contacts-are-sepa-15d31-t-links-never-send-messages-apple-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-retest\\v5-alert-contacts-are-sepa-15d31-t-links-never-send-messages-apple-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\v5.spec.mjs",
+                    "column": 124,
+                    "line": 59
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-fbdae807ce66efea353f",
+          "file": "v5.spec.mjs",
+          "line": 46,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17544,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:37:30.962Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-8713cd6254157cfbc2b0",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T20:33:35.768Z",
+    "duration": 252958.294,
+    "expected": 13,
+    "skipped": 0,
+    "unexpected": 2,
+    "flaky": 0
+  }
+}

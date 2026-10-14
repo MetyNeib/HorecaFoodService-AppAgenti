@@ -1,10 +1,44 @@
 /* Only public application assets are cached. User data lives in isolated IndexedDB databases. */
-const CACHE = 'hfs-public-shell-v3-amelia3-20261012';
-const PUBLIC_PATHS = ['/offline', '/manifest.webmanifest', '/icons/hfs-192.png', '/icons/hfs-512.png', '/icons/hfs-180.png'];
+const CACHE = 'hfs-public-shell-v5.1-amelia3-20261012';
+const PUBLIC_PATHS = ['/offline', '/amelia3/offline', '/manifest.webmanifest', '/icons/hfs-192.png', '/icons/hfs-512.png', '/icons/hfs-180.png'];
 const isPublic = url => url.origin === self.location.origin && (PUBLIC_PATHS.includes(url.pathname) || url.pathname.startsWith('/assets/'));
 
+async function preparePublicShells(extraAssets = []) {
+  const shellPaths = ['/offline', '/amelia3/offline'];
+  const failed = [], assets = [...extraAssets, ...PUBLIC_PATHS];
+  const shells = await Promise.all(shellPaths.map(async path => {
+    try {
+      const response = await fetch(path, { cache: 'no-store', credentials: 'same-origin' });
+      if (!response.ok || response.redirected) throw new Error('Shell non disponibile');
+      const markup = await response.clone().text();
+      const importmap = JSON.parse(markup.match(/<script\b[^>]*type=["']importmap["'][^>]*>([\s\S]*?)<\/script>/i)?.[1] || '{}');
+      assets.push(...Object.values(importmap.imports || {}));
+      for (const match of markup.matchAll(/<(?:link|script|img)\b[^>]*(?:href|src)=["']([^"']+)["'][^>]*>/gi)) assets.push(match[1]);
+      return [path, response];
+    } catch { failed.push(path); return null; }
+  }));
+  const urls = [...new Set(assets)].map(value => new URL(value, self.location.origin))
+    .filter(url => isPublic(url) && !shellPaths.includes(url.pathname));
+  const prepared = await Promise.all(urls.map(async url => {
+    try {
+      const response = await fetch(url.href, { cache: 'no-store', credentials: 'same-origin' });
+      if (!response.ok || response.redirected) throw new Error('Risorsa non disponibile');
+      return [url.href, response];
+    } catch { failed.push(url.pathname); return null; }
+  }));
+  if (!failed.length) {
+    const cache = await caches.open(CACHE);
+    await Promise.all(prepared.map(([url, response]) => cache.put(url, response)));
+    // Publish neutral shells only after their entire asset graph has been saved.
+    await Promise.all(shells.map(([url, response]) => cache.put(url, response)));
+  }
+  return failed;
+}
+
 self.addEventListener('install', event => {
-  event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(PUBLIC_PATHS)));
+  // A waiting upgrade prepares its own cache before activation removes the previous
+  // version. It must not depend on a message sent to the still-active old worker.
+  event.waitUntil(preparePublicShells().then(failed => { if (failed.length) throw new Error('Preparazione offline incompleta'); }));
 });
 
 self.addEventListener('activate', event => {
@@ -18,30 +52,9 @@ self.addEventListener('activate', event => {
 self.addEventListener('message', event => {
   if (event.data?.type !== 'PRECACHE' || !Array.isArray(event.data.assets)) return;
   event.waitUntil((async () => {
-    const cache = await caches.open(CACHE);
-    const failed = [];
-    try {
-      // Parse the current neutral server shell, so an already open page cannot pin an old importmap.
-      const shell = await fetch('/offline', { cache: 'no-store', credentials: 'same-origin' });
-      if (!shell.ok || shell.redirected) throw new Error('Shell non disponibile');
-      const markup = await shell.clone().text();
-      const importmap = JSON.parse(markup.match(/<script\b[^>]*type=["']importmap["'][^>]*>([\s\S]*?)<\/script>/i)?.[1] || '{}');
-      const linked = [...markup.matchAll(/<link\b[^>]*href=["']([^"']+)["'][^>]*>/gi)].map(match => match[1]);
-      const assets = [...new Set([...event.data.assets, ...Object.values(importmap.imports || {}), ...linked, ...PUBLIC_PATHS])]
-        .map(value => new URL(value, self.location.origin)).filter(url => isPublic(url) && url.pathname !== '/offline');
-      const prepared = await Promise.all(assets.map(async url => {
-        try {
-          const response = await fetch(url.href, { cache: 'no-store', credentials: 'same-origin' });
-          if (!response.ok || response.redirected) throw new Error('Risorsa non disponibile');
-          return [url.href, response];
-        } catch { failed.push(url.pathname); return null; }
-      }));
-      if (!failed.length) {
-        await Promise.all(prepared.map(([url, response]) => cache.put(url, response)));
-        // Publish the new shell only when all of its dependencies have been saved successfully.
-        await cache.put('/offline', shell);
-      }
-    } catch { failed.push('/offline'); }
+    let failed;
+    try { failed = await preparePublicShells(event.data.assets); }
+    catch { failed = ['/offline', '/amelia3/offline']; }
     // A login redirect can create a new document after activation's first claim.
     // Claim again before announcing readiness so that initial offline reloads
     // are controlled as well as documents that existed during activation.
@@ -59,7 +72,7 @@ self.addEventListener('fetch', event => {
     event.respondWith((async () => {
       try { return await fetch(request); }
       catch {
-        const response = await caches.match('/offline', { cacheName: CACHE });
+        const response = await caches.match(url.pathname.startsWith('/amelia3') ? '/amelia3/offline' : '/offline', { cacheName: CACHE });
         return response || new Response('Collegati al server per preparare l’app offline.', { status: 503, headers: { 'Content-Type': 'text/plain; charset=utf-8' } });
       }
     })());

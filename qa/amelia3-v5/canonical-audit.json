@@ -1,0 +1,51 @@
+{
+  "result": "PASS",
+  "source_sha256": {
+    "products_2026-10-12.csv": "17bf7bc4c257f8574c66527ce5ea4c5d0743a740024b59da7a2f46773a245bbf",
+    "ARTICOLI(1).csv": "11936ef69c3e52d07c9f76e3b1d6359e7f5f3496812f286d85c6df9ab757e5c1"
+  },
+  "row_counts": {
+    "products": 5440,
+    "articoli": 9847,
+    "unblocked_articoli": 5420,
+    "unblocked_absent_from_products": 0
+  },
+  "original_preferred_unit_distribution": {
+    "C": 3515,
+    "K": 108,
+    "L": 5233,
+    "P": 991
+  },
+  "expected_um_map": {
+    "C": {
+      "canonical": "CONF",
+      "kind": "multiple_el"
+    },
+    "K": {
+      "canonical": "KG",
+      "kind": "weight_volume"
+    },
+    "L": {
+      "canonical": "COLL",
+      "kind": "multiple_el"
+    },
+    "P": {
+      "canonical": "PZ",
+      "kind": "single_el"
+    }
+  },
+  "canonical_orderable_mismatches": 0,
+  "preferred_mismatches": 0,
+  "pricing_canonical_mismatches": 0,
+  "kind_mismatches": 0,
+  "flag_mismatches": 0,
+  "one_unit_products": 3829,
+  "two_unit_products": 1611,
+  "status_enabled_but_original_blocked": 20,
+  "pricing_unit_differs_from_preferred": 3975,
+  "pricing_unit_not_in_orderable_ums": 2364,
+  "empty_min_quantity_fields": 5440,
+  "empty_price_fields": 5440,
+  "empty_stock_fields": 397,
+  "scope_note": "UM options certificate dal sistema WhatsApp; prezzo/giacenze NON attestati qui"
+}

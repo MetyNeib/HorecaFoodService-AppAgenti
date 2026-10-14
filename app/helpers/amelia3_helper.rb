@@ -22,7 +22,13 @@ module Amelia3Helper
       concat hidden_field_tag(:epoch, 1)
       concat hidden_field_tag(:owner_user_id, Amelia3::Snapshot.identity(current_user))
       concat hidden_field_tag(:return_to, return_to)
-      data.each { |key, value| concat hidden_field_tag("payload[#{key}]", value) }
+      data.each do |key, value|
+        if value.is_a?(Hash)
+          value.each { |part, item| concat hidden_field_tag("payload[#{key}][#{part}]", item) }
+        else
+          concat hidden_field_tag("payload[#{key}]", value)
+        end
+      end
       concat capture(&block)
     end
   end

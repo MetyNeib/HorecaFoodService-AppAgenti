@@ -1,0 +1,77 @@
+[
+  {
+    "command": [
+      "node",
+      "--test",
+      "scripts/check_project_rules.test.cjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "# tests 7",
+      "# pass 7",
+      "# fail 0"
+    ]
+  },
+  {
+    "command": [
+      "node",
+      "scripts/check_project_rules.cjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "101 file esaminati; 0 violazioni rilevate."
+    ]
+  },
+  {
+    "command": [
+      "node",
+      "scripts/validate-data.mjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "PASS: 20/20 controlli seed"
+    ]
+  },
+  {
+    "command": [
+      "node",
+      "--experimental-strip-types",
+      "--test",
+      "tests/core/domain.test.mjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "# tests 49",
+      "# pass 49",
+      "# fail 0"
+    ]
+  },
+  {
+    "command": [
+      "node",
+      "--import",
+      "./tests/rails-pwa/register.mjs",
+      "--test",
+      "tests/rails-pwa/domain-parity.test.mjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "# tests 12",
+      "# pass 12",
+      "# fail 0"
+    ]
+  },
+  {
+    "command": [
+      "node",
+      "--test",
+      "tests/amelia3/domain.test.mjs"
+    ],
+    "exit_code": 0,
+    "summary": [
+      "# tests 12",
+      "# pass 12",
+      "# fail 0"
+    ]
+  }
+]

@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 
 const email = 'pwa@hfs.invalid';
 const password = 'HfsDemoLocale2026!';
+const screenshotDirectory = process.env.HFS_PWA_SCREENSHOTS || 'qa/rails';
 
 async function login(page, account = email) {
   await page.goto('/users/sign_in');
@@ -72,7 +73,7 @@ test('offline reale: riapertura, clienti/catalogo, ordine modificato e sincroniz
   await navigate(page, '/customers/CLI-061001');
   await expect(page.getByRole('heading', { name: 'Osteria del Faro SRL', exact: true })).toBeVisible();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBeTruthy();
-  await page.screenshot({ path: `qa/rails/${info.project.name}-offline-customer.png`, fullPage: true });
+  await page.screenshot({ path: `${screenshotDirectory}/${info.project.name}-offline-customer.png`, fullPage: true });
   await context.setOffline(false);
   await page.evaluate(() => window.HFS.reconnect());
   await expect.poll(() => outbox(page), { timeout: 20000 }).toEqual([]);
@@ -218,7 +219,7 @@ test('viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili
         await button.scrollIntoViewIfNeeded();
         await expect(button).toBeVisible();
       }
-      await page.screenshot({ path: `qa/rails/${info.project.name}-offline-${name}-${width}.png`, fullPage: true });
+      await page.screenshot({ path: `${screenshotDirectory}/${info.project.name}-offline-${name}-${width}.png`, fullPage: true });
     }
   }
 });
@@ -245,6 +246,9 @@ test('archivio corrotto: annullamento conserva originale e ripristino esplicito 
   expect((await downloaded).suggestedFilename()).toBe('hfs-archivio-originale.json');
   await page.getByRole('button', { name: 'Ripristina dal server e conserva copia', exact: true }).click();
   await page.waitForFunction(() => !window.HFS.storageFailure && window.HFS.client.record?.schemaVersion === 2);
+  // Recovery still prepares the worker and navigates after clearing storageFailure.
+  // Wait for the visible completion before reloading, otherwise WebKit aborts that fetch.
+  await expect(page.getByText('Archivio ripristinato. La copia originale è disponibile da Stato sincronizzazione.', { exact: true })).toBeVisible();
   expect(await page.evaluate(() => window.HFS.client.record.recovery[0].raw)).toEqual(original);
   expect(await outbox(page)).toEqual([]);
   await page.reload(); await page.waitForFunction(() => !!window.HFS?.client?.record);

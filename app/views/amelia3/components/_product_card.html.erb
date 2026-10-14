@@ -1,0 +1,25 @@
+<article class="card product-card" data-product-code="<%= product.external_code %>">
+  <div class="product-heading"><h2><%= product.name %></h2><%= link_to 'Scheda prodotto', "/amelia3/catalog/#{ERB::Util.url_encode(product.external_code)}" %></div>
+  <% canonical = product.canonical_units %>
+  <p class="meta">Cod. <%= product.external_code %> · UM preferita <%= canonical['preferredUm'] || 'da verificare' %></p>
+  <% if canonical['reason'] %><p class="badge warning"><%= canonical['reason'] %></p><% end %>
+  <% units = @catalog.orderable_units(product) %>
+  <% if units.length > 1 %>
+    <label class="field amelia-unit-picker"><span>Unità di misura</span><%= select_tag :catalog_unit, options_for_select(units.map { |unit| [unit == canonical['preferredUm'] ? "#{unit} · preferita" : unit, unit] }), id: "catalog_unit_#{product.id}", class: 'amelia_unit_select_js', aria: { label: 'Unità di misura' } %></label>
+  <% else %>
+    <p class="amelia-unit-fixed">Unità di misura: <b><%= units.first %></b></p>
+  <% end %>
+  <% units.each do |unit| %>
+    <% option = @catalog.quote(product, unit: unit); reason = option.unavailable_reason %>
+    <div class="amelia-unit-option" data-unit="<%= unit %>" <%= 'hidden' unless unit == units.first %>>
+      <div class="row"><b><%= unit %><%= ' · preferita' if unit == canonical['preferredUm'] %></b><% unless reason %><span><%= amelia_decimal(option.unit_price) %> € / <%= unit %></span><% end %></div>
+      <p class="badge <%= reason ? 'warning' : 'success' %>"><%= reason || "Disponibili #{option.terms['maxQuantity'].tr('.', ',')} #{unit}" %></p>
+      <p class="meta">Ordine in <%= unit %> · Listino in €/ <%= option.terms['priceUnit'] %> · Giacenza di riferimento in <%= option.terms['stockUnit'] %></p>
+      <% if @order&.status == 'DRAFT' %>
+        <%= amelia_form('ADD_LINE', { orderId: @order.id, lineId: SecureRandom.uuid, productId: product.external_code, unit: unit, expectedConversionVersion: option.terms['conversionVersion'], expectedExactPrice: option.exact_unit_price && Amelia3::ExactValue.wire(option.exact_unit_price) }, return_to: request.fullpath) do %>
+          <div class="product-controls"><%= render 'amelia3/components/quantity', unit: unit, step: option.terms['quantityStep'], value: option.terms['quantityStep'] == 'any' ? '' : option.terms['quantityStep'] %><button type="submit" class="primary" <%= 'disabled' if reason %>>+ Aggiungi</button></div>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</article>

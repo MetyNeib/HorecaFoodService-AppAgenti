@@ -1,0 +1,94 @@
+{
+    "rails":  {
+                  "passed":  29,
+                  "failed":  0
+              },
+    "javascript":  {
+                       "passed":  17,
+                       "failed":  0
+                   },
+    "files":  [
+                  {
+                      "sha256":  "b9e508fc9f4bce21d84e28623ff49116a0a8edf8eeab500d23194dc3c4a80d17",
+                      "path":  "app/services/amelia3/sales_alert_rules.rb"
+                  },
+                  {
+                      "sha256":  "5d3004d774b8dddf25e6c05439ea28192d0df5fff1b15f2f007965bbfa28e0c1",
+                      "path":  "app/services/amelia3/sales_alerts.rb"
+                  },
+                  {
+                      "sha256":  "9e0765707e046ec3e68bb9cdb282f871cd1409274739deaf94bcaf6795cbb78c",
+                      "path":  "app/services/amelia3/alert_page.rb"
+                  },
+                  {
+                      "sha256":  "b142016347a50ad26282504deb2924b0ae8643dbe8cfe2a59edadf3086d699fc",
+                      "path":  "app/services/amelia3/scope.rb"
+                  },
+                  {
+                      "sha256":  "9b9e746dc46e054fced2a8a3c46a9af92dce4cb5c3a90286a7ae4d402a8572a5",
+                      "path":  "app/services/amelia3/snapshot.rb"
+                  },
+                  {
+                      "sha256":  "96ae6d15a8674e76ea1248ff152b78de03d792b33057d0c69c4a98e9ca0f7415",
+                      "path":  "app/controllers/amelia3/pages_controller.rb"
+                  },
+                  {
+                      "sha256":  "b961454386b87fc232d816c1382a60d3da4fe2c63367a1587d4d36639baace15",
+                      "path":  "app/views/amelia3/pages/alerts.html.erb"
+                  },
+                  {
+                      "sha256":  "3ebf2884c0784bce71c94c753143da51f154de85feeac04a3ef2f1672a9b0c4f",
+                      "path":  "app/views/amelia3/pages/customers.html.erb"
+                  },
+                  {
+                      "sha256":  "805599272cfbcb9aef966ecf29a4fed380d3a2e1a2082c6ab39213d795c73a96",
+                      "path":  "app/views/amelia3/pages/customer.html.erb"
+                  },
+                  {
+                      "sha256":  "3cf3a49c0c55fedb97adb15f40fc2ce0ec3dc279cc6dd4c938d54584e92c368d",
+                      "path":  "app/views/amelia3/components/_product_card.html.erb"
+                  },
+                  {
+                      "sha256":  "3c4d06adfdd6eb3a743cb767c65627844434b472e26887163f71bacac22279cc",
+                      "path":  "app/views/amelia3/components/_alert_sync_status.html.erb"
+                  },
+                  {
+                      "sha256":  "e7e417db9521c250b445426f32b1473df182720daa87bc88bae3c7c8943397bb",
+                      "path":  "app/javascript/amelia3/offline.js"
+                  },
+                  {
+                      "sha256":  "2c57117249e448611489c8797a455e4e0a3bdc61f5a01cbf76e80e2c44cb7d6b",
+                      "path":  "spec/amelia3/sales_alerts_spec.rb"
+                  },
+                  {
+                      "sha256":  "941d1f5bf2f18a32ac16edad29f43748b6220e4f5649a5dd86c2ccf5037570cf",
+                      "path":  "spec/requests/amelia3_v5_spec.rb"
+                  },
+                  {
+                      "sha256":  "86db9a1ded630c0ac764c91f33533f4af1810e55b647809563de28d051c12eb9",
+                      "path":  "tests/amelia3/v5.spec.mjs"
+                  },
+                  {
+                      "sha256":  "86e158e73aeb304c112025e6fce82037691e34da4c4055337efc8bb28946f614",
+                      "path":  "scripts/prepare-amelia3-v5-browser-alerts.rb"
+                  },
+                  {
+                      "sha256":  "03c6c150cbd1c1289fa4df7bbc783186aace120d5e6910346c935b97f3f7080a",
+                      "path":  "scripts/verify-amelia3-reactivation.rb"
+                  },
+                  {
+                      "sha256":  "81260688833587f99f469bc89438d246ddfb09b87ae00831ba55d2be9232a72c",
+                      "path":  "scripts/check-amelia3-reactivation-browser.mjs"
+                  }
+              ],
+    "browser":  {
+                    "passed":  20,
+                    "failed":  0
+                },
+    "realBrowser":  {
+                        "passed":  2,
+                        "failed":  0
+                    },
+    "recordedAt":  "2026-10-13T00:24:34.8539543+02:00",
+    "status":  "PASS"
+}

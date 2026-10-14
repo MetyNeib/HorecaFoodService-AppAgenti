@@ -1,5 +1,42 @@
 # HFS App Agenti — istruzioni di progetto per Codex
 
+## Handoff Mac e branch demo — 14 ottobre 2026, precedenza corrente
+
+L'utente autorizza salvataggio V5, push GitHub, tag
+`amelia3-demo-baseline-20261014` e branch `feature/amelia3-demo-polish`.
+Ha confermato di mantenere PUBBLICO il solo codice revisionato nel repository
+MetyNeib/HorecaFoodService-AppAgenti. Database, CSV, credenziali, attestazioni
+private e screenshot commerciali restano esclusi. Nessun merge su main o deploy.
+Trasferimento completo su MacBook Pro M1 Pro ARM64 con Docker; FTP aggiornabile,
+con futura selezione manuale di un campione congelato. Leggere docs/MAC_HANDOFF.md.
+Il prossimo lavoro sul Mac riguarda ordine, ingresso WhatsApp (oggi placeholder)
+e alert CRM basati su dati reali aggiornati. Revisioni statiche manuali documentate
+per prodotti sostitutivi e cambi di ragione sociale, senza riconoscimento
+automatico richiesto o accorpamenti silenziosi. Definire l'ingresso WhatsApp
+alla relativa milestone senza presentare una simulazione come ricezione reale.
+I vincoli economici/UM e il seed separato restano validi.
+
+## Amelia3 v5 — precedenza corrente, 12 ottobre 2026
+
+Pacchetto approvato `AMELIA3_CODEX_V5_CANONICAL_20261012.zip`, letto integralmente
+con allegati tecnici e requisiti v4 preservati. Partenza verificata `223a231` sul
+branch `feature/amelia3-ftp-import`, working tree inizialmente pulito. Conservare
+il lavoro precedente. Nessun commit/push/merge/deploy implicito per questa task.
+Mappa certificata C=CONF, K=KG, L=COLL, P=PZ; preferita da UM cliente, seconda
+UM base solo con entrambi i flag indivisibilità falsi. Prezzo listino 000,
+stock cf/pz/pe, fattori economici e passo KG richiedono prove separate: nessun
+fallback P/P considerato attestato dalla sola precedente implementazione.
+La risposta tecnica successiva dell'utente è registrata in
+`docs/amelia3/V5_UNIT_EVIDENCE.md`: prezzo 000 per tipo_um, CF/PZ/PE separati,
+fattori di conteggio e KG decimali liberi. Nessuna prova di peso fisso né della
+UM dei prezzi fissi personali; restano chiusi i relativi percorsi non attestati.
+Sette voci commerciali in drawer compatto, logo originale, nessun header/footer
+Amelia3; PWA reale, storico per cliente/riferimento, WhatsApp placeholder e link
+individuali espliciti, tre alert deterministici 12 mesi e job 06:30 dopo FTP.
+La v5 conserva il seed HFS byte-identico e isolato per regressioni: non eliminarlo.
+Stati/milestone in `qa/AMELIA3_V5_REPORT.md` e `docs/PROGRESS.md`. Dati e verifiche
+commerciali identificative restano privati; report soltanto aggregati.
+
 ## Amelia3 — specifica approvata 12 ottobre 2026 (precedenza corrente)
 
 Leggere `docs/amelia3/HFS_Amelia3_Prompt_Codex_20261012.md`, LEGGIMI, piano,

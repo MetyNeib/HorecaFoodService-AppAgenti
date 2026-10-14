@@ -11,6 +11,8 @@ class Amelia3::BaseController < ApplicationController
   rescue_from Amelia3::Error do |error|
     if request.format.json?
       render json: { error: error.message, code: error.code }, status: error.status
+    elsif request.get? && error.code == "FORBIDDEN" && current_user.synthetic?
+      render "amelia3/account_required", layout: "application", status: :forbidden
     else
       render plain: error.message, status: error.status
     end

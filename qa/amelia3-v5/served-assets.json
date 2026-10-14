@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "assets": {
+    "hfs/ui": "/assets/hfs/ui-b750c36d.js",
+    "controllers/amelia3": "/assets/controllers/amelia3-5a33b351.js"
+  }
+}

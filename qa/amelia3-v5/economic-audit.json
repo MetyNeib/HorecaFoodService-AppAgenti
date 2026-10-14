@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-12",
+  "source_batch_fingerprint": "9eca9f4b050d59a05a0dfc3f1f9e26749d52b1e6989b3605b65c571d590e188f",
+  "products": 9847,
+  "unblocked": 5420,
+  "historical_agent34": 447,
+  "recent_agent34": 65,
+  "canonical_valid": 9847,
+  "private_samples": 75,
+  "economic_evidence": "NOT_ATTESTED",
+  "source_data_changed": false,
+  "groups": {
+    "L/L": 592,
+    "P/P": 362,
+    "K/L": 1400,
+    "K/C": 339,
+    "K/K": 23,
+    "P/C": 1819,
+    "L/C": 6,
+    "P/L": 212,
+    "L/P": 1,
+    "C/C": 475,
+    "K/P": 110,
+    "C/L": 80,
+    "C/P": 1
+  }
+}

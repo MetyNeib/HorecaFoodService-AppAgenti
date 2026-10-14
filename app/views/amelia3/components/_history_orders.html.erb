@@ -1,0 +1,17 @@
+<%= form_with url: request.path, method: :get, local: true, class: 'filters amelia_search_form_js' do %>
+  <%= hidden_field_tag :status, 'HISTORY' %>
+  <label class="field">Codice cliente<%= text_field_tag :customer_id, params[:customer_id] %></label>
+  <label class="field">Riferimento ordine<%= search_field_tag :q, params[:q] %></label>
+  <label class="field">Dal<%= date_field_tag :from, params[:from] %></label>
+  <label class="field">Al<%= date_field_tag :to, params[:to] %></label><button type="submit">Filtra</button>
+<% end %>
+<p><%= @total %> ordini storici · Quantità dell'export. Prezzi, ricavi e margini storici non disponibili.</p>
+<div class="scroll-area" data-kind="list" aria-label="Ordini storici">
+  <% @history_orders.each do |order| %>
+    <article class="card list-row"><div><h2>Ordine <%= order.order_reference %></h2><p><%= @customer_names[order.customer_code] %> · Cod. <%= order.customer_code %></p><p><%= display_date(order.first_delivery) %> — <%= display_date(order.last_delivery) %> · <%= order.line_count %> righe</p></div>
+      <%= link_to 'Dettaglio storico', amelia3_history_detail_path(customer_id: order.customer_code, reference: order.order_reference), class: 'button' %>
+    </article>
+  <% end %>
+  <% if @history_orders.empty? %><p>Nessun ordine storico per questi filtri.</p><% end %>
+</div>
+<%= amelia_pagination(@total, per_page: 20) %>

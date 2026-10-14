@@ -1,4 +1,9 @@
-<nav class="amelia-nav" aria-label="Navigazione Amelia3">
-  <a href="/amelia3">Home</a><a href="/amelia3/customers">Clienti</a><a href="/amelia3/catalog">Catalogo</a><a href="/amelia3/orders">Ordini locali</a><a href="/amelia3/history">Storico</a><a href="/amelia3/insights">Analisi acquisti</a>
-  <% if current_user.role == 'admin' %><a href="/amelia3/sync">Sincronizzazione dati</a><% end %>
+<nav class="amelia-menu-links" aria-label="Navigazione principale">
+  <a href="/amelia3" data-menu="home">Home</a>
+  <a href="/amelia3/customers?pick=1" data-menu="new">Nuovo ordine</a>
+  <a href="/amelia3/orders" data-menu="orders">I miei ordini</a>
+  <a href="/amelia3/whatsapp" data-menu="whatsapp">Ordini WhatsApp</a>
+  <a href="/amelia3/customers" data-menu="customers">Clienti</a>
+  <a href="/amelia3/catalog" data-menu="catalog">Catalogo</a>
+  <a href="/amelia3/alerts" data-menu="alerts">Alert di vendita</a>
 </nav>

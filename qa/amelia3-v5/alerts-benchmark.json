@@ -1,0 +1,367 @@
+{
+  "status": "PASS",
+  "mode": "development_local_files",
+  "local_date": "2026-10-12",
+  "batch": "a38d4cb8-dbab-4be0-a609-abadf28ba5b4",
+  "fingerprint": "9eca9f4b050d59a05a0dfc3f1f9e26749d52b1e6989b3605b65c571d590e188f",
+  "rules_version": "HFS-AMELIA3-SALES-ALERTS-12M-v1",
+  "baseline": {
+    "sourceRowsScanned": 1036814,
+    "profilesReused": 0,
+    "profilesBuilt": 5029,
+    "mode": "source_scan",
+    "durationMs": 99023,
+    "profilesEvaluated": 4426,
+    "evaluationsReused": 0,
+    "full": true,
+    "counts": {
+      "CUSTOMER_STOPPED": 373,
+      "USUAL_PRODUCT_MISSING": 1896,
+      "PURCHASE_FREQUENCY_DROP": 50
+    },
+    "customers": 1148,
+    "resultDigest": "b14bae6fac52d3aa7b9df5ec6ebb3bc41891c6411c0b879cfb2ddfd1e3c3e345"
+  },
+  "current_baseline": {
+    "mode": "idempotent",
+    "sourceRowsScanned": 0,
+    "profilesEvaluated": 0
+  },
+  "unchanged": {
+    "mode": "idempotent",
+    "sourceRowsScanned": 0,
+    "profilesEvaluated": 0
+  },
+  "full_comparison": {
+    "sourceRowsScanned": 1036814,
+    "profilesReused": 5029,
+    "profilesBuilt": 0,
+    "mode": "full_comparison",
+    "durationMs": 38719,
+    "profilesEvaluated": 4426,
+    "evaluationsReused": 0,
+    "full": true,
+    "counts": {
+      "CUSTOMER_STOPPED": 373,
+      "USUAL_PRODUCT_MISSING": 1896,
+      "PURCHASE_FREQUENCY_DROP": 50
+    },
+    "customers": 1148,
+    "resultDigest": "b14bae6fac52d3aa7b9df5ec6ebb3bc41891c6411c0b879cfb2ddfd1e3c3e345",
+    "previousRunId": null,
+    "resolvedCount": 0,
+    "resolvedDigest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "identical": true
+  },
+  "agent34_alerts": 0,
+  "first_admin_page": {
+    "rows": 10,
+    "mix": {
+      "CUSTOMER_STOPPED": 4,
+      "USUAL_PRODUCT_MISSING": 4,
+      "PURCHASE_FREQUENCY_DROP": 2
+    },
+    "query_count": 7,
+    "duration_ms": 85,
+    "history_queries": 0
+  },
+  "existing_orders_preserved": true,
+  "query_plans": {
+    "profile_cursor": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 0.43,
+          "Total Cost": 478.41,
+          "Plan Rows": 5000,
+          "Plan Width": 13,
+          "Actual Startup Time": 0.037,
+          "Actual Total Time": 1.609,
+          "Actual Rows": 5000,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 20,
+          "Shared Read Blocks": 102,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Index Scan",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Scan Direction": "Forward",
+              "Index Name": "amelia_history_profile_scan",
+              "Relation Name": "amelia3_history_rows",
+              "Alias": "amelia3_history_rows",
+              "Startup Cost": 0.43,
+              "Total Cost": 99492.39,
+              "Plan Rows": 1040755,
+              "Plan Width": 13,
+              "Actual Startup Time": 0.036,
+              "Actual Total Time": 1.314,
+              "Actual Rows": 5000,
+              "Actual Loops": 1,
+              "Index Cond": "(batch_id = 'a38d4cb8-dbab-4be0-a609-abadf28ba5b4'::uuid)",
+              "Rows Removed by Index Recheck": 0,
+              "Shared Hit Blocks": 20,
+              "Shared Read Blocks": 102,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 0,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.087,
+        "Triggers": [],
+        "Execution Time": 1.784
+      }
+    ],
+    "history_orders": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 9.53,
+          "Total Cost": 12.16,
+          "Plan Rows": 20,
+          "Plan Width": 78,
+          "Actual Startup Time": 0.223,
+          "Actual Total Time": 0.225,
+          "Actual Rows": 20,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 19,
+          "Shared Read Blocks": 7,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Incremental Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 9.53,
+              "Total Cost": 30798.73,
+              "Plan Rows": 234123,
+              "Plan Width": 78,
+              "Actual Startup Time": 0.222,
+              "Actual Total Time": 0.223,
+              "Actual Rows": 20,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "last_delivery DESC",
+                "customer_code",
+                "order_reference"
+              ],
+              "Presorted Key": [
+                "last_delivery"
+              ],
+              "Full-sort Groups": {
+                "Group Count": 1,
+                "Sort Methods Used": [
+                  "quicksort"
+                ],
+                "Sort Space Memory": {
+                  "Average Sort Space Used": 27,
+                  "Peak Sort Space Used": 27
+                }
+              },
+              "Shared Hit Blocks": 19,
+              "Shared Read Blocks": 7,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Index Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Scan Direction": "Backward",
+                  "Index Name": "amelia_history_order_page",
+                  "Relation Name": "amelia3_history_order_summaries",
+                  "Alias": "amelia3_history_order_summaries",
+                  "Startup Cost": 0.42,
+                  "Total Cost": 21581.2,
+                  "Plan Rows": 234123,
+                  "Plan Width": 78,
+                  "Actual Startup Time": 0.057,
+                  "Actual Total Time": 0.146,
+                  "Actual Rows": 21,
+                  "Actual Loops": 1,
+                  "Index Cond": "(batch_id = 'a38d4cb8-dbab-4be0-a609-abadf28ba5b4'::uuid)",
+                  "Rows Removed by Index Recheck": 0,
+                  "Shared Hit Blocks": 16,
+                  "Shared Read Blocks": 7,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 96,
+          "Shared Read Blocks": 5,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.883,
+        "Triggers": [],
+        "Execution Time": 0.254
+      }
+    ],
+    "alert_page": [
+      {
+        "Plan": {
+          "Node Type": "Limit",
+          "Parallel Aware": false,
+          "Async Capable": false,
+          "Startup Cost": 200.29,
+          "Total Cost": 200.32,
+          "Plan Rows": 10,
+          "Plan Width": 337,
+          "Actual Startup Time": 1.639,
+          "Actual Total Time": 1.64,
+          "Actual Rows": 10,
+          "Actual Loops": 1,
+          "Shared Hit Blocks": 98,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "Plans": [
+            {
+              "Node Type": "Sort",
+              "Parent Relationship": "Outer",
+              "Parallel Aware": false,
+              "Async Capable": false,
+              "Startup Cost": 200.29,
+              "Total Cost": 206.09,
+              "Plan Rows": 2319,
+              "Plan Width": 337,
+              "Actual Startup Time": 1.638,
+              "Actual Total Time": 1.639,
+              "Actual Rows": 10,
+              "Actual Loops": 1,
+              "Sort Key": [
+                "(((severity_numerator)::numeric / (severity_denominator)::numeric)) DESC"
+              ],
+              "Sort Method": "top-N heapsort",
+              "Sort Space Used": 35,
+              "Sort Space Type": "Memory",
+              "Shared Hit Blocks": 98,
+              "Shared Read Blocks": 0,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "Plans": [
+                {
+                  "Node Type": "Seq Scan",
+                  "Parent Relationship": "Outer",
+                  "Parallel Aware": false,
+                  "Async Capable": false,
+                  "Relation Name": "amelia3_alert_items",
+                  "Alias": "amelia3_alert_items",
+                  "Startup Cost": 0.0,
+                  "Total Cost": 150.18,
+                  "Plan Rows": 2319,
+                  "Plan Width": 337,
+                  "Actual Startup Time": 0.019,
+                  "Actual Total Time": 0.946,
+                  "Actual Rows": 2319,
+                  "Actual Loops": 1,
+                  "Filter": "((run_id = 1) AND ((status)::text = 'active'::text))",
+                  "Rows Removed by Filter": 2,
+                  "Shared Hit Blocks": 98,
+                  "Shared Read Blocks": 0,
+                  "Shared Dirtied Blocks": 0,
+                  "Shared Written Blocks": 0,
+                  "Local Hit Blocks": 0,
+                  "Local Read Blocks": 0,
+                  "Local Dirtied Blocks": 0,
+                  "Local Written Blocks": 0,
+                  "Temp Read Blocks": 0,
+                  "Temp Written Blocks": 0
+                }
+              ]
+            }
+          ]
+        },
+        "Planning": {
+          "Shared Hit Blocks": 5,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0
+        },
+        "Planning Time": 0.079,
+        "Triggers": [],
+        "Execution Time": 1.669
+      }
+    ]
+  }
+}

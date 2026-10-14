@@ -1,0 +1,161 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "status": "PASS",
+      "products": 50,
+      "disabledAddButtons": 0,
+      "existingDraft": true,
+      "loadMs": 7299,
+      "overflow": false,
+      "steppers": [
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 457.796875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 457.796875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 457.796875
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "status": "PASS",
+      "products": 50,
+      "disabledAddButtons": 0,
+      "existingDraft": true,
+      "loadMs": 7299,
+      "overflow": false,
+      "steppers": [
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 130.921875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 130.921875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 130.921875
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "products": 50,
+      "disabledAddButtons": 0,
+      "existingDraft": true,
+      "loadMs": 7299,
+      "overflow": false,
+      "steppers": [
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 117.6875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 117.6875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 117.6875
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "status": "PASS",
+      "products": 50,
+      "disabledAddButtons": 0,
+      "existingDraft": true,
+      "loadMs": 7299,
+      "overflow": false,
+      "steppers": [
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 244.71875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 244.71875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 244.71875
+        }
+      ]
+    },
+    {
+      "engine": "chromium",
+      "mode": "cold-offline",
+      "status": "PASS",
+      "products": 235,
+      "businessMutations": 0
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "status": "PASS",
+      "products": 50,
+      "disabledAddButtons": 0,
+      "existingDraft": true,
+      "loadMs": 4849,
+      "overflow": false,
+      "steppers": [
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 121.6875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 121.6875
+        },
+        {
+          "aligned": true,
+          "buttonWidth": 44,
+          "inputWidth": 121.6875
+        }
+      ]
+    },
+    {
+      "engine": "webkit",
+      "mode": "cold-offline",
+      "status": "PASS",
+      "products": 235,
+      "businessMutations": 0
+    }
+  ],
+  "businessMutations": 0,
+  "screenshots": "private-only"
+}

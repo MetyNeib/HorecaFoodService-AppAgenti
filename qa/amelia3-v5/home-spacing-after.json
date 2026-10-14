@@ -1,0 +1,119 @@
+{
+  "phase": "after",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1348,
+      "height": 798,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 161,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 161,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 182,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 182,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 163,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 163,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "webkit",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        },
+        {
+          "height": 177,
+          "top_space": 21,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    }
+  ]
+}

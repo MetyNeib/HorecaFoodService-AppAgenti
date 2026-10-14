@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "restore": "new disposable PostgreSQL 16 database",
+  "all_rows_identical": true,
+  "source_database_untouched": true,
+  "physical_mac": "NOT_RUN"
+}

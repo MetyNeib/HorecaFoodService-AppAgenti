@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "profile": "desktop",
+      "status": "PASS",
+      "single_unit_static_online_offline": true,
+      "multiple_unit_switch": true,
+      "reactivation_page_size": 10,
+      "customer_badge_online_offline": true,
+      "business_mutations": 0
+    },
+    {
+      "profile": "apple",
+      "status": "PASS",
+      "single_unit_static_online_offline": true,
+      "multiple_unit_switch": true,
+      "reactivation_page_size": 10,
+      "customer_badge_online_offline": true,
+      "business_mutations": 0
+    }
+  ],
+  "screenshots": "private-only"
+}

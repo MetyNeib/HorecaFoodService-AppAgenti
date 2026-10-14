@@ -1,0 +1,6 @@
+<section class="card">
+  <h2>Calcolo Alert di vendita</h2>
+  <p>06:30 Europe/Rome, dopo l'importazione FTP riuscita del giorno. Prossima scadenza: <%= @scheduler['alert_next_run_at'].presence || 'heartbeat da aggiornare' %>.</p>
+  <% if @alert_run %><p>Ultimo risultato: <%= display_date(@alert_run.as_of) %> · <%= @alert_run.source == 'development' ? 'baseline locale di sviluppo' : 'calcolo pianificato' %>.</p><p><%= @alert_run.rules_version %> · <%= @alert_run.metrics.fetch('counts', {}).slice(*Amelia3::SalesAlertRules::TYPES).values.sum %> alert · <%= @alert_run.metrics.fetch('counts', {}).fetch(Amelia3::SalesAlertRules::REACTIVATION, 0) %> clienti da riattivare · <%= @alert_run.metrics['durationMs'] %> ms.</p><% else %><p>Primo calcolo non ancora disponibile.</p><% end %>
+  <% @alert_occurrences.each do |occurrence| %><p><%= display_date(occurrence.local_date) %> · <%= occurrence.status %> · tentativi <%= occurrence.attempts %><%= occurrence.error_code ? " · #{occurrence.error_code}" : '' %><%= occurrence.next_attempt_at ? " · prossimo controllo #{occurrence.next_attempt_at.in_time_zone('Europe/Rome').strftime('%H:%M')}" : '' %></p><% end %>
+</section>

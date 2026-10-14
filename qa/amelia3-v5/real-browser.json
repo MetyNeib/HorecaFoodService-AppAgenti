@@ -1,0 +1,106 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "profile": "phone",
+      "role": "agent",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 0,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "phone",
+      "role": "admin",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 10,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "tablet",
+      "role": "agent",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 0,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "tablet",
+      "role": "admin",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 10,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "landscape",
+      "role": "agent",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 0,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "landscape",
+      "role": "admin",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 10,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "desktop",
+      "role": "agent",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 0,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "desktop",
+      "role": "admin",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 10,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "webkit-tablet",
+      "role": "agent",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 0,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    },
+    {
+      "profile": "webkit-tablet",
+      "role": "admin",
+      "pages": 7,
+      "historical_orders_on_page": 20,
+      "alerts_on_page": 10,
+      "status": "PASS",
+      "business_mutations": 0,
+      "screenshots": "private-only"
+    }
+  ],
+  "physical_devices": "NOT_RUN"
+}

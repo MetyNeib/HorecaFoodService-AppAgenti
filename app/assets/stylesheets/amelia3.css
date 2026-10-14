@@ -4,6 +4,182 @@
   gap: 8px;
   margin-bottom: 12px;
 }
+.amelia-unit-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-width: 240px;
+}
+.amelia-unit-picker select {
+  min-height: 44px;
+}
+.amelia-unit-option[hidden] {
+  display: none;
+}
+[data-page-controller="amelia3"] .quantity > span.field {
+  display: flex;
+  gap: 6px;
+}
+[data-page-controller="amelia3"] .stepper-input {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+}
+[data-page-controller="amelia3"] .stepper-input input {
+  width: 100%;
+  min-width: 0;
+}
+[data-page-controller="amelia3"] .stepper-input button {
+  flex: 0 0 44px;
+  min-height: 44px;
+  padding: 0;
+}
+[data-page-controller="amelia3"] .workspace-shell {
+  grid-template-rows: minmax(0, 1fr);
+  padding-top: max(12px, env(safe-area-inset-top));
+}
+[data-page-controller="amelia3"] .page-title {
+  padding-left: 44px;
+  padding-right: 30px;
+}
+/* Amelia3 has fewer Home sections than the demo: size rows to their content. */
+[data-page-controller="amelia3"] .workspace-shell main .home-view {
+  display: grid;
+  height: auto;
+  min-height: 0;
+  grid-template-rows: none;
+  grid-auto-rows: max-content;
+  align-content: start;
+  gap: 12px;
+}
+[data-page-controller="amelia3"] .workspace-shell .home-view > .grid {
+  grid-template-rows: none;
+  grid-auto-rows: auto;
+  gap: 12px;
+}
+[data-page-controller="amelia3"] .workspace-shell .home-primary .hero-card {
+  min-height: 0;
+  justify-content: flex-start;
+  padding: 20px;
+  gap: 8px;
+}
+[data-page-controller="amelia3"] .home-primary .hero-card h2 {
+  margin: 0;
+}
+[data-page-controller="amelia3"] .home-primary .hero-card .button {
+  min-height: 44px;
+  margin-top: 4px;
+}
+[data-page-controller="amelia3"] .workspace-shell .home-view .navigation-card {
+  min-height: 64px;
+  padding: 16px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.amelia-menu-button,
+.amelia-network-button {
+  position: fixed;
+  top: max(12px, env(safe-area-inset-top));
+  z-index: 20;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: white;
+  box-shadow: 0 2px 8px #16243e20;
+}
+.amelia-menu-button {
+  left: max(12px, env(safe-area-inset-left));
+  font-size: 24px;
+}
+.amelia-network-button {
+  right: max(12px, env(safe-area-inset-right));
+  font-size: 20px;
+  color: #9d5b00;
+}
+.amelia-network-button[data-state="error"] {
+  color: #ae2424;
+}
+dialog.amelia-drawer {
+  position: fixed;
+  inset: 0 auto 0 0;
+  margin: 0;
+  width: 252px;
+  max-width: calc(100vw - 44px);
+  height: 100dvh;
+  max-height: 100dvh;
+  border: 0;
+  border-radius: 0;
+  padding: max(12px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+dialog.amelia-drawer[open] {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  animation: amelia-drawer-enter 160ms ease-out;
+}
+.amelia-drawer::backdrop {
+  background: #13203966;
+}
+.amelia-logo {
+  display: block;
+  width: 112px;
+  height: auto;
+  margin: 0 auto 8px;
+}
+.amelia-identity {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-wrap: anywhere;
+}
+.amelia-menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.amelia-menu-tools {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.amelia-menu-links a {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #213347;
+}
+.amelia-menu-links a[aria-current="page"] {
+  background: #e5edff;
+  color: #173fc2;
+  font-weight: 700;
+}
+.amelia-status {
+  max-width: min(440px, calc(100vw - 32px));
+}
+.amelia-unit-option {
+  border-top: 1px solid #e0e6ed;
+  padding-top: 12px;
+  margin-top: 12px;
+}
+@keyframes amelia-drawer-enter {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  dialog.amelia-drawer[open] {
+    animation: none;
+  }
+}
 .amelia-nav a {
   display: inline-flex;
   align-items: center;

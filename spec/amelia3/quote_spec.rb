@@ -15,7 +15,7 @@ RSpec.describe Amelia3::Quote do
     expect { quote.validate_quantity!(BigDecimal("10")) }.to raise_error(Amelia3::Error)
     expect { quote.validate_quantity!(BigDecimal("20")) }.not_to raise_error
     Amelia3::Stock.find_by!(batch_id: scope.batch_id, product_code: "P001").update!(pieces: 0, packs: 100, weight: 100)
-    expect(described_class.for(scope, product).unavailable_reason).to eq("Giacenza in pz non disponibile")
+    expect(described_class.for(scope, product).unavailable_reason).to eq("Giacenza autorevole non disponibile")
   end
 
   it "keeps precision and inclusive validity and rejects overlapping conditions" do

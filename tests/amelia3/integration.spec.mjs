@@ -17,6 +17,11 @@ async function command(page, type, payload = {}) {
   return page.evaluate(async ({ type, payload }) => {
     const before = await fetch('/amelia3/snapshot', { headers: { Accept: 'application/json' } }).then(r => r.json());
     const order = before.state.data.orders.find(row => row.id === payload.orderId);
+    if (type === 'ADD_LINE') {
+      const product = before.state.data.products.find(row => row.id === payload.productId);
+      payload.unit ||= product.preferredUm;
+      payload.expectedConversionVersion = product.unitQuotes[payload.unit].conversionVersion;
+    }
     const response = await fetch('/amelia3/commands', { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json', 'X-CSRF-Token': before.csrfToken, 'X-HFS-User-Id': before.user.id },
       body: JSON.stringify({ operationId: crypto.randomUUID(), baseVersion: before.version, epoch: 1, type,
         payload: { batchId: before.state.data.batchId, ...(order ? { expectedVersion: order.version } : {}), ...payload } }) });
@@ -43,7 +48,7 @@ test('agent portfolio, four client tabs, catalog and history remain accessible w
     await expect(page.locator('main')).not.toContainText('Cliente sintetico esterno');
   }
   await expect(page.locator('main')).toContainText('1');
-  await page.screenshot({ path: `qa/amelia3/${info.project.name}-synthetic-insights.png`, fullPage: true });
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-insights.png`, fullPage: true });
   expect((await snapshot(page)).state.data).not.toHaveProperty('history');
 });
 
@@ -88,7 +93,7 @@ test('real offline cold reload, touch quantities, local confirmation and idempot
   await page.reload(); await expect(page.locator('main')).toContainText('Confermato localmente');
   expect((await state(page)).orders.filter(row => row.id === id)).toHaveLength(1);
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
-  await page.screenshot({ path: `qa/amelia3/${info.project.name}-synthetic-offline.png`, fullPage: true });
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-offline.png`, fullPage: true });
   await context.setOffline(false); await page.evaluate(() => window.HFS.reconnect());
   await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
   const saved = (await snapshot(page)).state.data.orders.filter(row => row.id === id);
@@ -145,9 +150,8 @@ test('business blocks also apply to direct API calls and unverified units', asyn
   });
   expect(result).toEqual({ status: 422, code: 'CUSTOMER_BLOCKED' });
   const id = await create(page); await navigate(page, `/amelia3/catalog?order_id=${id}`);
-  await expect(page.locator('[data-product-code="K001"]').getByRole('button', { name: '+ Aggiungi', exact: true })).toBeDisabled();
-  await page.evaluate(() => window.HFS.reconnect());
-  expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
+  await expect(page.locator('[data-product-code="K001"]')).toHaveCount(0);
+  await expect(page.locator('[data-product-code="P001"]').getByRole('button', { name: '+ Aggiungi', exact: true })).toBeEnabled();
   await navigate(page, '/amelia3/catalog/K001'); await page.evaluate(() => window.HFS.reconnect());
   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
   const response = await page.request.get('/amelia3/customers/C003'); expect(response.status()).toBe(404);
@@ -204,11 +208,16 @@ test('a new offline draft syncs from its editor and searched products remain pre
   await expect.poll(() => outbox(page), { timeout: 30000 }).toEqual([]);
   const saved = (await snapshot(page)).state.data.orders.filter(row => row.id === id);
   expect(saved).toHaveLength(1); expect(saved[0]).toMatchObject({ status: 'DRAFT', netCents: 119 });
-  await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);
+  await navigate(page, '/amelia3/catalog/K001');
   await page.evaluate(() => window.HFS.reconnect());
   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
-  await context.setOffline(true); await page.reload();
-  await expect(page.getByRole('heading', { name: 'Prodotto sintetico senza conversione', exact: true })).toBeVisible();
-  await expect(page.locator('[data-product-code="K001"]').getByRole('button', { name: '+ Aggiungi', exact: true })).toBeDisabled();
+  // Keep the explicitly prepared excluded record in the offline snapshot:
+  // filtering must hide it without mutating the cached data or the saved order.
+  await context.setOffline(true);
+  await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);
+  await page.reload();
+  await expect(page.locator('[data-product-code="K001"]')).toHaveCount(0);
+  await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');
+  expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);
   expect((await state(page)).orders.find(row => row.id === id)?.netCents).toBe(119);
 });

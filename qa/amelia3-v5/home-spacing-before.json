@@ -1,0 +1,100 @@
+{
+  "phase": "before",
+  "results": [
+    {
+      "engine": "chromium",
+      "width": 1348,
+      "height": 798,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 375,
+          "top_space": 138,
+          "clipped": false
+        },
+        {
+          "height": 375,
+          "top_space": 138,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 390,
+      "height": 844,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 210,
+          "top_space": 45,
+          "clipped": false
+        },
+        {
+          "height": 210,
+          "top_space": 45,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 768,
+      "height": 1024,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 375,
+          "top_space": 127,
+          "clipped": false
+        },
+        {
+          "height": 375,
+          "top_space": 127,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 1024,
+      "height": 768,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 375,
+          "top_space": 138,
+          "clipped": false
+        },
+        {
+          "height": 375,
+          "top_space": 127,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    },
+    {
+      "engine": "chromium",
+      "width": 1440,
+      "height": 900,
+      "overflow": false,
+      "cards": [
+        {
+          "height": 375,
+          "top_space": 138,
+          "clipped": false
+        },
+        {
+          "height": 375,
+          "top_space": 138,
+          "clipped": false
+        }
+      ],
+      "home_links": 8
+    }
+  ]
+}

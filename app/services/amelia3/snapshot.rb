@@ -14,24 +14,31 @@ module Amelia3
       base + "-" + Digest::SHA256.hexdigest(JSON.generate(codes))[0, 16]
     end
 
-    def self.for(user, customer_codes: [], product_codes: [], order_id: nil)
+    def self.for(user, customer_codes: [], product_codes: [], order_id: nil, include_usual: true)
       scope = Scope.new(user)
       context_order = order_id.present? ? scope.order(order_id) : nil
       requested = Array(customer_codes).take(50) + [ context_order&.customer_code, context_order&.destination_code ].compact
       # Explicitly requested codes are never trusted to expand the portfolio.
       allowed = scope.customers.where(external_code: requested).pluck(:external_code)
       customers = scope.customers.where(external_code: (allowed + scope.customers.order(:external_code).limit(CUSTOMER_LIMIT - allowed.length.clamp(0, CUSTOMER_LIMIT)).pluck(:external_code)).uniq.take(CUSTOMER_LIMIT)).to_a
-      codes = (Array(product_codes).take(50) + Array(context_order&.lines).map { |line| line["productId"] } + Catalog.cached_products(scope).pluck(:external_code)).uniq.take(PRODUCT_LIMIT)
+      codes = (Array(product_codes).take(50) + Array(context_order&.lines).map { |line| line["productId"] } + Catalog.cached_products(scope, include_usual: include_usual).pluck(:external_code)).uniq.take(PRODUCT_LIMIT)
       products = scope.products.where(external_code: codes).to_a
       quotes = Catalog.new(scope, products).quotes
       orders = scope.orders.order(updated_at: :desc).limit(ORDER_LIMIT).to_a
       orders.unshift(context_order) if context_order && !orders.any? { |order| order.id == context_order.id }
+      orders = orders.take(ORDER_LIMIT)
       customer_ids = customers.map(&:external_code)
+      reactivation = scope.reactivation_items.where(customer_code: customer_ids).pluck(:customer_code, :evidence).to_h
       conditions = Condition.where(batch_id: scope.batch_id, customer_code: customer_ids, product_code: codes)
+      evidence = UnitVerification.where(tenant: scope.tenant).order(:id).pluck(:id, :version, :active, :updated_at)
+      latest_import = SyncOccurrence.where(tenant_id: scope.tenant.id).order(local_date: :desc).first
       data = { "tenant" => { "code" => scope.tenant.code, "name" => scope.tenant.name }, "batchId" => scope.batch_id,
+               "batchFingerprint" => scope.tenant.active_batch.fingerprint,
+               "importStatus" => latest_import ? "#{latest_import.local_date} · #{latest_import.status}" : "batch locale disponibile; nessuna esecuzione pianificata registrata",
+               "quoteContractVersion" => UnitContract::VERSION, "verificationVersion" => Digest::SHA256.hexdigest(JSON.generate(evidence)),
                "portfolioCount" => scope.customers.count, "catalogCount" => scope.products.count,
                "asOf" => Time.zone.today.iso8601, "expiresAt" => 24.hours.from_now.iso8601,
-               "customers" => customers.map { |customer| customer_data(customer, scope) },
+               "customers" => customers.map { |customer| customer_data(customer, scope).merge("reactivation" => reactivation[customer.external_code]) },
                "products" => products.map { |product| product_data(product, quotes.fetch(product.external_code)) },
                "customerConditions" => conditions.map { |row| condition_data(row) }, "orders" => orders.map { |order| order_data(order) } }
       { state: { "schemaVersion" => 2, "datasetMode" => "amelia3", "datasetId" => "AMELIA3-#{scope.tenant.id}", "data" => data },
@@ -44,15 +51,21 @@ module Amelia3
       { "id" => customer.external_code, "name" => customer.name, "city" => customer.city, "address" => customer.address,
         "blocked" => customer.blocked, "agentCode" => customer.agent_code, "parentCode" => parent,
         "taxId" => customer.tax_id, "email" => customer.email, "telephone" => customer.telephone,
-        "billTo" => customer.bill_to, "deliveryPoint" => customer.delivery_point }
+        "billTo" => customer.bill_to, "deliveryPoint" => customer.delivery_point, "assignedListCode" => customer.source_fields["cod_lis"].presence }
     end
 
     def self.product_data(product, quote)
       amount = quote.price&.amount
       micros = amount && (amount * 1_000_000).frac.zero? ? (amount * 1_000_000).to_i.to_s : nil
+      canonical = product.canonical_units
+      offers = canonical["orderableUms"].to_h do |unit|
+        option = Quote.new(product: product, stock: quote.stock, price: quote.price, unit: unit, verification: quote.unit_contract.verification)
+        [ unit, option.wire ]
+      end
       { "id" => product.external_code, "name" => product.name, "unit" => product.base_unit, "orderUnit" => product.order_unit,
-        "blocked" => product.blocked, "quantityStep" => quote.step&.to_i, "basePriceMicros" => micros,
-        "unavailableReason" => quote.unavailable_reason, "stockPieces" => quote.stock&.pieces&.to_s("F"),
+        "blocked" => product.blocked, "catalogExcluded" => product.generic_catalog_item?, "quantityStep" => quote.terms["quantityStep"], "basePriceMicros" => micros,
+        "unavailableReason" => quote.unavailable_reason, "canonicalVersion" => canonical["version"],
+        "orderableUms" => canonical["orderableUms"], "preferredUm" => canonical["preferredUm"], "unitKind" => canonical["unitKind"], "unitQuotes" => offers,
         "stocks" => { "cf" => quote.stock&.packs&.to_s("F"), "pz" => quote.stock&.pieces&.to_s("F"), "pe" => quote.stock&.weight&.to_s("F") },
         "piecesPerPack" => product.pieces_per_pack&.to_s("F"), "packsPerCase" => product.packs_per_case&.to_s("F") }
     end

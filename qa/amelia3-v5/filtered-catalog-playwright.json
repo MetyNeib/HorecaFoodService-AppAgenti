@@ -1,0 +1,1539 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.amelia3.config.mjs",
+      "--grep",
+      "agent portfolio|Admin sees|real offline cold|business blocks|a new offline|multiple units"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.amelia3.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "phone-chromium",
+        "name": "phone-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "tablet-chromium",
+        "name": "tablet-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "landscape-chromium",
+        "name": "landscape-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "desktop-chromium",
+        "name": "desktop-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "apple-webkit",
+        "name": "apple-webkit",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/amelia3",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 90000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "phone-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "phone-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "tablet-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "tablet-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "landscape-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1024,
+            "height": 768
+          },
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "landscape-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "desktop-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 1440,
+            "height": 900
+          }
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "desktop-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "apple-webkit",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 90000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "apple-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/amelia3-v5/filtered-catalog-playwright.json"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "integration.spec.mjs",
+      "file": "integration.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 27237,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:25:00.031Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-93aa15bee580b1dade35",
+          "file": "integration.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 34192,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:25:27.469Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-85e8fbd3aae59554f270",
+          "file": "integration.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 26623,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:26:01.697Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-69f6c3c6a60f7ba54b1a",
+          "file": "integration.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "business blocks also apply to direct API calls and unverified units",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17855,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:26:28.363Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-4618b45ba2ab7ae64dcd",
+          "file": "integration.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 18147,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                      "column": 71,
+                      "line": 218
+                    },
+                    "snippet": "  216 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  217 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n> 218 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n      |                                                                       ^\n  219 |   expect((await state(page)).orders.find(row => row.id === id)?.netCents).toBe(119);\n  220 | });\n  221 |"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                        "column": 71,
+                        "line": 218
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  216 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  217 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n> 218 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n      |                                                                       ^\n  219 |   expect((await state(page)).orders.find(row => row.id === id)?.netCents).toBe(119);\n  220 | });\n  221 |\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:26:46.235Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-phone-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-phone-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-phone-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                    "column": 71,
+                    "line": 218
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-7238b22fddd3c885e44f",
+          "file": "integration.spec.mjs",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19143,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:27:17.084Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-077543b5d3918645c20e",
+          "file": "integration.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15449,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:27:36.336Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-2ac05705554b6623d30f",
+          "file": "integration.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15323,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:27:51.798Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-8a3dcad46b241b856df3",
+          "file": "integration.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "business blocks also apply to direct API calls and unverified units",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15770,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:28:07.141Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-fdb4d41bf32cd5234f86",
+          "file": "integration.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 17562,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                      "column": 71,
+                      "line": 218
+                    },
+                    "snippet": "  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                        "column": 71,
+                        "line": 218
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:28:22.925Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-tablet-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-tablet-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-tablet-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                    "column": 71,
+                    "line": 218
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-5271cbe1234d7a2f8373",
+          "file": "integration.spec.mjs",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15152,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:29:02.271Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-a1645918eae5d382615d",
+          "file": "integration.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16226,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:29:17.547Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-ffbddcd4faa58bf6cbdf",
+          "file": "integration.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:29:33.788Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-ba2af9ccf4e7e751b517",
+          "file": "integration.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "business blocks also apply to direct API calls and unverified units",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17668,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:29:49.866Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-26942366ad1e2fdd9fb3",
+          "file": "integration.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 4,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 11116,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                      "column": 71,
+                      "line": 218
+                    },
+                    "snippet": "  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                        "column": 71,
+                        "line": 218
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:30:07.548Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-landscape-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-landscape-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-landscape-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                    "column": 71,
+                    "line": 218
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-063da02ba25bedefc36a",
+          "file": "integration.spec.mjs",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17543,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:30:38.143Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-ec0a70d96f3f12a17d7a",
+          "file": "integration.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 15730,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:30:55.920Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-1288ab6770a491571ca9",
+          "file": "integration.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11397,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:31:11.681Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-a03848008746e839b130",
+          "file": "integration.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "business blocks also apply to direct API calls and unverified units",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 10417,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:31:23.117Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-3ce0cbb353f8139b4e8e",
+          "file": "integration.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 6,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 13891,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                      "column": 71,
+                      "line": 218
+                    },
+                    "snippet": "  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                        "column": 71,
+                        "line": 218
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:31:33.547Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-desktop-chromium\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-desktop-chromium\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-desktop-chromium\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                    "column": 71,
+                    "line": 218
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-32ce3376a5b791e1ad31",
+          "file": "integration.spec.mjs",
+          "line": 198,
+          "column": 1
+        },
+        {
+          "title": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 17755,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:32:01.993Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-3a3effdcf6a160d724cb",
+          "file": "integration.spec.mjs",
+          "line": 42,
+          "column": 1
+        },
+        {
+          "title": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18997,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:32:19.920Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-c1a521dd19cd0deb7cc9",
+          "file": "integration.spec.mjs",
+          "line": 55,
+          "column": 1
+        },
+        {
+          "title": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19210,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:32:38.933Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-7dd526762b8a9161c70f",
+          "file": "integration.spec.mjs",
+          "line": 74,
+          "column": 1
+        },
+        {
+          "title": "business blocks also apply to direct API calls and unverified units",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12212,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:32:58.157Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-dce15c90fe0b90872a08",
+          "file": "integration.spec.mjs",
+          "line": 143,
+          "column": 1
+        },
+        {
+          "title": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 8,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 12272,
+                  "error": {
+                    "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m",
+                    "stack": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71",
+                    "location": {
+                      "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                      "column": 71,
+                      "line": 218
+                    },
+                    "snippet": "  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);"
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                        "column": 71,
+                        "line": 218
+                      },
+                      "message": "Error: \u001b[2mexpect(\u001b[22m\u001b[31mreceived\u001b[39m\u001b[2m).\u001b[22mtoBe\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m) // Object.is equality\u001b[22m\n\nExpected: \u001b[32mtrue\u001b[39m\nReceived: \u001b[31mfalse\u001b[39m\n\n  216 |   await context.setOffline(true);\n  217 |   await navigate(page, `/amelia3/catalog?order_id=${id}&q=K001`);\n> 218 |   await page.reload();\n      |                       ^\n  219 |   await expect(page.locator('[data-product-code=\"K001\"]')).toHaveCount(0);\n  220 |   await expect(page.locator('main')).toContainText('Nessun risultato nei prodotti preparati.');\n  221 |   expect((await state(page)).products.some(row => row.id === 'K001')).toBe(true);\n    at C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs:218:71"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:33:10.379Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-apple-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-apple-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-filtered-catalog\\integration-a-new-offline--fcf81-main-prepared-after-refresh-apple-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "C:\\HorecaFoodService-AppAgenti\\tests\\amelia3\\integration.spec.mjs",
+                    "column": 71,
+                    "line": 218
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "d2e5af720b2b561d2ec7-a1cec6fd8a61c803f289",
+          "file": "integration.spec.mjs",
+          "line": 198,
+          "column": 1
+        }
+      ]
+    },
+    {
+      "title": "v5.spec.mjs",
+      "file": "v5.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "phone-chromium",
+              "projectName": "phone-chromium",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 11063,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:27:05.198Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-b741b921f93e6859b6bb",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "tablet-chromium",
+              "projectName": "tablet-chromium",
+              "results": [
+                {
+                  "workerIndex": 3,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 18760,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:28:42.620Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-daea180908ff716b5980",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "landscape-chromium",
+              "projectName": "landscape-chromium",
+              "results": [
+                {
+                  "workerIndex": 5,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 16971,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:30:19.589Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-810511de2891ac974645",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "desktop-chromium",
+              "projectName": "desktop-chromium",
+              "results": [
+                {
+                  "workerIndex": 7,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 12809,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:31:48.472Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-ad6c89c88f1ff71e61f7",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        },
+        {
+          "title": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 90000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "apple-webkit",
+              "projectName": "apple-webkit",
+              "results": [
+                {
+                  "workerIndex": 9,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 13290,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T21:33:23.361Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "8ccd93c0f6628f2154b5-8713cd6254157cfbc2b0",
+          "file": "v5.spec.mjs",
+          "line": 63,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T21:24:59.204Z",
+    "duration": 517582.95399999997,
+    "expected": 25,
+    "skipped": 0,
+    "unexpected": 5,
+    "flaky": 0
+  }
+}

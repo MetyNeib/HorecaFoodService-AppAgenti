@@ -1,0 +1,12 @@
+{
+  "files": {
+    "app/models/amelia3/product.rb": "873dfad5095ff1bb67b8eece7357ca4cbed9426795a02b3440d7659f860cd577",
+    "app/services/amelia3/catalog.rb": "a15e065260204496c52dce8e49a526a55b9c6cbd7b64d5ae1fbf9b58cfffc70d",
+    "app/services/amelia3/snapshot.rb": "a52cab3fe5ed7a3dd4f2ee18b252a07b1d11e8318dd8588c70decf6eb6d63e95",
+    "app/javascript/amelia3/domain.js": "6185dc52f2e6277113654ae48a73af91798d7b7e65979ce42c1a2b649de5e63c",
+    "app/javascript/amelia3/offline.js": "d1222b8198b9b0ce0527fac3cd9c1e532d5739c94a6a8b5e26c2e319b196a3c2",
+    "app/javascript/controllers/amelia3.js": "a0a12f7d21bc2a0bba6e4c705574b0f2f2e96b766b8041fe9a262aed6426a8e9",
+    "app/views/amelia3/components/_product_card.html.erb": "7e4ebe59a8d92fdcaa45f854fee8e799cf91c9c48242a4ce35c6d0f9949e2eda",
+    "app/assets/stylesheets/amelia3.css": "739150f8966aa6ba20fc4ff1c649e4d5a25734e79a403ab7cbc7f0e235d384a7"
+  }
+}

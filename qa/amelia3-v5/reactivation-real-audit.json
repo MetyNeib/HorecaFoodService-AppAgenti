@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "as_of": "2026-10-13",
+  "rules_version": "HFS-AMELIA3-SALES-ALERTS-REACTIVATION-90D-v2",
+  "previous_counts": {
+    "CUSTOMER_STOPPED": 373,
+    "USUAL_PRODUCT_MISSING": 1896,
+    "PURCHASE_FREQUENCY_DROP": 50
+  },
+  "current_counts": {
+    "CUSTOMER_STOPPED": 168,
+    "USUAL_PRODUCT_MISSING": 1885,
+    "PURCHASE_FREQUENCY_DROP": 57,
+    "CUSTOMER_REACTIVATION": 2842
+  },
+  "source_rows_scanned": 0,
+  "profiles_evaluated": 5029,
+  "classification_matches_all_historical_profiles": true,
+  "ordinary_alerts_for_customers_over_90_days": 0,
+  "orderable_products": 1399,
+  "single_unit_products": 1375,
+  "multiple_unit_products": 24,
+  "available_unit_sets": {
+    "PZ": 294,
+    "COLL": 601,
+    "CONF": 464,
+    "CONF/PZ": 21,
+    "KG": 16,
+    "COLL/PZ": 3
+  }
+}

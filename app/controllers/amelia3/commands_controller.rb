@@ -5,7 +5,7 @@ class Amelia3::CommandsController < Amelia3::BaseController
   end
 
   def snapshot
-    render json: Amelia3::Snapshot.for(current_user, customer_codes: Array(params[:customers]).take(50), product_codes: Array(params[:products]).take(50), order_id: params[:order_id]).merge(csrfToken: form_authenticity_token)
+    render json: Amelia3::Snapshot.for(current_user, customer_codes: Array(params[:customers]).take(50), product_codes: Array(params[:products]).take(50), order_id: params[:order_id], include_usual: params[:context] != "alerts").merge(csrfToken: form_authenticity_token)
   end
 
   def create

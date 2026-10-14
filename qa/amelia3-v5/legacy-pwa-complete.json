@@ -1,0 +1,361 @@
+{
+  "config": {
+    "argv": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\HorecaFoodService-AppAgenti\\node_modules\\@playwright\\test\\cli.js",
+      "test",
+      "-c",
+      "playwright.rails-pwa.config.mjs",
+      "-g",
+      "archivio corrotto|aggiornamento shell"
+    ],
+    "configFile": "C:\\HorecaFoodService-AppAgenti\\playwright.rails-pwa.config.mjs",
+    "rootDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+    "failOnFlakyTests": false,
+    "forbidOnly": false,
+    "fullyParallel": false,
+    "globalSetup": null,
+    "globalTeardown": null,
+    "globalTimeout": 0,
+    "grep": {},
+    "grepInvert": null,
+    "maxFailures": 0,
+    "metadata": {
+      "actualWorkers": 1
+    },
+    "preserveOutput": "always",
+    "projects": [
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-legacy-pwa-complete",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "android-chromium",
+        "name": "android-chromium",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      },
+      {
+        "outputDir": "C:/HorecaFoodService-AppAgenti/test-results/amelia3-v5-legacy-pwa-complete",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "id": "ipad-webkit",
+        "name": "ipad-webkit",
+        "testDir": "C:/HorecaFoodService-AppAgenti/tests/rails-pwa",
+        "testIgnore": [],
+        "testMatch": [
+          "**/*.spec.mjs"
+        ],
+        "timeout": 60000
+      }
+    ],
+    "filteredProjects": [
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-legacy-pwa-complete",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "android-chromium",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "chromium",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "android-chromium"
+      },
+      {
+        "grep": {},
+        "grepInvert": null,
+        "outputDir": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-legacy-pwa-complete",
+        "repeatEach": 1,
+        "retries": 0,
+        "metadata": {
+          "actualWorkers": 1
+        },
+        "name": "ipad-webkit",
+        "testDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "snapshotDir": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa",
+        "testIgnore": [],
+        "testMatch": "**/*.spec.mjs",
+        "timeout": 60000,
+        "use": {
+          "baseURL": "http://127.0.0.1:3002",
+          "locale": "it-IT",
+          "trace": "retain-on-failure",
+          "screenshot": "only-on-failure",
+          "browserName": "webkit",
+          "viewport": {
+            "width": 768,
+            "height": 1024
+          },
+          "isMobile": true,
+          "hasTouch": true
+        },
+        "dependencies": [],
+        "ignoreSnapshots": false,
+        "__projectId": "ipad-webkit"
+      }
+    ],
+    "quiet": false,
+    "reporter": [
+      [
+        "list",
+        null
+      ],
+      [
+        "json",
+        {
+          "outputFile": "qa/amelia3-v5/legacy-pwa-complete.json"
+        }
+      ],
+      [
+        "html",
+        {
+          "outputFolder": "tmp/amelia3-v5-legacy-pwa-complete",
+          "open": "never"
+        }
+      ]
+    ],
+    "reportSlowTests": {
+      "max": 5,
+      "threshold": 300000
+    },
+    "shard": null,
+    "tags": [],
+    "updateSnapshots": "default",
+    "updateSourceMethod": "patch",
+    "version": "1.64.0",
+    "workers": 1,
+    "webServer": null
+  },
+  "suites": [
+    {
+      "title": "offline.spec.mjs",
+      "file": "offline.spec.mjs",
+      "column": 0,
+      "line": 0,
+      "specs": [
+        {
+          "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 19311,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:42:38.116Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-7c7dcc88af8aa016b826",
+          "file": "offline.spec.mjs",
+          "line": 227,
+          "column": 1
+        },
+        {
+          "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "android-chromium",
+              "projectName": "android-chromium",
+              "results": [
+                {
+                  "workerIndex": 0,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 14898,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:42:58.471Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-d232b628b25e37c4dba9",
+          "file": "offline.spec.mjs",
+          "line": 278,
+          "column": 1
+        },
+        {
+          "title": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+          "ok": false,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 1,
+                  "parallelIndex": 0,
+                  "status": "failed",
+                  "duration": 22500,
+                  "error": {
+                    "message": "Fetch API cannot load http: /127.0.0.1:3002/ due to access control checks.",
+                    "stack": "Fetch API cannot load http: /127.0.0.1:3002/ due to access control checks.\n    at request (http://127.0.0.1:3002/assets/hfs/commands-e9440aea.js:84:40)\n    at navigate (http://127.0.0.1:3002/assets/controllers/workspace-499c48e5.js:149:51)",
+                    "location": {
+                      "file": "http://127.0.0.1:3002/assets/hfs/commands-e9440aea.js",
+                      "column": 40,
+                      "line": 84
+                    }
+                  },
+                  "errors": [
+                    {
+                      "location": {
+                        "file": "http://127.0.0.1:3002/assets/hfs/commands-e9440aea.js",
+                        "column": 40,
+                        "line": 84
+                      },
+                      "message": "Fetch API cannot load http: /127.0.0.1:3002/ due to access control checks.\n    at request (http://127.0.0.1:3002/assets/hfs/commands-e9440aea.js:84:40)\n    at navigate (http://127.0.0.1:3002/assets/controllers/workspace-499c48e5.js:149:51)"
+                    },
+                    {
+                      "location": {
+                        "file": "C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs",
+                        "column": 14,
+                        "line": 251
+                      },
+                      "message": "Error: page.reload: Test ended.\nCall log:\n\u001b[2m  - waiting for navigation until \"load\"\u001b[22m\n\n\n  249 |   expect(await page.evaluate(() => window.HFS.client.record.recovery[0].raw)).toEqual(original);\n  250 |   expect(await outbox(page)).toEqual([]);\n> 251 |   await page.reload(); await page.waitForFunction(() => !!window.HFS?.client?.record);\n      |              ^\n  252 |   expect(await page.evaluate(() => window.HFS.client.record.recovery[0].raw)).toEqual(original);\n  253 | });\n  254 |\n    at C:\\HorecaFoodService-AppAgenti\\tests\\rails-pwa\\offline.spec.mjs:251:14"
+                    }
+                  ],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:43:14.033Z",
+                  "annotations": [],
+                  "attachments": [
+                    {
+                      "name": "screenshot",
+                      "contentType": "image/png",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-legacy-pwa-complete\\offline-archivio-corrotto--126f5-stino-esplicito-lo-archivia-ipad-webkit\\test-failed-1.png"
+                    },
+                    {
+                      "name": "error-context",
+                      "contentType": "text/markdown",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-legacy-pwa-complete\\offline-archivio-corrotto--126f5-stino-esplicito-lo-archivia-ipad-webkit\\error-context.md"
+                    },
+                    {
+                      "name": "trace",
+                      "contentType": "application/zip",
+                      "path": "C:\\HorecaFoodService-AppAgenti\\test-results\\amelia3-v5-legacy-pwa-complete\\offline-archivio-corrotto--126f5-stino-esplicito-lo-archivia-ipad-webkit\\trace.zip"
+                    }
+                  ],
+                  "errorLocation": {
+                    "file": "http://127.0.0.1:3002/assets/hfs/commands-e9440aea.js",
+                    "column": 40,
+                    "line": 84
+                  }
+                }
+              ],
+              "status": "unexpected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-bcf83922f0894df8d0d8",
+          "file": "offline.spec.mjs",
+          "line": 227,
+          "column": 1
+        },
+        {
+          "title": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+          "ok": true,
+          "tags": [],
+          "tests": [
+            {
+              "timeout": 60000,
+              "annotations": [],
+              "expectedStatus": "passed",
+              "projectId": "ipad-webkit",
+              "projectName": "ipad-webkit",
+              "results": [
+                {
+                  "workerIndex": 2,
+                  "parallelIndex": 0,
+                  "status": "passed",
+                  "duration": 21343,
+                  "errors": [],
+                  "stdout": [],
+                  "stderr": [],
+                  "retry": 0,
+                  "startTime": "2026-10-12T20:43:37.587Z",
+                  "annotations": [],
+                  "attachments": []
+                }
+              ],
+              "status": "expected"
+            }
+          ],
+          "id": "110e1c665b1dac93ae82-c409aa6b37b6ea74df57",
+          "file": "offline.spec.mjs",
+          "line": 278,
+          "column": 1
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "stats": {
+    "startTime": "2026-10-12T20:42:36.809Z",
+    "duration": 82291.107,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 1,
+    "flaky": 0
+  }
+}

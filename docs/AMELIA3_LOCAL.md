@@ -1,6 +1,9 @@
 # Amelia3 — uso e installazione locale
 
-Il codice è sul branch `feature/amelia3-ftp-import` del repository privato.
+La base V5 è identificata dal tag `amelia3-demo-baseline-20261014`;
+il prossimo sviluppo è sul branch `feature/amelia3-demo-polish` del repository
+pubblico del codice. Per il trasferimento completo sul Mac seguire
+[MAC_HANDOFF](MAC_HANDOFF.md); questa pagina descrive anche l'import da zero.
 CSV, `.env`, database, password e screenshot commerciali non vengono caricati
 su GitHub e non sono inclusi nell'immagine Docker.
 
@@ -41,11 +44,14 @@ Condizioni sovrapposte, precisione
 non rappresentabile e combinazioni ambigue prezzo+sconto bloccano la riga.
 Il totale viene arrotondato HALF_UP una volta per riga, ai centesimi.
 
-Sono ordinabili soltanto le UM base/ordine entrambe `P`, usando la giacenza
-`pz` intera e positiva. Confezioni e colli indivisibili impongono multipli
-attestati da `pezzi_conf` e `conf_collo`. Le combinazioni K/P/L/C non verificate
-restano consultabili e non confermabili. Non si sommano `cf`, `pz`, `pe`,
-non si deduce un deposito e non si inventano costi o margini.
+La v5 espone le UM canoniche PZ/CONF/KG/COLL secondo la mappa certificata.
+Le quote richiedono prove indipendenti di prezzo, stock e fattori: valgono le
+[evidenze operative](amelia3/V5_UNIT_EVIDENCE.md), non la sola uguaglianza delle
+UM sorgenti. KG consente decimali senza un passo commerciale unico. Una UM
+non quotabile è esclusa dalla selezione; la lista mostra solo prodotti con
+almeno una UM verificata. Con una UM si mostra testo, con più UM un selettore.
+Non si sommano CF/PZ/PE, non si converte economicamente il peso
+nominale senza prova di peso fisso e non si inventano costi o margini.
 
 Clienti e articoli bloccati non sono ordinabili neppure via API o offline.
 La destinazione deve avere `flag_punto_cons=S`, appartenere alla stessa
@@ -78,12 +84,14 @@ archiviato prima di scegliere la versione del server. Logout con coda pendente
 è bloccato. Con memoria browser negata i moduli HTML continuano online e non
 promettono un salvataggio offline.
 
-Storico, credito, partite e analisi vengono consultati online sul server:
-50 righe per pagina, filtri e indici PostgreSQL. STORICO non viene copiato
+Storico, credito, partite e alert vengono consultati online sul server.
+Lo storico raggruppa per cliente/riferimento: 20 ordini per pagina, filtri e
+riepiloghi PostgreSQL derivati. Il dettaglio conserva ogni riga. STORICO non viene copiato
 integralmente nel browser né trasformato in nuovi ordini modificabili.
 Quantità `cf/pz/pe` e `qta_sped` restano separate; frequenza e articoli abituali
 descrivono le righe presenti, incluse quelle future esplicitamente segnalate.
-L'ultima consegna esclude date future e quantità spedite nulle. Non si
+Gli alert applicano i 12 mesi di calendario ed escludono date future, giornata
+corrente e quantità spedite non positive. Non si
 ricostruiscono ricavi/margini; INSOLUTO non crea fatture o incassi.
 
 ## FTP e scheduler

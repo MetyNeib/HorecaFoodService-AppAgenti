@@ -1,0 +1,42 @@
+{
+  "status": "PASS",
+  "fingerprint": "9eca9f4b050d59a05a0dfc3f1f9e26749d52b1e6989b3605b65c571d590e188f",
+  "records": 9847,
+  "quotes": {
+    "BLOCKED_BY_SOURCE": 4572,
+    "QUOTE_NEEDS_EVIDENCE": 5606,
+    "QUOTE_VERIFIED_DIRECT": 1183,
+    "QUOTE_VERIFIED_CONVERTED": 242
+  },
+  "reasons": {
+    "Articolo bloccato": 4572,
+    "Giacenza autorevole non disponibile": 3723,
+    "Fattore di conversione prezzo, giacenza o divisibilità non attestato": 1871,
+    "Prezzo 000 o personalizzazione non validi o non attestati": 3,
+    "Giacenze confrontabili discordanti o mancanti": 5,
+    "Giacenza insufficiente per quantità minima": 4
+  },
+  "independently_verified_quotes": 1425,
+  "existing_orders_preserved": true,
+  "cohorts": {
+    "all": {
+      "products": 9847,
+      "atLeastOneVerifiedOffer": 1400
+    },
+    "agent34_historical": {
+      "products": 447,
+      "atLeastOneVerifiedOffer": 175
+    },
+    "agent34_recent12m": {
+      "products": 65,
+      "atLeastOneVerifiedOffer": 29
+    }
+  },
+  "agent34_list_codes": {
+    "not_supplied": 16
+  },
+  "agent34_contactable": 4,
+  "agent34_contact_candidates": 8,
+  "evidence_source": "user supplied source review; no independent access to referenced source repository",
+  "nominal_weight_conversions_enabled": false
+}

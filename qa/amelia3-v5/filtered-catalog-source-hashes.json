@@ -1,0 +1,13 @@
+{
+  "files": {
+    "app/services/amelia3/catalog.rb": "4fb31ab9ba405583fbbc5f21e9951bbc5bb68d1ea6ed456acc7e72cb71a7e61d",
+    "app/controllers/amelia3/pages_controller.rb": "902206e24b6567c9c4439460a96845aa600f931a25a7d5271ebf09fe5982b2f0",
+    "app/javascript/amelia3/domain.js": "ee66a270fa65b531e972b6663c580b2bd58072406ce6ee7e6add228de81d5b32",
+    "app/javascript/amelia3/offline.js": "64ef9939abdda2178ed1631387acb437f26b3cee8faa222832a00c7f3acf1d4e",
+    "app/views/amelia3/components/_product_card.html.erb": "2c11d1d271489ff4b6e46cecc7418fc1338e6d85ef1785c49f507fea002d86ab",
+    "app/views/amelia3/pages/catalog.html.erb": "229a9714cd8f57b02920b3ebd6937d21f1de9392bafbec99111c3137bb04a339",
+    "app/views/amelia3/pages/product.html.erb": "318be3071d86418852988d73f2c6b0c95ef5ee9aeeb99ca9dc96c9925a12a244",
+    "app/assets/stylesheets/amelia3.css": "3d3aa04356b524770252079519444774f62fdebaa239086ec22e74f754deddb0"
+  },
+  "scope": "Filtered demo catalogue follow-up; original commercial data preserved"
+}

@@ -1,4 +1,4 @@
-import { priceFor, lineCents } from 'amelia3/domain';
+import { priceFor, lineCents, orderableUnits } from 'amelia3/domain';
 import { money } from 'hfs/domain';
 
 function node(tag, text = '', classes = '') {
@@ -18,15 +18,15 @@ function form(type, payload, target, ...children) {
   const element = box('form', 'amelia_command_form_js', children);
   element.dataset.command = type; element.dataset.payload = JSON.stringify(payload); element.dataset.returnTo = target; return element;
 }
-function quantity(value, step = 1) {
-  const label = field('Quantità (P)', 'quantity', value, 'number'), input = label.querySelector('input');
-  input.min = step; input.step = step; input.max = 100000; input.required = true;
+function quantity(value, step, unit) {
+  const label = field(`Quantità (${unit})`, 'quantity', value, 'number'), input = label.querySelector('input');
+  input.min = step === 'any' ? '0' : step || ''; input.step = step || 'any'; input.max = 100000; input.required = true; input.disabled = !step;
   input.className = 'quantity_input_js amelia_quantity_js'; input.setAttribute('aria-label', 'Quantità');
-  const minus = button('−', 'quantity_step_js'), plus = button('+', 'quantity_step_js');
+  const minus = button('−', 'amelia_step_js', !step), plus = button('+', 'amelia_step_js', !step);
   minus.type = plus.type = 'button'; minus.dataset.direction = '-1'; plus.dataset.direction = '1';
   minus.setAttribute('aria-label', 'Riduci quantità'); plus.setAttribute('aria-label', 'Aumenta quantità');
   const controls = box('span', 'stepper-input', minus, input, plus); label.append(controls);
-  return box('div', 'quantity quantity_js', label, box('span', 'field', node('span', 'UM'), node('b', 'P')));
+  return box('div', 'quantity quantity_js', label, box('span', 'field', node('span', 'UM'), node('b', unit)));
 }
 function search(path, value, extras = {}) {
   const input = node('input'); input.type = 'search'; input.name = 'q'; input.value = value || ''; input.placeholder = 'Nome o codice';
@@ -36,10 +36,6 @@ function search(path, value, extras = {}) {
   return element;
 }
 function region(label, ...children) { const element = box('div', 'scroll-area', children); element.dataset.kind = 'list'; element.setAttribute('aria-label', label); return element; }
-function nav(role) {
-  const element = box('nav', 'amelia-nav', ...[['Home', '/amelia3'], ['Clienti', '/amelia3/customers'], ['Catalogo', '/amelia3/catalog'], ['Ordini locali', '/amelia3/orders'], ['Storico', '/amelia3/history'], ['Analisi acquisti', '/amelia3/insights']].map(([label, path]) => link(label, path, '')));
-  if (role === 'admin') element.append(link('Sincronizzazione dati', '/amelia3/sync', '')); return element;
-}
 function title(name, subtitle = '') { return box('div', 'page-title', node('h1', name), node('p', subtitle)); }
 const normalized = value => String(value || '').normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
 const matches = (value, query) => normalized(value).includes(normalized(query));
@@ -49,7 +45,7 @@ function customers(data, params) {
   const rows = data.customers.filter(customer => matches(`${customer.name} ${customer.id} ${customer.city}`, query));
   return [title(picker ? 'Seleziona il cliente' : 'Clienti Amelia3', `${data.customers.length} preparati su ${data.portfolioCount} autorizzati`),
     search('/amelia3/customers', query, { pick: picker ? '1' : '' }),
-    region('Clienti', rows.map(customer => box('article', 'card list-row', box('div', 'details', node('h2', customer.name), node('p', `${customer.city} · Cod. ${customer.id}`), node('span', customer.blocked ? 'Bloccato · non ordinabile' : 'Non bloccato', 'badge')),
+    region('Clienti', rows.map(customer => box('article', 'card list-row', box('div', 'details', node('h2', customer.name), node('p', `${customer.city} · Cod. ${customer.id}`), node('span', customer.blocked ? 'Bloccato · non ordinabile' : 'Non bloccato', 'badge'), ...(customer.reactivation ? [node('span', 'Da riattivare', 'badge warning')] : [])),
       box('div', 'actions', link('Scheda cliente', `/amelia3/customers/${encodeURIComponent(customer.id)}`), ...(picker ? [form('CREATE_DRAFT', { id: crypto.randomUUID(), customerId: customer.id }, '/amelia3/catalog?order_id=:id', button('Seleziona →', 'primary', customer.blocked))] : [])))) )];
 }
 function orderRows(orders) {
@@ -61,8 +57,8 @@ function orderRows(orders) {
 function cart(data, order, target) {
   const lines = order.lines.map(line => {
     const element = box('article', 'card cart-line', node('h3', line.name), node('small', `Cod. ${line.productId} · UM ${line.unit}`),
-      form('UPDATE_LINE', { orderId: order.id, lineId: line.id }, target, quantity(line.quantity, data.products.find(product => product.id === line.productId)?.quantityStep || 1), button('Salva quantità')),
-      node('p', `${line.quantity} P × ${line.unitPrice.replace('.', ',')} € = ${money(line.lineNetCents)}`),
+      form('UPDATE_LINE', { orderId: order.id, lineId: line.id }, target, quantity(line.quantity, data.products.find(product => product.id === line.productId)?.unitQuotes?.[line.unit]?.quantityStep, line.unit), button('Salva quantità')),
+      node('p', `${line.quantity} ${line.unit} × ${line.unitPrice.replace('.', ',')} € = ${money(line.lineNetCents)}`),
       form('REMOVE_LINE', { orderId: order.id, lineId: line.id }, target, button('Rimuovi', 'quiet danger')));
     element.dataset.lineId = line.id; return element;
   });
@@ -72,18 +68,31 @@ function cart(data, order, target) {
 function catalog(data, params) {
   const query = params.get('q'), order = data.orders.find(row => row.id === params.get('order_id'));
   const customer = data.customers.find(row => row.id === order?.customerId), target = '/amelia3/catalog?' + params;
-  const rows = data.products.filter(product => matches(`${product.id} ${product.name}`, query)).map(product => {
-    let reason = product.unavailableReason, price;
-    try { price = priceFor(data, customer?.id, product); } catch (error) { reason = error.message; }
+  const eligible = data.products.map(product => ({ product, units: orderableUnits(data, customer?.id, product) })).filter(row => row.units.length);
+  const rows = eligible.filter(({ product }) => matches(`${product.id} ${product.name}`, query)).map(({ product, units }) => {
     const article = box('article', 'card product-card', box('div', 'product-heading', node('h2', product.name), link('Scheda prodotto', `/amelia3/catalog/${encodeURIComponent(product.id)}`, '')),
-      node('p', `Cod. ${product.id} · UM ${product.unit} · UM ordine ${product.orderUnit}`, 'meta'),
-      node('p', reason || `Disponibili ${product.stockPieces} P`, `badge ${reason ? 'warning' : 'success'}`));
-    if (price) article.append(node('b', `Prezzo per ${product.quantityStep} P: ${money(lineCents(product.quantityStep, price.amount))}`));
-    if (order?.status === 'DRAFT') article.append(form('ADD_LINE', { orderId: order.id, productId: product.id, lineId: crypto.randomUUID() }, target,
-      box('div', 'product-controls', quantity(product.quantityStep || 1, product.quantityStep || 1), button('+ Aggiungi', 'primary', !!reason || customer?.blocked))));
+      node('p', `Cod. ${product.id} · UM preferita ${product.preferredUm || 'da verificare'}`, 'meta'));
+    if (units.length > 1) {
+      const selector = node('select'); selector.className = 'amelia_unit_select_js'; selector.setAttribute('aria-label', 'Unità di misura');
+      for (const unit of units) { const option = node('option', unit + (unit === product.preferredUm ? ' · preferita' : '')); option.value = unit; selector.append(option); }
+      article.append(box('label', 'field amelia-unit-picker', node('span', 'Unità di misura'), selector));
+    } else article.append(node('p', `Unità di misura: ${units[0]}`, 'amelia-unit-fixed'));
+    for (const unit of units) {
+      const terms = product.unitQuotes[unit]; let reason = terms.reason, price;
+      try { price = priceFor(data, customer?.id, product, undefined, unit); } catch (error) { reason = error.message; }
+      const option = box('div', 'amelia-unit-option', node('b', unit + (unit === product.preferredUm ? ' · preferita' : '')),
+        node('p', reason || `Disponibili ${terms.maxQuantity} ${unit}`, `badge ${reason ? 'warning' : 'success'}`));
+      option.dataset.unit = unit;
+      option.hidden = unit !== units[0];
+      option.append(node('p', `Ordine in ${unit} · Listino in €/ ${terms.priceUnit} · Giacenza di riferimento in ${terms.stockUnit}`, 'meta'));
+      if (price) option.append(node('b', `Prezzo per ${terms.quantityStep === 'any' ? '1' : terms.quantityStep} ${unit}: ${money(lineCents(terms.quantityStep === 'any' ? '1' : terms.quantityStep, price.amount))}`));
+      if (order?.status === 'DRAFT') option.append(form('ADD_LINE', { orderId: order.id, productId: product.id, lineId: crypto.randomUUID(), unit }, target,
+        box('div', 'product-controls', quantity(terms.quantityStep === 'any' ? '' : terms.quantityStep, terms.quantityStep, unit), button('+ Aggiungi', 'primary', !!reason || customer?.blocked))));
+      article.append(option);
+    }
     article.dataset.productCode = product.id; return article;
   });
-  return [title(order ? 'Cerca e aggiungi prodotti' : 'Catalogo Amelia3', `${data.products.length} prodotti preparati su ${data.catalogCount}`),
+  return [title(order ? 'Cerca e aggiungi prodotti' : 'Catalogo Amelia3', `${eligible.length} prodotti ordinabili tra quelli preparati sul dispositivo. Solo unità con prezzo e disponibilità verificati.`),
     ...(customer ? [box('div', 'customer-strip', node('b', customer.name), link('Scheda cliente', `/amelia3/customers/${encodeURIComponent(customer.id)}`, ''))] : []),
     box('div', order ? 'grid editor workspace-split' : '', box('section', 'pane', search('/amelia3/catalog', query, order ? { order_id: order.id } : {}), region('Lista prodotti', rows.length ? rows : [node('p', 'Nessun risultato nei prodotti preparati.')])), ...(order ? [cart(data, order, target)] : []))];
 }
@@ -96,16 +105,16 @@ function review(data, order) {
   const date = field('Data consegna', 'deliveryDate', order.deliveryDate, 'date'); date.querySelector('input').required = true;
   const deletion = form('DELETE_DRAFT', { orderId: order.id }, '/amelia3/orders', button('Elimina bozza', 'quiet danger')); deletion.querySelector('button').dataset.confirmMessage = 'Eliminare questa bozza?';
   return [title('Riepilogo ordine', order.customerName), form('SAVE_REVIEW', { orderId: order.id }, `/amelia3/orders/${order.id}`,
-    box('div', 'grid two review-layout workspace-split', box('section', 'card pane', node('h2', 'Articoli'), region('Articoli riepilogo', order.lines.map(line => box('article', 'summary-line', node('h3', line.name), node('p', `${line.quantity} P · ${money(line.lineNetCents)}`)))), field('Nota sul documento di consegna', 'note', order.note, 'textarea')),
+    box('div', 'grid two review-layout workspace-split', box('section', 'card pane', node('h2', 'Articoli'), region('Articoli riepilogo', order.lines.map(line => box('article', 'summary-line', node('h3', line.name), node('p', `${line.quantity} ${line.unit} · ${money(line.lineNetCents)}`)))), field('Nota sul documento di consegna', 'note', order.note, 'textarea')),
       box('section', 'card pane', node('h2', 'Consegna e pagamento'), box('label', 'field', node('span', 'Destinazione'), select), date, field('Indicazione pagamento (locale)', 'paymentNote', order.paymentNote))),
     box('div', 'action-bar', node('h2', `Totale netto ${money(order.netCents)}`), box('div', 'actions', link('Modifica articoli', `/amelia3/catalog?order_id=${order.id}`), button('Salva bozza'), confirm))), deletion];
 }
-function customerPage(data, id) {
+function customerPage(data, id, params) {
   const customer = data.customers.find(row => row.id === id);
   if (!customer) return [title('Cliente non preparato'), node('p', 'Collegati al server per consultare gli altri clienti autorizzati.')];
-  return [title(customer.name, `Cod. ${customer.id} · ${customer.city}`), box('nav', 'tabs', ...['Anagrafica', 'Ordini', 'Partite aperte', 'Info commerciali'].map((label, index) => link(label, `/amelia3/customers/${encodeURIComponent(id)}?tab=${['details', 'orders', 'open_items', 'commercial'][index]}`, ''))),
-    box('section', 'card', node('h2', 'Anagrafica preparata'), node('p', customer.address), node('p', customer.taxId), node('p', customer.email), node('p', customer.telephone), node('p', customer.blocked ? 'Cliente bloccato · non ordinabile' : 'Cliente non bloccato')),
-    region('Ordini cliente preparati', orderRows(data.orders.filter(order => order.customerId === id))), node('p', 'Partite, credito, giri e analisi richiedono il collegamento al server.')];
+  const tab = params.get('tab') || 'details';
+  const content = tab === 'details' ? box('section', 'card', node('h2', 'Anagrafica preparata'), node('p', customer.address), node('p', customer.taxId), node('p', customer.email), node('p', customer.telephone), node('p', customer.blocked ? 'Cliente bloccato · non ordinabile' : 'Cliente non bloccato')) : tab === 'orders' ? box('section', '', link('Ordini storici', `/amelia3/history?customer_id=${encodeURIComponent(id)}`), region('Ordini cliente preparati', orderRows(data.orders.filter(order => order.customerId === id)))) : node('p', 'Questa scheda richiede connessione al server.');
+  return [title(customer.name, `Cod. ${customer.id} · ${customer.city}`), ...(customer.reactivation ? [node('p', `Da riattivare · Ultimo acquisto registrato: ${customer.reactivation.lastDelivery}`, 'badge warning')] : []), box('nav', 'tabs', ...['Anagrafica', 'Ordini', 'Partite aperte', 'Info commerciali'].map((label, index) => { const key = ['details', 'orders', 'open_items', 'commercial'][index]; return link(label, `/amelia3/customers/${encodeURIComponent(id)}?tab=${key}`, key === tab ? 'active' : ''); })), content];
 }
 
 export function renderOffline(snapshot) {
@@ -114,17 +123,18 @@ export function renderOffline(snapshot) {
   if (path === '/amelia3' || path === '/amelia3/') children = [title('Home Amelia3', 'Dati preparati sul dispositivo'),
     box('div', 'grid two home-primary', link('Inserisci nuovo ordine →', '/amelia3/customers?pick=1', 'card hero-card'), link('Ordini locali →', '/amelia3/orders', 'card hero-card')),
     box('div', 'grid home-links', link('Clienti', '/amelia3/customers', 'card navigation-card'), link('Catalogo', '/amelia3/catalog', 'card navigation-card'))];
+  else if (path === '/amelia3/whatsapp') children = [title('Ordini WhatsApp'), node('h2', 'Funzionalità non ancora disponibile')];
   else if (path === '/amelia3/customers') children = customers(data, params);
-  else if (path.startsWith('/amelia3/customers/')) children = customerPage(data, decodeURIComponent(path.split('/')[3]));
+  else if (path.startsWith('/amelia3/customers/')) children = customerPage(data, decodeURIComponent(path.split('/')[3]), params);
   else if (path === '/amelia3/catalog') children = catalog(data, params);
   else if (path.startsWith('/amelia3/catalog/')) {
     const product = data.products.find(row => row.id === decodeURIComponent(path.split('/')[3]));
-    children = product ? [title(product.name, `Cod. ${product.id}`), node('p', `UM base ${product.unit} · UM ordine ${product.orderUnit}`), node('p', product.unavailableReason || 'Ordinabilità nell’UM P'), ...Object.entries(product.stocks).map(([unit, value]) => node('p', `Esistenza ${unit}: ${value ?? 'non fornita'}`))] : [title('Prodotto non preparato')];
+    children = product ? [title(product.name, `Cod. ${product.id}`), node('p', `UM ordinabili ${product.orderableUms.join(', ')} · preferita ${product.preferredUm}`), ...product.orderableUms.map(unit => node('p', `${unit}: ${product.unitQuotes[unit].reason || 'Quotazione verificata'}`)), ...Object.entries(product.stocks).map(([unit, value]) => node('p', `Esistenza ${unit}: ${value ?? 'non fornita'}`))] : [title('Prodotto non preparato')];
   } else if (path === '/amelia3/orders') {
-    const orders = data.orders.filter(order => !params.get('status') || order.status === params.get('status'));
-    children = [title('Ordini locali Amelia3'), region('Ordini locali', orderRows(orders))];
+    const status = params.get('status') || 'DRAFT', orders = data.orders.filter(order => order.status === status);
+    children = [title('I miei ordini'), box('nav', 'tabs', ...[['DRAFT', 'Bozze'], ['CONFIRMED_LOCAL', 'Confermati'], ['HISTORY', 'Storico']].map(([key, label]) => link(label, `/amelia3/orders?status=${key}`, status === key ? 'active' : ''))), status === 'HISTORY' ? node('p', 'Lo storico richiede connessione al server.') : region('Ordini locali', orderRows(orders))];
   } else if (path.startsWith('/amelia3/orders/')) {
     const order = data.orders.find(row => row.id === path.split('/')[3]); children = order ? review(data, order) : [title('Ordine non preparato')];
   } else children = [title('Collegamento richiesto'), node('p', 'Storico, analisi e sincronizzazione FTP vengono interrogati sul server; clienti, catalogo e ordini preparati restano disponibili offline.')];
-  return box('div', 'view', nav(snapshot.user.role), children);
+  return box('div', 'view', children);
 }

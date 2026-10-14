@@ -1,0 +1,41 @@
+﻿{
+    "observedAt":  "2026-10-12T19:02:53.8292923Z",
+    "private":  true,
+    "localHead":  "223a2312172a6a2d83cb19012abf908adef2357b",
+    "workingTree":  {
+
+                    },
+    "openPullRequests":  [
+
+                         ],
+    "recentRuns":  [
+                       {
+                           "id":  38289890582,
+                           "headSha":  "c180cdf6b99f8411896a00ecc56a0f1ddfa37cb8",
+                           "status":  "completed",
+                           "conclusion":  "failure",
+                           "url":  "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38289890582"
+                       },
+                       {
+                           "id":  38287502746,
+                           "headSha":  "86e6ed5e0fb26959ae13fb1162803f726093cb1d",
+                           "status":  "completed",
+                           "conclusion":  "failure",
+                           "url":  "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38287502746"
+                       },
+                       {
+                           "id":  38282968207,
+                           "headSha":  "e0c6570859ce01850f2db4a401754f5b3271f6c9",
+                           "status":  "completed",
+                           "conclusion":  "failure",
+                           "url":  "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38282968207"
+                       },
+                       {
+                           "id":  38266180588,
+                           "headSha":  "28ab116ae92f7c206c8c91da4c00c84377905216",
+                           "status":  "completed",
+                           "conclusion":  "success",
+                           "url":  "https://github.com/MetyNeib/HorecaFoodService-AppAgenti/actions/runs/38266180588"
+                       }
+                   ]
+}

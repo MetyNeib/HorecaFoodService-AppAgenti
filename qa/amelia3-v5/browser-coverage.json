@@ -1,0 +1,634 @@
+{
+  "observed_at": "2026-10-12T20:51:27.094551+00:00",
+  "scope": "latest result per scenario across the initial matrix and targeted reruns; not a single fresh full run",
+  "amelia3": {
+    "scenarios": 60,
+    "passed": 60,
+    "failed": 0,
+    "latest_results": [
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "concurrent account edits preserve the pending copy and require explicit conflict recovery",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "expired sessions and expired offline permissions preserve the outbox and hide business pages",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "business blocks also apply to direct API calls and unverified units",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "role switching isolates cache namespaces and rejects a command from the old Admin tab",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "storage unavailable keeps online HTML order forms operational without claiming an offline save",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "concurrent account edits preserve the pending copy and require explicit conflict recovery",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "expired sessions and expired offline permissions preserve the outbox and hide business pages",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "business blocks also apply to direct API calls and unverified units",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "role switching isolates cache namespaces and rejects a command from the old Admin tab",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "storage unavailable keeps online HTML order forms operational without claiming an offline save",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "concurrent account edits preserve the pending copy and require explicit conflict recovery",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "expired sessions and expired offline permissions preserve the outbox and hide business pages",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "business blocks also apply to direct API calls and unverified units",
+        "status": "passed",
+        "report": "landscape-business-retest.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "role switching isolates cache namespaces and rejects a command from the old Admin tab",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "storage unavailable keeps online HTML order forms operational without claiming an offline save",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "concurrent account edits preserve the pending copy and require explicit conflict recovery",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "expired sessions and expired offline permissions preserve the outbox and hide business pages",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "business blocks also apply to direct API calls and unverified units",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "role switching isolates cache namespaces and rejects a command from the old Admin tab",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "storage unavailable keeps online HTML order forms operational without claiming an offline save",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "integration.spec.mjs",
+        "scenario": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "agent portfolio, four client tabs, catalog and history remain accessible without horizontal overflow",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "Admin sees all customers and creates one canonical order that the agent can open and confirm",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "real offline cold reload, touch quantities, local confirmation and idempotent reconnect",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "concurrent account edits preserve the pending copy and require explicit conflict recovery",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "expired sessions and expired offline permissions preserve the outbox and hide business pages",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "business blocks also apply to direct API calls and unverified units",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "role switching isolates cache namespaces and rejects a command from the old Admin tab",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "storage unavailable keeps online HTML order forms operational without claiming an offline save",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "integration.spec.mjs",
+        "scenario": "a new offline draft syncs from its editor and searched products remain prepared after refresh",
+        "status": "passed",
+        "report": "playwright-results.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "alert contacts are separate static rows and external chat links never send messages",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "phone-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "alert contacts are separate static rows and external chat links never send messages",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "tablet-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "alert contacts are separate static rows and external chat links never send messages",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "landscape-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "alert contacts are separate static rows and external chat links never send messages",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "desktop-chromium",
+        "file": "v5.spec.mjs",
+        "scenario": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "v5.spec.mjs",
+        "scenario": "seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "v5.spec.mjs",
+        "scenario": "alert contacts are separate static rows and external chat links never send messages",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      },
+      {
+        "project": "apple-webkit",
+        "file": "v5.spec.mjs",
+        "scenario": "multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders",
+        "status": "passed",
+        "report": "browser-v5-complete.json"
+      }
+    ]
+  },
+  "shared_pwa": {
+    "scenarios": 28,
+    "passed": 28,
+    "failed": 0,
+    "latest_results": [
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "uscita completata elimina dati offline e non rivela il precedente account",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "sessione di un altro account non riceve la coda del precedente utente",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+        "status": "passed",
+        "report": "legacy-recovery-complete.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+        "status": "passed",
+        "report": "legacy-pwa-complete.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "android-chromium",
+        "file": "offline.spec.mjs",
+        "scenario": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "offline reale: riapertura, clienti/catalogo, ordine modificato e sincronizzato una sola volta",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "conflitto: due dispositivi non sovrascrivono modifiche e reset blocca vecchie operazioni",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "sessione scaduta: outbox preservata e cache pubblica senza dati cliente",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "risposta persa dopo commit: retry idempotente e nessun duplicato",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "quota locale: transazione atomica e logout protetto finché esistono modifiche",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "uscita completata elimina dati offline e non rivela il precedente account",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "sessione di un altro account non riceve la coda del precedente utente",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "viste offline essenziali: quattro dimensioni, dati e comandi raggiungibili",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "archivio corrotto: annullamento conserva originale e ripristino esplicito lo archivia",
+        "status": "passed",
+        "report": "legacy-recovery-complete.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "archivio negato: modifica online via form Rails e nessun falso salvataggio offline",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "aggiornamento shell: risorse pubbliche rinfrescate senza alterare operazioni locali",
+        "status": "passed",
+        "report": "legacy-pwa-complete.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "due schede: salvataggi simultanei serializzati e invio unico della stessa coda",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "token CSRF rinnovato: stesso comando ritentato senza conflitto o duplicati",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      },
+      {
+        "project": "ipad-webkit",
+        "file": "offline.spec.mjs",
+        "scenario": "uscita concorrente: altra scheda non può aggiungere operazioni durante il logout",
+        "status": "passed",
+        "report": "legacy-pwa-results.json"
+      }
+    ]
+  }
+}

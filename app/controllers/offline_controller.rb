@@ -4,6 +4,11 @@ class OfflineController < ActionController::Base
     render layout: false
   end
 
+  def amelia
+    response.headers["Cache-Control"] = "no-cache"
+    render layout: false
+  end
+
   def manifest
     render json: {
       id: "/", name: "Horeca Food Service — App Agenti", short_name: "HFS Agenti",

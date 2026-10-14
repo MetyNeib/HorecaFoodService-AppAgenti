@@ -25,6 +25,11 @@ module Amelia3
       Product.where(batch_id: batch_id)
     end
 
+    def reactivation_items
+      AlertItem.where(run_id: tenant.active_alert_run_id, status: "active", rule_type: SalesAlertRules::REACTIVATION,
+                      customer_code: customers.select(:external_code))
+    end
+
     def destinations(customer)
       customers.where(delivery_point: true).where("external_code = ? OR parent_code = ?", customer.external_code, customer.external_code)
     end

@@ -1,0 +1,108 @@
+{
+  "observed_at": "2026-10-12T20:42:43.107176+00:00",
+  "checks": [
+    {
+      "command": [
+        "node",
+        "scripts/docker.mjs",
+        "compose",
+        "build",
+        "web"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 2.798
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check-bundle.mjs"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.052
+    },
+    {
+      "command": [
+        "node",
+        "scripts/docker.mjs",
+        "compose",
+        "exec",
+        "-T",
+        "web",
+        "bundle",
+        "exec",
+        "rubocop",
+        "--format",
+        "json",
+        "--out",
+        "qa/amelia3-v5/rubocop-final.json"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 18.621
+    },
+    {
+      "command": [
+        "node",
+        "scripts/docker.mjs",
+        "compose",
+        "exec",
+        "-T",
+        "web",
+        "bundle",
+        "exec",
+        "brakeman",
+        "--no-pager",
+        "-f",
+        "json",
+        "-o",
+        "qa/amelia3-v5/brakeman-final.json"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 21.058
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/amelia3/domain.test.mjs",
+        "tests/amelia3/service-worker.test.mjs"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.229
+    },
+    {
+      "command": [
+        "node",
+        "scripts/check_project_rules.cjs"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.144
+    },
+    {
+      "command": [
+        "git",
+        "-c",
+        "core.safecrlf=false",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.072
+    },
+    {
+      "command": [
+        "node",
+        "scripts/docker.mjs",
+        "run",
+        "--rm",
+        "--entrypoint",
+        "ruby",
+        "hfs-agents-web",
+        "-rjson",
+        "-e",
+        "paths = %w[.env imports/private backups qa .git]; found = paths.select { |path| File.exist?(path) }; abort(\"Private paths included\") unless found.empty?; abort(\"CSV in public\") unless Dir.glob(\"public/**/*.csv\").empty?; puts JSON.generate(status: \"PASS\", private_paths: found, public_csv: 0)"
+      ],
+      "exit_code": 0,
+      "duration_seconds": 0.804
+    }
+  ]
+}

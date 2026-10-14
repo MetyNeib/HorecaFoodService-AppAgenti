@@ -2,9 +2,9 @@ import { defineConfig } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 process.env.PLAYWRIGHT_BROWSERS_PATH ??= fileURLToPath(new URL('./.playwright-browsers', import.meta.url));
 export default defineConfig({
-  testDir: './tests/amelia3', testMatch: '**/*.spec.mjs', outputDir: './test-results/amelia3',
+  testDir: './tests/amelia3', testMatch: '**/*.spec.mjs', outputDir: process.env.HFS_AMELIA_OUTPUT || './test-results/amelia3',
   workers: 1, fullyParallel: false, timeout: 90000, retries: 0, expect: { timeout: 15000 },
-  reporter: [['list'], ['json', { outputFile: 'qa/amelia3/playwright-results.json' }]],
+  reporter: [['list'], ['json', { outputFile: process.env.HFS_AMELIA_REPORT || 'qa/amelia3/playwright-results.json' }]],
   use: { baseURL: process.env.HFS_TEST_URL || 'http://127.0.0.1:3002', locale: 'it-IT', trace: 'retain-on-failure', screenshot: 'only-on-failure' },
   projects: [
     { name: 'phone-chromium', use: { browserName: 'chromium', viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true } },

@@ -15,10 +15,12 @@ class Amelia3::PagesController < Amelia3::BaseController
     rows = rows.where("external_code ILIKE :q OR name ILIKE :q OR city ILIKE :q", q: "%#{ApplicationRecord.sanitize_sql_like(query)}%") if query.present?
     @filtered_total = rows.count
     @customers = rows.order(:name, :external_code).offset((@page - 1) * 50).limit(50)
+    @reactivation_codes = @scope.reactivation_items.where(customer_code: @customers.select(:external_code)).pluck(:customer_code).to_set
   end
 
   def customer
     @customer = @scope.customer(params[:id])
+    @reactivation = @scope.reactivation_items.find_by(customer_code: @customer.external_code)
     @tab = %w[details orders open_items commercial].include?(params[:tab]) ? params[:tab] : "details"
     @orders = @scope.orders.where(customer_code: @customer.external_code).order(created_at: :desc).limit(50)
     @open_items = @scope.open_items.where(account_code: @customer.account_code).order(:due_date).limit(100)
@@ -37,22 +39,31 @@ class Amelia3::PagesController < Amelia3::BaseController
     if params[:usual] == "1" && @customer
       rows = rows.where(external_code: @scope.history.where(customer_code: @customer.external_code).select(:product_code).distinct)
     end
-    @total = rows.count
-    @products = rows.order(:name, :external_code).offset((@page - 1) * 50).limit(50)
-    @quotes = Amelia3::Catalog.new(@scope, @products, @customer).quotes
+    @catalog = Amelia3::Catalog.new(@scope, rows.where(blocked: false).order(:name, :external_code), @customer)
+    available = @catalog.orderable_products
+    @total = available.length
+    @products = available.slice((@page - 1) * 50, 50) || []
     cart_products = @scope.products.where(external_code: Array(@order&.lines).map { |line| line["productId"] })
-    @cart_steps = Amelia3::Catalog.new(@scope, cart_products, @customer).quotes.transform_values { |quote| quote.step || 1 }
+    cart_catalog = Amelia3::Catalog.new(@scope, cart_products, @customer)
+    indexed_products = cart_products.index_by(&:external_code)
+    @cart_quotes = Array(@order&.lines).to_h { |line| [ line.fetch("id"), cart_catalog.quote(indexed_products.fetch(line.fetch("productId")), unit: line.fetch("unit")) ] }
   end
 
   def product
     @product = @scope.products.find_by!(external_code: params[:id])
-    @quote = Amelia3::Quote.for(@scope, @product)
+    catalog = Amelia3::Catalog.new(@scope, [ @product ])
+    @quote = catalog.quote(@product, unit: catalog.orderable_units(@product).first)
   end
 
   def orders
     @page = page
+    @tab = %w[DRAFT CONFIRMED_LOCAL HISTORY].include?(params[:status]) ? params[:status] : "DRAFT"
+    if @tab == "HISTORY"
+      load_history
+      return
+    end
     rows = @scope.orders
-    rows = rows.where(status: params[:status]) if %w[DRAFT CONFIRMED_LOCAL].include?(params[:status])
+    rows = rows.where(status: @tab)
     @total = rows.count
     @orders = rows.order(updated_at: :desc).offset((@page - 1) * 50).limit(50)
   end
@@ -65,17 +76,43 @@ class Amelia3::PagesController < Amelia3::BaseController
 
   def history
     @page = page
-    @customer = @scope.customer(params[:customer_id]) if params[:customer_id].present?
-    rows = @scope.history
-    rows = rows.where(customer_code: @customer.external_code) if @customer
-    query = params[:q].to_s.strip.first(100)
-    rows = rows.where("product_code ILIKE :q OR order_reference ILIKE :q", q: "%#{ApplicationRecord.sanitize_sql_like(query)}%") if query.present?
-    rows = rows.where("delivery_date >= ?", Amelia3::CsvReader.date(params[:from])) if params[:from].present?
-    rows = rows.where("delivery_date <= ?", Amelia3::CsvReader.date(params[:to])) if params[:to].present?
-    @total = rows.count
-    @rows = rows.order(delivery_date: :desc, source_row: :desc).offset((@page - 1) * 50).limit(50)
+    load_history
+  end
+
+  def history_detail
+    @customer = @scope.customer(params[:customer_id])
+    @reference = params[:reference].to_s
+    @rows = @scope.history.where(customer_code: @customer.external_code, order_reference: @reference).order(:delivery_date, :source_row).to_a
+    raise ActiveRecord::RecordNotFound if @rows.empty?
     @product_names = @scope.products.where(external_code: @rows.map(&:product_code)).pluck(:external_code, :name).to_h
   end
+
+  def whatsapp
+  end
+
+  def alerts
+    @reactivation_view = params[:type] == Amelia3::SalesAlertRules::REACTIVATION
+    result = Amelia3::AlertPage.new(@scope, params)
+    @alert_run, @alerts, @total, @page = result.run, result.items, result.total, result.page
+    @alert_customers = @scope.customers.where(external_code: @alerts.map(&:customer_code)).index_by(&:external_code)
+    @alert_products = @scope.products.where(external_code: @alerts.map(&:product_code)).pluck(:external_code, :name).to_h
+    @contact_numbers = @alert_customers.transform_values { |customer| Amelia3::ContactNumbers.call(customer.telephone) }
+    @stale = !@alert_run || @alert_run.as_of != Time.find_zone!("Europe/Rome").today || @alert_run.batch_id != @scope.batch_id
+    @stale ||= @alert_run&.rules_version != Amelia3::SalesAlertRules::VERSION
+    import = Amelia3::SyncOccurrence.find_by(tenant_id: @scope.tenant.id, local_date: Time.find_zone!("Europe/Rome").today)
+    @stale ||= import && (import.status != "success" || import.batch_id != @scope.batch_id)
+    @stale ||= @alert_run&.source == "scheduled" && !import
+    @agent_codes = current_user.role == "admin" ? @scope.customers.distinct.order(:agent_code).pluck(:agent_code) : [ current_user.agent_id ]
+  end
+
+  def load_history
+    @customer = @scope.customer(params[:customer_id]) if params[:customer_id].present?
+    result = Amelia3::HistoryOrders.new(@scope, params)
+    @total = result.total
+    @history_orders = result.rows
+    @customer_names = @scope.customers.where(external_code: @history_orders.map(&:customer_code)).pluck(:external_code, :name).to_h
+  end
+  private :load_history
 
   def insights
     @customer = @scope.customer(params[:customer_id]) if params[:customer_id].present?
@@ -92,6 +129,8 @@ class Amelia3::PagesController < Amelia3::BaseController
     @batch = @scope.tenant.active_batch
     @runs = Amelia3::SyncOccurrence.where(tenant_id: @scope.tenant.id).order(local_date: :desc).limit(14)
     @scheduler = Amelia3::Scheduler.status
+    @alert_run = @scope.tenant.active_alert_run
+    @alert_occurrences = Amelia3::AlertOccurrence.where(tenant_id: @scope.tenant.id).order(local_date: :desc, id: :desc).limit(7)
   end
 
   private
@@ -104,6 +143,6 @@ class Amelia3::PagesController < Amelia3::BaseController
     @amelia_bootstrap ||= Amelia3::Snapshot.for(current_user,
       customer_codes: [ @customer&.external_code, *@customers.to_a.map(&:external_code) ].compact,
       product_codes: [ @product&.external_code, *@products.to_a.map(&:external_code) ].compact,
-      order_id: @order&.id).merge(csrfToken: form_authenticity_token)
+      order_id: @order&.id, include_usual: action_name != "alerts").merge(csrfToken: form_authenticity_token)
   end
 end

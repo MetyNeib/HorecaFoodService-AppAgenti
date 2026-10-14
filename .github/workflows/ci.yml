@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
   pull_request:
   push:
-    branches: [main, feature/hfs-rails-migration, feature/amelia3-ftp-import]
+    branches: [main, feature/hfs-rails-migration, feature/amelia3-ftp-import, feature/amelia3-demo-polish]
 permissions:
   contents: read
 concurrency:
@@ -152,6 +152,7 @@ jobs:
             qa/rails/
             qa/rails-ui/
             qa/amelia3/
+            qa/amelia3-v5/
             log/browser-ci.log
             log/development.log
       - name: Stop local Rails server

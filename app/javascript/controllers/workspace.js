@@ -61,7 +61,7 @@ export default class WorkspaceController {
         }
       });
       const map = JSON.parse(find('script[type="importmap"]')?.textContent || '{"imports":{}}');
-      const assets = [...Object.values(map.imports || {}), ...[...findAll('link[rel="stylesheet"],script[src]')].map(item => item.href || item.src)];
+      const assets = [...Object.values(map.imports || {}), ...[...findAll('link[rel="stylesheet"],script[src],[data-offline-asset]')].map(item => item.href || item.src)];
       (registration.active || navigator.serviceWorker.controller)?.postMessage({ type: 'PRECACHE', assets });
       registration.addEventListener('updatefound', () => {
         registration.installing?.addEventListener('statechange', () => {

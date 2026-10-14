@@ -4,7 +4,23 @@ Riscrittura in **Rails 8.1, Ruby 4, Ralix, PostgreSQL e Devise**. Mantiene il se
 
 Rails è su `main` dopo la [PR #1](https://github.com/MetyNeib/HorecaFoodService-AppAgenti/pull/1). Il branch `feature/amelia3-ftp-import` aggiunge l'integrazione Amelia3 approvata: dati commerciali condivisi, Admin e agente **34**, storico PostgreSQL, ordini locali e FTP in sola lettura alle **06:05 Europe/Rome**. La V1 React è conservata su `v1-react` e tag `v1.0.0-react` (commit `81e72bc`). Nessun deploy pubblico. Esiti in [qa/AMELIA3_IMPORT_REPORT.md](qa/AMELIA3_IMPORT_REPORT.md).
 
+**Ripartenza sul Mac M1 Pro:** seguire [MAC_HANDOFF](docs/MAC_HANDOFF.md) per
+clonare `feature/amelia3-demo-polish` e ripristinare il pacchetto privato completo.
+Il repository è pubblico per scelta confermata il 14/10/2026; contiene solo
+codice revisionato e materiali dimostrativi. Database, credenziali e CSV sono
+trasferiti separatamente. Per il ripristino non avviare prima `docker compose up`.
+
 ## Amelia3 sul computer già configurato
+
+La **v5 locale** aggiunge unità canoniche PZ/CONF/KG/COLL, quote esatte con
+attestazioni separate, drawer a sette destinazioni, storico raggruppato e
+Alert di vendita incrementali alle **06:30 Europe/Rome**. Le modifiche sono nel
+checkpoint `amelia3-demo-baseline-20261014`, sviluppato a partire da `223a231`.
+Il branch `feature/amelia3-demo-polish` prosegue il perfezionamento della demo.
+UM unica statica, alternative verificate e clienti oltre 90 giorni nella sezione
+Da riattivare sono inclusi nella base. Istruzioni aggiornate in
+[AMELIA3_V5_LOCAL](docs/AMELIA3_V5_LOCAL.md) ed esiti in
+[AMELIA3_V5_REPORT](qa/AMELIA3_V5_REPORT.md).
 
 Aprire **http://127.0.0.1:3002/amelia3** e accedere come `admin@amelia3.invalid`
 oppure `agente34@amelia3.invalid`. Le password casuali sono nel solo file locale
@@ -16,12 +32,13 @@ dimostrativo separato.
 Il worker deve restare acceso per l'import quotidiano. Se Docker riparte dopo
 le 06:05, recupera l'esecuzione della giornata una volta sola. La pagina
 **Sincronizzazione dati**, riservata all'Admin, mostra heartbeat, import ed errori.
+Nella v5 si apre dal dettaglio di stato del drawer e include il calcolo degli alert.
 Per installazione con dati privati, diagnostica e limiti delle UM seguire
 [docs/AMELIA3_LOCAL.md](docs/AMELIA3_LOCAL.md).
 
 ## Installazione locale su un altro computer
 
-Occorrono Git e Docker Desktop avviato con container Linux. Su Windows serve WSL2; su Mac scegliere Docker Desktop per il proprio processore. L'account GitHub deve avere accesso al repository privato. Non occorrono Ruby o PostgreSQL installati globalmente, né una chiave OpenAI.
+Occorrono Git e Docker Desktop avviato con container Linux. Su Windows serve WSL2; su Mac scegliere Docker Desktop per il proprio processore. Il repository del codice è pubblico; i dati commerciali non sono inclusi nel clone. Non occorrono Ruby o PostgreSQL installati globalmente, né una chiave OpenAI.
 
 ```powershell
 git clone --branch feature/amelia3-ftp-import https://github.com/MetyNeib/HorecaFoodService-AppAgenti.git

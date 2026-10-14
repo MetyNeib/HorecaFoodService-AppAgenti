@@ -1,4 +1,112 @@
-# Amelia3 — 12/10/2026 — CHECKPOINT_DATI_REALI_TESTATI
+# Amelia3 v5 - 12/10/2026 - IMPLEMENTATO E TESTATO LOCALMENTE
+
+## Handoff Mac — 14/10/2026
+
+Base V5 da salvare sul tag `amelia3-demo-baseline-20261014`; prosecuzione su
+`feature/amelia3-demo-polish`. Repository pubblico confermato dall'utente:
+solo codice revisionato e QA sintetico/aggregato. Main invariato.
+Guida e priorità approvate in [MAC_HANDOFF](MAC_HANDOFF.md).
+PASS 170 test Rails, RuboCop senza infrazioni, Brakeman zero avvisi,
+seed/domain/JavaScript/regole e bundle. Backup completo creato localmente;
+ripristino in database temporaneo PASS: 28 tabelle, 3.913.567 righe identiche.
+Controllo segreti nei file candidati PASS; confronto nomi cliente nei testi
+PASS (il solo nome agente esplicitamente approvato compare nelle specifiche).
+Build Linux ARM64 e caricamento completo Rails (`zeitwerk:check`) PASS.
+CI GitHub consultabile sul commit del checkpoint; Mac fisico NOT_RUN.
+
+Follow-up 13/10 completato: UM unica statica, selettore per più alternative;
+clienti oltre 90 giorni separati in «Da riattivare» e rimossi dagli alert ordinari.
+PASS 29 test Rails e 17 JavaScript. Audit reale PASS senza scansione dei CSV:
+1.399 prodotti ordinabili, 24 con più UM e 1.375 con UM unica; 2.842 clienti da
+riattivare, nessuno negli alert ordinari. PASS 20 scenari browser sui cinque
+profili Chromium/WebKit e due controlli reali in sola lettura, online/offline.
+Controllo regole PASS (103 file, zero violazioni); asset compilati, web/worker
+riavviati e health HTTP 200. Nessun commit/push/merge/deploy.
+
+Follow-up selettore UM: menu per scheda con un solo pannello operativo visibile;
+prezzo/disponibilità e payload del comando riferiti alla scelta corrente.
+Quantità reimpostata al cambio UM. Articoli generici esclusi anche offline;
+tre denominazioni reali corrispondenti, catalogo corrente 1.399 ordinabili.
+PASS 20 test Rails, 17 JavaScript; sette controlli browser reali in sola lettura
+su Chromium/WebKit, con cambio UM reale online/offline e nessun overflow.
+Collaudo concluso il 13/10: 15/15 scenari browser PASS sui cinque profili,
+inclusi importi/UM salvati, sincronizzazione offline e fallback senza IndexedDB.
+Asset compilati e Rails attivo; nessun commit, push, merge o deploy.
+
+Follow-up catalogo demo: esclusi dalle liste i prodotti senza almeno una UM
+quotabile; nascoste anche le singole UM non valide dei prodotti conservati.
+Filtro applicato prima di paginazione e conteggio, con condizioni del cliente.
+Offline: selezione iniziale di 180 prodotti validi; ulteriore controllo delle
+condizioni sul dispositivo, anche sui record già presenti nella cache.
+Import originali, schede di consultazione e ordini conservati. Nessuna conversione
+nominale resa definitiva; prodotti a peso non attestato esclusi dalla selezione.
+PASS 19 test Rails, 16 JavaScript; browser reale desktop/telefono/tablet/WebKit:
+50/50 schede utilizzabili nella prima pagina, 1.400 prodotti totali per il cliente
+esaminato, 235 disponibili nel cold reload offline del dispositivo di prova.
+PASS 30 scenari browser sui cinque profili: 25 nella prima esecuzione e 5 nella
+ripetizione della prova offline corretta (setup del test, nessun fix applicativo).
+Asset ricompilati e Rails locale riavviato; nessun commit/push/merge/deploy.
+
+Diagnosi ordinabilità del 12/10, ore 23:15: transazione DB READ ONLY sul cliente
+dello screenshot. Su 9.847 prodotti, 1.400 hanno almeno una UM quotabile;
+prima pagina: 46/50 bloccati dal gestionale, solo 1/50 aggiungibile.
+1.871 prodotti non bloccati hanno conversione/indivisibilità non attestata
+nella UM preferita, tutti con prezzo base KG; 16 hanno una UM alternativa valida.
+Nessuna perdita di quotabilità dovuta alle condizioni del cliente esaminato.
+La correttezza delle offerte abilitate non certifica la copertura commerciale:
+manca il percorso distinto per ordine a peso nominale stimato e peso consuntivo.
+Analisi e proposta nel report V5; nessuna modifica applicativa o ai dati.
+
+Follow-up Home: rimosse le righe frazionarie ereditate dalla demo; schede Amelia3
+ad altezza contenuto, padding 20 px nelle azioni e 16 px nelle card di navigazione.
+Desktop 1348×798: azioni da 375 a 161 px. Sei verifiche Chromium/WebKit PASS,
+nessun overflow o testo tagliato, otto collegamenti conservati. CSS ricompilato,
+Rails riavviato, checker e bundle PASS; immagini QA soltanto sintetiche.
+
+Follow-up accesso Chrome: un account demo già autenticato riceve ora una pagina
+403 esplicativa con ritorno alla demo per il logout protetto, invece di solo
+testo. Nessun cambio automatico di account, privilegi o archivio locale.
+PASS 8 request spec, 3 verifiche browser (demo, agente reale 34, Admin reale),
+RuboCop mirato e checker 103 file. Prove browser in sola lettura.
+
+Base locale/remota `223a2312172a6a2d83cb19012abf908adef2357b`, branch
+`feature/amelia3-ftp-import`. Nessun commit/push/merge/deploy implicito.
+Specifiche v5 e v4 integralmente lette; lavoro precedente preservato.
+
+- M0 TESTATO: GitHub read-only, 33 hash pacchetto, v4 byte-identico;
+  precedente FAIL CI demo riprodotto localmente con esito PASS prima delle modifiche.
+- M1 TESTATO: mappa certificata 5.440/5.440, 9.847 prodotti validi.
+- M2 IMPLEMENTATO/TESTATO: quote razionali, multi-UM, stock unico confrontabile,
+  passi decimali e KG liberi. Evidenza utente registrata separatamente dai CSV.
+  1.425 offerte reali verificate con formule indipendenti e parita Ruby/JavaScript.
+- M3 TESTATO: offline reale, snapshot UM/evidenze, conflitti conservativi;
+  aggiornamento della shell, cold reload, multi-UM, KG liberi e sync esatto.
+- M4/M5 TESTATO: drawer originale a sette destinazioni, nessun dock,
+  tre schede ordini, storico raggruppato 20/pagina e dettagli condivisi,
+  WhatsApp placeholder e dialog contatti. Cinque request spec PASS,
+  incluso limite 20 ordini offline e nessuna query storico negli alert.
+- M6 IMPLEMENTATO/TESTATO: alert 373/1896/50, agente 34 zero, 1.148 clienti;
+  full = incrementale (digest identico); invariato senza scansione storico.
+  Pagina Admin 4/4/2, 7 query, nessuna query storico. Regole, profili,
+  scadenze, risoluzioni, contatti, permessi e scheduler verificati.
+- M7 TESTATO: 163 RSpec, 15 JS/service worker; 49 test dominio e 12 parità HFS,
+  seed 20/20, RuboCop 134 file senza violazioni, Brakeman zero warning,
+  Docker/assets/bundle/privacy immagine PASS. Migrazioni da DB vuoto PASS.
+- Browser: 60 scenari Amelia3 coperti con esiti PASS tra matrice e ripetizioni
+  mirate; nuovi flussi v5 15/15 PASS su cinque profili Chromium/WebKit.
+  Dati reali: 70 verifiche PASS in sola lettura. PWA condivisa 28 scenari
+  coperti, recupero finale 2/2 PASS. FAIL iniziali e relative cause conservati.
+- Scheduler attivo 06:05/06:30 Europe/Rome; catch-up idempotente verificato.
+- I due ordini reali preesistenti sono identici. HFS sintetico resta isolato.
+- DA_VERIFICARE: peso fisso per conversioni economiche conteggio/peso,
+  UM prezzi fissi personalizzati, listini cliente alternativi, hardware fisico,
+  prossima esecuzione mattutina e nuova CI GitHub (nessun push effettuato).
+
+Rapporto: [AMELIA3_V5_REPORT](../qa/AMELIA3_V5_REPORT.md).
+
+---
+
+# Amelia3 — 12/10/2026 — CHECKPOINT_DATI_REALI_TESTATI (baseline precedente)
 
 Branch operativo `feature/amelia3-ftp-import`. Specifica approvata in
 `docs/amelia3/`, rapporto corrente [AMELIA3_IMPORT_REPORT](../qa/AMELIA3_IMPORT_REPORT.md).

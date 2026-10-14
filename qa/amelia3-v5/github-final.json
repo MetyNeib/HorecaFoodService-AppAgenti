@@ -1,0 +1,11 @@
+{
+  "observedAt": "2026-10-12T20:50:36.710500+00:00",
+  "private": true,
+  "localHead": "223a2312172a6a2d83cb19012abf908adef2357b",
+  "featureHead": "223a2312172a6a2d83cb19012abf908adef2357b",
+  "mainHead": "81587c768343cb16b450b072b1b121cbbb1e28ca",
+  "localBranch": "feature/amelia3-ftp-import",
+  "changedFiles": 108,
+  "openPullRequests": [],
+  "writes": 0
+}

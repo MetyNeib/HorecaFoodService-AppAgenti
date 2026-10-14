@@ -1,5 +1,98 @@
 # Decision log
 
+## Trasferimento Mac e obiettivi demo — 14/10/2026
+
+L'utente sceglie copia completa del database e dei file privati su Mac M1 Pro,
+con Docker installato. Mantiene disponibili gli aggiornamenti FTP e rinvia al
+branch demo la selezione di un campione congelato. Conferma esplicitamente
+repository pubblico per il solo codice revisionato, dopo verifica della visibilità.
+Checkpoint V5 e tag sul branch Amelia3; nuovo branch demo dalla stessa base;
+nessun merge su main o deploy. Backup PostgreSQL custom per portabilità tra
+x86_64 e ARM64, confronto di tutte le righe dopo restore, file privati separati.
+Priorità: ordine, ingresso WhatsApp e CRM alert. Revisioni manuali documentate
+per prodotti comparabili e cambi di ragione sociale, basate sui dati aggiornati
+alla presentazione; nessun algoritmo di associazione automatica richiesto.
+Dettagli operativi e ripartenza in docs/MAC_HANDOFF.md.
+
+## UM singola e clienti da riattivare — 13/10/2026
+
+Su richiesta dell'utente, una sola UM ordinabile viene mostrata come testo;
+con più UM valide resta il selettore. Le alternative continuano a dipendere
+dalle regole canoniche e dai prezzi/stock attestati: nessuna nuova conversione
+economica o deroga all'indivisibilità. Identico comportamento online e offline.
+
+Oltre 90 giorni dall'ultimo acquisto consegnato nello storico importato, il
+cliente viene classificato `CUSTOMER_REACTIVATION` (etichetta «Da riattivare»)
+ed escluso da tutti e tre gli alert ordinari. A 90 giorni esatti resta nella
+popolazione ordinaria. Si considerano tutte le date storiche con spedito positivo,
+anche oltre i 12 mesi; restano esclusi i giorni correnti/futuri come nel contratto
+alert preesistente. Assenza di storico non significa inattività dimostrata.
+Bozze e conferme locali, non trasmesse al gestionale, non attestano consegne.
+
+La classificazione ha una sezione distinta negli Alert, con filtri e paginazione
+da 10, e badge in elenco/scheda cliente, disponibili anche negli snapshot offline.
+Sono inclusi anche i clienti bloccati, conservando il divieto di nuovi ordini;
+il portafoglio autorizzato resta applicato. Il mix 4/4/2 degli alert ordinari
+rimane separato. Una nuova consegna importata fa cessare la classificazione al
+ricalcolo successivo. Nuova versione delle regole per invalidare la cache;
+i risultati precedenti restano conservati e le segnalazioni superate risolte.
+
+## Scelta UM e articoli generici — follow-up del 12/10/2026
+
+Su richiesta dell'utente, ogni scheda espone un menu UM con una sola opzione
+operativa visibile per volta: prezzo, disponibilità, quantità e Aggiungi seguono
+l'unità selezionata. Al cambio unità si riparte dalla quantità minima ammessa,
+oppure dal campo vuoto per KG liberi, senza reinterpretare la quantità precedente.
+I form conservano separatamente unità, prezzo esatto e versione della conversione.
+Il comportamento è identico online e offline, anche senza IndexedDB disponibile.
+
+Sono esclusi dalle liste i segnaposto con denominazioni iniziali come ARTICOLO
+VARIO, ARTICOLI VARI, ART. VARIO, PRODOTTO GENERICO, MERCE VARIA e MERCI DIVERSE,
+anche preceduti da punteggiatura o prefissi DS/OM. Il confronto per parole evita
+di escludere prodotti normali come Caramelle gusti vari o Articolo variante.
+Snapshot con indicatore catalogExcluded e controllo del nome nelle vecchie copie
+offline. Nessuna eliminazione dal database o variazione delle formule economiche.
+
+## Catalogo demo filtrato — richiesta del 12/10/2026
+
+L'utente richiede di eliminare dal catalogo della demo i prodotti problematici
+per le UM. Si applica un'esclusione dalla selezione, senza distruggere import,
+storico o riferimenti degli ordini: gli articoli privi di quotazioni valide non
+compaiono nelle liste; quelli parzialmente validi espongono solo le UM verificate.
+Il filtro usa le condizioni del cliente e precede paginazione e conteggio.
+Si escludono anche blocchi fonte, assenza stock e prezzi non attestati, affinché
+le schede mostrate siano utilizzabili. Lo stesso criterio vale offline, anche
+su record precedentemente memorizzati. Le schede dirette restano consultabili.
+La richiesta di una demo funzionante viene soddisfatta tramite questa esclusione:
+non si attivano conversioni nominali definitive né un consuntivo a peso effettivo.
+Le verifiche commerciali e l'autorizzazione dei comandi restano attive.
+
+## Amelia3 v5 canonica — 12/10/2026
+
+Il pacchetto v5 e la successiva risposta tecnica dell'utente prevalgono sul
+checkpoint precedente. Conservati HEAD `223a231`, branch e lavoro precedente;
+nessun commit/push/merge/deploy implicito. Il seed HFS resta isolato per regressioni.
+
+Le evidenze economiche sono versionate separatamente dai CSV. La fonte tecnica
+fornita dall'utente abilita prezzo 000 per tipo_um, stock originali CF/PZ/PE e
+fattori di conteggio; i file dell'altro repository non sono stati ispezionati qui.
+Peso nominale, prezzi fissi personali e listini alternativi non diventano prove
+per analogia. I KG accettano decimali senza passo commerciale globale; dodici
+decimali sono il limite tecnico del protocollo. Ruby Rational e JS BigInt
+arrotondano HALF_UP una sola volta per riga. Gli ordini confermati restano immutati.
+
+Storico raggruppato per cliente/riferimento con riepiloghi derivati e dettaglio
+originale; niente importi ricostruiti. Alert pubblicati atomicamente dopo il job,
+mai ricalcolati nella richiesta della lista. Profili e firme indipendenti dalla
+posizione nel CSV consentono riuso; data e blocchi correnti governano le finestre.
+Le 06:30 dipendono dall'import riuscito delle 06:05; il primo calcolo locale è
+etichettato development. Full e incrementale confrontano anche alert risolti.
+
+La PWA installa entrambe le shell neutrali con tutte le loro risorse prima di
+attivare un aggiornamento. Non elimina IndexedDB o code pendenti. WebKit richiede
+che il trigger dei dialoghi sia conservato esplicitamente per restituire il focus.
+Report corrente: `qa/AMELIA3_V5_REPORT.md`; prove reali identificative solo private.
+
 ## Checkpoint richiesto dall'utente — 12/10/2026
 
 Dopo i test Amelia3 e le verifiche sui CSV reali, interrompere il lavoro.

@@ -28,6 +28,14 @@ RSpec.describe "Amelia3 HTTP authorization", type: :request do
     sign_in user
     get "/amelia3/snapshot", headers: { "Accept" => "application/json" }
     expect(response).to have_http_status(:forbidden)
+    get "/amelia3"
+    expect(response).to have_http_status(:forbidden)
+    expect(response.body).to include("Accedi con un account Amelia3", "Torna alla demo per cambiare account")
+    expect(response.body).not_to include("workspace-bootstrap", "Cliente sintetico uno")
+    # The recovery link keeps the current session and its guarded logout flow.
+    get "/snapshot", headers: { "Accept" => "application/json" }
+    expect(response).to have_http_status(:ok)
+    expect(JSON.parse(response.body).dig("user", "id").to_s).to eq(user.id.to_s)
     agent.update!(role: "capoarea")
     sign_in agent
     get "/amelia3", headers: { "Accept" => "application/json" }

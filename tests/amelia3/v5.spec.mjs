@@ -1,0 +1,163 @@
+import { test, expect } from '@playwright/test';
+
+async function login(page, role = 'agent') {
+  await page.goto('/users/sign_in');
+  await page.getByLabel('Email', { exact: true }).fill(`amelia-${role}-qa@example.invalid`);
+  await page.getByLabel('Password', { exact: true }).fill('TestHfsLocale2026!');
+  await page.getByRole('button', { name: 'Accedi', exact: true }).click();
+  await page.waitForFunction(() => !!window.HFS?.client?.record);
+  await page.evaluate(() => window.HFS.ready);
+  await page.waitForFunction(() => !window.HFS.client.syncing);
+}
+const go = (page, path) => page.evaluate(path => window.HFS.navigate(path), path);
+test('reactivation is separate from ordinary alerts and persists in cached customer details', async ({ page, context }, info) => {
+  await login(page, 'admin');
+  await page.waitForFunction(() => window.HFS.offlinePrepared && navigator.serviceWorker.controller);
+  await go(page, '/amelia3/alerts');
+  await expect(page.locator('[data-alert-type="CUSTOMER_REACTIVATION"]')).toHaveCount(0);
+  await page.getByRole('link', { name: 'Da riattivare', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Clienti da riattivare', exact: true })).toBeVisible();
+  const card = page.locator('[data-alert-type="CUSTOMER_REACTIVATION"]');
+  await expect(card).toHaveCount(1);
+  await expect(card).toContainText('91 giorni fa');
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-reactivation.png` });
+  await card.getByRole('link', { name: 'Apri cliente', exact: true }).click();
+  await expect(page.locator('main')).toContainText('Da riattivare');
+  await context.setOffline(true); await page.reload();
+  await expect(page.locator('main')).toContainText('Da riattivare');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+});
+test.beforeEach(async ({ page }) => {
+  page.on('pageerror', error => { throw error; });
+  page.on('request', request => { if (/^https?:/.test(request.url())) expect(['127.0.0.1', 'localhost']).toContain(new URL(request.url()).hostname); });
+});
+
+test('seven-destination drawer closes by Escape, backdrop and navigation with focus, safe areas and no docks', async ({ page }, info) => {
+  await login(page);
+  const opener = page.getByRole('button', { name: 'Apri menu', exact: true }), menu = page.getByRole('dialog', { name: 'Menu principale', exact: true });
+  await expect(page.locator('header, footer, .header-dock, .status-dock')).toHaveCount(0);
+  await expect(page.locator('.amelia-network-button')).toBeHidden();
+  const buttonBox = await opener.boundingBox(); expect(buttonBox.width).toBeGreaterThanOrEqual(44); expect(buttonBox.height).toBeGreaterThanOrEqual(44);
+  await opener.click(); await expect(menu).toBeVisible();
+  await expect(menu.locator('.amelia-menu-links a')).toHaveCount(7);
+  await expect(menu.getByRole('img', { name: 'Amelia3 dal 1975' })).toBeVisible();
+  expect(await menu.evaluate(el => Math.round(el.getBoundingClientRect().width))).toBeGreaterThanOrEqual(230);
+  expect(await menu.evaluate(el => Math.round(el.getBoundingClientRect().width))).toBeLessThanOrEqual(260);
+  await expect.poll(() => menu.evaluate(el => Math.round(el.getBoundingClientRect().left))).toBe(0);
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-drawer.png`, animations: 'disabled' });
+  await page.keyboard.press('Escape'); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();
+  await opener.click(); await page.mouse.click(info.project.use.viewport.width - 8, 30); await expect(menu).toBeHidden(); await expect(opener).toBeFocused();
+  await opener.click(); await menu.getByRole('link', { name: 'Ordini WhatsApp', exact: true }).click();
+  await expect(page.getByRole('heading', { name: 'Funzionalità non ancora disponibile', exact: true })).toBeVisible();
+  await expect(menu).toBeHidden();
+  await opener.click(); await expect(menu.getByRole('link', { name: 'Ordini WhatsApp', exact: true })).toHaveAttribute('aria-current', 'page');
+  await menu.getByRole('link', { name: 'I miei ordini', exact: true }).click();
+  await expect(page.locator('main .tabs a')).toHaveText(['Bozze', 'Confermati', 'Storico']);
+  await page.locator('main .tabs').getByRole('link', { name: 'Storico', exact: true }).click();
+  await page.getByRole('link', { name: 'Dettaglio storico', exact: true }).first().click();
+  await expect(page.getByRole('heading', { name: /Ordine storico/ })).toBeVisible();
+  await expect(page.locator('main')).not.toContainText('€');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+});
+
+test('alert contacts are separate static rows and external chat links never send messages', async ({ page }, info) => {
+  await login(page); await go(page, '/amelia3/alerts');
+  const alert = page.locator('[data-alert-id]').first();
+  await expect(alert).toContainText('Prodotto abituale mancante');
+  await expect(alert.getByRole('button', { name: 'Scrivi al cliente', exact: true })).toBeEnabled();
+  await alert.getByRole('button', { name: 'Scrivi al cliente', exact: true }).click();
+  const dialog = page.getByRole('dialog', { name: 'Scrivi al cliente', exact: true });
+  await expect(dialog).toBeVisible(); await expect(dialog.locator('input, textarea')).toHaveCount(0);
+  const links = dialog.getByRole('link', { name: 'Apri WhatsApp', exact: true });
+  await expect(links).toHaveCount(2);
+  expect(await links.evaluateAll(items => items.map(item => item.getAttribute('href')))).toEqual(['https://wa.me/390711234567', 'https://wa.me/393331234567']);
+  await expect(links.first()).toHaveAttribute('rel', 'noopener noreferrer');
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-contact.png` });
+  await page.keyboard.press('Escape'); await expect(alert.getByRole('button', { name: 'Scrivi al cliente', exact: true })).toBeFocused();
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+});
+
+test('multiple units, unrestricted decimal KG, cold offline restart and Rails-unreachable status preserve exact orders', async ({ page, context }, info) => {
+  await login(page); await page.waitForFunction(() => window.HFS.offlinePrepared && navigator.serviceWorker.controller);
+  await go(page, '/amelia3/customers?pick=1&q=C001'); await page.getByRole('button', { name: /Seleziona/ }).click();
+  await expect(page.getByRole('heading', { name: 'Cerca e aggiungi prodotti', exact: true })).toBeVisible();
+  const orderId = new URL(page.url()).searchParams.get('order_id');
+  await expect(page.locator('[data-product-code="MISC001"]')).toHaveCount(0);
+  const nominal = page.locator('[data-product-code="KG002"]');
+  await expect(nominal.getByRole('combobox')).toHaveCount(0);
+  await expect(nominal.locator('.amelia-unit-fixed')).toHaveText('Unità di misura: KG');
+  await expect(nominal.locator('[data-unit="COLL"]')).toHaveCount(0);
+  await expect(nominal.locator('[data-unit="KG"] button[type="submit"]')).toBeEnabled();
+  const selectable = page.locator('[data-product-code="KG005"]');
+  await expect(selectable.getByLabel('Unità di misura', { exact: true })).toHaveValue('COLL');
+  await expect(selectable.locator('.amelia-unit-option:visible')).toHaveCount(1);
+  await expect(selectable.getByRole('button', { name: '+ Aggiungi', exact: true })).toHaveCount(1);
+  await selectable.getByLabel('Unità di misura', { exact: true }).selectOption('KG');
+  await expect(selectable.locator('[data-unit="KG"]')).toBeVisible();
+  await expect(selectable.locator('[data-unit="COLL"]')).toBeHidden();
+  await expect(selectable.locator('[data-unit="KG"]')).toContainText('3,2 € / KG');
+  await selectable.getByRole('spinbutton').fill('0.125');
+  await selectable.getByLabel('Unità di misura', { exact: true }).selectOption('COLL');
+  await expect(selectable.getByRole('spinbutton')).toHaveValue(/^1(?:\.0)?$/);
+  await expect(selectable.locator('[data-unit="COLL"]')).toContainText('16 € / COLL');
+  // WebKit bypasses Playwright routing for requests passing through a worker.
+  // Cut the actual transport while retaining the browser's reported online flag.
+  await context.setOffline(true);
+  await page.evaluate(() => Object.defineProperty(navigator, 'onLine', { configurable: true, get: () => true }));
+  await page.evaluate(() => window.HFS.reconnect());
+  expect(await page.evaluate(() => navigator.onLine)).toBe(true);
+  await expect(page.locator('.amelia-network-button')).toBeVisible();
+  await page.locator('.amelia-network-button').click();
+  await expect(page.getByRole('dialog', { name: 'Stato connessione e dati' })).toContainText('Server Rails non raggiungibile');
+  await page.getByRole('dialog', { name: 'Stato connessione e dati' }).getByRole('button', { name: 'Chiudi', exact: true }).click();
+  await page.evaluate(() => { delete navigator.onLine; }); await page.reload();
+  await expect(page.locator('[data-product-code="KG002"] select')).toHaveCount(0);
+  await expect(page.locator('[data-product-code="KG002"] .amelia-unit-fixed')).toHaveText('Unità di misura: KG');
+  await expect(page.locator('[data-product-code="MISC001"]')).toHaveCount(0);
+  const product = page.locator('[data-product-code="KG005"]');
+  await product.locator('[data-unit="COLL"]').getByRole('button', { name: '+ Aggiungi', exact: true }).click();
+  await expect(page.locator('[data-line-id]')).toHaveCount(1);
+  await product.getByLabel('Unità di misura', { exact: true }).selectOption('KG');
+  await expect(product.locator('.amelia-unit-option:visible')).toHaveCount(1);
+  await expect(product.getByRole('button', { name: '+ Aggiungi', exact: true })).toHaveCount(1);
+  await product.locator('[data-unit="KG"]').getByRole('spinbutton').fill('0.123456');
+  await product.locator('[data-unit="KG"]').getByRole('button', { name: '+ Aggiungi', exact: true }).click();
+  await expect(page.locator('[data-line-id]')).toHaveCount(2);
+  const currentOrder = () => page.evaluate(id => window.HFS.client.snapshot.state.data.orders.find(row => row.id === id), orderId);
+  expect((await currentOrder()).netCents).toBe(1640);
+  await page.screenshot({ path: `qa/amelia3-v5/${info.project.name}-synthetic-multiple-units.png`, fullPage: true });
+  await page.reload(); await expect(page.locator('[data-line-id]')).toHaveCount(2); expect((await currentOrder()).lines.map(line => line.unit)).toEqual(['COLL', 'KG']);
+  await go(page, '/amelia3/orders?status=HISTORY'); await expect(page.locator('main')).toContainText('richiede connessione');
+  await go(page, '/amelia3/alerts'); await expect(page.getByRole('heading', { name: 'Collegamento richiesto' })).toBeVisible();
+  await context.setOffline(false); await page.evaluate(() => window.HFS.reconnect());
+  await expect.poll(() => page.evaluate(() => window.HFS.client.record.outbox.length)).toBe(0);
+  const saved = await page.evaluate(async id => (await fetch('/amelia3/snapshot').then(r => r.json())).state.data.orders.find(row => row.id === id), orderId);
+  expect(saved.lines).toHaveLength(2); expect(saved.netCents).toBe(1640); expect(saved.lines[1].quantity).toBe('0.123456');
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+});
+
+test('UM selector submits the selected online price and quantity with a single visible control', async ({ page }) => {
+  await login(page);
+  await go(page, '/amelia3/customers?pick=1&q=C001');
+  await page.getByRole('button', { name: /Seleziona/ }).click();
+  await page.waitForURL(/\/amelia3\/catalog\?order_id=/);
+  const orderId = new URL(page.url()).searchParams.get('order_id');
+  expect(orderId).not.toBeNull();
+  const product = page.locator('[data-product-code="KG005"]');
+  await expect(product.getByRole('spinbutton')).toHaveCount(1);
+  await product.getByRole('spinbutton').fill('2');
+  await product.getByLabel('Unità di misura', { exact: true }).selectOption('KG');
+  await expect(product.getByRole('spinbutton')).toHaveValue('');
+  await product.getByRole('spinbutton').fill('0.25');
+  await product.getByRole('button', { name: '+ Aggiungi', exact: true }).click();
+  await expect(page.locator('[data-line-id]')).toHaveCount(1);
+  await product.getByLabel('Unità di misura', { exact: true }).selectOption('COLL');
+  await expect(product.getByRole('spinbutton')).toHaveValue(/^1(?:\.0)?$/);
+  await product.getByRole('button', { name: '+ Aggiungi', exact: true }).click();
+  await expect(page.locator('[data-line-id]')).toHaveCount(2);
+  await expect.poll(() => page.evaluate(() => window.HFS.client.record.outbox.length)).toBe(0);
+  const saved = await page.evaluate(async id => (await fetch('/amelia3/snapshot').then(response => response.json())).state.data.orders.find(row => row.id === id), orderId);
+  expect(saved.lines.map(row => [row.unit, row.quantity, row.lineNetCents])).toEqual([['KG', '0.25', 80], ['COLL', '1.0', 1600]]);
+  expect(saved.netCents).toBe(1680);
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1)).toBe(true);
+});

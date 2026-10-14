@@ -20,8 +20,11 @@ module Amelia3
           end
         end
       end
+      AlertSchedule.tick(tenant, now)
       next_date = occurrence&.status == "success" || now >= target ? local.to_date + 1 : local.to_date
-      info = { observed_at: now.iso8601, next_run_at: scheduled_at(next_date).iso8601, timezone: settings.timezone, cron: settings.cron, enabled: true }
+      alert_date = now >= AlertSchedule.scheduled_at(local.to_date) ? local.to_date + 1 : local.to_date
+      info = { observed_at: now.iso8601, next_run_at: scheduled_at(next_date).iso8601, timezone: settings.timezone, cron: settings.cron, enabled: true,
+               alert_next_run_at: AlertSchedule.scheduled_at(alert_date).iso8601, alert_time: "06:30 Europe/Rome" }
       Sidekiq.redis { |redis| redis.call("SET", HEARTBEAT_KEY, JSON.generate(info), "EX", 90) }
       occurrence
     rescue ActiveRecord::RecordNotUnique

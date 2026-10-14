@@ -1,0 +1,38 @@
+<div class="view">
+  <div class="page-title"><h1><%= @reactivation_view ? 'Clienti da riattivare' : 'Alert di vendita' %></h1><p><%= @total %> <%= @reactivation_view ? 'clienti senza acquisti da più di 90 giorni' : 'alert attivi nel portafoglio' %></p></div>
+  <nav class="tabs" aria-label="Attività clienti">
+    <%= link_to 'Alert di vendita', url_for(request.query_parameters.except('type', 'page')), class: @reactivation_view ? nil : 'active', aria: { current: @reactivation_view ? nil : 'page' } %>
+    <%= link_to 'Da riattivare', url_for(request.query_parameters.except('page').merge('type' => Amelia3::SalesAlertRules::REACTIVATION)), class: @reactivation_view ? 'active' : nil, aria: { current: @reactivation_view ? 'page' : nil } %>
+  </nav>
+  <p><%= @reactivation_view ? 'Classificazione basata sull’ultimo acquisto consegnato nello storico importato, anche oltre gli ultimi 12 mesi. Gli ordini locali non sono ancora consegne.' : 'I clienti senza acquisti da più di 90 giorni sono nella sezione Da riattivare e sono esclusi da questi alert.' %></p>
+  <% if @stale %><p class="notice" role="status">Dati non aggiornati. <%= @alert_run ? "Ultimo calcolo: #{display_date(@alert_run.as_of)}." : 'Il primo calcolo non è ancora disponibile.' %></p><% else %><p>Calcolo del <%= display_date(@alert_run.as_of) %><%= @alert_run.source == 'development' ? ' · baseline locale di sviluppo' : '' %></p><% end %>
+  <%= form_with url: '/amelia3/alerts', method: :get, local: true, class: 'filters amelia_search_form_js' do %>
+    <%= hidden_field_tag :run_id, @alert_run&.id %>
+    <% if @reactivation_view %><%= hidden_field_tag :type, Amelia3::SalesAlertRules::REACTIVATION %><% else %>
+    <label class="field">Tipo<%= select_tag :type, options_for_select([ ['Tutti', ''], ['Cliente fermo', 'CUSTOMER_STOPPED'], ['Prodotto abituale mancante', 'USUAL_PRODUCT_MISSING'], ['Frequenza in calo', 'PURCHASE_FREQUENCY_DROP'] ], params[:type]) %></label>
+    <% end %>
+    <label class="field">Agente<%= select_tag :agent, options_for_select([ ['Tutti gli autorizzati', ''], *@agent_codes.map { |code| [ code, code ] } ], params[:agent]) %></label>
+    <label class="field">Codice cliente<%= text_field_tag :customer_id, params[:customer_id] %></label><button type="submit">Filtra</button>
+  <% end %>
+  <div class="scroll-area" data-kind="list" aria-label="Alert di vendita">
+    <% @alerts.each do |alert| %><% customer = @alert_customers.fetch(alert.customer_code); evidence = alert.evidence; numbers = @contact_numbers.fetch(alert.customer_code); dialog_id = "contact-#{alert.id}" %>
+      <article class="card" data-alert-id="<%= alert.id %>" data-alert-type="<%= alert.rule_type %>">
+        <h2><%= { 'CUSTOMER_STOPPED' => 'Cliente fermo', 'USUAL_PRODUCT_MISSING' => 'Prodotto abituale mancante', 'PURCHASE_FREQUENCY_DROP' => 'Frequenza in calo', 'CUSTOMER_REACTIVATION' => 'Da riattivare' }.fetch(alert.rule_type) %></h2>
+        <h3><%= customer.name %></h3><p>Cod. <%= customer.external_code %> · Agente <%= customer.agent_code %></p>
+        <% if alert.product_code.present? %><p><%= @alert_products[alert.product_code] %> · Art. <%= alert.product_code %></p><% end %>
+        <% if alert.rule_type == Amelia3::SalesAlertRules::REACTIVATION %><p>Ultimo acquisto registrato: <%= display_date(evidence['lastDelivery']) %> · <%= evidence['daysSinceLast'] %> giorni fa.</p><% if customer.blocked %><p class="badge error">Cliente bloccato · non ordinabile</p><% end %>
+        <% elsif alert.rule_type == 'PURCHASE_FREQUENCY_DROP' %><p><%= evidence['priorDates'] %> giornate nei 180 giorni precedenti, <%= evidence['recentDates'] %> negli ultimi 60. Attese <%= amelia_decimal(BigDecimal(evidence['expectedRecent']['n'].to_s) / evidence['expectedRecent']['d']) %>. Calo <%= number_to_percentage(100.0 * evidence['decline']['n'] / evidence['decline']['d'], precision: 1) %>.</p>
+        <% else %><p><%= evidence['datesCount'] %> giornate di acquisto dal <%= display_date(evidence['firstDelivery']) %> al <%= display_date(evidence['lastDelivery']) %>. Intervallo mediano <%= amelia_decimal(BigDecimal(evidence['medianDays']['n'].to_s) / evidence['medianDays']['d']) %> giorni; soglia <%= evidence['thresholdDays'] %> giorni.</p><p>Ultimo acquisto <%= evidence['daysSinceLast'] %> giorni fa · Ritardo <%= evidence['daysLate'] %> giorni.</p><% end %>
+        <div class="actions">
+          <%= link_to 'Apri cliente', "/amelia3/customers/#{ERB::Util.url_encode(customer.external_code)}", class: 'button' %>
+          <%= amelia_form('CREATE_DRAFT', { id: SecureRandom.uuid, customerId: customer.external_code }, return_to: '/amelia3/catalog?order_id=:id') do %><button type="submit" <%= 'disabled' if customer.blocked %>>Nuovo ordine</button><% end %>
+          <button type="button" class="dialog_open_js" data-dialog="<%= dialog_id %>" <%= 'disabled' if numbers.empty? %> aria-describedby="<%= dialog_id %>-help">Scrivi al cliente</button>
+        </div>
+        <small id="<%= dialog_id %>-help"><%= numbers.empty? ? 'Nessun numero disponibile' : 'Scegli un recapito; WhatsApp richiede connessione.' %></small>
+        <% if numbers.any? %><dialog id="<%= dialog_id %>" class="dialog_js" aria-label="Scrivi al cliente"><h2>Scrivi al cliente</h2><p>Scegli un recapito. La disponibilità del numero su WhatsApp non è verificata.</p><% numbers.each do |number| %><div class="card list-row"><span>Nome — +<%= number %></span><%= link_to 'Apri WhatsApp', "https://wa.me/#{number}", target: '_blank', rel: 'noopener noreferrer', class: 'button' %></div><% end %><button type="button" class="dialog_close_js">Chiudi</button></dialog><% end %>
+      </article>
+    <% end %>
+    <% if @alerts.empty? %><p><%= @reactivation_view ? 'Nessun cliente da riattivare per questa selezione.' : 'Nessun alert per questa selezione.' %></p><% end %>
+  </div>
+  <%= render 'amelia3/components/pagination', total: @total, per_page: 10, fixed_params: { run_id: @alert_run&.id } %>
+</div>

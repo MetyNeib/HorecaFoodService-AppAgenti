@@ -12,9 +12,14 @@ export function announce(message, error = false) {
   box._dismissTimer = setTimeout(() => { box.hidden = true; }, error ? 15000 : 5000);
 }
 
-export function openDialog(dialog) {
+export function openDialog(dialog, opener = document.activeElement) {
   if (!dialog) return;
-  dialog._opener = document.activeElement;
+  // WebKit does not focus buttons on a pointer click. Retain the actual trigger,
+  // and restore it after the browser finishes closing the modal (including Esc).
+  dialog._opener = opener;
+  dialog.addEventListener('close', () => {
+    if (dialog._opener?.isConnected && !document.querySelector('dialog[open]')) dialog._opener.focus();
+  }, { once: true });
   dialog.showModal();
 }
 
@@ -145,7 +150,7 @@ export class WorkspaceUI {
     const toggle = event.target.closest('.dock-toggle,.dock_toggle_js');
     if (toggle) { event.preventDefault(); const dock = toggle.closest('.header-dock,.status-dock'); clearTimeout(this.timers.get(dock)); this.setOpen(dock, dock.dataset.open !== 'true'); return; }
     const opener = event.target.closest('.dialog_open_js');
-    if (opener) { event.preventDefault(); openDialog(document.getElementById(opener.dataset.dialog)); return; }
+    if (opener) { event.preventDefault(); openDialog(document.getElementById(opener.dataset.dialog), opener); return; }
     const close = event.target.closest('.dialog_close_js');
     if (close) { event.preventDefault(); closeDialog(close.closest('dialog')); return; }
     const step = event.target.closest('.quantity_step_js');

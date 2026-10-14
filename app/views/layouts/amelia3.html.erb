@@ -20,7 +20,7 @@
     <div class="snackbar snackbar_js" role="status" <%= 'hidden' if flash[:notice].blank? %>><%= flash[:notice] %></div>
   </div>
   <script type="application/json" id="workspace-bootstrap"><%= raw json_escape(amelia_bootstrap.to_json) %></script>
-  <%= render 'offline/templates' %>
+  <%= render 'offline/templates', commercial_only: true %>
   <%= render 'amelia3/offline/templates' %>
 </body>
 </html>

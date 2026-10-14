@@ -10,6 +10,12 @@ RSpec.describe Amelia3::Commands do
   after { FileUtils.remove_entry(fixture[:directory]) }
 
   def intent(user, type, payload, operation: SecureRandom.uuid)
+    if type == "ADD_LINE"
+      scope = Amelia3::Scope.new(user)
+      product = scope.products.find_by!(external_code: payload.fetch("productId"))
+      quote = Amelia3::Quote.for(scope, product)
+      payload = { "unit" => quote.unit, "expectedConversionVersion" => quote.terms["conversionVersion"] }.merge(payload)
+    end
     { "operationId" => operation, "baseVersion" => user.commercial_tenant.reload.revision, "epoch" => 1, "type" => type,
       "payload" => payload.merge("batchId" => user.commercial_tenant.active_batch_id) }
   end

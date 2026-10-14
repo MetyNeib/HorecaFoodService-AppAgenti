@@ -35,8 +35,16 @@ module Amelia3Fixture
     tenant = Amelia3::Tenant.create!(code: "amelia3-qa-#{SecureRandom.hex(4)}", name: "Amelia3 QA sintetica")
     directory = csv_fixture
     batch = Amelia3::Importer.call(tenant: tenant, directory: directory)
+    attest_fixture_units(tenant)
     agent = User.create!(email: "agent-#{SecureRandom.hex(4)}@example.invalid", password: "TestHfsLocale2026!", dataset_mode: "amelia3", role: "agent", agent_id: "34", commercial_tenant: tenant, display_name: "Agente sintetico 34")
     admin = User.create!(email: "admin-#{SecureRandom.hex(4)}@example.invalid", password: "TestHfsLocale2026!", dataset_mode: "amelia3", role: "admin", agent_id: "AMELIA3-ADMIN", commercial_tenant: tenant, display_name: "Admin sintetico")
     { tenant: tenant, batch: batch, agent: agent, admin: admin, directory: directory }
+  end
+
+  def attest_fixture_units(tenant, base: "P", order: "P", contract: {})
+    Amelia3::UnitVerification.create!(tenant: tenant, base_unit: base, order_unit: order,
+      version: "synthetic-test-v1", evidence_reference: "SYNTHETIC FIXTURE ONLY", approved_by: "Automated test fixture", approved_at: Time.current,
+      contract: { "priceUnit" => "base", "personalPriceUnit" => "base", "stockFields" => { "pieces" => "PZ" }, "primaryStockField" => "pieces",
+                  "verifiedFactors" => %w[piecesPerPack packsPerCase], "steps" => { "PZ" => "1" } }.merge(contract))
   end
 end

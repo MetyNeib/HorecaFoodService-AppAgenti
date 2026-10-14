@@ -4,7 +4,7 @@ module Amelia3
   class Commands
     FIELDS = {
       "CREATE_DRAFT" => %w[id customerId batchId],
-      "ADD_LINE" => %w[orderId lineId productId quantity expectedUnitPrice expectedVersion batchId],
+      "ADD_LINE" => %w[orderId lineId productId unit quantity expectedUnitPrice expectedExactPrice expectedConversionVersion expectedVersion batchId],
       "UPDATE_LINE" => %w[orderId lineId quantity expectedVersion batchId],
       "REMOVE_LINE" => %w[orderId lineId expectedVersion batchId],
       "SAVE_REVIEW" => %w[orderId destinationId deliveryDate paymentNote note expectedVersion batchId],
@@ -73,8 +73,13 @@ module Amelia3
         fail!("Riga duplicata o limite articoli raggiunto.", "INVALID_LINE") if order.lines.length >= 100 || order.lines.any? { |line| line["id"] == @payload["lineId"] }
         product = @scope.products.find_by!(external_code: @payload["productId"])
         quantity = quantity!
-        quote = Quote.for(@scope, product, @scope.customer(order.customer_code))
-        if quote.unit_price && CsvReader.decimal(@payload["expectedUnitPrice"]) != quote.unit_price
+        quote = Quote.for(@scope, product, @scope.customer(order.customer_code), unit: @payload["unit"])
+        quote.validate_quantity!(quantity)
+        unless @payload["unit"] == quote.unit && @payload["expectedConversionVersion"] == quote.terms["conversionVersion"]
+          fail!("Contratto UM aggiornato: verifica la proposta locale conservata.", "CONVERSION_CHANGED", 409)
+        end
+        expected = @payload["expectedExactPrice"] ? ExactValue.from_wire(@payload["expectedExactPrice"]) : CsvReader.decimal(@payload["expectedUnitPrice"]).to_r
+        if expected != quote.exact_unit_price
           fail!("Il prezzo è cambiato. La proposta locale è conservata.", "PRICE_CHANGED", 409)
         end
         aggregate_quantity!(order, product, quantity, quote)
@@ -82,13 +87,14 @@ module Amelia3
       when "UPDATE_LINE"
         line = line!(order)
         product = @scope.products.find_by!(external_code: line.fetch("productId"))
-        quote = Quote.for(@scope, product, @scope.customer(order.customer_code))
+        quote = Quote.for(@scope, product, @scope.customer(order.customer_code), unit: line.fetch("unit"))
+        quote.validate_saved!(line)
         quantity = quantity!
         quote.validate_quantity!(quantity)
         aggregate_quantity!(order, product, quantity, quote, excluding: line["id"])
         # Quantity changes preserve the saved price, even after another import.
-        price = BigDecimal(line.fetch("unitPrice"))
-        replacement = line.merge("quantity" => quantity.to_s("F"), "lineNetCents" => (quantity * price * 100).round(0, BigDecimal::ROUND_HALF_UP).to_i)
+        price = ExactValue.from_wire(line.fetch("exactUnitPrice"))
+        replacement = line.merge("quantity" => quantity.to_s("F"), "lineNetCents" => ExactValue.cents(quantity, price))
         order.lines = order.lines.map { |row| row["id"] == line["id"] ? replacement : row }
       when "REMOVE_LINE"
         line!(order)
@@ -117,17 +123,25 @@ module Amelia3
       destination!(order, order.destination_code)
       order.lines.group_by { |line| line.fetch("productId") }.each do |code, lines|
         product = @scope.products.find_by!(external_code: code)
-        quote = Quote.for(@scope, product, @scope.customer(order.customer_code))
-        lines.each { |line| quote.validate_quantity!(BigDecimal(line.fetch("quantity"))) }
-        fail!("Disponibilità aggregata insufficiente.", "INSUFFICIENT_STOCK") if lines.sum { |line| BigDecimal(line.fetch("quantity")) } > quote.stock.pieces
+        lines.each do |line|
+          quote = Quote.for(@scope, product, @scope.customer(order.customer_code), unit: line.fetch("unit"))
+          quote.validate_saved!(line)
+          aggregate_quantity!(order, product, BigDecimal(line.fetch("quantity")), quote, excluding: line.fetch("id"))
+        end
       end
       order.assign_attributes(status: "CONFIRMED_LOCAL", confirmed_at: Time.current)
     end
 
     def aggregate_quantity!(order, product, quantity, quote, excluding: nil)
       quote.validate_quantity!(quantity)
-      total = order.lines.select { |line| line["productId"] == product.external_code && line["id"] != excluding }.sum { |line| BigDecimal(line["quantity"]) } + quantity
-      fail!("Disponibilità aggregata insufficiente.", "INSUFFICIENT_STOCK") if total > quote.stock.pieces
+      total = order.lines.select { |line| line["productId"] == product.external_code && line["id"] != excluding }.sum do |line|
+        saved_quote = Quote.for(@scope, product, @scope.customer(order.customer_code), unit: line.fetch("unit"))
+        saved_quote.validate_saved!(line)
+        factor = quote.unit_contract.ratio(line.fetch("unit"), quote.unit)
+        fail!("Giacenze delle due UM non confrontabili.", "INCOMPARABLE_UNITS") unless factor
+        BigDecimal(line.fetch("quantity")).to_r * factor
+      end + quantity.to_r
+      fail!("Disponibilità aggregata insufficiente.", "INSUFFICIENT_STOCK") if total > quote.available
     end
 
     def destination!(order, code)
@@ -145,7 +159,7 @@ module Amelia3
 
     def quantity!
       value = CsvReader.decimal(@payload["quantity"])
-      fail!("Quantità intera richiesta nell'UM P.", "INVALID_QUANTITY") unless value.frac.zero?
+      fail!("Precisione quantità non attestata.", "INVALID_QUANTITY") unless (value * 10**12).frac.zero?
       value
     end
 

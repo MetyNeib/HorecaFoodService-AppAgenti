@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "results": [
+    {
+      "role": "synthetic",
+      "status": "PASS",
+      "business_mutations": 0
+    },
+    {
+      "role": "agent",
+      "status": "PASS",
+      "business_mutations": 0
+    },
+    {
+      "role": "admin",
+      "status": "PASS",
+      "business_mutations": 0
+    }
+  ]
+}
