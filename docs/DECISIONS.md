@@ -239,3 +239,37 @@ pagina conservata se autorizzata, blocco su lavoro pendente e uso solo online.
 Funzione locale opt-in: login Admin sempre richiesto, ritorno senza password,
 identità visibile. Ultima selezione conservata nella stessa sessione; nuovo
 login riparte dall’Admin. Nessun cambiamento alle funzioni di invio simulate.
+
+
+## 15/10/2026 — Ingresso FTP, prodotti abituali e sostituzioni
+
+Le decisioni successive dell’utente superano il placeholder WhatsApp e la sola
+revisione statica manuale previsti al trasferimento. Sono autorizzati polling
+FTP in lettura ogni tre minuti, catalogo supplementare dinamico, prodotti
+abituali degli ultimi sei mesi, confronto locale con fallback OpenAI e audit.
+Gli ordini inizialmente presenti sono archivio; solo nuovi arrivi aumentano
+la notifica. Apertura e presa in carico non equivalgono a conferma. Timer di
+30 minuti dalla ricezione; alla scadenza resta necessaria la conferma manuale,
+senza alcun invio automatico. Originale immutabile e copia demo separata,
+condivisione Admin/Agente 34, permessi e conflitti espliciti. Nessun prezzo o
+fattore UM ricostruito dal file ordine; rimangono valide le attestazioni V5.
+
+La ricerca parte dai prodotti abituali e offre il tab Intero catalogo. Il set
+è riconciliato con acquisti consegnati positivi negli ultimi sei mesi. Per
+sopprimere un alert prodotto serve almeno un acquisto storico positivo del
+sostitutivo successivo all’ultimo acquisto dell’originale e recente rispetto
+alla soglia dell’alert. Gli ordini WhatsApp/tablet non sono prova di consegna.
+Marca, provenienza, pezzatura, conservazione e taglio possono essere diversi;
+varianti zero/senza zucchero, senza lattosio, senza glutine, senza alcol o
+caffeina restano distinte. In dubbio plausibile si preferisce sopprimere.
+Un errore tecnico resta invece in verifica: niente equivalenza inventata.
+
+Fuzzy e regex locali precedono l’AI, invocata solo in assenza di risultati.
+Modello richiesto esplicitamente dall’utente: `gpt-6-luna`, Responses API,
+ragionamento low, JSON vincolato, `store: false`. Batch di massimo 12 confronti,
+cache per modello/regola/candidati, limite locale di 300 richieste al giorno.
+Si trasmettono descrizioni prodotto e identificatori temporanei, non clienti,
+prezzi, credenziali FTP o storico commerciale. Chiave e configurazione in
+`.env.openai.local`, escluso da Git. La configurazione `.env` esistente è
+conservata. Il worker dedicato gestisce anche import 06:05 e alert 06:30;
+quello precedente rimane fermo per evitare due scheduler.

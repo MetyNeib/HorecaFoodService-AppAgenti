@@ -37,6 +37,7 @@ module Amelia3
         Thread.current.name = "amelia3-scheduler"
         until @stopped
           begin
+            IncomingSchedule.tick
             tick
           rescue StandardError
             Rails.logger.warn("AMELIA3_SCHEDULER_WAITING")

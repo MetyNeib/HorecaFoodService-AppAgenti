@@ -4,6 +4,7 @@
     <%= link_to 'Alert di vendita', url_for(request.query_parameters.except('type', 'page')), class: @reactivation_view ? nil : 'active', aria: { current: @reactivation_view ? nil : 'page' } %>
     <%= link_to 'Da riattivare', url_for(request.query_parameters.except('page').merge('type' => Amelia3::SalesAlertRules::REACTIVATION)), class: @reactivation_view ? 'active' : nil, aria: { current: @reactivation_view ? 'page' : nil } %>
   </nav>
+  <% if !@reactivation_view && @pending_reviews.positive? %><p class="meta" role="status"><%= @pending_reviews %> verifiche sui prodotti in attesa: non sono conteggiate negli alert finché il confronto non è disponibile.</p><% end %>
   <p><%= @reactivation_view ? 'Classificazione basata sull’ultimo acquisto consegnato nello storico importato, anche oltre gli ultimi 12 mesi. Gli ordini locali non sono ancora consegne.' : 'I clienti senza acquisti da più di 90 giorni sono nella sezione Da riattivare e sono esclusi da questi alert.' %></p>
   <% if @stale %><p class="notice" role="status">Dati non aggiornati. <%= @alert_run ? "Ultimo calcolo: #{display_date(@alert_run.as_of)}." : 'Il primo calcolo non è ancora disponibile.' %></p><% else %><p>Calcolo del <%= display_date(@alert_run.as_of) %><%= @alert_run.source == 'development' ? ' · baseline locale di sviluppo' : '' %></p><% end %>
   <%= form_with url: '/amelia3/alerts', method: :get, local: true, class: 'filters amelia_search_form_js' do %>

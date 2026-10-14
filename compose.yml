@@ -40,6 +40,9 @@ services:
       AMELIA3_FTP_SYNC_ENABLED: ${AMELIA3_FTP_SYNC_ENABLED:-false}
       AMELIA3_FTP_SYNC_CRON: ${AMELIA3_FTP_SYNC_CRON:-5 6 * * *}
       AMELIA3_FTP_TIMEZONE: ${AMELIA3_FTP_TIMEZONE:-Europe/Rome}
+    env_file:
+      - path: .env.openai.local
+        required: false
     depends_on:
       db:
         condition: service_healthy
@@ -59,6 +62,31 @@ services:
       AMELIA3_FTP_PASSWORD: ${AMELIA3_FTP_PASSWORD:-}
       AMELIA3_FTP_IMPORT_DIR: ${AMELIA3_FTP_IMPORT_DIR:-/UPLOAD}
       AMELIA3_FTP_WRITE_ENABLED: ${AMELIA3_FTP_WRITE_ENABLED:-false}
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_started
+  feed_worker:
+    image: hfs-agents-web
+    command: bundle exec sidekiq -C config/sidekiq_feeds.yml
+    restart: unless-stopped
+    volumes:
+      - .:/app
+      - bundle_cache:/usr/local/bundle
+    env_file:
+      - path: .env.openai.local
+        required: false
+    environment:
+      <<: *rails_environment
+      AMELIA3_INCOMING_ENABLED: 'true'
+      AMELIA3_FTP_SYNC_ENABLED: 'true'
+      AMELIA3_FTP_HOST: ${AMELIA3_FTP_HOST:-}
+      AMELIA3_FTP_PORT: ${AMELIA3_FTP_PORT:-21}
+      AMELIA3_FTP_USERNAME: ${AMELIA3_FTP_USERNAME:-}
+      AMELIA3_FTP_PASSWORD: ${AMELIA3_FTP_PASSWORD:-}
+      AMELIA3_FTP_IMPORT_DIR: ${AMELIA3_FTP_IMPORT_DIR:-/UPLOAD}
+      AMELIA3_FTP_WRITE_ENABLED: 'false'
     depends_on:
       db:
         condition: service_healthy

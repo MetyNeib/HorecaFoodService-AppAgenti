@@ -1,0 +1,18 @@
+<div class="view">
+  <div class="page-title"><h1>Ordini da leggere</h1><p>Ordini ricevuti da WhatsApp</p></div>
+  <nav class="tabs" aria-label="Ordini ricevuti"><%= link_to 'Da confermare', '/amelia3/whatsapp', class: !@archive ? 'active' : '' %><%= link_to 'Archivio', '/amelia3/whatsapp?archive=1', class: @archive ? 'active' : '' %></nav>
+  <p class="meta">Controllo nuovi ordini ogni 3 minuti. <%= @feed_state&.last_success_at ? "Ultimo controllo: #{@feed_state.last_success_at.in_time_zone('Europe/Rome').strftime('%d/%m %H:%M')}." : 'In attesa del primo controllo.' %></p>
+  <% unless @feed_state&.fresh? %><p class="meta" role="status">Aggiornamento da verificare: gli ordini già acquisiti restano disponibili.</p><% end %>
+  <p>Demo: puoi rivedere una copia dell’ordine e confermarla localmente. Nessuna modifica viene inviata al gestionale.</p>
+  <div class="scroll-area" data-kind="list" aria-label="Ordini WhatsApp">
+    <% @incoming_orders.each do |incoming| %>
+      <article class="card"><div class="row between"><h2><%= @customer_names[incoming.customer_code] || 'Cliente da verificare' %></h2><span class="badge"><%= amelia_incoming_status(incoming) %></span></div>
+        <p>Ordine <%= incoming.external_reference %> · <%= pluralize(incoming.draft.fetch('lines').length, 'prodotto', 'prodotti') %> · consegna <%= display_date(incoming.draft['deliveryDate']) %></p>
+        <p class="meta">Ricevuto <%= incoming.received_at.in_time_zone('Europe/Rome').strftime('%d/%m/%Y %H:%M') %><%= incoming.claimed_by_id ? ' · Preso in carico' : '' %></p>
+        <%= link_to 'Apri ordine', "/amelia3/whatsapp/#{incoming.id}", class: 'button' %>
+      </article>
+    <% end %>
+    <% if @incoming_orders.empty? %><p class="empty"><%= @archive ? 'Nessun ordine in archivio.' : 'Nessun ordine da confermare.' %></p><% end %>
+  </div>
+  <%= amelia_pagination(@total) %>
+</div>

@@ -1,0 +1,10 @@
+<section class="card">
+  <h2>Ordini ricevuti e prodotti abituali</h2>
+  <p>Controllo FTP ogni 3 minuti · <%= @feed_state&.fresh? ? 'attivo' : 'da verificare' %></p>
+  <p>Ultimo controllo riuscito: <%= @feed_state&.last_success_at&.in_time_zone('Europe/Rome')&.strftime('%d/%m/%Y %H:%M:%S') || 'non ancora disponibile' %></p>
+  <% if @feed_state&.error_code %><p class="error">Esito: <%= @feed_state.error_code %> · <%= @feed_state.file_errors.length %> file da verificare.</p><% end %>
+  <% if @feed_snapshot %><p><%= @feed_snapshot.products.count %> prodotti di supporto · <%= @feed_snapshot.habitual_products.count %> associazioni cliente/prodotto verificate.</p><% end %>
+  <p>Ricerca OpenAI: <%= @ai_configured ? 'chiave configurata; eventuali errori mantengono la verifica in attesa' : 'chiave da configurare sul server' %>.</p>
+  <p>Confronti prodotti: <%= @reviews.fetch('suppressed', 0) %> alert esclusi per sostituzione · <%= @reviews.fetch('pending', 0) %> in attesa di verifica.</p>
+  <p class="meta">L’acquisto di un sostituto viene verificato solo nello storico giornaliero. Ordini ricevuti e copie demo non modificano questa evidenza.</p>
+</section>

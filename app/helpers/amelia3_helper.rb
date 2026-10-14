@@ -1,4 +1,8 @@
 module Amelia3Helper
+  def amelia_incoming_status(order)
+    { "pending" => "Da confermare manualmente", "claimed" => "Da confermare manualmente", "archived" => "Archivio iniziale", "confirmed_demo" => "Confermato nella demo" }.fetch(order.status)
+  end
+
   def amelia_decimal(value)
     value.nil? ? "—" : value.to_s("F").sub(/(\.\d*?)0+\z/, '\1').sub(/\.\z/, "").tr(".", ",")
   end

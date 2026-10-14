@@ -1,3 +1,9 @@
+> Aggiornamento 15/10/2026: il trasferimento è completato. Lo sviluppo corrente
+> è su `feature/amelia3-ftp-inbox-habitual-products`. Per riprendere dopo la pausa
+> usare [il checkpoint FTP](../qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md): il nuovo
+> `feed_worker` sostituisce operativamente il precedente `worker`, che va lasciato
+> fermo. Le istruzioni storiche seguenti descrivono la prima installazione.
+
 # Trasferimento della base Amelia3 sul Mac
 
 Destinazione dichiarata: MacBook Pro M1 Pro ARM64, macOS 26.3.1 (a), Docker

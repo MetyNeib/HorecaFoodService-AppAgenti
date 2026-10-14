@@ -14,4 +14,6 @@ class Amelia3::DemoAccess
   def selected(id)
     id.present? && accounts.exists? ? accounts.find(id) : @admin
   end
+
+  def enabled? = accounts.exists?
 end

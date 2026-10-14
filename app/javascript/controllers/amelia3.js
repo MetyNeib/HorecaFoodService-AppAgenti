@@ -32,6 +32,9 @@ export default class Amelia3Controller extends WorkspaceController {
         this.render();
       } else if (this.client.record.outbox.length) this.render();
       this.status();
+      this.incomingTimer = setInterval(() => this.updateIncomingTimers(), 1000);
+      this.notificationTimer = setInterval(() => this.refreshNotifications(), 20000);
+      this.updateIncomingTimers();
       await this.registerWorker();
       if (navigator.onLine) await this.reconnect();
     } catch (error) {
@@ -185,6 +188,29 @@ export default class Amelia3Controller extends WorkspaceController {
   async submit(event) {
     const form = event.target;
     if (!(form instanceof HTMLFormElement)) return;
+    if (form.matches('.incoming_form_js')) {
+      event.preventDefault();
+      if (form.dataset.saving === 'true') return;
+      if (!navigator.onLine) { announce('La revisione degli ordini ricevuti richiede la connessione.', true); return; }
+      if (form.elements.operation?.value === 'confirm' && find('main form[data-dirty="true"]')) { announce('Salva prima le modifiche all’ordine.', true); return; }
+      form.dataset.saving = 'true';
+      try {
+        await this.ready;
+        const body = new URLSearchParams(new FormData(form));
+        if (event.submitter?.name) body.set(event.submitter.name, event.submitter.value);
+        const response = await fetch(form.action, { method: 'POST', credentials: 'same-origin', cache: 'no-store', signal: AbortSignal.timeout(15000),
+          headers: { 'Accept': 'application/json', 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content, 'X-HFS-User-Id': this.client.snapshot.user.id }, body });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || 'Salvataggio non completato.');
+        delete form.dataset.dirty;
+        form.dataset.saving = 'false';
+        await this.navigate(result.location, { replace: true });
+        await this.refreshNotifications();
+        announce('Copia demo salvata localmente.');
+      } catch (error) { announce(error.message, true); }
+      finally { form.dataset.saving = 'false'; }
+      return;
+    }
     if (form.matches('.amelia_account_switch_js')) {
       event.preventDefault();
       await this.ready;
@@ -249,6 +275,32 @@ export default class Amelia3Controller extends WorkspaceController {
       announce(this.client.record.conflict?.message || (this.client.record.outbox.length ? 'Salvato sul dispositivo · da sincronizzare.' : 'Salvato nel database locale.'), !!this.client.record.conflict);
     } catch (error) { announce(error.message, true); }
     finally { form.dataset.saving = 'false'; delete form.dataset.confirmed; }
+  }
+
+  updateIncomingTimers() {
+    findAll('[data-incoming-deadline]').forEach(element => {
+      const seconds = Math.max(0, Math.ceil((Date.parse(element.dataset.incomingDeadline) - Date.now() - (this.serverClockOffset || 0)) / 1000));
+      element.textContent = seconds > 0 ? `Tempo per la verifica: ${Math.floor(seconds / 60)}:${String(seconds % 60).padStart(2, '0')}` : 'Tempo di verifica scaduto · conferma manuale ancora necessaria';
+    });
+  }
+
+  async refreshNotifications() {
+    if (!navigator.onLine || document.hidden || !this.client?.snapshot || this.refreshingNotifications) return;
+    this.refreshingNotifications = true;
+    try {
+      const response = await fetch('/amelia3/notifications', { credentials: 'same-origin', cache: 'no-store', signal: AbortSignal.timeout(8000), headers: { 'Accept': 'application/json', 'X-HFS-User-Id': this.client.snapshot.user.id } });
+      if (response.status === 409 || response.status === 401) { this.client.authRequired = true; this.status(); return; }
+      if (!response.ok) return;
+      const result = await response.json();
+      this.serverClockOffset = Date.parse(result.serverTime) - Date.now();
+      const changed = this.client.snapshot.state.data.notifications?.unreadOrders !== result.notifications.unreadOrders;
+      this.client.snapshot.state.data.notifications = result.notifications;
+      this.status();
+      if (changed && location.pathname === '/amelia3/whatsapp' && !find('main form[data-dirty="true"], main form[data-saving="true"]')) {
+        await this.navigate(location.pathname + location.search, { replace: true, preserveFocus: true, preserveScroll: true });
+      }
+    } catch { /* Keep the last known counts; never interrupt an order being edited. */ }
+    finally { this.refreshingNotifications = false; }
   }
 
   async click(event) {

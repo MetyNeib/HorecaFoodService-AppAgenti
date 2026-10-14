@@ -1,3 +1,15 @@
+# Checkpoint FTP, prodotti abituali e GPT-6 Luna — 15/10/2026
+
+Lavoro sospeso su richiesta dell’utente per chiudere il Mac. Branch corrente:
+`feature/amelia3-ftp-inbox-habitual-products`, derivato dal commit UX `3453e15`.
+Implementazione salvata localmente; nessun push, merge, deploy o invio reale.
+Stato, verifiche e istruzioni di ripresa in
+[AMELIA3_FTP_FEEDS_CHECKPOINT](../qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md).
+Il nuovo `feed_worker` e il vecchio `worker` sono fermi al checkpoint.
+Non dichiarare ancora conclusa la revisione completa degli alert.
+
+---
+
 # Perfezionamento demo Mac — 14/10/2026
 
 Richieste frontend e risposte dell'utente implementate su `feature/amelia3-demo-polish`.

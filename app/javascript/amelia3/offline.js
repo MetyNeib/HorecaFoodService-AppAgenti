@@ -96,7 +96,9 @@ function cart(data, order, target) {
 function catalog(data, params) {
   const query = params.get('q'), order = data.orders.find(row => row.id === params.get('order_id'));
   const customer = data.customers.find(row => row.id === order?.customerId), target = '/amelia3/catalog?' + params;
-  const eligible = data.products.map(product => ({ product, units: orderableUnits(data, customer?.id, product) })).filter(row => row.units.length);
+  const habitual = data.habitualProducts?.[customer?.id] || [];
+  const habitualTab = customer && params.get('range') !== 'all' && habitual.length > 0;
+  const eligible = data.products.filter(product => !habitualTab || habitual.includes(product.id)).map(product => ({ product, units: orderableUnits(data, customer?.id, product) })).filter(row => row.units.length);
   const rows = eligible.filter(({ product }) => matches(`${product.id} ${product.name}`, query)).map(({ product, units }) => {
     const article = box('article', 'card product-card', box('div', 'product-heading', node('h2', product.name), link('Scheda prodotto', `/amelia3/catalog/${encodeURIComponent(product.id)}`, '')),
       node('p', `Cod. ${product.id}`, 'meta'));
@@ -122,7 +124,8 @@ function catalog(data, params) {
   });
   return [title(order ? 'Cerca e aggiungi prodotti' : 'Catalogo Amelia3', `${eligible.length} prodotti ordinabili tra quelli preparati sul dispositivo. Solo unità con prezzo e disponibilità verificati.`),
     ...(customer ? [box('div', 'customer-strip', node('b', customer.name), link('Scheda cliente', `/amelia3/customers/${encodeURIComponent(customer.id)}`, ''))] : []),
-    box('div', order ? 'grid editor workspace-split' : '', box('section', 'pane', search('/amelia3/catalog', query, order ? { order_id: order.id } : {}), region('Lista prodotti', rows.length ? rows : [node('p', 'Nessun risultato nei prodotti preparati.')])), ...(order ? [cart(data, order, target)] : []))];
+    ...(customer ? [box('nav', 'tabs', link('Prodotti abituali', `/amelia3/catalog?order_id=${order.id}&range=habitual`, habitualTab ? 'active' : ''), link('Intero catalogo', `/amelia3/catalog?order_id=${order.id}&range=all`, !habitualTab ? 'active' : '')), node('p', habitual.length ? 'Prodotti abituali degli ultimi sei mesi, tra quelli salvati sul dispositivo.' : 'Nessun elenco abituale disponibile: cerca nel catalogo salvato.', 'meta')] : []),
+    box('div', order ? 'grid editor workspace-split' : '', box('section', 'pane', search('/amelia3/catalog', query, order ? { order_id: order.id, range: habitualTab ? 'habitual' : 'all' } : {}), region('Lista prodotti', rows.length ? rows : [node('p', 'Nessun risultato nei prodotti preparati. La ricerca per sinonimi richiede la connessione.')])), ...(order ? [cart(data, order, target)] : []))];
 }
 function review(data, order) {
   if (order.status !== 'DRAFT') return [title('Riepilogo ordine', 'Confermato localmente'), node('h2', order.customerName), node('p', order.note), node('p', `Totale netto ${money(order.netCents)} · nessun invio al gestionale`), region('Articoli confermati', order.lines.map(line => box('article', 'card', node('h3', line.name), node('p', `${line.quantity} ${line.unit} · ${money(line.lineNetCents)}`))))];
@@ -152,7 +155,7 @@ export function renderOffline(snapshot) {
     box('div', 'grid two home-primary', link('Inserisci nuovo ordine →', '/amelia3/customers?pick=1', 'card hero-card'), link('Ordini locali →', '/amelia3/orders', 'card hero-card')),
     box('div', 'grid home-links', link('Clienti', '/amelia3/customers', 'card navigation-card'), link('Catalogo', '/amelia3/catalog', 'card navigation-card'))];
   else if (path === '/amelia3/order_center') children = [title('Ordini'), box('nav', 'amelia-order-center', link('I miei ordini', '/amelia3/orders', 'card navigation-card'), link('Ordini da leggere', '/amelia3/whatsapp', 'card navigation-card'), link('Alert di vendita', '/amelia3/alerts', 'card navigation-card'))];
-  else if (path === '/amelia3/whatsapp') children = [title('Ordini da leggere'), node('h2', 'Funzionalità non ancora disponibile')];
+  else if (path.startsWith('/amelia3/whatsapp')) children = [title('Ordini da leggere'), node('p', 'Collegati al server per leggere e rivedere gli ordini ricevuti. Il contatore mostra l’ultimo dato disponibile.')];
   else if (path === '/amelia3/customers') children = customers(data, params);
   else if (path.startsWith('/amelia3/customers/')) children = customerPage(data, decodeURIComponent(path.split('/')[3]), params);
   else if (path === '/amelia3/catalog') children = catalog(data, params);

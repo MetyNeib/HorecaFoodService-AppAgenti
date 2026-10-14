@@ -16,7 +16,8 @@ class Amelia3::DemoSessionsController < Amelia3::BaseController
     uri = URI.parse(params[:return_to].to_s)
     return "/amelia3" if uri.host || uri.scheme || uri.path.match?(/[\\\r\n]/)
     route = Rails.application.routes.recognize_path(uri.path, method: :get)
-    return "/amelia3" unless route[:controller] == "amelia3/pages"
+    return "/amelia3" unless %w[amelia3/pages amelia3/incoming_orders].include?(route[:controller])
+    scope.incoming_orders.find(route[:id]) if route[:controller] == "amelia3/incoming_orders" && route[:action] == "show"
     query = Rack::Utils.parse_nested_query(uri.query.to_s)
     scope.customer(route[:id]) if route[:action] == "customer"
     scope.order(route[:id]) if route[:action] == "order"

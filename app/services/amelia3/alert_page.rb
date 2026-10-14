@@ -17,6 +17,7 @@ module Amelia3
         customers = customers.where(external_code: params[:customer_id])
       end
       rows = @run.items.where(status: "active", customer_code: customers.select(:external_code))
+      rows = AlertReview.visible(rows)
       if reactivation
         rows = rows.where(rule_type: SalesAlertRules::REACTIVATION)
         @total = rows.count

@@ -1,0 +1,36 @@
+<div class="view" data-customer-code="<%= @incoming.customer_code %>">
+  <div class="page-title"><h1>Ordine <%= @incoming.external_reference %></h1><p><%= @customer&.name || 'Cliente da verificare' %> · <%= amelia_incoming_status(@incoming) %></p></div>
+  <p>Modifiche e conferma di questa demo restano locali. L’ordine originale ricevuto è conservato.</p>
+  <% if %w[pending claimed].include?(@incoming.status) %>
+    <div class="card"><b>Da confermare manualmente</b><p data-incoming-deadline="<%= @incoming.confirmation_due_at.iso8601 %>">Scadenza verifica: <%= @incoming.confirmation_due_at.in_time_zone('Europe/Rome').strftime('%H:%M') %></p><p class="meta">Aprire o prendere in carico l’ordine non elimina la notifica. Il timer non invia né conferma automaticamente.</p></div>
+  <% end %>
+  <% unless @customer %><p class="notice">Cliente non ancora presente nell’anagrafica: ordine conservato in sola lettura, in attesa dell’aggiornamento giornaliero.</p><% end %>
+  <% if @customer&.blocked %><p class="error">Cliente attualmente bloccato: ordine disponibile in sola lettura.</p><% end %>
+  <% if @can_edit && !@incoming.claimed_by_id %>
+    <%= form_with url: "/amelia3/whatsapp/#{@incoming.id}", method: :patch, class: 'incoming_form_js', local: true do %>
+      <%= hidden_field_tag :version, @incoming.lock_version %><%= hidden_field_tag :owner_user_id, Amelia3::Snapshot.identity(current_user) %><%= hidden_field_tag :operation, 'claim' %><button type="submit" class="primary">Prendi in carico</button>
+    <% end %>
+  <% end %>
+  <% if @incoming.claimed_by_id && @incoming.claimed_by_id != current_user.id %><p class="meta">Preso in carico dall’altro account. Torna a quell’account per modificare la copia demo.</p><% end %>
+  <%= form_with url: "/amelia3/whatsapp/#{@incoming.id}", method: :patch, class: 'incoming_form_js', local: true do %>
+    <%= hidden_field_tag :version, @incoming.lock_version %><%= hidden_field_tag :owner_user_id, Amelia3::Snapshot.identity(current_user) %>
+    <fieldset <%= 'disabled' unless @can_edit && @incoming.claimed_by_id == current_user.id %> class="incoming-editor">
+      <div class="filters"><label class="field">Consegna<%= date_field_tag 'draft[deliveryDate]', @incoming.draft['deliveryDate'], required: true %></label><label class="field search">Nota ordine<%= text_field_tag 'draft[note]', @incoming.draft['note'], maxlength: 2000 %></label></div>
+      <% @incoming.draft.fetch('lines').each_with_index do |line, index| %>
+        <article class="card incoming-line"><h2><%= @products_by_code[line['productCode']]&.name || "Prodotto #{line['productCode']} · da verificare" %></h2>
+          <p class="meta">Cod. <%= line['productCode'] %> · UM ricevuta <%= line['sourceUnit'] %><%= line['unit'] ? " (#{line['unit']})" : ' · da verificare' %></p>
+          <%= hidden_field_tag "draft[lines][#{index}][id]", line['id'] %><%= hidden_field_tag "draft[lines][#{index}][productCode]", line['productCode'] %><%= hidden_field_tag "draft[lines][#{index}][sourceUnit]", line['sourceUnit'] %>
+          <div class="filters"><label class="field">Quantità<%= text_field_tag "draft[lines][#{index}][quantity]", line['quantity'].tr('.', ','), inputmode: 'decimal', required: true %></label><label class="field search">Nota prodotto<%= text_field_tag "draft[lines][#{index}][note]", line['note'], maxlength: 1000 %></label><label class="check"><%= check_box_tag "draft[lines][#{index}][remove]", '1' %>Rimuovi</label></div>
+        </article>
+      <% end %>
+      <% addition_index = @incoming.draft.fetch('lines').length %><details class="card"><summary>Aggiungi un prodotto alla copia demo</summary><div class="filters"><label class="field">Codice prodotto<%= text_field_tag "draft[lines][#{addition_index}][productCode]" %></label><label class="field">UM<%= select_tag "draft[lines][#{addition_index}][sourceUnit]", options_for_select(Amelia3::IncomingOrderParser::UNIT_MAP.keys) %></label><label class="field">Quantità<%= text_field_tag "draft[lines][#{addition_index}][quantity]", '', inputmode: 'decimal' %></label></div><p class="meta">Verifica nome e codice nel <%= link_to 'catalogo', '/amelia3/catalog', target: '_blank', rel: 'noopener' %>. I prezzi dell’ordine ricevuto non sono presenti nel file e non vengono ricostruiti.</p></details>
+      <button type="submit" name="operation" value="save">Salva modifiche demo</button>
+    </fieldset>
+  <% end %>
+  <% if @can_edit && @incoming.claimed_by_id == current_user.id %>
+    <%= form_with url: "/amelia3/whatsapp/#{@incoming.id}", method: :patch, class: 'incoming_form_js', local: true do %>
+      <%= hidden_field_tag :version, @incoming.lock_version %><%= hidden_field_tag :owner_user_id, Amelia3::Snapshot.identity(current_user) %><%= hidden_field_tag :operation, 'confirm' %><button type="submit" class="primary">Conferma copia demo</button>
+    <% end %>
+  <% end %>
+  <details class="card"><summary>Ordine originale ricevuto</summary><p>Consegna <%= display_date(@incoming.original['deliveryDate']) %> · <%= @incoming.original['note'] %></p><ul><% @incoming.original.fetch('lines').each do |line| %><li><%= line['productCode'] %> · <%= line['quantity'].tr('.', ',') %> <%= line['sourceUnit'] %> <%= line['note'] %></li><% end %></ul></details>
+</div>

@@ -36,7 +36,8 @@ module Amelia3
                "batchFingerprint" => scope.tenant.active_batch.fingerprint,
                "importStatus" => latest_import ? "#{latest_import.local_date} · #{latest_import.status}" : "batch locale disponibile; nessuna esecuzione pianificata registrata",
                "quoteContractVersion" => UnitContract::VERSION, "verificationVersion" => Digest::SHA256.hexdigest(JSON.generate(evidence)),
-               "notifications" => { "salesAlerts" => scope.sales_alert_count, "unreadOrders" => 0, "whatsappAvailable" => false },
+               "notifications" => scope.notifications,
+               "habitualProducts" => habitual_data(scope, customer_ids),
                "portfolioCount" => scope.customers.count, "catalogCount" => scope.products.count,
                "asOf" => Time.zone.today.iso8601, "expiresAt" => 24.hours.from_now.iso8601,
                "customers" => customers.map { |customer| customer_data(customer, scope).merge(scope.customer_activity.for(customer)).merge("reactivation" => reactivation[customer.external_code]) },
@@ -45,6 +46,13 @@ module Amelia3
       { state: { "schemaVersion" => 2, "datasetMode" => "amelia3", "datasetId" => "AMELIA3-#{scope.tenant.id}", "data" => data },
         version: scope.tenant.revision, epoch: 1,
         user: { id: identity(user, batch_id: scope.batch_id), ownerId: user.id, email: user.email, role: user.role, agentId: user.agent_id, displayName: user.display_name } }
+    end
+
+    def self.habitual_data(scope, customer_ids)
+      feed = scope.tenant.feed_snapshot
+      return {} unless feed && feed.batch_id == scope.batch_id
+      feed.habitual_products.where(customer_code: customer_ids, last_purchased_on: Time.zone.today.prev_month(6)..Time.zone.today)
+        .pluck(:customer_code, :product_code).group_by(&:first).transform_values { |rows| rows.map(&:last) }
     end
 
     def self.customer_data(customer, scope)

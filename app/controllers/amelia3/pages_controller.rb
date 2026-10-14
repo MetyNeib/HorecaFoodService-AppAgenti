@@ -48,12 +48,14 @@ class Amelia3::PagesController < Amelia3::BaseController
     @page = page
     @order = @scope.order(params[:order_id]) if params[:order_id].present?
     @customer = @scope.customer(@order.customer_code) if @order
-    rows = @scope.products
+    rows = @scope.products.where(blocked: false)
+    habitual = @customer ? Amelia3::HabitualProducts.codes(@scope, @customer.external_code) : []
+    @habitual_tab = @customer && params[:range] != "all" && habitual.any?
+    @habitual_fallback = @customer && habitual.empty?
+    rows = rows.where(external_code: habitual) if @habitual_tab
     query = params[:q].to_s.strip.first(100)
-    rows = rows.where("external_code ILIKE :q OR name ILIKE :q", q: "%#{ApplicationRecord.sanitize_sql_like(query)}%") if query.present?
-    if params[:usual] == "1" && @customer
-      rows = rows.where(external_code: @scope.history.where(customer_code: @customer.external_code).select(:product_code).distinct)
-    end
+    @search = Amelia3::CatalogSearch.new(@scope, rows)
+    rows = @search.call(query)
     @catalog = Amelia3::Catalog.new(@scope, rows.where(blocked: false).order(:name, :external_code), @customer)
     available = @catalog.orderable_products
     @total = available.length
@@ -104,13 +106,12 @@ class Amelia3::PagesController < Amelia3::BaseController
     @product_names = @history_products.transform_values(&:name)
   end
 
-  def whatsapp
-  end
-
   def alerts
     @reactivation_view = params[:type] == Amelia3::SalesAlertRules::REACTIVATION
     result = Amelia3::AlertPage.new(@scope, params)
     @alert_run, @alerts, @total, @page = result.run, result.items, result.total, result.page
+    potential = Amelia3::AlertItem.where(run_id: @alert_run&.id, status: "active", rule_type: "USUAL_PRODUCT_MISSING", customer_code: @scope.customers.where(blocked: false).select(:external_code))
+    @pending_reviews = potential.where.not(id: Amelia3::AlertReview.where.not(status: "pending").select(:alert_item_id)).count
     @alert_customers = @scope.customers.where(external_code: @alerts.map(&:customer_code)).index_by(&:external_code)
     @alert_products = @scope.products.where(external_code: @alerts.map(&:product_code)).pluck(:external_code, :name).to_h
     @contact_numbers = @alert_customers.transform_values { |customer| Amelia3::ContactNumbers.call(customer.telephone) }
@@ -146,6 +147,10 @@ class Amelia3::PagesController < Amelia3::BaseController
     @batch = @scope.tenant.active_batch
     @runs = Amelia3::SyncOccurrence.where(tenant_id: @scope.tenant.id).order(local_date: :desc).limit(14)
     @scheduler = Amelia3::Scheduler.status
+    @feed_state = Amelia3::FeedState.find_by(tenant: @scope.tenant)
+    @feed_snapshot = @scope.tenant.feed_snapshot
+    @ai_configured = Amelia3::OpenaiProductSearch.new.configured?
+    @reviews = Amelia3::AlertReview.where(alert_item_id: Amelia3::AlertItem.where(run_id: @scope.tenant.active_alert_run_id).select(:id)).group(:status).count
     @alert_run = @scope.tenant.active_alert_run
     @alert_occurrences = Amelia3::AlertOccurrence.where(tenant_id: @scope.tenant.id).order(local_date: :desc, id: :desc).limit(7)
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_15_092000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -53,6 +53,15 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
     t.index ["batch_id"], name: "index_amelia3_alert_occurrences_on_batch_id"
     t.index ["tenant_id", "local_date", "batch_id"], name: "amelia_alert_daily_batch", unique: true
     t.index ["tenant_id"], name: "index_amelia3_alert_occurrences_on_tenant_id"
+  end
+
+  create_table "amelia3_alert_reviews", force: :cascade do |t|
+    t.bigint "alert_item_id", null: false
+    t.string "status", null: false
+    t.jsonb "evidence", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alert_item_id"], name: "index_amelia3_alert_reviews_on_alert_item_id", unique: true
   end
 
   create_table "amelia3_alert_runs", force: :cascade do |t|
@@ -117,6 +126,53 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
     t.index ["batch_id", "account_code"], name: "index_amelia3_customers_on_batch_id_and_account_code", unique: true
     t.index ["batch_id", "agent_code"], name: "index_amelia3_customers_on_batch_id_and_agent_code"
     t.index ["batch_id", "external_code"], name: "index_amelia3_customers_on_batch_id_and_external_code", unique: true
+  end
+
+  create_table "amelia3_feed_products", force: :cascade do |t|
+    t.bigint "feed_snapshot_id", null: false
+    t.string "product_code", null: false
+    t.string "name", null: false
+    t.jsonb "search_data", default: {}, null: false
+    t.index ["feed_snapshot_id", "product_code"], name: "idx_on_feed_snapshot_id_product_code_5593ff4616", unique: true
+    t.index ["feed_snapshot_id"], name: "index_amelia3_feed_products_on_feed_snapshot_id"
+  end
+
+  create_table "amelia3_feed_snapshots", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.uuid "batch_id", null: false
+    t.string "digest", null: false
+    t.jsonb "files", default: {}, null: false
+    t.jsonb "counts", default: {}, null: false
+    t.datetime "published_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_amelia3_feed_snapshots_on_batch_id"
+    t.index ["tenant_id", "batch_id", "digest"], name: "idx_on_tenant_id_batch_id_digest_879a1965f3", unique: true
+    t.index ["tenant_id"], name: "index_amelia3_feed_snapshots_on_tenant_id"
+  end
+
+  create_table "amelia3_feed_states", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.jsonb "initial_files", default: [], null: false
+    t.datetime "initialized_at"
+    t.datetime "last_attempt_at"
+    t.datetime "last_success_at"
+    t.datetime "next_poll_at"
+    t.string "error_code"
+    t.jsonb "file_errors", default: {}, null: false
+    t.jsonb "remote_files", default: {}, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id"], name: "index_amelia3_feed_states_on_tenant_id", unique: true
+  end
+
+  create_table "amelia3_habitual_products", force: :cascade do |t|
+    t.bigint "feed_snapshot_id", null: false
+    t.string "customer_code", null: false
+    t.string "product_code", null: false
+    t.date "last_purchased_on", null: false
+    t.index ["feed_snapshot_id", "customer_code", "product_code"], name: "index_amelia3_habits_identity", unique: true
+    t.index ["feed_snapshot_id"], name: "index_amelia3_habitual_products_on_feed_snapshot_id"
   end
 
   create_table "amelia3_history_order_summaries", force: :cascade do |t|
@@ -202,6 +258,30 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
     t.index ["tenant_id"], name: "index_amelia3_import_batches_on_tenant_id"
   end
 
+  create_table "amelia3_incoming_orders", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.string "customer_code", null: false
+    t.string "external_reference", null: false
+    t.string "source_sha", null: false
+    t.string "source_name", null: false
+    t.jsonb "original", default: {}, null: false
+    t.jsonb "draft", default: {}, null: false
+    t.jsonb "audit", default: [], null: false
+    t.string "status", default: "pending", null: false
+    t.datetime "received_at", null: false
+    t.datetime "confirmation_due_at", null: false
+    t.bigint "claimed_by_id"
+    t.datetime "confirmed_at"
+    t.integer "lock_version", default: 0, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["claimed_by_id"], name: "index_amelia3_incoming_orders_on_claimed_by_id"
+    t.index ["tenant_id", "customer_code", "status"], name: "index_amelia3_incoming_portfolio"
+    t.index ["tenant_id", "external_reference"], name: "idx_on_tenant_id_external_reference_82a42391f4"
+    t.index ["tenant_id", "source_sha"], name: "index_amelia3_incoming_orders_on_tenant_id_and_source_sha", unique: true
+    t.index ["tenant_id"], name: "index_amelia3_incoming_orders_on_tenant_id"
+  end
+
   create_table "amelia3_open_items", force: :cascade do |t|
     t.uuid "batch_id", null: false
     t.integer "source_row", null: false
@@ -245,6 +325,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
     t.decimal "amount", precision: 24, scale: 10
     t.boolean "valid_price", null: false
     t.index ["batch_id", "list_code", "product_code"], name: "idx_on_batch_id_list_code_product_code_59342fd1e3", unique: true
+  end
+
+  create_table "amelia3_product_matches", force: :cascade do |t|
+    t.bigint "tenant_id", null: false
+    t.string "match_key", null: false
+    t.string "status", null: false
+    t.jsonb "result", default: {}, null: false
+    t.datetime "retry_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tenant_id", "match_key"], name: "index_amelia3_product_matches_on_tenant_id_and_match_key", unique: true
+    t.index ["tenant_id"], name: "index_amelia3_product_matches_on_tenant_id"
   end
 
   create_table "amelia3_products", force: :cascade do |t|
@@ -326,8 +418,10 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "active_alert_run_id"
+    t.bigint "feed_snapshot_id"
     t.index ["active_alert_run_id"], name: "index_amelia3_tenants_on_active_alert_run_id"
     t.index ["code"], name: "index_amelia3_tenants_on_code", unique: true
+    t.index ["feed_snapshot_id"], name: "index_amelia3_tenants_on_feed_snapshot_id"
   end
 
   create_table "amelia3_unit_verifications", force: :cascade do |t|
@@ -394,12 +488,18 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
   add_foreign_key "amelia3_alert_items", "amelia3_alert_runs", column: "run_id"
   add_foreign_key "amelia3_alert_occurrences", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_alert_occurrences", "amelia3_tenants", column: "tenant_id"
+  add_foreign_key "amelia3_alert_reviews", "amelia3_alert_items", column: "alert_item_id"
   add_foreign_key "amelia3_alert_runs", "amelia3_history_profile_sets", column: "profile_set_id"
   add_foreign_key "amelia3_alert_runs", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_alert_runs", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_conditions", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_credits", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_customers", "amelia3_import_batches", column: "batch_id"
+  add_foreign_key "amelia3_feed_products", "amelia3_feed_snapshots", column: "feed_snapshot_id"
+  add_foreign_key "amelia3_feed_snapshots", "amelia3_import_batches", column: "batch_id"
+  add_foreign_key "amelia3_feed_snapshots", "amelia3_tenants", column: "tenant_id"
+  add_foreign_key "amelia3_feed_states", "amelia3_tenants", column: "tenant_id"
+  add_foreign_key "amelia3_habitual_products", "amelia3_feed_snapshots", column: "feed_snapshot_id"
   add_foreign_key "amelia3_history_order_summaries", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_history_profile_memberships", "amelia3_history_profile_sets", column: "profile_set_id"
   add_foreign_key "amelia3_history_profile_memberships", "amelia3_history_profiles", column: "profile_id"
@@ -408,10 +508,13 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
   add_foreign_key "amelia3_history_rows", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_import_batches", "amelia3_history_profile_sets", column: "history_profile_set_id"
   add_foreign_key "amelia3_import_batches", "amelia3_tenants", column: "tenant_id"
+  add_foreign_key "amelia3_incoming_orders", "amelia3_tenants", column: "tenant_id"
+  add_foreign_key "amelia3_incoming_orders", "users", column: "claimed_by_id"
   add_foreign_key "amelia3_open_items", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_orders", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_orders", "users", column: "created_by_user_id"
   add_foreign_key "amelia3_prices", "amelia3_import_batches", column: "batch_id"
+  add_foreign_key "amelia3_product_matches", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_products", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_receipts", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_receipts", "users"
@@ -420,6 +523,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
   add_foreign_key "amelia3_stocks", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_sync_occurrences", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_tenants", "amelia3_alert_runs", column: "active_alert_run_id"
+  add_foreign_key "amelia3_tenants", "amelia3_feed_snapshots", column: "feed_snapshot_id"
   add_foreign_key "amelia3_tenants", "amelia3_import_batches", column: "active_batch_id"
   add_foreign_key "amelia3_unit_verifications", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "command_receipts", "users"

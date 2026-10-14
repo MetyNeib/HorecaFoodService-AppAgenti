@@ -124,7 +124,7 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     expect(document.css('header, footer, .header-dock, .status-dock')).to be_empty
     expect(document.at_css('.amelia-logo')['src']).to include("amelia3-logo")
     get "/amelia3/whatsapp"
-    expect(document.at_css('main').text).to include("Funzionalità non ancora disponibile")
+    expect(document.at_css('main').text).to include("Controllo nuovi ordini ogni 3 minuti", "Archivio", "Nessun ordine da confermare")
     sign_out fixture[:agent]
     get "/amelia3/offline"
     expect(response).to have_http_status(:ok)

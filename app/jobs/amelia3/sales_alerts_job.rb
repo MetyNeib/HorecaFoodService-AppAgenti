@@ -14,6 +14,7 @@ class Amelia3::SalesAlertsJob
       raise Amelia3::Error.new("Importazione del giorno non disponibile.", code: "IMPORT_NOT_READY")
     end
     Amelia3::SalesAlerts.call(tenant: tenant, as_of: occurrence.local_date, source: "scheduled")
+    Amelia3::SubstitutionReviewJob.perform_async(tenant.id)
     occurrence.update!(status: "success", error_code: nil)
   rescue StandardError => error
     if occurrence

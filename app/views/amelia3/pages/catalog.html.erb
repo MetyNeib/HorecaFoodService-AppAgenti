@@ -1,9 +1,14 @@
 <div class="view <%= @order ? 'picker-view' : 'catalog-view' %>">
   <div class="page-title"><h1><%= @order ? 'Cerca e aggiungi prodotti' : 'Catalogo Amelia3' %></h1><p>Listino 000 · stock del gestionale, senza deposito dedotto</p></div>
   <% if @order %><div class="customer-strip"><b><%= @customer.name %></b><span>Cod. <%= @customer.external_code %></span><%= link_to 'Scheda cliente', "/amelia3/customers/#{ERB::Util.url_encode(@customer.external_code)}" %></div><% end %>
+  <% if @order %>
+    <nav class="tabs" aria-label="Ambito ricerca"><%= link_to 'Prodotti abituali', amelia3_catalog_path(order_id: @order.id, range: 'habitual', q: params[:q]), class: @habitual_tab ? 'active' : '' %><%= link_to 'Intero catalogo', amelia3_catalog_path(order_id: @order.id, range: 'all', q: params[:q]), class: !@habitual_tab ? 'active' : '' %></nav>
+    <% if @habitual_fallback %><p class="meta">Nessun prodotto abituale verificato negli ultimi sei mesi: cerca nell’intero catalogo.</p><% end %>
+  <% end %>
+  <% if @search.status == 'pending' %><p class="meta" role="status">Nessun risultato locale. La ricerca per sinonimi non è al momento disponibile: prova un altro nome o codice.</p><% end %>
   <p class="meta" role="status"><%= @total %> prodotti ordinabili<%= @customer ? ' per questo cliente' : '' %>. Sono mostrati solo articoli e unità con prezzo e disponibilità verificati.</p>
   <div class="grid <%= @order ? 'editor workspace-split' : '' %>"><section class="pane">
-    <%= form_with url: '/amelia3/catalog', method: :get, local: true, class: 'filters amelia_search_form_js' do %><%= hidden_field_tag :order_id, @order&.id %><label class="field search">Cerca prodotto<%= search_field_tag :q, params[:q], placeholder: 'Nome o codice' %></label><% if @order %><label class="check"><%= check_box_tag :usual, '1', params[:usual] == '1' %>Già acquistati</label><% end %><button type="submit">Cerca</button><% end %>
+    <%= form_with url: '/amelia3/catalog', method: :get, local: true, class: 'filters amelia_search_form_js' do %><%= hidden_field_tag :order_id, @order&.id %><%= hidden_field_tag :range, @habitual_tab ? 'habitual' : 'all' %><label class="field search">Cerca prodotto<%= search_field_tag :q, params[:q], placeholder: 'Nome o codice' %></label><button type="submit">Cerca</button><% end %>
     <div class="scroll-area" data-kind="list" aria-label="Lista prodotti">
       <%= render partial: 'amelia3/components/product_card', collection: @products, as: :product %>
       <% if @products.empty? %><p class="empty">Nessun prodotto ordinabile per questa ricerca. Gli articoli bloccati, senza disponibilità o con prezzo e conversioni da verificare sono esclusi dalla demo.</p><% end %>

@@ -50,7 +50,7 @@ module Amelia3
           outcomes = cached.outcomes
           metrics["evaluationsReused"] += 1
         else
-          outcomes = SalesAlertRules.call(product_dates: profile.product_dates, as_of: @date, blocked_products: blocked_codes).map(&:stringify_keys)
+          outcomes = SalesAlertRules.call(product_dates: profile.product_dates, as_of: @date, blocked_products: blocked_codes, missing_limit: nil).map(&:stringify_keys)
           metrics["profilesEvaluated"] += 1
           raise Error.new("Cache alert discordante dal calcolo completo.", code: "ALERT_CACHE_MISMATCH") if cached && cached.outcomes != outcomes
           AlertEvaluation.create!(tenant: @tenant, evaluation_key: key, outcomes: outcomes) unless cached

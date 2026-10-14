@@ -205,7 +205,8 @@ RSpec.describe Amelia3::SalesAlerts do
     run.items.delete_all
     Amelia3::SalesAlertRules::TYPES.zip([ 9, 17, 5 ]).each do |type, count|
       count.times do |i|
-        run.items.create!(customer_code: "C001", product_code: "TEST-#{i}", rule_type: type, severity_numerator: i + 1, severity_denominator: 1, days_late: i)
+        item = run.items.create!(customer_code: "C001", product_code: "TEST-#{i}", rule_type: type, severity_numerator: i + 1, severity_denominator: 1, days_late: i)
+        Amelia3::AlertReview.create!(alert_item: item, status: "kept") if type == "USUAL_PRODUCT_MISSING"
       end
     end
     scope = Amelia3::Scope.new(fixture[:agent])

@@ -1,12 +1,12 @@
 module Amelia3
   class SalesAlertRules
-    VERSION = "HFS-AMELIA3-SALES-ALERTS-REACTIVATION-90D-v2".freeze
+    VERSION = "HFS-AMELIA3-SALES-ALERTS-SUBSTITUTION-v3".freeze
     TYPES = %w[CUSTOMER_STOPPED USUAL_PRODUCT_MISSING PURCHASE_FREQUENCY_DROP].freeze
     REACTIVATION = "CUSTOMER_REACTIVATION".freeze
     ALL_TYPES = (TYPES + [ REACTIVATION ]).freeze
 
-    def self.call(product_dates:, as_of:, blocked_products: [])
-      new(product_dates, as_of, blocked_products).call
+    def self.call(product_dates:, as_of:, blocked_products: [], missing_limit: 5)
+      new(product_dates, as_of, blocked_products).call(missing_limit: missing_limit)
     end
 
     def initialize(product_dates, as_of, blocked_products)
@@ -18,7 +18,7 @@ module Amelia3
       @blocked = blocked_products.to_set
     end
 
-    def call
+    def call(missing_limit: 5)
       if @last_purchase && (elapsed = (@date - @last_purchase).to_i) > 90
         return [ { rule_type: REACTIVATION, product_code: "", severity_numerator: elapsed, severity_denominator: 90, days_late: elapsed - 90,
                    evidence: { "lastDelivery" => @last_purchase.iso8601, "daysSinceLast" => elapsed, "thresholdDays" => 90 } } ]
@@ -34,7 +34,7 @@ module Amelia3
         cadence("USUAL_PRODUCT_MISSING", dates, 30, code)
       end
       missing.sort_by! { |row| [ -Rational(row[:severity_numerator], row[:severity_denominator]), -row[:evidence]["daysSinceLast"], row[:product_code] ] }
-      result = missing.take(5)
+      result = missing_limit ? missing.take(missing_limit) : missing
       prior = @dates.count { |date| date >= @date - 240 && date < @date - 60 }
       recent = @dates.count { |date| date >= @date - 60 }
       if prior >= 9 && recent >= 1 && recent * 6 <= prior && prior - recent * 3 >= 6

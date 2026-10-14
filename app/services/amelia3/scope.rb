@@ -35,9 +35,18 @@ module Amelia3
     end
 
     def sales_alert_count
-      AlertItem.where(run_id: tenant.active_alert_run_id, status: "active", rule_type: SalesAlertRules::TYPES,
+      AlertReview.visible(AlertItem.where(run_id: tenant.active_alert_run_id, status: "active", rule_type: SalesAlertRules::TYPES,
                       customer_code: customers.where(blocked: false).select(:external_code))
-               .where.not(rule_type: "USUAL_PRODUCT_MISSING", product_code: products.where(blocked: true).select(:external_code)).count
+               .where.not(rule_type: "USUAL_PRODUCT_MISSING", product_code: products.where(blocked: true).select(:external_code))).count
+    end
+
+    def incoming_orders
+      rows = IncomingOrder.where(tenant: tenant)
+      user.role == "admin" ? rows : rows.where(customer_code: customers.select(:external_code))
+    end
+
+    def notifications
+      { "salesAlerts" => sales_alert_count, "unreadOrders" => incoming_orders.awaiting_confirmation.count, "whatsappAvailable" => true }
     end
 
     def destinations(customer)

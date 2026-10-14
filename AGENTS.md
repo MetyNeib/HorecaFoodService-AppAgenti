@@ -1,5 +1,21 @@
 # HFS App Agenti — istruzioni di progetto per Codex
 
+## FTP e prodotti abituali — 15 ottobre 2026, precedenza corrente
+
+Nuove istruzioni esplicite dell’utente: implementare polling FTP in sola lettura
+ogni tre minuti, archivio WhatsApp con copie demo modificabili, prodotti abituali
+ultimi sei mesi e soppressione degli alert prodotto con ricerca locale e fallback
+OpenAI GPT-6 Luna. Questo supera i precedenti vincoli placeholder/no-AI/revisione
+solo manuale, senza autorizzare scritture FTP, invii ERP o accorpamenti clienti.
+Branch `feature/amelia3-ftp-inbox-habitual-products`; UX precedente salvata a
+`3453e15`. Leggere `qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md` per la ripresa. L’utente ha
+chiesto un checkpoint e l’interruzione per chiudere il Mac: worker fermati,
+nessun riavvio automatico del lavoro finché non chiede di riprendere.
+Dati, chiave `.env.openai.local`, CSV e screenshot reali rimangono esclusi da Git.
+Nessun push, merge o deploy implicito. Le scritture di collaudo usano solo tenant
+sintetici; migrazioni additive e import reali autorizzati restano preservati.
+
+
 ## Handoff Mac e branch demo — 14 ottobre 2026, precedenza corrente
 
 L'utente autorizza salvataggio V5, push GitHub, tag
