@@ -44,6 +44,19 @@ Esiti macchina: [RSpec](amelia3-v5/handoff-rspec.json),
 La CI remota del commit è consultabile in GitHub Actions: i risultati locali
 non vengono presentati come esecuzione sul Mac fisico o come CI remota.
 
+### Controllo CI del trasferimento
+
+Prima esecuzione sul commit `3bf84bd`: PASS Ruby, regole, stile e sicurezza;
+PASS 70 scenari Amelia3 e 28 PWA Chromium/WebKit. UI HFS: 23 PASS / 1 FAIL
+nella riapertura del dialog di cancellazione su telefono. Una riproduzione
+locale ha rilevato anche l'apertura del footer prima del completamento HTML
+della sincronizzazione. Corrette le sole attese nei test: dialog visibile prima
+di Escape e chiuso prima di riaprirlo; versione HTML allineata al comando prima
+di usare il footer. Nessuna asserzione rimossa e nessun retry configurato.
+Verifica locale della correzione: entrambi i flussi ripetuti tre volte su
+telefono, **6 PASS / 0 FAIL**. Controllo regole progetto: PASS.
+Il tag definitivo deve riferirsi al commit con tutti i controlli CI superati.
+
 ## DA VERIFICARE / NOT_RUN
 
 - Avvio sul MacBook Pro dell'utente, disponibilità Docker e login browser.

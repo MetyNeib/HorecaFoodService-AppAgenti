@@ -25,4 +25,20 @@ export async function reset(page) {
 
 export async function snapshot(page) { await page.waitForFunction(() => window.HFS?.client?.snapshot); return page.evaluate(() => window.HFS.client.snapshot); }
 
-export async function openFooter(page) { const dock=page.locator('.status-dock'); if(await dock.getAttribute('data-open')!=='true') await page.locator('.footer-toggle').click(); await page.getByRole('button',{name:'Stato sincronizzazione',exact:true}).focus(); await page.getByRole('button',{name:'Stato sincronizzazione',exact:true}).press('Shift'); }
+export async function openFooter(page) {
+  // Command state is published before the replacement HTML is mounted. Wait for
+  // that render, including the scheduled demo sync, before opening its controls.
+  await page.waitForFunction(() => {
+    const client = window.HFS?.client;
+    const source = document.getElementById('workspace-bootstrap');
+    if (!client?.record || !source || client.syncing || client.record.outbox.length) return false;
+    const rendered = JSON.parse(source.textContent);
+    return rendered.version === client.snapshot.version && client.snapshot.state.network !== 'SYNCING';
+  });
+  const dock = page.locator('.status-dock');
+  if (await dock.getAttribute('data-open') !== 'true') await page.locator('.footer-toggle').click();
+  const status = page.getByRole('button', { name: 'Stato sincronizzazione', exact: true });
+  await status.focus();
+  await status.press('Shift');
+  await expect(dock).toHaveAttribute('data-open', 'true');
+}

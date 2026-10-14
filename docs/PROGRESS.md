@@ -13,6 +13,10 @@ Controllo segreti nei file candidati PASS; confronto nomi cliente nei testi
 PASS (il solo nome agente esplicitamente approvato compare nelle specifiche).
 Build Linux ARM64 e caricamento completo Rails (`zeitwerk:check`) PASS.
 CI GitHub consultabile sul commit del checkpoint; Mac fisico NOT_RUN.
+Prima CI: PASS 70 Amelia3, 28 PWA e controlli Ruby/regole/stile/sicurezza;
+un test UI HFS fallito per attese del dialog. Corrette le attese di dialog e
+rendering del footer; verifica ripetuta locale 6/6 PASS. Nuova CI sul commit
+di correzione necessaria prima del tag definitivo; dettagli nel report handoff.
 
 Follow-up 13/10 completato: UM unica statica, selettore per più alternative;
 clienti oltre 90 giorni separati in «Da riattivare» e rimossi dagli alert ordinari.

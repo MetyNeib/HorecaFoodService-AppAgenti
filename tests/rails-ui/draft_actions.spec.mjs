@@ -41,9 +41,13 @@ test('cambio cliente reversibile, svuotamento, quantità, rimozione e cancellazi
   await page.getByRole('button', { name: 'Salva bozza', exact: true }).click();
   const row = page.locator('article').filter({ hasText: orderId });
   await row.getByRole('button', { name: 'Elimina bozza' }).click();
+  const confirmation = page.getByRole('dialog');
+  await expect(confirmation).toBeVisible();
   await page.keyboard.press('Escape');
+  await expect(confirmation).toBeHidden();
   expect(await currentOrder()).toBeDefined();
   await row.getByRole('button', { name: 'Elimina bozza' }).click();
+  await expect(confirmation).toBeVisible();
   await page.getByRole('button', { name: 'Elimina definitivamente' }).click();
   await expect(row).toHaveCount(0);
   await page.reload();

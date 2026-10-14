@@ -14,6 +14,12 @@ per prodotti comparabili e cambi di ragione sociale, basate sui dati aggiornati
 alla presentazione; nessun algoritmo di associazione automatica richiesto.
 Dettagli operativi e ripartenza in docs/MAC_HANDOFF.md.
 
+La verifica CI del trasferimento ha evidenziato una corsa nei test HFS:
+lo stato del comando viene aggiornato prima del montaggio dell'HTML e una
+conferma deve essere visibile prima di inviare Escape. I test attendono ora
+queste condizioni esplicite, senza ritardi fissi, retry automatici o riduzione
+delle verifiche. Nessuna modifica funzionale all'app o ai dati del seed.
+
 ## UM singola e clienti da riattivare — 13/10/2026
 
 Su richiesta dell'utente, una sola UM ordinabile viene mostrata come testo;
