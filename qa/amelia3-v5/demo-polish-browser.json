@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "profiles": [
+    {
+      "profile": "desktop",
+      "status": "PASS",
+      "homeReconnect": true,
+      "customerTabs": true,
+      "picker": true,
+      "cartUnitsOnlineOffline": true,
+      "history": true,
+      "alerts": true
+    },
+    {
+      "profile": "phone",
+      "status": "PASS",
+      "homeReconnect": true,
+      "customerTabs": true,
+      "picker": true,
+      "cartUnitsOnlineOffline": true,
+      "history": true,
+      "alerts": true
+    }
+  ],
+  "dataset": "synthetic-only",
+  "physical_devices": "NOT_RUN"
+}

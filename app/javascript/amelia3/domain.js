@@ -78,6 +78,20 @@ export function lineCents(quantity, amount) {
   return Number(cents);
 }
 
+export function equivalentQuantity(product, line, unit) {
+  try {
+    const from = product.unitQuotes[line.unit], to = product.unitQuotes[unit];
+    validateSaved(line, from);
+    if (from.reason || to.reason || from.conversionVersion !== to.conversionVersion || from.stockUnit !== to.stockUnit) return null;
+    const value = mul(div(exact(line.quantity), exact(from.stockFactor)), exact(to.stockFactor));
+    const text = decimalText(value);
+    // Never round a physical quantity or silently violate the target unit's step.
+    if (!equal(exact(text), value) || value.n <= 0n || greater(value, exact('100000')) || greater(value, exact(to.available))) return null;
+    if (to.quantityStep !== 'any' && div(value, exact(to.quantityStep)).d !== 1n) return null;
+    return text;
+  } catch { return null; }
+}
+
 function validateProduct(data, customerId, productId, quantity, excluding, order, unit) {
   const customer = data.customers.find(row => row.id === customerId);
   if (!customer || customer.blocked) throw new Error('Cliente bloccato o non preparato sul dispositivo.');
@@ -103,7 +117,8 @@ export function projectCommand(state, command) {
   const next = structuredClone(state), data = next.data, payload = command.payload;
   if (command.type === 'CREATE_DRAFT') {
     const customer = data.customers.find(row => row.id === payload.customerId);
-    if (!customer || customer.blocked) throw new Error('Cliente bloccato o non preparato.');
+    if (!customer) throw new Error('Cliente non preparato sul dispositivo: apri la scheda online e riprova.');
+    if (customer.blocked) throw new Error('Cliente bloccato: non è possibile creare un ordine.');
     if (data.orders.some(row => row.id === payload.id)) throw new Error('Ordine già presente.');
     if (data.orders.filter(row => row.status === 'DRAFT').length >= 20) throw new Error('Sincronizza e completa le bozze preparate prima di crearne altre offline.');
     const tomorrow = new Date(romeDate() + 'T12:00:00Z'); tomorrow.setUTCDate(tomorrow.getUTCDate() + 1);
@@ -132,8 +147,16 @@ export function projectCommand(state, command) {
     case 'UPDATE_LINE': {
       if (!line) throw new Error('Riga non trovata.');
       validateSaved(line, data.products.find(product => product.id === line.productId)?.unitQuotes?.[line.unit]);
-      validateProduct(data, customer.id, line.productId, payload.quantity, line.id, order, line.unit);
-      line.quantity = decimalText(exact(payload.quantity)); line.lineNetCents = lineCents(payload.quantity, exact(line.exactUnitPrice));
+      const unit = payload.unit ?? line.unit;
+      const { product, price, count } = validateProduct(data, customer.id, line.productId, payload.quantity, line.id, order, unit);
+      if (unit !== line.unit) {
+        if (payload.expectedConversionVersion !== price.terms.conversionVersion) throw new Error('Contratto UM aggiornato: verifica la proposta locale.');
+        if (!payload.expectedExactPrice || !equal(exact(payload.expectedExactPrice), price.amount)) throw new Error('Il prezzo è cambiato. Verifica la proposta locale.');
+        Object.assign(line, { unit, unitPrice: decimalText(price.amount), exactUnitPrice: fractionData(price.amount),
+          priceSnapshot: { ...structuredClone(price.terms), batchId: data.batchId, batchFingerprint: data.batchFingerprint, listCode: '000',
+            basePrice: decimalText(ratio(BigInt(product.basePriceMicros), 1000000n)), discount: decimalText(ratio(BigInt(price.condition?.discountUnits || '0'), 10000n)), conditionRow: price.condition?.id || null } });
+      }
+      line.quantity = decimalText(count); line.lineNetCents = lineCents(count, exact(line.exactUnitPrice));
       break;
     }
     case 'REMOVE_LINE':

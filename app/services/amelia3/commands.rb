@@ -5,19 +5,20 @@ module Amelia3
     FIELDS = {
       "CREATE_DRAFT" => %w[id customerId batchId],
       "ADD_LINE" => %w[orderId lineId productId unit quantity expectedUnitPrice expectedExactPrice expectedConversionVersion expectedVersion batchId],
-      "UPDATE_LINE" => %w[orderId lineId quantity expectedVersion batchId],
+      "UPDATE_LINE" => %w[orderId lineId unit quantity expectedExactPrice expectedConversionVersion expectedVersion batchId],
       "REMOVE_LINE" => %w[orderId lineId expectedVersion batchId],
       "SAVE_REVIEW" => %w[orderId destinationId deliveryDate paymentNote note expectedVersion batchId],
       "CONFIRM_ORDER" => %w[orderId expectedVersion batchId],
       "DELETE_DRAFT" => %w[orderId expectedVersion batchId]
     }.freeze
 
-    def self.call(user:, command:)
-      new(user, command).call
+    def self.call(user:, command:, originating_admin: nil)
+      new(user, command, originating_admin).call
     end
 
-    def initialize(user, command)
+    def initialize(user, command, originating_admin = nil)
       @user, @command = user, command
+      @originating_admin = originating_admin
     end
 
     def call
@@ -47,7 +48,7 @@ module Amelia3
           apply(order)
         end
         order_id = @type == "DELETE_DRAFT" ? nil : order.id
-        Receipt.create!(user: @user, tenant: @scope.tenant, operation_id: @command["operationId"], request_digest: digest, order_id: order.id, deleted: order_id.nil?)
+        Receipt.create!(originating_admin: @originating_admin, user: @user, tenant: @scope.tenant, operation_id: @command["operationId"], request_digest: digest, order_id: order.id, deleted: order_id.nil?)
       end
       Snapshot.for(@user, order_id: order_id)
     end
@@ -85,17 +86,7 @@ module Amelia3
         aggregate_quantity!(order, product, quantity, quote)
         order.lines = order.lines + [ quote.line(id: @payload["lineId"], quantity: quantity) ]
       when "UPDATE_LINE"
-        line = line!(order)
-        product = @scope.products.find_by!(external_code: line.fetch("productId"))
-        quote = Quote.for(@scope, product, @scope.customer(order.customer_code), unit: line.fetch("unit"))
-        quote.validate_saved!(line)
-        quantity = quantity!
-        quote.validate_quantity!(quantity)
-        aggregate_quantity!(order, product, quantity, quote, excluding: line["id"])
-        # Quantity changes preserve the saved price, even after another import.
-        price = ExactValue.from_wire(line.fetch("exactUnitPrice"))
-        replacement = line.merge("quantity" => quantity.to_s("F"), "lineNetCents" => ExactValue.cents(quantity, price))
-        order.lines = order.lines.map { |row| row["id"] == line["id"] ? replacement : row }
+        update_line(order)
       when "REMOVE_LINE"
         line!(order)
         order.lines = order.lines.reject { |line| line["id"] == @payload["lineId"] }
@@ -115,6 +106,32 @@ module Amelia3
       fail!("Totale fuori intervallo.", "INVALID_AMOUNT") unless order.net_cents.between?(0, Hfs::Calculations::MAX_SAFE_INTEGER)
       order.version += 1
       order.save!
+    end
+
+    def update_line(order)
+      line = line!(order)
+      product = @scope.products.find_by!(external_code: line.fetch("productId"))
+      customer = @scope.customer(order.customer_code)
+      saved = Quote.for(@scope, product, customer, unit: line.fetch("unit"))
+      saved.validate_saved!(line)
+      unit = @payload.fetch("unit", line.fetch("unit"))
+      quote = unit == line["unit"] ? saved : Quote.for(@scope, product, customer, unit: unit)
+      quantity = quantity!
+      aggregate_quantity!(order, product, quantity, quote, excluding: line["id"])
+      if unit == line["unit"]
+        # Quantity-only edits retain the saved price.
+        price = ExactValue.from_wire(line.fetch("exactUnitPrice"))
+        replacement = line.merge("quantity" => quantity.to_s("F"), "lineNetCents" => ExactValue.cents(quantity, price))
+      else
+        unless @payload["expectedConversionVersion"] == quote.terms["conversionVersion"]
+          fail!("Contratto UM aggiornato: verifica la proposta locale conservata.", "CONVERSION_CHANGED", 409)
+        end
+        unless @payload["expectedExactPrice"] && ExactValue.from_wire(@payload["expectedExactPrice"]) == quote.exact_unit_price
+          fail!("Il prezzo è cambiato. La proposta locale è conservata.", "PRICE_CHANGED", 409)
+        end
+        replacement = quote.line(id: line.fetch("id"), quantity: quantity)
+      end
+      order.lines = order.lines.map { |row| row["id"] == line["id"] ? replacement : row }
     end
 
     def confirm!(order)

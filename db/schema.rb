@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_10_12_040000) do
+ActiveRecord::Schema[8.1].define(version: 2026_10_14_190000) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -235,7 +235,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_040000) do
     t.index ["created_by_user_id"], name: "index_amelia3_orders_on_created_by_user_id"
     t.index ["tenant_id", "customer_code", "created_at"], name: "index_amelia_orders_scope"
     t.index ["tenant_id"], name: "index_amelia3_orders_on_tenant_id"
-    t.check_constraint "version >= 0 AND (status::text = ANY (ARRAY['DRAFT'::character varying, 'CONFIRMED_LOCAL'::character varying]::text[]))", name: "amelia_order_bounds"
+    t.check_constraint "version >= 0 AND (status::text = ANY (ARRAY['DRAFT'::character varying::text, 'CONFIRMED_LOCAL'::character varying::text]))", name: "amelia_order_bounds"
   end
 
   create_table "amelia3_prices", force: :cascade do |t|
@@ -273,6 +273,8 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_040000) do
     t.boolean "deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "originating_admin_id"
+    t.index ["originating_admin_id"], name: "index_amelia3_receipts_on_originating_admin_id"
     t.index ["tenant_id"], name: "index_amelia3_receipts_on_tenant_id"
     t.index ["user_id", "operation_id"], name: "index_amelia3_receipts_on_user_id_and_operation_id", unique: true
     t.index ["user_id"], name: "index_amelia3_receipts_on_user_id"
@@ -413,6 +415,7 @@ ActiveRecord::Schema[8.1].define(version: 2026_10_12_040000) do
   add_foreign_key "amelia3_products", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_receipts", "amelia3_tenants", column: "tenant_id"
   add_foreign_key "amelia3_receipts", "users"
+  add_foreign_key "amelia3_receipts", "users", column: "originating_admin_id"
   add_foreign_key "amelia3_routes", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_stocks", "amelia3_import_batches", column: "batch_id"
   add_foreign_key "amelia3_sync_occurrences", "amelia3_tenants", column: "tenant_id"

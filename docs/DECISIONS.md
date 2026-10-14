@@ -218,3 +218,24 @@ Codex registra qui dettagli tecnici ulteriori, distinguendoli dai requisiti dell
 - Collaudo: React Router usa `useTransitions={false}` per i cambi pagina locali, evitando che input rapidi vengano applicati alla vista precedente durante la transizione. I filtri hanno inoltre valore locale immediato e ritorno contestuale serializzato.
 - Il seed originale conserva anche `branding.visualSystem`, una nota di provenienza per lo sviluppo. Questo solo campo è escluso dalla proiezione runtime e dal bundle: contiene il nome della fonte Figma che il controllo privacy vieta. Tutti gli altri campi vengono copiati esattamente e un test verifica questa equivalenza; il JSON canonico e il relativo SHA-256 sono invariati.
 - Bundle separato in codice applicativo, librerie e dati demo, senza aggiungere dipendenze o indebolire `check:bundle`.
+
+
+## 14/10/2026 — Perfezionamento demo Mac approvato
+
+Confermate regole UM correnti e soglia clienti fermi oltre 90 giorni. Bloccati
+hanno priorità; clienti senza storico consegnato sono Fermi con badge esplicito.
+Nel picker ordine una lista dei soli non bloccati, inclusi fermi segnalati.
+Cambio UM in carrello: equivalenza esatta e verificata oppure nuova quantità;
+nessun arrotondamento implicito, stessa riga, nuovo prezzo attestato e Salva riga.
+Storico con un solo canale quantità: evitare di dedurre conversioni storiche
+usando l'anagrafica attuale. Connessione visibile nel menu e nella barra inferiore
+quando serve attenzione. Alert con soglie invariate e spiegazione naturale:
+il ritardo numerico è oltre la soglia di attesa, non oltre la sola cadenza mediana.
+
+### 2026-10-14 — Selettore account per la demo
+Confermati solo Admin e Agente 34 reali, permessi effettivi dell’account
+selezionato, scritture attribuite all’account con tracciabilità dell’Admin,
+pagina conservata se autorizzata, blocco su lavoro pendente e uso solo online.
+Funzione locale opt-in: login Admin sempre richiesto, ritorno senza password,
+identità visibile. Ultima selezione conservata nella stessa sessione; nuovo
+login riparte dall’Admin. Nessun cambiamento alle funzioni di invio simulate.

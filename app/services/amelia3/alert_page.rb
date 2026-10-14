@@ -10,7 +10,7 @@ module Amelia3
       @items, @total = [], 0
       return unless @run
       reactivation = params[:type] == SalesAlertRules::REACTIVATION
-      customers = reactivation ? scope.customers : scope.customers.where(blocked: false)
+      customers = scope.customers.where(blocked: false)
       customers = customers.where(agent_code: params[:agent]) if params[:agent].present?
       if params[:customer_id].present?
         scope.customer(params[:customer_id])

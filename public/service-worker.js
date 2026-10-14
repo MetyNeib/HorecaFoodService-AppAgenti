@@ -1,5 +1,5 @@
 /* Only public application assets are cached. User data lives in isolated IndexedDB databases. */
-const CACHE = 'hfs-public-shell-v5.1-amelia3-20261012';
+const CACHE = 'hfs-public-shell-v5.5-amelia3-20261014';
 const PUBLIC_PATHS = ['/offline', '/amelia3/offline', '/manifest.webmanifest', '/icons/hfs-192.png', '/icons/hfs-512.png', '/icons/hfs-180.png'];
 const isPublic = url => url.origin === self.location.origin && (PUBLIC_PATHS.includes(url.pathname) || url.pathname.startsWith('/assets/'));
 

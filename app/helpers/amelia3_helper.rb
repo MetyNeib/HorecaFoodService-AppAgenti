@@ -11,6 +11,22 @@ module Amelia3Helper
     order.status == "CONFIRMED_LOCAL" ? "Confermato · salvato localmente" : "Bozza"
   end
 
+  def amelia_history_quantity(row, product)
+    # Historic exports contain independent quantities, not a historic conversion contract.
+    # Prefer the matching source channel; never convert using today's packing factors.
+    channels = { "CONF" => row.packs, "PZ" => row.pieces, "KG" => row.weight }
+    preferred = product&.canonical_units&.fetch("preferredUm")
+    unit = channels.key?(preferred) ? preferred : Amelia3::CanonicalUnits::MAP[product&.base_unit]
+    unit = channels.find { |_, quantity| quantity&.positive? }&.first || "CONF" unless channels.key?(unit)
+    "#{amelia_decimal(channels.fetch(unit))} #{unit}"
+  end
+
+  def amelia_alert_explanation(alert)
+    evidence = alert.evidence
+    subject = alert.rule_type == "USUAL_PRODUCT_MISSING" ? "di questo prodotto" : "dal cliente"
+    "Ti avvisiamo perché non risultano nuovi acquisti #{subject} da almeno #{evidence['thresholdDays']} giorni, il periodo di attesa previsto in base agli acquisti precedenti."
+  end
+
   def amelia_form(type, payload, return_to:, classes: "", &block)
     data = payload.stringify_keys.merge("batchId" => @scope.batch_id)
     data["expectedVersion"] = @order.version if @order && type != "CREATE_DRAFT"

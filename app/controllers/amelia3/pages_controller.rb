@@ -1,6 +1,9 @@
 class Amelia3::PagesController < Amelia3::BaseController
   helper_method :amelia_bootstrap
 
+  def order_center
+  end
+
   def home
     @counts = { customers: @scope.customers.count, blocked: @scope.customers.where(blocked: true).count,
                 drafts: @scope.orders.where(status: "DRAFT").count, confirmed: @scope.orders.where(status: "CONFIRMED_LOCAL").count }
@@ -11,11 +14,23 @@ class Amelia3::PagesController < Amelia3::BaseController
     @page = page
     rows = @scope.customers
     @total = rows.count
+    @picker = params[:pick] == "1"
+    @category = %w[active dormant blocked].include?(params[:category]) ? params[:category] : "active"
+    if @picker
+      rows = rows.where(blocked: false)
+    elsif @category == "blocked"
+      rows = rows.where(blocked: true)
+    else
+      rows = rows.where(blocked: false)
+      active = @scope.customer_activity.active_codes
+      rows = @category == "active" ? rows.where(external_code: active) : rows.where.not(external_code: active)
+    end
     query = params[:q].to_s.strip.first(100)
     rows = rows.where("external_code ILIKE :q OR name ILIKE :q OR city ILIKE :q", q: "%#{ApplicationRecord.sanitize_sql_like(query)}%") if query.present?
     @filtered_total = rows.count
     @customers = rows.order(:name, :external_code).offset((@page - 1) * 50).limit(50)
     @reactivation_codes = @scope.reactivation_items.where(customer_code: @customers.select(:external_code)).pluck(:customer_code).to_set
+    @customer_activity = @customers.to_h { |customer| [ customer.external_code, @scope.customer_activity.for(customer) ] }
   end
 
   def customer
@@ -47,6 +62,7 @@ class Amelia3::PagesController < Amelia3::BaseController
     cart_catalog = Amelia3::Catalog.new(@scope, cart_products, @customer)
     indexed_products = cart_products.index_by(&:external_code)
     @cart_quotes = Array(@order&.lines).to_h { |line| [ line.fetch("id"), cart_catalog.quote(indexed_products.fetch(line.fetch("productId")), unit: line.fetch("unit")) ] }
+    @cart_units = indexed_products.transform_values { |product| cart_catalog.orderable_units(product) }
   end
 
   def product
@@ -84,7 +100,8 @@ class Amelia3::PagesController < Amelia3::BaseController
     @reference = params[:reference].to_s
     @rows = @scope.history.where(customer_code: @customer.external_code, order_reference: @reference).order(:delivery_date, :source_row).to_a
     raise ActiveRecord::RecordNotFound if @rows.empty?
-    @product_names = @scope.products.where(external_code: @rows.map(&:product_code)).pluck(:external_code, :name).to_h
+    @history_products = @scope.products.where(external_code: @rows.map(&:product_code)).index_by(&:external_code)
+    @product_names = @history_products.transform_values(&:name)
   end
 
   def whatsapp
@@ -141,7 +158,7 @@ class Amelia3::PagesController < Amelia3::BaseController
 
   def amelia_bootstrap
     @amelia_bootstrap ||= Amelia3::Snapshot.for(current_user,
-      customer_codes: [ @customer&.external_code, *@customers.to_a.map(&:external_code) ].compact,
+      customer_codes: [ @customer&.external_code, *@customers.to_a.map(&:external_code), *@alert_customers.to_h.keys ].compact,
       product_codes: [ @product&.external_code, *@products.to_a.map(&:external_code) ].compact,
       order_id: @order&.id, include_usual: action_name != "alerts").merge(csrfToken: form_authenticity_token)
   end

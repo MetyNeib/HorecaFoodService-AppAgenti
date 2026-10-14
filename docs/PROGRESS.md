@@ -1,3 +1,23 @@
+# Perfezionamento demo Mac — 14/10/2026
+
+Richieste frontend e risposte dell'utente implementate su `feature/amelia3-demo-polish`.
+Home completa ripristinata dopo riconnessione senza perdere form non salvati;
+clienti Attivi/Fermi/Bloccati con soglia oltre 90 giorni, senza storico nei Fermi,
+selettore ordine unico con soli non bloccati. Cambio UM nelle bozze con equivalenza
+esatta quando disponibile, quantità da reinserire altrimenti, verifica di prezzo,
+versione e disponibilità condivisa online/offline. Ripetizioni «preferita» rimosse,
+barra connessione e testo nel menu, una quantità sorgente per riga storica,
+alert in linguaggio naturale con ultimo acquisto e ritardo in evidenza.
+Regole UM e soglie degli alert conservate. Il ritardo resta quello oltre il
+periodo di attesa della regola, non la differenza dalla cadenza mediana.
+
+PASS 172 Rails, 18 JavaScript/service worker, RuboCop 138 file, Brakeman zero
+avvisi, seed 20/20, regole e bundle. Collaudo browser desktop/telefono PASS con
+ordini esclusivamente sintetici; cinque viste reali PASS in sola lettura.
+Dettagli e limiti in `qa/AMELIA3_V5_REPORT.md`. Nessun commit/push/merge/deploy.
+
+---
+
 # Amelia3 v5 - 12/10/2026 - IMPLEMENTATO E TESTATO LOCALMENTE
 
 ## Handoff Mac — 14/10/2026
@@ -288,3 +308,82 @@ Report: [IMPLEMENTATION_REPORT.md](../qa/IMPLEMENTATION_REPORT.md). Galleria: [s
 Avvio sviluppo dalla root: `npm.cmd run dev` → http://127.0.0.1:5173/.
 Build pronta in `dist/`; `npm.cmd run preview` → http://127.0.0.1:4173/.
 Non restano milestone aperte. Per modifiche successive usare la suite prodotto; non ricreare seed o lockfile.
+
+## Demo: selettore account Admin / Agente 34 — 14 ottobre 2026
+
+Login Admin conservato; menu con due sole identità esplicitamente abilitate
+nella configurazione locale ignorata da Git. Agente autenticato direttamente
+non può usare il selettore. Funzione disabilitata senza AMELIA3_DEMO_SWITCH=1,
+AMELIA3_DEMO_ADMIN_ID e AMELIA3_DEMO_AGENT_ID. Nessuna password trasferita
+al selettore. Permessi e portafoglio dipendono dall’identità selezionata;
+Devise conserva l’Admin autenticato. Migrazione additiva: le ricevute dei
+comandi registrano originating_admin_id, oltre all’utente effettivo.
+
+Cambio solo online, pagina mantenuta quando autorizzata, altrimenti Home.
+Identità visibile anche a menu chiuso; ritorno Admin senza nuova password.
+Modifiche non salvate, coda, conflitti e sincronizzazione impediscono il cambio;
+controllo tra finestre attive e lock temporaneo IndexedDB durante la richiesta.
+Le finestre sospese conservano i moduli sporchi se rilevano un cambio identità;
+il server rifiuta comandi con il precedente proprietario. Cache per account
+conservate e separate. Stessa sessione: ultima selezione; nuovo login: Admin.
+Worker FTP fermo; nessun invio reale, push, merge o deploy.
+
+PASS: suite Rails completa 175/175, più test finale mirato 4/4 (include logout
+come Agente e rifiuto terzo account); dominio JS 18/18; RuboCop 142 file senza
+infrazioni; Brakeman zero errori/avvisi; git diff --check.
+PASS browser Chromium desktop 1440 e telefono 390: due sole opzioni, cambio
+e ritorno, blocco offline, modulo sporco nella finestra corrente e in altra
+finestra, identità visibile, nessun overflow o errore JavaScript.
+Artefatto aggregato: qa/amelia3-v5/demo-account-switch-browser.json.
+Account reali: esclusivamente login, navigazione e cambio sessione; scritture
+commerciali e audit verificati solo su fixture sintetiche isolate.
+NOT_RUN: Safari/WebKit, dispositivi fisici, scritture commerciali reali.
+FAIL: nessuno residuo. URL: http://127.0.0.1:3002/amelia3.
+Modifiche locali non committate sul branch feature/amelia3-demo-polish.
+
+## Menu compatto e finestra ridimensionabile — 14 ottobre 2026
+
+Su richiesta utente: intestazione con solo logo e chiusura, cinque voci
+Home / Nuovo ordine / Ordini / Clienti / Catalogo. Ordini apre una pagina
+con I miei ordini, Ordini WhatsApp e Alert di vendita, disponibile anche
+nella navigazione offline. Collegamenti esistenti alle singole sezioni preservati.
+Account in fondo al menu, selezione immediata senza pulsante; errore o blocco
+ripristina il valore dell’account effettivo. Connessione ridotta a Online in
+condizioni normali; email e dettagli nel dialog dedicato. Eliminato badge
+flottante che si sovrapponeva al titolo.
+
+PASS browser: 390, 768 e 1440 px, menu interamente visibile a 844 px di altezza,
+nessun overflow orizzontale, pagina con tre destinazioni, cambio immediato.
+PASS protezioni backend: 4 test; sintassi JS e git diff --check.
+Finestra consegnata senza viewport emulato (viewport:null): larghezza contenuto
+uguale alla finestra. La precedente finestra di automazione aveva viewport
+fisso; non introdotti ridimensionamenti o zoom CSS per compensarlo.
+NOT_RUN: dispositivi fisici/Safari. Nessuna scrittura commerciale o invio.
+
+## Menu notifiche e accesso clienti dagli alert — 14 ottobre 2026
+
+Menu nell’ordine richiesto: Home, Nuovo ordine, Ordini da leggere, Clienti,
+Alert di vendita, Catalogo. I miei ordini resta accessibile dalla Home.
+Badge numerici: alert di vendita attivi nel portafoglio, esclusi clienti e
+prodotti bloccati secondo gli stessi criteri della pagina; non include Da
+riattivare. Offline si conserva l’ultimo conteggio disponibile. Ordini da
+leggere: 0, poiché l’ingresso WhatsApp non è ancora implementato; nessuna
+ricezione o notifica inventata. Pagina WhatsApp esplicitamente non disponibile.
+
+Audit read-only del dataset locale: 0 clienti bloccati negli alert di vendita,
+105 nella classificazione pubblicata Da riattivare. Esclusi ora anche questi
+ultimi da visualizzazione e metadati di riattivazione; record storici e run
+pubblicati conservati, senza cancellazioni o ricalcoli sul database reale.
+Il messaggio ambiguo proveniva dal comando CREATE_DRAFT: gli alert non
+preparavano i loro clienti nella snapshot limitata a 100. Aggiunti esplicitamente
+nel bootstrap e nel refresh; errori distinti per bloccato e assente dalla cache.
+Apri cliente verificato separatamente con accesso online riuscito.
+
+Eliminate spiegazioni ripetitive sotto gli alert; testo della frequenza in
+calo mantenuto. PASS: Rails 176/176; regressione mirata finale 10/10, inclusi
+101 clienti sintetici precedenti al cliente dell’alert; JS 18/18; RuboCop;
+git diff --check. Browser 390 e 1440: contatori coerenti, tutti i 10 clienti
+visibili preparati, scheda cliente raggiungibile, menu e pagina senza overflow.
+Artefatto qa/amelia3-v5/alert-navigation-browser.json, solo booleani e conteggi.
+NOT_RUN: ricezione WhatsApp (funzione assente), dispositivi fisici/Safari,
+scritture commerciali reali. Worker FTP fermo; nessun invio, push o deploy.

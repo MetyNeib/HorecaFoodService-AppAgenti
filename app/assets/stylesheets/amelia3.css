@@ -240,3 +240,125 @@ dialog.amelia-drawer[open] {
   min-width: 0;
   flex-wrap: wrap;
 }
+
+[data-page-controller="amelia3"].amelia-connection-visible .workspace-shell {
+  grid-template-rows: minmax(0, 1fr) auto;
+}
+.amelia-connection[hidden] {
+  display: none;
+}
+.amelia-connection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 16px max(10px, env(safe-area-inset-bottom));
+  background: #fff3cf;
+  color: #593900;
+  border-top: 2px solid #aa6900;
+  font-weight: 600;
+}
+.amelia-connection__menu {
+  font-weight: 600;
+}
+.amelia-alert__summary {
+  font-size: 20px;
+  line-height: 1.4;
+  color: #213347;
+}
+.amelia-alert__summary strong {
+  font-weight: 800;
+}
+.amelia-line-help {
+  flex-basis: 100%;
+  color: #593900;
+}
+
+.amelia_account_switch_js {
+  display: grid;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+/* Navigation first; identity and connection are secondary tools. */
+.amelia-drawer-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.amelia-drawer-heading .amelia-logo {
+  width: 88px;
+  margin: 0;
+}
+.amelia-drawer-heading button {
+  width: 44px;
+  padding: 0;
+  font-size: 24px;
+}
+.amelia-menu-tools {
+  border-top: 1px solid #cbd2df;
+  padding-top: 12px;
+}
+.amelia-menu-tools .amelia_account_switch_js {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  margin: 0;
+  font-size: 14px;
+}
+.amelia-menu-tools select {
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+.amelia-menu-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+.amelia-menu-actions button,
+.amelia-connection-summary {
+  font-size: 14px;
+  text-align: left;
+  padding: 8px;
+}
+.amelia-order-center {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+  align-content: start;
+  gap: 16px;
+}
+.amelia-order-center a {
+  padding: 20px;
+}
+.amelia-order-center h2 {
+  margin: 0 0 8px;
+}
+.amelia-order-center p {
+  margin: 0;
+}
+.amelia-menu-links a {
+  justify-content: space-between;
+  gap: 8px;
+}
+.amelia-notification {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 24px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  background: #c62828;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+}
+.amelia-notification[data-empty="true"] {
+  background: #e8ecf2;
+  color: #526079;
+}

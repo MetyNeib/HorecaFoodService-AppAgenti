@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { priceFor, lineCents, decimalText, projectCommand, reconcileRecord, mergeSnapshot, romeDate, stepQuantity, orderableUnits } from '../../app/javascript/amelia3/domain.js';
+import { priceFor, lineCents, decimalText, projectCommand, reconcileRecord, mergeSnapshot, romeDate, stepQuantity, orderableUnits, equivalentQuantity } from '../../app/javascript/amelia3/domain.js';
 
 const data = () => ({ batchId: 'synthetic-batch-1', customers: [{ id: 'C001', name: 'Cliente sintetico', agentCode: '34', deliveryPoint: true }, { id: 'C002', blocked: true, deliveryPoint: true }],
   products: [{ id: 'P001', name: 'Prodotto sintetico', unit: 'P', orderUnit: 'P', preferredUm: 'PZ', orderableUms: ['PZ'], basePriceMicros: '1234560',
@@ -162,4 +162,24 @@ test('free decimal KG keeps sub-unit stock and rejects stock excess without impo
   assert.equal(stepQuantity('0.125', 'any', '1'), '1.125');
   state.data.customers[0].assignedListCode = '123';
   assert.throws(() => projectCommand(state, { type: 'CONFIRM_ORDER', payload: { orderId: 'synthetic-order', expectedVersion: 1 } }));
+});
+
+
+test('cart unit changes preserve exact equivalent quantities and reject rounding, stale evidence and prices', () => {
+  const state = draft(), product = state.data.products[0];
+  product.orderableUms.push('CONF');
+  product.unitQuotes.CONF = { ...product.unitQuotes.PZ, unit: 'CONF', priceFactor: { n: '10', d: '1' }, personalPriceFactor: { n: '10', d: '1' }, stockFactor: { n: '1', d: '10' }, available: { n: '10', d: '1' } };
+  const added = projectCommand(state, {...add, payload: {...add.payload, quantity:'20'}});
+  const line = added.data.orders[0].lines[0];
+  assert.equal(equivalentQuantity(product, line, 'CONF'), '2.0');
+  assert.equal(equivalentQuantity(product, {...line, quantity:'3'}, 'CONF'), null);
+  const payload = {orderId:'synthetic-order', lineId:line.id, unit:'CONF', quantity:'2', expectedVersion:1, expectedConversionVersion:'synthetic-v1', expectedExactPrice:{n:'372297',d:'31250'}};
+  const changed = projectCommand(added, {type:'UPDATE_LINE', payload});
+  const saved = changed.data.orders[0].lines[0];
+  assert.equal(saved.id, line.id); assert.equal(saved.unit,'CONF'); assert.equal(saved.quantity,'2.0');
+  assert.equal(saved.lineNetCents,line.lineNetCents); assert.equal(changed.data.orders[0].lines.length,1);
+  assert.throws(() => projectCommand(added,{type:'UPDATE_LINE',payload:{...payload,quantity:'0.3'}}));
+  assert.throws(() => projectCommand(added,{type:'UPDATE_LINE',payload:{...payload,expectedConversionVersion:'stale'}}));
+  assert.throws(() => projectCommand(added,{type:'UPDATE_LINE',payload:{...payload,expectedExactPrice:{n:'1',d:'1'}}}));
+  assert.equal(added.data.orders[0].lines[0].unit,'PZ');
 });

@@ -142,7 +142,7 @@ test('expired sessions and expired offline permissions preserve the outbox and h
 
 test('business blocks also apply to direct API calls and unverified units', async ({ page }) => {
   await login(page); await navigate(page, '/amelia3/customers?pick=1');
-  await expect(page.locator('[data-customer-code="C002"]').getByRole('button', { name: /Seleziona/ })).toBeDisabled();
+  await expect(page.locator('[data-customer-code="C002"]')).toHaveCount(0);
   const result = await page.evaluate(async () => {
     const data = await fetch('/amelia3/snapshot').then(r => r.json());
     const response = await fetch('/amelia3/commands', { method: 'POST', headers: { Accept: 'application/json', 'Content-Type': 'application/json', 'X-CSRF-Token': data.csrfToken, 'X-HFS-User-Id': data.user.id }, body: JSON.stringify({ operationId: crypto.randomUUID(), baseVersion: data.version, epoch: 1, type: 'CREATE_DRAFT', payload: { id: crypto.randomUUID(), customerId: 'C002', batchId: data.state.data.batchId } }) });

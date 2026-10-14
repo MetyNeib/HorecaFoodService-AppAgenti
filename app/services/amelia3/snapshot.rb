@@ -36,9 +36,10 @@ module Amelia3
                "batchFingerprint" => scope.tenant.active_batch.fingerprint,
                "importStatus" => latest_import ? "#{latest_import.local_date} · #{latest_import.status}" : "batch locale disponibile; nessuna esecuzione pianificata registrata",
                "quoteContractVersion" => UnitContract::VERSION, "verificationVersion" => Digest::SHA256.hexdigest(JSON.generate(evidence)),
+               "notifications" => { "salesAlerts" => scope.sales_alert_count, "unreadOrders" => 0, "whatsappAvailable" => false },
                "portfolioCount" => scope.customers.count, "catalogCount" => scope.products.count,
                "asOf" => Time.zone.today.iso8601, "expiresAt" => 24.hours.from_now.iso8601,
-               "customers" => customers.map { |customer| customer_data(customer, scope).merge("reactivation" => reactivation[customer.external_code]) },
+               "customers" => customers.map { |customer| customer_data(customer, scope).merge(scope.customer_activity.for(customer)).merge("reactivation" => reactivation[customer.external_code]) },
                "products" => products.map { |product| product_data(product, quotes.fetch(product.external_code)) },
                "customerConditions" => conditions.map { |row| condition_data(row) }, "orders" => orders.map { |order| order_data(order) } }
       { state: { "schemaVersion" => 2, "datasetMode" => "amelia3", "datasetId" => "AMELIA3-#{scope.tenant.id}", "data" => data },

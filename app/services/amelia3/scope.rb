@@ -21,13 +21,23 @@ module Amelia3
       customers.find_by!(external_code: code)
     end
 
+    def customer_activity
+      @customer_activity ||= CustomerActivity.new(self)
+    end
+
     def products
       Product.where(batch_id: batch_id)
     end
 
     def reactivation_items
       AlertItem.where(run_id: tenant.active_alert_run_id, status: "active", rule_type: SalesAlertRules::REACTIVATION,
-                      customer_code: customers.select(:external_code))
+                      customer_code: customers.where(blocked: false).select(:external_code))
+    end
+
+    def sales_alert_count
+      AlertItem.where(run_id: tenant.active_alert_run_id, status: "active", rule_type: SalesAlertRules::TYPES,
+                      customer_code: customers.where(blocked: false).select(:external_code))
+               .where.not(rule_type: "USUAL_PRODUCT_MISSING", product_code: products.where(blocked: true).select(:external_code)).count
     end
 
     def destinations(customer)

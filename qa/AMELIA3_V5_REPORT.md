@@ -339,3 +339,144 @@ Browser: npm.cmd run test:amelia3-prepare, poi npx.cmd playwright test -c playwr
 Runner reali: verify-amelia3-real-quotes.rb, check-amelia3-real-quote-parity.mjs, benchmark-amelia3-alerts.rb, benchmark-amelia3-snapshots.rb e check-amelia3-real-browser.mjs. Aggregati pubblicabili separati da quotazioni, credenziali e immagini private. Git ignore e immagine Docker controllati.
 
 Guida: [AMELIA3_V5_LOCAL](../docs/AMELIA3_V5_LOCAL.md). App: http://127.0.0.1:3002/amelia3. Un clone GitHub ottiene ancora la versione precedente finché non viene autorizzato il salvataggio remoto della v5.
+
+
+## Perfezionamento demo sul Mac — 14 ottobre 2026
+
+Base Git `51805120ba447dfaa5348c240ff1ba7aa443df48`, branch
+`feature/amelia3-demo-polish`; modifiche locali non committate.
+
+### Implementato
+
+- Riconnessione: ritorno al rendering completo online dopo refresh/sync riusciti,
+  senza sovrascrivere form con modifiche ancora da salvare o navigazioni successive.
+- Clienti: Attivi/Fermi/Bloccati, blocco prioritario, fermo oltre 90 giorni;
+  assenza di acquisti consegnati nello storico classificata Fermi con badge.
+  La selezione per nuovo ordine mostra soltanto i non bloccati, senza tab,
+  conservando il badge dei fermi. Ultimo acquisto ricavato dai profili compatti,
+  incluse le consegne odierne, escluse le future e le righe non spedite.
+- UM: regole candidate invariate. Cambio sulla stessa riga di bozza con quantità
+  equivalente solo se esatta, rappresentabile e compatibile con il passo.
+  Altrimenti nuova immissione obbligatoria; cambio applicato con Salva riga.
+  Prezzo riquotato e verificato, stessa identità riga, stock aggregato,
+  idempotenza e protezione degli ordini confermati. Parità online/offline.
+  Le normali modifiche della sola quantità conservano il prezzo salvato.
+- Connessione: barra inferiore quando serve attenzione, testo anche nel menu,
+  distinzione offline/server irraggiungibile, coda e conflitti.
+- Storico: una quantità/UM per riga. Canale sorgente corrispondente alla preferita
+  quando disponibile; per COLL o anagrafica assente si usa una rappresentazione
+  sorgente disponibile, senza inventare conversioni con gli imballi attuali.
+  Tutti i valori originali restano nel database; le righe ripetute sono conservate.
+- Alert: soglie e calcolo invariati, niente mediane nel testo commerciale;
+  ultimo acquisto e ritardo evidenti. La spiegazione chiarisce il periodo di attesa
+  usato dal sistema, evitando di equipararlo alla frequenza abituale pura.
+- Cache pubblica PWA aggiornata per distribuire shell e asset aggiornati.
+
+### PASS
+
+- Rails: 172 esempi, zero errori, database di test isolato.
+- JavaScript/service worker: 18 test; seed 20/20; regole progetto e bundle PASS.
+- RuboCop: 138 file, zero infrazioni; Brakeman: zero errori e avvisi.
+- Browser Chromium desktop 1440×900 e telefono 390×844: riconnessione senza
+  refresh, stato connessione nel menu/barra, categorie/picker clienti, cambio UM
+  online/offline, equivalenza, nuova quantità, conservazione del form durante
+  riconnessione, salvataggio senza duplicazione, storico singolo e alert leggibili.
+- Controllo visivo su screenshot esclusivamente sintetici locali in
+  `output/playwright/polish-*`; nessuna richiesta business esterna rilevata.
+- Dati reali in sola lettura: cinque viste online PASS, circa 0,9 secondi ciascuna,
+  senza fallback locale e senza modifiche commerciali.
+- Esiti aggregati: `qa/amelia3-v5/demo-polish-browser.json` e
+  `qa/amelia3-v5/demo-polish-real-readonly.json`.
+- Controllo ripetibile con Playwright CLI: `run-code --filename
+  scripts/check-amelia3-demo-polish-browser.js` su una sessione browser aperta.
+  Il controllo verifica il tenant sintetico prima di qualsiasi scrittura e
+  conserva le bozze di collaudo; non eseguire contro account reali.
+
+### FAIL / NOT_RUN
+
+- FAIL residui: nessuno nei controlli indicati.
+- NOT_RUN: suite completa di tutti i profili browser, WebKit, dispositivi fisici,
+  FTP, invii reali e pubblicazione. Worker non avviato da questa attività.
+- I test iniziali dello storico aspettavano le tre quantità: aggiornati al requisito
+  di una sola quantità, con controllo aggiuntivo della conservazione del sorgente.
+  Le prove browser attendono anche il rendering dopo il salvataggio, prima
+  dell'azione successiva; nessun retry né rimozione dei controlli di dominio.
+
+## Demo: selettore account Admin / Agente 34 — 14 ottobre 2026
+
+Login Admin conservato; menu con due sole identità esplicitamente abilitate
+nella configurazione locale ignorata da Git. Agente autenticato direttamente
+non può usare il selettore. Funzione disabilitata senza AMELIA3_DEMO_SWITCH=1,
+AMELIA3_DEMO_ADMIN_ID e AMELIA3_DEMO_AGENT_ID. Nessuna password trasferita
+al selettore. Permessi e portafoglio dipendono dall’identità selezionata;
+Devise conserva l’Admin autenticato. Migrazione additiva: le ricevute dei
+comandi registrano originating_admin_id, oltre all’utente effettivo.
+
+Cambio solo online, pagina mantenuta quando autorizzata, altrimenti Home.
+Identità visibile anche a menu chiuso; ritorno Admin senza nuova password.
+Modifiche non salvate, coda, conflitti e sincronizzazione impediscono il cambio;
+controllo tra finestre attive e lock temporaneo IndexedDB durante la richiesta.
+Le finestre sospese conservano i moduli sporchi se rilevano un cambio identità;
+il server rifiuta comandi con il precedente proprietario. Cache per account
+conservate e separate. Stessa sessione: ultima selezione; nuovo login: Admin.
+Worker FTP fermo; nessun invio reale, push, merge o deploy.
+
+PASS: suite Rails completa 175/175, più test finale mirato 4/4 (include logout
+come Agente e rifiuto terzo account); dominio JS 18/18; RuboCop 142 file senza
+infrazioni; Brakeman zero errori/avvisi; git diff --check.
+PASS browser Chromium desktop 1440 e telefono 390: due sole opzioni, cambio
+e ritorno, blocco offline, modulo sporco nella finestra corrente e in altra
+finestra, identità visibile, nessun overflow o errore JavaScript.
+Artefatto aggregato: qa/amelia3-v5/demo-account-switch-browser.json.
+Account reali: esclusivamente login, navigazione e cambio sessione; scritture
+commerciali e audit verificati solo su fixture sintetiche isolate.
+NOT_RUN: Safari/WebKit, dispositivi fisici, scritture commerciali reali.
+FAIL: nessuno residuo. URL: http://127.0.0.1:3002/amelia3.
+Modifiche locali non committate sul branch feature/amelia3-demo-polish.
+
+## Menu compatto e finestra ridimensionabile — 14 ottobre 2026
+
+Su richiesta utente: intestazione con solo logo e chiusura, cinque voci
+Home / Nuovo ordine / Ordini / Clienti / Catalogo. Ordini apre una pagina
+con I miei ordini, Ordini WhatsApp e Alert di vendita, disponibile anche
+nella navigazione offline. Collegamenti esistenti alle singole sezioni preservati.
+Account in fondo al menu, selezione immediata senza pulsante; errore o blocco
+ripristina il valore dell’account effettivo. Connessione ridotta a Online in
+condizioni normali; email e dettagli nel dialog dedicato. Eliminato badge
+flottante che si sovrapponeva al titolo.
+
+PASS browser: 390, 768 e 1440 px, menu interamente visibile a 844 px di altezza,
+nessun overflow orizzontale, pagina con tre destinazioni, cambio immediato.
+PASS protezioni backend: 4 test; sintassi JS e git diff --check.
+Finestra consegnata senza viewport emulato (viewport:null): larghezza contenuto
+uguale alla finestra. La precedente finestra di automazione aveva viewport
+fisso; non introdotti ridimensionamenti o zoom CSS per compensarlo.
+NOT_RUN: dispositivi fisici/Safari. Nessuna scrittura commerciale o invio.
+
+## Menu notifiche e accesso clienti dagli alert — 14 ottobre 2026
+
+Menu nell’ordine richiesto: Home, Nuovo ordine, Ordini da leggere, Clienti,
+Alert di vendita, Catalogo. I miei ordini resta accessibile dalla Home.
+Badge numerici: alert di vendita attivi nel portafoglio, esclusi clienti e
+prodotti bloccati secondo gli stessi criteri della pagina; non include Da
+riattivare. Offline si conserva l’ultimo conteggio disponibile. Ordini da
+leggere: 0, poiché l’ingresso WhatsApp non è ancora implementato; nessuna
+ricezione o notifica inventata. Pagina WhatsApp esplicitamente non disponibile.
+
+Audit read-only del dataset locale: 0 clienti bloccati negli alert di vendita,
+105 nella classificazione pubblicata Da riattivare. Esclusi ora anche questi
+ultimi da visualizzazione e metadati di riattivazione; record storici e run
+pubblicati conservati, senza cancellazioni o ricalcoli sul database reale.
+Il messaggio ambiguo proveniva dal comando CREATE_DRAFT: gli alert non
+preparavano i loro clienti nella snapshot limitata a 100. Aggiunti esplicitamente
+nel bootstrap e nel refresh; errori distinti per bloccato e assente dalla cache.
+Apri cliente verificato separatamente con accesso online riuscito.
+
+Eliminate spiegazioni ripetitive sotto gli alert; testo della frequenza in
+calo mantenuto. PASS: Rails 176/176; regressione mirata finale 10/10, inclusi
+101 clienti sintetici precedenti al cliente dell’alert; JS 18/18; RuboCop;
+git diff --check. Browser 390 e 1440: contatori coerenti, tutti i 10 clienti
+visibili preparati, scheda cliente raggiungibile, menu e pagina senza overflow.
+Artefatto qa/amelia3-v5/alert-navigation-browser.json, solo booleani e conteggi.
+NOT_RUN: ricezione WhatsApp (funzione assente), dispositivi fisici/Safari,
+scritture commerciali reali. Worker FTP fermo; nessun invio, push o deploy.

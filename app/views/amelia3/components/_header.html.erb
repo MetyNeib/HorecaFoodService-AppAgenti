@@ -1,12 +1,27 @@
 <button type="button" class="amelia-menu-button amelia_menu_open_js" aria-label="Apri menu" aria-controls="amelia-menu" aria-expanded="false">☰</button>
 <dialog id="amelia-menu" class="amelia-drawer dialog_js" aria-label="Menu principale">
-  <button type="button" class="quiet dialog_close_js" aria-label="Chiudi menu">Chiudi ×</button>
-  <%= image_tag 'amelia3-logo.png', alt: 'Amelia3 dal 1975', class: 'amelia-logo', data: { offline_asset: true } %>
-  <div class="amelia-identity"><b class="amelia_user_js">Amelia3</b><small class="amelia_identity_js">Archivio commerciale</small><small class="amelia_company_js"></small></div>
-  <button type="button" class="quiet amelia_status_open_js">Stato connessione e dati</button>
+  <div class="amelia-drawer-heading">
+    <%= image_tag 'amelia3-logo.png', alt: 'Amelia3', class: 'amelia-logo', data: { offline_asset: true } %>
+    <button type="button" class="quiet dialog_close_js" aria-label="Chiudi menu">×</button>
+  </div>
   <%= render 'amelia3/components/nav' %>
   <div class="amelia-menu-tools">
+  <% if !local_assigns[:neutral] && respond_to?(:demo_accounts) && demo_accounts.exists? %>
+    <form class="amelia_account_switch_js" action="/amelia3/demo_session" method="post">
+      <label for="demo-account">Account</label>
+      <select id="demo-account" name="account_id" disabled>
+        <% demo_accounts.order(:role).each do |account| %>
+          <option value="<%= account.id %>" <%= 'selected' if account.id == current_user.id %>><%= account.role == 'admin' ? 'Admin' : 'Agente 34' %></option>
+        <% end %>
+      </select>
+    </form>
+  <% else %>
+    <span class="amelia_role_js"></span>
+  <% end %>
+  <button type="button" class="quiet amelia_status_open_js amelia-connection-summary"><span class="amelia_connection_summary_js">Connessione</span><span aria-hidden="true"> ›</span></button>
+  <div class="amelia-menu-actions">
   <button type="button" class="quiet install_app_js">Installa app</button>
   <form action="/users/sign_out" method="post" class="logout_form_js"><input type="hidden" name="_method" value="delete"><% unless local_assigns[:neutral] %><%= hidden_field_tag :authenticity_token, form_authenticity_token %><% end %><button type="submit" class="quiet">Esci</button></form>
+  </div>
   </div>
 </dialog>

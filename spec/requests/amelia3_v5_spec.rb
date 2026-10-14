@@ -23,6 +23,11 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     get "/amelia3/alerts", params: { type: "CUSTOMER_REACTIVATION" }
     expect(response).to have_http_status(:ok)
     expect(document.css('[data-alert-id]').length).to eq(1)
+    expect(document.at_css('main').text).not_to include("Ti avvisiamo perché")
+    bootstrap = JSON.parse(document.at_css('#workspace-bootstrap').text)
+    expect(bootstrap.dig("state", "data", "notifications")).to include("salesAlerts" => 0, "unreadOrders" => 0)
+    expect(bootstrap.dig("state", "data", "customers").map { |row| row["id"] }).to include("C001")
+    expect(document.at_css('[data-alert-id]')['data-customer-code']).to eq("C001")
     expect(document.at_css('h1').text).to eq("Clienti da riattivare")
     get "/amelia3/customers"
     expect(document.at_css('[data-customer-code="C001"]').text).to include("Da riattivare")
@@ -111,11 +116,11 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     expect(explicit.dig(:state, "data", "products").map { |row| row["id"] }).to contain_exactly("P001", "K001")
   end
 
-  it "renders seven drawer destinations, original logo and an isolated neutral offline shell" do
+  it "renders six drawer destinations, original logo and an isolated neutral offline shell" do
     sign_in fixture[:agent]
     get "/amelia3"
     expect(response).to have_http_status(:ok)
-    expect(document.css('.amelia-menu-links a').map(&:text)).to eq([ "Home", "Nuovo ordine", "I miei ordini", "Ordini WhatsApp", "Clienti", "Catalogo", "Alert di vendita" ])
+    expect(document.css('.amelia-menu-links a').map { |link| (link.at_css('span') || link).text }).to eq([ "Home", "Nuovo ordine", "Ordini da leggere", "Clienti", "Alert di vendita", "Catalogo" ])
     expect(document.css('header, footer, .header-dock, .status-dock')).to be_empty
     expect(document.at_css('.amelia-logo')['src']).to include("amelia3-logo")
     get "/amelia3/whatsapp"
@@ -124,7 +129,7 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     get "/amelia3/offline"
     expect(response).to have_http_status(:ok)
     expect(response.body).not_to include(fixture[:agent].email, "RESET_DEMO", "SET_DEMO_NETWORK", "Reset demo")
-    expect(document.css('.amelia-menu-links a').length).to eq(7)
+    expect(document.css('.amelia-menu-links a').length).to eq(6)
   end
 
   it "groups by customer and reference, preserving repeated lines in one shared read-only detail" do
@@ -146,7 +151,8 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     get "/amelia3/history/detail", params: { customer_id: "C001", reference: first.order_reference }
     expect(response).to have_http_status(:ok)
     expect(document.css('[aria-label="Righe ordine storico"] article').length).to eq(2)
-    expect(document.at_css('main').text).to include("0,125")
+    expect(document.css(".amelia-history-quantity").map(&:text)).to eq([ "Quantità ordinata: 10 PZ", "Quantità ordinata: 10 PZ" ])
+    expect(Amelia3::HistoryRow.find_by!(batch: batch, source_row: 3).shipped).to eq(BigDecimal("0.125"))
     expect(document.at_css('main').text).not_to include("€")
     get "/amelia3/history/detail", params: { customer_id: "C003", reference: first.order_reference }
     expect(response).to have_http_status(:not_found)
@@ -172,6 +178,10 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
   it "scopes alert links and static contact candidates without a message or editable contact" do
     customer = Amelia3::Customer.find_by!(batch: fixture[:batch], external_code: "C001")
     customer.update!(telephone: "0711234567; +39 3331234567")
+    # The alert customer falls outside the first 100 cached customers.
+    101.times do |index|
+      customer.dup.tap { |copy| copy.external_code = "A-CACHE-#{index}"; copy.account_code = "A-CACHE-#{index}"; copy.save! }
+    end
     run = Amelia3::AlertRun.create!(tenant: fixture[:tenant], batch: fixture[:batch], as_of: Time.zone.today,
       rules_version: Amelia3::SalesAlertRules::VERSION, source: "development", status: "published")
     evidence = { "datesCount" => 4, "firstDelivery" => "2026-01-01", "lastDelivery" => "2026-03-01", "medianDays" => { "n" => 20, "d" => 1 }, "thresholdDays" => 50, "daysSinceLast" => 60, "daysLate" => 10 }
@@ -185,6 +195,11 @@ RSpec.describe "Amelia3 v5 navigation, history and alert authorization", type: :
     expect(queries.grep(/amelia3_history_rows/)).to be_empty
     expect(response).to have_http_status(:ok)
     expect(document.css('[data-alert-id]').length).to eq(1)
+    expect(document.at_css('main').text).not_to include("Ti avvisiamo perché")
+    bootstrap = JSON.parse(document.at_css('#workspace-bootstrap').text)
+    expect(bootstrap.dig("state", "data", "notifications")).to include("salesAlerts" => 1, "unreadOrders" => 0)
+    expect(bootstrap.dig("state", "data", "customers").map { |row| row["id"] }).to include("C001")
+    expect(document.at_css('[data-alert-id]')['data-customer-code']).to eq("C001")
     links = document.css('a[target="_blank"]')
     expect(links.map { |link| link['href'] }).to eq(%w[https://wa.me/390711234567 https://wa.me/393331234567])
     expect(links.map { |link| link['rel'] }.uniq).to eq([ "noopener noreferrer" ])

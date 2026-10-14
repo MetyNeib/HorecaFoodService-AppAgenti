@@ -16,13 +16,19 @@
   <% end %>
   <div class="scroll-area" data-kind="list" aria-label="Alert di vendita">
     <% @alerts.each do |alert| %><% customer = @alert_customers.fetch(alert.customer_code); evidence = alert.evidence; numbers = @contact_numbers.fetch(alert.customer_code); dialog_id = "contact-#{alert.id}" %>
-      <article class="card" data-alert-id="<%= alert.id %>" data-alert-type="<%= alert.rule_type %>">
+      <article class="card" data-customer-code="<%= customer.external_code %>" data-alert-id="<%= alert.id %>" data-alert-type="<%= alert.rule_type %>">
         <h2><%= { 'CUSTOMER_STOPPED' => 'Cliente fermo', 'USUAL_PRODUCT_MISSING' => 'Prodotto abituale mancante', 'PURCHASE_FREQUENCY_DROP' => 'Frequenza in calo', 'CUSTOMER_REACTIVATION' => 'Da riattivare' }.fetch(alert.rule_type) %></h2>
         <h3><%= customer.name %></h3><p>Cod. <%= customer.external_code %> · Agente <%= customer.agent_code %></p>
         <% if alert.product_code.present? %><p><%= @alert_products[alert.product_code] %> · Art. <%= alert.product_code %></p><% end %>
-        <% if alert.rule_type == Amelia3::SalesAlertRules::REACTIVATION %><p>Ultimo acquisto registrato: <%= display_date(evidence['lastDelivery']) %> · <%= evidence['daysSinceLast'] %> giorni fa.</p><% if customer.blocked %><p class="badge error">Cliente bloccato · non ordinabile</p><% end %>
-        <% elsif alert.rule_type == 'PURCHASE_FREQUENCY_DROP' %><p><%= evidence['priorDates'] %> giornate nei 180 giorni precedenti, <%= evidence['recentDates'] %> negli ultimi 60. Attese <%= amelia_decimal(BigDecimal(evidence['expectedRecent']['n'].to_s) / evidence['expectedRecent']['d']) %>. Calo <%= number_to_percentage(100.0 * evidence['decline']['n'] / evidence['decline']['d'], precision: 1) %>.</p>
-        <% else %><p><%= evidence['datesCount'] %> giornate di acquisto dal <%= display_date(evidence['firstDelivery']) %> al <%= display_date(evidence['lastDelivery']) %>. Intervallo mediano <%= amelia_decimal(BigDecimal(evidence['medianDays']['n'].to_s) / evidence['medianDays']['d']) %> giorni; soglia <%= evidence['thresholdDays'] %> giorni.</p><p>Ultimo acquisto <%= evidence['daysSinceLast'] %> giorni fa · Ritardo <%= evidence['daysLate'] %> giorni.</p><% end %>
+        <% if alert.rule_type == Amelia3::SalesAlertRules::REACTIVATION %>
+          <p class="amelia-alert__summary">Ultimo acquisto <strong><%= evidence['daysSinceLast'] %> giorni fa</strong> · Da riattivare</p>
+          <% if customer.blocked %><p class="badge error">Cliente bloccato · non ordinabile</p><% end %>
+        <% elsif alert.rule_type == 'PURCHASE_FREQUENCY_DROP' %>
+          <p class="amelia-alert__summary">Acquista meno spesso: <strong>frequenza in calo del <%= number_to_percentage(100.0 * evidence['decline']['n'] / evidence['decline']['d'], precision: 0) %></strong></p>
+          <p>Negli ultimi 60 giorni ha acquistato in <%= evidence['recentDates'] %> giornate. Mantenendo il ritmo precedente, ne erano attese circa <%= (BigDecimal(evidence['expectedRecent']['n'].to_s) / evidence['expectedRecent']['d']).round %>. Ultimo acquisto il <%= display_date(evidence['lastDelivery']) %>.</p>
+        <% else %>
+          <p class="amelia-alert__summary">Ultimo acquisto<%= ' di questo prodotto' if alert.product_code.present? %> <strong><%= evidence['daysSinceLast'] %> giorni fa</strong> · Ritardo <strong><%= evidence['daysLate'] %> giorni</strong> oltre il periodo di attesa previsto per le sue abitudini</p>
+        <% end %>
         <div class="actions">
           <%= link_to 'Apri cliente', "/amelia3/customers/#{ERB::Util.url_encode(customer.external_code)}", class: 'button' %>
           <%= amelia_form('CREATE_DRAFT', { id: SecureRandom.uuid, customerId: customer.external_code }, return_to: '/amelia3/catalog?order_id=:id') do %><button type="submit" <%= 'disabled' if customer.blocked %>>Nuovo ordine</button><% end %>

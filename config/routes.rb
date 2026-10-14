@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { sessions: "users/sessions" }
   root "home#index"
   namespace :amelia3 do
+    resource :demo_session, only: :create
     get "/", to: "pages#home"
     get "snapshot", to: "commands#snapshot"
     post "commands", to: "commands#create"
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     get "customers/:id", to: "pages#customer"
     get "catalog", to: "pages#catalog"
     get "catalog/:id", to: "pages#product"
+    get "order_center", to: "pages#order_center"
     get "orders", to: "pages#orders"
     get "orders/:id", to: "pages#order"
     get "whatsapp", to: "pages#whatsapp"

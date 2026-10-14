@@ -18,7 +18,26 @@ class Amelia3::BaseController < ApplicationController
     end
   end
 
+  helper_method :demo_accounts
+
+  def authenticated_admin
+    @authenticated_admin ||= super_current_user
+  end
+
+  def current_user
+    @demo_current_user ||= Amelia3::DemoAccess.new(authenticated_admin).selected(session[:amelia3_demo_account])
+  end
+
+  def demo_accounts
+    Amelia3::DemoAccess.new(authenticated_admin).accounts
+  end
+
   private
+
+  def super_current_user
+    # Devise remains signed in as the original Admin.
+    warden.user(:user)
+  end
 
   def load_commercial_scope
     @scope = Amelia3::Scope.new(current_user)

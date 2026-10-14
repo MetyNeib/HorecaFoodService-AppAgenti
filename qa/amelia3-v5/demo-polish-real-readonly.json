@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "businessMutations": 0,
+  "results": [
+    {
+      "path": "/amelia3/customers?category=active",
+      "status": "PASS",
+      "milliseconds": 895
+    },
+    {
+      "path": "/amelia3/customers?category=dormant",
+      "status": "PASS",
+      "milliseconds": 905
+    },
+    {
+      "path": "/amelia3/customers?category=blocked",
+      "status": "PASS",
+      "milliseconds": 905
+    },
+    {
+      "path": "/amelia3/customers?pick=1",
+      "status": "PASS",
+      "milliseconds": 934
+    },
+    {
+      "path": "/amelia3/alerts",
+      "status": "PASS",
+      "milliseconds": 941
+    }
+  ]
+}

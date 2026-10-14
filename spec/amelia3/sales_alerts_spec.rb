@@ -102,7 +102,7 @@ RSpec.describe Amelia3::SalesAlerts do
     publish([ { ago: 91 } ], blocked_customer: true, agent: "99")
     described_class.call(tenant: tenant, as_of: day)
     expect(Amelia3::AlertPage.new(Amelia3::Scope.new(fixture[:agent]), { type: "CUSTOMER_REACTIVATION" }).total).to eq(0)
-    expect(Amelia3::AlertPage.new(Amelia3::Scope.new(fixture[:admin]), { type: "CUSTOMER_REACTIVATION" }).total).to eq(1)
+    expect(Amelia3::AlertPage.new(Amelia3::Scope.new(fixture[:admin]), { type: "CUSTOMER_REACTIVATION" }).total).to eq(0)
   end
 
   it "reuses unchanged profiles, ignores row positions, and matches full recompute exactly" do

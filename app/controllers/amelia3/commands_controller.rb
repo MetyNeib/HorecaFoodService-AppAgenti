@@ -15,12 +15,12 @@ class Amelia3::CommandsController < Amelia3::BaseController
       payload = command["payload"]
       payload["expectedVersion"] = Integer(payload["expectedVersion"], exception: false) if payload.is_a?(Hash) && payload.key?("expectedVersion")
     end
-    result = Amelia3::Commands.call(user: current_user, command: command)
+    result = Amelia3::Commands.call(user: current_user, originating_admin: (authenticated_admin if demo_accounts.exists?), command: command)
     if !request.format.json? && params[:next_command] == "CONFIRM_ORDER" && command["type"] == "SAVE_REVIEW"
       order = result.fetch(:state).fetch("data").fetch("orders").find { |row| row["id"] == command.dig("payload", "orderId") }
       confirmation = { "operationId" => "#{command['operationId']}-confirm", "baseVersion" => result.fetch(:version), "epoch" => 1, "type" => "CONFIRM_ORDER",
                        "payload" => { "orderId" => order.fetch("id"), "expectedVersion" => order.fetch("version"), "batchId" => @scope.batch_id } }
-      result = Amelia3::Commands.call(user: current_user, command: confirmation)
+      result = Amelia3::Commands.call(user: current_user, originating_admin: (authenticated_admin if demo_accounts.exists?), command: confirmation)
     end
     if request.format.json?
       render json: result.merge(csrfToken: form_authenticity_token)
