@@ -1,3 +1,102 @@
+# Ripresa completata — 15 ottobre 2026, ore 10:25 Europe/Rome
+
+Questo aggiornamento sostituisce lo stato di sospensione riportato più sotto.
+App disponibile su http://127.0.0.1:3002/amelia3; archivio WhatsApp aperto nel
+browser. `feed_worker`, web, db e redis attivi. Il vecchio `worker` rimane
+fermo. Il container temporaneo di QA è stato rimosso senza rimuovere volumi,
+database o fixture sintetiche.
+
+Branch effettivo: `feature/amelia3-ftp-inbox-habitual-products`.
+Checkpoint di partenza: `d2ef68c`. Questo commit successivo, richiesto
+dall’utente, salva correzione finale, test, documentazione e supporto applicativo
+per l’accesso demo tramite ngrok. Nessun push/merge/deploy. La revisione UX e
+dei flussi è rinviata al prossimo turno.
+
+## Funzioni disponibili
+
+- Lettura `/DOWNLOAD/BACKUP` ogni tre minuti con controllo integrità, archivio
+  iniziale, deduplicazione, originali conservati e ripresa dopo errori.
+- Ordini ricevuti consultabili e modificabili in una copia demo: presa in
+  carico, quantità/note/consegna, aggiunta/rimozione prodotti e conferma locale.
+  L’archivio iniziale non genera notifiche; i nuovi arrivi restano conteggiati
+  fino alla conferma esplicita. Il timer di 30 minuti non invia nulla.
+- Prodotti abituali di default per il cliente e tab Intero catalogo. Il feed
+  dinamico arricchisce la ricerca; prezzi, UM e ordinabilità rimangono quelli
+  attestati dal percorso commerciale. Copia offline dei prodotti scaricati.
+- Ricerca locale prima, fallback GPT-6 Luna solo senza risultati locali; audit
+  delle sostituzioni fondato sulle consegne positive nello storico giornaliero.
+  Ordini WhatsApp o tablet non vengono considerati consegne avvenute.
+- Import giornaliero alle 06:05 e alert alle 06:30 Europe/Rome gestiti dal solo
+  nuovo worker, con recupero dell’esecuzione rimasta sospesa durante la pausa.
+
+## PASS finali
+
+- HTTP `/up` 200; login e cinque viste commerciali in sola lettura: Home,
+  archivio/dettaglio WhatsApp, clienti, catalogo e alert; zero errori JavaScript.
+- 198 test Rails PASS, inclusa regressione per nuovo run pubblicato durante
+  la revisione AI. 18 JavaScript/service worker PASS. RuboCop senza infrazioni,
+  Brakeman zero errori/avvisi, checker 106 file senza violazioni, bundle 63 file.
+- Browser sintetico: cambio Admin/Agente conserva la pagina autorizzata;
+  presa in carico, salvataggio, conferma e originale immutabile; contatore
+  rimosso soltanto alla conferma. Timer scaduto mantiene ordine da confermare;
+  modifiche non salvate bloccano conferma e assenza connessione blocca scritture.
+- Prodotti abituali e intero catalogo verificati online e dopo cold reload
+  offline; nessun overflow a 390/768/1440 px. Screenshot soltanto sintetici.
+- Import giornaliero 15/10 riuscito, nuovo calcolo schedulato pubblicato, feed
+  prodotti allineato al batch corrente. Polling automatici ripetuti senza
+  errori di file o duplicazioni: 69 ordini iniziali, tutti in archivio.
+- Catalogo sorgente 9.849 righe, venue 406.276 righe; 54.512 coppie abituali
+  ammesse dopo riconciliazione con lo storico aggiornato e la finestra sei mesi.
+  La differenza rispetto alle 59.214 del checkpoint deriva dal nuovo batch.
+- Confronto completo/incrementale identico su 1.038.513 righe dello storico.
+- Revisione di 2.124 alert prodotto completata: 1.489 soppressi per sostituzioni,
+  600 conservati, 35 oltre il limite di cinque per cliente; **zero pending**.
+- Audit di tutte le 1.489 soppressioni: acquisto del sostitutivo presente nello
+  storico positivo, successivo all’originale, entro la finestra della regola,
+  nessuna violazione delle varianti protette. Nessun errore nell’audit.
+- Contatori e pagina coerenti: Admin 820 alert complessivi; Agente 34 zero.
+  I 220 ulteriori alert Admin sono 171 clienti fermi e 49 frequenze in calo.
+- GPT-6 Luna realmente utilizzato, chiave verificata, output JSON validato;
+  limite applicativo 300 richieste/giorno rispettato. Nessun dato cliente,
+  prezzo o storico inviato al modello. Chiave e dati privati fuori Git.
+
+## FAIL aperti
+
+Nessuno. Una prima verifica browser controllava la scheda prima che finisse
+la navigazione: attesa corretta, prova ripetuta PASS. Nessun criterio rimosso.
+
+## NOT_RUN / limiti della verifica
+
+- Nessun nuovo ordine commerciale è arrivato sul FTP durante il collaudo:
+  ricezione successiva all’archivio, deduplicazione e recupero file incompleti
+  verificati con sorgenti sintetiche. Il polling FTP reale è verificato.
+- Nessun invio a gestionale/FTP: escluso dallo scopo della demo.
+- Non eseguita una nuova CI GitHub né un collaudo su hardware mobile fisico.
+  Il browser locale verifica dimensioni telefono/tablet/desktop.
+- Le equivalenze semantiche sono inferenze registrate nell’audit; la verifica
+  automatica delle evidenze non equivale a una classificazione commerciale
+  umana indipendente di tutte le coppie.
+
+## Gestione locale
+
+Per sospendere polling, import giornaliero e AI: `docker compose stop -t 35
+feed_worker`. Per riattivarli: `docker compose up -d --no-deps feed_worker`.
+Il polling continua mentre il Mac è acceso e Docker è in esecuzione; recupera
+alla ripresa. Non avviare anche il vecchio `worker`.
+
+Configurazione privata `.env.openai.local`: `OPENAI_MODEL=gpt-6-luna` e chiave
+locale, mai in chat/Git. Responses API, effort low, output strutturato,
+`store: false`, cache e limite di 300 chiamate/giorno. Dopo cambi di env usare
+`docker compose up -d --no-deps web feed_worker` per ricreare i servizi.
+
+Prove locali private: `tmp/feeds-complete-rspec.log`, `tmp/feeds-resume-*.log`,
+`tmp/feeds-final-browser.log`, `tmp/feeds-expired-browser.log`,
+`tmp/feeds-offline-browser.log`, `tmp/feeds-final-audit.json`.
+Il container QA citato nella sezione storica sottostante non esiste più;
+ricrearlo solo se necessario e solo con gli account sintetici.
+
+---
+
 # Checkpoint locale — 15 ottobre 2026
 
 ## Stato alla sospensione

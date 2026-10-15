@@ -69,4 +69,23 @@ RSpec.describe Amelia3::SubstitutionReview do
     expect(scope.sales_alert_count).to eq(0)
     expect(Amelia3::AlertPage.new(scope, {}).total).to eq(0)
   end
+
+  it 'rebuilds batch work if the daily import publishes a new alert run during AI processing' do
+    prepare(original: 'Chickpeas', replacement: 'Pomodoro fresco')
+    initial_run = tenant.reload.active_alert_run_id
+    batches = 0
+    allow(Amelia3::ProductMatching).to receive(:resolve_batch).and_wrap_original do |original, **arguments|
+      original.call(**arguments)
+      batches += 1
+      if batches == 1
+        Amelia3::Product.find_by!(batch: fixture[:batch], external_code: 'P001').update!(name: 'Ceci lessati')
+        Amelia3::SalesAlerts.call(tenant: tenant, as_of: day + 1)
+      end
+    end
+    described_class.call(tenant: tenant)
+    expect(batches).to eq(2)
+    expect(tenant.reload.active_alert_run_id).not_to eq(initial_run)
+    current_reviews = Amelia3::AlertReview.where(alert_item_id: tenant.active_alert_run.items.select(:id))
+    expect(current_reviews.sole.status).to eq('kept')
+  end
 end

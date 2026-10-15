@@ -1,6 +1,6 @@
 > Aggiornamento 15/10/2026: il trasferimento è completato. Lo sviluppo corrente
 > è su `feature/amelia3-ftp-inbox-habitual-products`. Per riprendere dopo la pausa
-> usare [il checkpoint FTP](../qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md): il nuovo
+> usare [il checkpoint e rapporto FTP](../qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md): il nuovo
 > `feed_worker` sostituisce operativamente il precedente `worker`, che va lasciato
 > fermo. Le istruzioni storiche seguenti descrivono la prima installazione.
 
@@ -128,3 +128,38 @@ eseguire `git pull --ff-only`. I database dei due computer restano indipendenti.
 La data della presentazione e il campione saranno scelti sul Mac. Lavorare
 per milestone; prima definire criteri e casi reali, poi rifinire interfaccia
 e flussi, infine collaudare la sequenza della presentazione e aprire la PR.
+
+
+## Accesso esterno ngrok — attivo e verificato 15/10/2026
+
+Accesso pubblico HTTPS autorizzato esplicitamente dall’utente:
+https://overscented-kandra-craggy.ngrok-free.dev/amelia3.
+Il tunnel inoltra esclusivamente alla web app locale `http://127.0.0.1:3002`.
+Login Admin conservato, con selettore Admin/Agente 34 dopo autenticazione.
+La prima visita può mostrare la schermata ngrok: scegliere «Visit Site».
+
+Il primo tentativo aveva restituito `ERR_NGROK_334` perché il dominio era già
+occupato altrove. L’utente ha fermato quel tunnel e confermato di riprovare;
+il successivo avvio è riuscito. Nessun pooling con altre applicazioni.
+
+Configurazione locale esclusa da Git: `HFS_PUBLIC_DEMO=true`, chiave di
+sessione casuale privata e solo il dominio esatto aggiunto agli host locali.
+Pagine diagnostiche disattivate; cookie HttpOnly e Secure sulle richieste
+HTTPS. Il login locale HTTP continua a funzionare. Le vecchie sessioni create
+con la chiave di sviluppo richiedono un nuovo login; password invariate.
+Backup configurazione precedente: `tmp/compose.override.before-ngrok.yml`,
+privato e con permessi 0600. Nessun token o password nei file versionati.
+
+PASS: `/up` e service worker HTTPS 200; senza login Amelia3 rinvia a sign-in;
+404 senza dettagli tecnici; host non autorizzato 403. Login Admin reale via
+browser pubblico, due account disponibili, catalogo/alert/archivio tutti 200,
+cookie Secure/HttpOnly, zero errori JavaScript. Nove request spec di accesso e
+inbox PASS; RuboCop mirato PASS. Nessuna scrittura commerciale nel collaudo.
+
+Avvio: `ngrok http http://127.0.0.1:3002 --inspect=false`. Il processo corrente
+è in background; PID e URL in `tmp/ngrok-amelia3.pid` e
+`tmp/ngrok-amelia3-url.txt`, log privato in `tmp/ngrok-amelia3.log`. Per fermarlo,
+terminare quel processo dopo aver verificato che il PID corrisponda ancora a
+ngrok. Il collegamento richiede Mac acceso, Docker e ngrok in esecuzione.
+
+Documentazione CLI: https://ngrok.com/docs/gateway/agent/cli.

@@ -273,3 +273,10 @@ prezzi, credenziali FTP o storico commerciale. Chiave e configurazione in
 `.env.openai.local`, escluso da Git. La configurazione `.env` esistente è
 conservata. Il worker dedicato gestisce anche import 06:05 e alert 06:30;
 quello precedente rimane fermo per evitare due scheduler.
+
+Alla ripresa del 15/10 è stato verificato il recupero dell’import giornaliero
+e del calcolo schedulato. Se durante una revisione AI viene pubblicato un
+nuovo run di alert, il servizio ricostruisce i confronti sul run corrente,
+riusando la cache e mantenendo le richieste raggruppate. La scadenza del timer
+e i blocchi per modifiche non salvate o connessione assente sono stati
+verificati nel browser esclusivamente su un ordine sintetico.

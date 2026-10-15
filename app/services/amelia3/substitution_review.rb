@@ -47,7 +47,9 @@ module Amelia3
       end
       if resolve && tasks.any?
         ProductMatching.resolve_batch(tenant: @tenant, tasks: tasks)
-        return call(resolve: false)
+        # A daily import may publish a new alert run while the API is working.
+        # Rebuild its work in batches instead of making uncached calls per alert.
+        return call(resolve: @tenant.reload.active_alert_run_id != run.id)
       end
       AlertReview.where(alert_item_id: run.items.select(:id)).group(:status).count
     end

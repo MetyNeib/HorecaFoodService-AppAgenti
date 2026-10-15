@@ -1,9 +1,14 @@
 class ApplicationController < ActionController::Base
   prepend_before_action :authenticate_user!
+  prepend_before_action :secure_demo_session, if: -> { ENV["HFS_PUBLIC_DEMO"] == "true" }
   before_action :private_response
   before_action :separate_datasets
 
   private
+
+  def secure_demo_session
+    request.session_options[:secure] = Rails.env.production? || request.ssl?
+  end
 
   def private_response
     response.headers["Cache-Control"] = "no-store, private"

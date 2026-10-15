@@ -1,3 +1,31 @@
+# Salvataggio del lavoro completato — 15/10/2026
+
+Su richiesta esplicita dell’utente, questo commit salva le correzioni e il
+collaudo successivi al checkpoint FTP `d2ef68c`, insieme alla configurazione
+applicativa per l’accesso demo HTTPS tramite ngrok. Configurazione privata,
+credenziali e dati restano esclusi. Nessun push, merge o deploy.
+La prossima attività sarà la revisione UX e dei flussi; non è iniziata qui.
+
+---
+
+# Ripresa FTP e collaudo — 15/10/2026
+
+Ripreso il checkpoint `d2ef68c` su `feature/amelia3-ftp-inbox-habitual-products`.
+Import giornaliero e calcolo schedulato recuperati con successo; `feed_worker`
+attivo, vecchio `worker` fermo. Feed abituali riallineato al batch corrente:
+54.512 coppie verificate; 69 ordini dell’archivio iniziale conservati.
+Confronto completo/incrementale identico su 1.038.513 righe di storico.
+Corretto il cambio di run mentre l’AI elabora, con regressione sintetica.
+PASS 198 Rails, 18 JavaScript/service worker, RuboCop, Brakeman zero avvisi,
+regole e bundle. PASS cinque viste reali in sola lettura e collaudo sintetico
+account, timer scaduto, salvataggio/conferma, offline e responsive.
+Revisione AI completata: 1.489 sostituzioni verificate, 600 alert prodotto
+conservati, 35 oltre limite per cliente, zero pending. Contatori Admin/Agente
+coerenti (820/0), HTTP 200. Rapporto corrente nel
+[checkpoint FTP](../qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md).
+
+---
+
 # Checkpoint FTP, prodotti abituali e GPT-6 Luna — 15/10/2026
 
 Lavoro sospeso su richiesta dell’utente per chiudere il Mac. Branch corrente:

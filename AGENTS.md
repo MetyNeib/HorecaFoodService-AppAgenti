@@ -9,8 +9,11 @@ OpenAI GPT-6 Luna. Questo supera i precedenti vincoli placeholder/no-AI/revision
 solo manuale, senza autorizzare scritture FTP, invii ERP o accorpamenti clienti.
 Branch `feature/amelia3-ftp-inbox-habitual-products`; UX precedente salvata a
 `3453e15`. Leggere `qa/AMELIA3_FTP_FEEDS_CHECKPOINT.md` per la ripresa. L’utente ha
-chiesto un checkpoint e l’interruzione per chiudere il Mac: worker fermati,
-nessun riavvio automatico del lavoro finché non chiede di riprendere.
+chiesto il checkpoint `d2ef68c` e poi autorizzato esplicitamente la ripresa.
+Usare soltanto il nuovo `feed_worker`; il precedente `worker` resta fermo.
+Ripresa e collaudo completati il 15/10: stato finale nel rapporto checkpoint.
+L’utente richiede ora il commit locale del lavoro completato sul polling e
+delle correzioni successive; revisione UX e flussi rinviata al prossimo turno.
 Dati, chiave `.env.openai.local`, CSV e screenshot reali rimangono esclusi da Git.
 Nessun push, merge o deploy implicito. Le scritture di collaudo usano solo tenant
 sintetici; migrazioni additive e import reali autorizzati restano preservati.
